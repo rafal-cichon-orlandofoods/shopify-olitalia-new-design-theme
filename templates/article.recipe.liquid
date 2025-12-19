@@ -1,0 +1,209 @@
+{{ 'section-single-recipe.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  <article class="single-recipe">
+    <header class="recipe-header">
+      <h1 class="recipe-title">{{ article.title }}</h1>
+      {% if article.metafields.recipe.chef_name %}
+        <div class="recipe-chef">
+          <span class="chef-name">Chef {{ article.metafields.recipe.chef_name }}</span>
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="recipe-content">
+      {% if article.image %}
+        <div class="recipe-image">
+          <img src="{{ article.image | img_url: '800x600' }}" 
+               alt="{{ article.title }}" 
+               width="800" 
+               height="600">
+        </div>
+      {% endif %}
+
+      <div class="recipe-details">
+        <div class="recipe-meta">
+          {% if article.metafields.recipe.prep_time %}
+            <div class="meta-item">
+              <strong>Time:</strong> {{ article.metafields.recipe.prep_time }}
+            </div>
+          {% endif %}
+          {% if article.metafields.recipe.servings %}
+            <div class="meta-item">
+              <strong>Servings:</strong> {{ article.metafields.recipe.servings }}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if article.excerpt %}
+          <div class="recipe-description">
+            <p>{{ article.excerpt }}</p>
+          </div>
+        {% endif %}
+
+        {% comment %} Ingredients Section 1 {% endcomment %}
+        {% if article.metafields.recipe.ingredients_section_1_header %}
+          <div class="recipe-section">
+            <h2>{{ article.metafields.recipe.ingredients_section_1_header }}</h2>
+            <div class="ingredients-list">
+              {% for ingredient in article.metafields.recipe.ingredients_section_1_list %}
+                {% assign index = forloop.index0 %}
+                {% assign url_text = article.metafields.recipe.ingredients_section_1_url_text[index] %}
+                {% assign url = article.metafields.recipe.ingredients_section_1_urls[index] %}
+                
+                {% if url_text == ingredient and url != blank %}
+                  <a href="{{ url }}" target="_blank">{{ ingredient }}</a><br>
+                {% else %}
+                  {{ ingredient }}<br>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        
+        {% comment %} Ingredients Section 2 {% endcomment %}
+        {% if article.metafields.recipe.ingredients_section_2_header %}
+          <div class="recipe-section">
+            <h2>{{ article.metafields.recipe.ingredients_section_2_header }}</h2>
+            <div class="ingredients-list">
+              {% for ingredient in article.metafields.recipe.ingredients_section_2_list %}
+                {% assign index = forloop.index0 %}
+                {% assign url_text = article.metafields.recipe.ingredients_section_2_url_text[index] %}
+                {% assign url = article.metafields.recipe.ingredients_section_2_urls[index] %}
+                
+                {% if url_text == ingredient and url != blank %}
+                  <a href="{{ url }}" target="_blank">{{ ingredient }}</a><br>
+                {% else %}
+                  {{ ingredient }}<br>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        
+        {% comment %} Ingredients Section 3 {% endcomment %}
+        {% if article.metafields.recipe.ingredients_section_3_header %}
+          <div class="recipe-section">
+            <h2>{{ article.metafields.recipe.ingredients_section_3_header }}</h2>
+            <div class="ingredients-list">
+              {% for ingredient in article.metafields.recipe.ingredients_section_3_list %}
+                {% assign index = forloop.index0 %}
+                {% assign url_text = article.metafields.recipe.ingredients_section_3_url_text[index] %}
+                {% assign url = article.metafields.recipe.ingredients_section_3_urls[index] %}
+                
+                {% if url_text == ingredient and url != blank %}
+                  <a href="{{ url }}" target="_blank">{{ ingredient }}</a><br>
+                {% else %}
+                  {{ ingredient }}<br>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        
+        {% comment %} Ingredients Section 4 {% endcomment %}
+        {% if article.metafields.recipe.ingredients_section_4_header %}
+          <div class="recipe-section">
+            <h2>{{ article.metafields.recipe.ingredients_section_4_header }}</h2>
+            <div class="ingredients-list">
+              {% for ingredient in article.metafields.recipe.ingredients_section_4_list %}
+                {% assign index = forloop.index0 %}
+                {% assign url_text = article.metafields.recipe.ingredients_section_4_url_text[index] %}
+                {% assign url = article.metafields.recipe.ingredients_section_4_urls[index] %}
+                
+                {% if url_text == ingredient and url != blank %}
+                  <a href="{{ url }}" target="_blank">{{ ingredient }}</a><br>
+                {% else %}
+                  {{ ingredient }}<br>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if article.metafields.recipe.instructions %}
+          <div class="recipe-section">
+            <h2>Instructions</h2>
+            <div class="instructions-list">{{ article.metafields.recipe.instructions | newline_to_br }}</div>
+          </div>
+        {% endif %}
+
+        {% if article.content %}
+          <div class="recipe-section">
+            <h2>Notes</h2>
+            <div class="recipe-notes">{{ article.content }}</div>
+          </div>
+        {% endif %}
+        
+        <div class="recipe-actions">
+          <button class="print-recipe-btn" onclick="printBlogRecipe()">Print Recipe</button>
+          <a href="{{ blog.url }}" class="back-to-recipes-btn">← Back to Recipes</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<script>
+function printBlogRecipe() {
+  const title = document.querySelector('.recipe-title').textContent;
+  const chef = document.querySelector('.chef-name')?.textContent || '';
+  const prepTime = document.querySelector('.recipe-meta .meta-item:first-child')?.textContent || '';
+  const servings = document.querySelector('.recipe-meta .meta-item:last-child')?.textContent || '';
+  const description = document.querySelector('.recipe-description p')?.textContent || '';
+  const ingredients = document.querySelector('.ingredients-list')?.innerHTML || '';
+  const instructions = document.querySelector('.instructions-list')?.innerHTML || '';
+  const image = document.querySelector('.recipe-image img')?.src || '';
+  
+  const printWindow = window.open('', '_blank');
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>${title} - Olitalia Recipe</title>
+      <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .header { text-align: center; border-bottom: 2px solid #d4af37; padding-bottom: 20px; margin-bottom: 30px; }
+        .logo { color: #d4af37; font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+        .recipe-title { font-size: 28px; color: #2c3e50; margin: 10px 0; }
+        .recipe-meta { display: flex; justify-content: center; gap: 20px; margin: 15px 0; color: #666; }
+        .recipe-image { text-align: center; margin: 20px 0; }
+        .recipe-image img { max-width: 100%; height: auto; border-radius: 8px; }
+        .section { margin: 25px 0; }
+        .section h3 { color: #d4af37; font-size: 18px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; }
+        .ingredients-list, .instructions-list { line-height: 1.8; }
+        .chef-info { text-align: center; color: #d4af37; font-weight: 500; margin: 10px 0; }
+        @media print { body { margin: 0; padding: 15px; } }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <div class="logo">OLITALIA</div>
+        <h1 class="recipe-title">${title}</h1>
+        ${chef ? `<div class="chef-info">${chef}</div>` : ''}
+        <div class="recipe-meta">
+          ${prepTime ? `<span>${prepTime}</span>` : ''}
+          ${servings ? `<span>${servings}</span>` : ''}
+        </div>
+      </div>
+      
+      ${image ? `<div class="recipe-image"><img src="${image}" alt="${title}"></div>` : ''}
+      ${description ? `<div class="section"><p>${description}</p></div>` : ''}
+      ${ingredients ? `<div class="section"><h3>Ingredients</h3><div class="ingredients-list">${ingredients}</div></div>` : ''}
+      ${instructions ? `<div class="section"><h3>Instructions</h3><div class="instructions-list">${instructions}</div></div>` : ''}
+      
+      <div style="text-align: center; margin-top: 40px; color: #666; font-size: 12px;">
+        Recipe from Olitalia - Premium Italian Oils
+      </div>
+    </body>
+    </html>
+  `);
+  
+  printWindow.document.close();
+  printWindow.focus();
+  setTimeout(() => {
+    printWindow.print();
+    printWindow.close();
+  }, 500);
+}
+</script>

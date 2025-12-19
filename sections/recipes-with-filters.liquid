@@ -1,0 +1,291 @@
+{{ 'section-recipes-filters.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  {% if section.settings.show_page_title %}
+    <header class="section-heading section-heading--center">
+      <h1 class="section-heading__title heading-size--page-title">{{ page.title }}</h1>
+      {% if section.settings.page_description %}
+        <div class="section-heading__subheading text-size--large">
+          <p>{{ section.settings.page_description }}</p>
+        </div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="recipe-filters">
+    <div class="filter-group">
+      <label>Category:</label>
+      <button class="filter-btn active" data-filter="category" data-value="all">All</button>
+      <button class="filter-btn" data-filter="category" data-value="pasta">Pasta</button>
+      <button class="filter-btn" data-filter="category" data-value="antipasti">Appetizers</button>
+      <button class="filter-btn" data-filter="category" data-value="secondi">Main Courses</button>
+      <button class="filter-btn" data-filter="category" data-value="dolci">Desserts</button>
+    </div>
+    
+    <div class="filter-group">
+      <label>Chef:</label>
+      <button class="filter-btn active" data-filter="chef" data-value="all">All Chefs</button>
+      <button class="filter-btn" data-filter="chef" data-value="marco-rossi">Marco Rossi</button>
+      <button class="filter-btn" data-filter="chef" data-value="giuseppe-bianchi">Giuseppe Bianchi</button>
+      <button class="filter-btn" data-filter="chef" data-value="maria-rossi">Maria Rossi</button>
+    </div>
+    
+    <div class="filter-group">
+      <label>Product:</label>
+      <button class="filter-btn active" data-filter="product" data-value="all">All Products</button>
+      <button class="filter-btn" data-filter="product" data-value="extra-virgin">Extra Virgin Olive Oil</button>
+      <button class="filter-btn" data-filter="product" data-value="sunflower">Sunflower Oil</button>
+      <button class="filter-btn" data-filter="product" data-value="truffle">Truffle Oil</button>
+    </div>
+  </div>
+
+  <div class="recipes-grid" id="recipes-grid">
+    {% for block in section.blocks %}
+      <article class="recipe-card card" 
+               data-category="{{ block.settings.category }}" 
+               data-chef="{{ block.settings.chef_name | handleize }}" 
+               data-product="{{ block.settings.product_type }}" 
+               {{ block.shopify_attributes }}>
+        {% if block.settings.recipe_image %}
+          <div class="recipe-image card__image" data-ratio="0.75">
+            <div class="lazy-image lazy-image--scale-animation" data-ratio="0.75">
+              <img src="{{ block.settings.recipe_image | img_url: '600x450' }}" 
+                   alt="{{ block.settings.recipe_title }}" 
+                   loading="lazy"
+                   width="600"
+                   height="450"
+                   class="lazyloaded">
+            </div>
+          </div>
+        {% endif %}
+        
+        <div class="recipe-content card__text">
+          <h3 class="recipe-title">{{ block.settings.recipe_title }}</h3>
+          
+          <div class="recipe-meta">
+            {% if block.settings.prep_time %}
+              <span class="prep-time pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ block.settings.prep_time }}
+              </span>
+            {% endif %}
+            {% if block.settings.servings %}
+              <span class="servings pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ block.settings.servings }}
+              </span>
+            {% endif %}
+          </div>
+
+          {% if block.settings.chef_name %}
+            <div class="recipe-chef">
+              {% if block.settings.chef_link %}
+                <a href="{{ block.settings.chef_link }}" class="chef-link">Chef {{ block.settings.chef_name }}</a>
+              {% else %}
+                <span class="chef-name">Chef {{ block.settings.chef_name }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if block.settings.recipe_description %}
+            <p class="recipe-description">{{ block.settings.recipe_description }}</p>
+          {% endif %}
+
+          <button class="view-recipe-btn" onclick="openRecipe('{{ block.id }}')">View Full Recipe</button>
+        </div>
+        
+        <!-- Hidden full recipe content -->
+        <div class="full-recipe-content" id="recipe-{{ block.id }}" style="display: none;">
+          {% if block.settings.ingredients %}
+            <div class="recipe-ingredients">
+              <h4>Ingredients</h4>
+              <div class="ingredients-list">{{ block.settings.ingredients | newline_to_br }}</div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.instructions %}
+            <div class="recipe-instructions">
+              <h4>Instructions</h4>
+              <div class="instructions-list">{{ block.settings.instructions | newline_to_br }}</div>
+            </div>
+          {% endif %}
+          
+          {% if block.settings.recipe_gallery %}
+            <div class="recipe-gallery">
+              <h4>Gallery</h4>
+              <div class="recipe-images">
+                {% assign gallery_images = block.settings.recipe_gallery | split: ',' %}
+                {% for image_url in gallery_images %}
+                  {% assign clean_url = image_url | strip %}
+                  {% if clean_url != blank %}
+                    <img src="{{ clean_url }}" alt="Recipe step" loading="lazy" width="150" height="120">
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+          
+          <div class="recipe-actions">
+            <button class="print-recipe-btn" onclick="printRecipe('{{ block.id }}')">Print Recipe</button>
+            <button class="close-recipe-btn" onclick="closeRecipe('{{ block.id }}')">Close</button>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+  
+  {% if section.settings.show_recommendations %}
+    <div class="recommended-recipes">
+      <h2>Recommended Recipes</h2>
+      <div class="recommended-grid">
+        {% for block in section.blocks limit: 3 %}
+          {% unless forloop.first %}
+            <div class="recommended-recipe">
+              {% if block.settings.recipe_image %}
+                <img src="{{ block.settings.recipe_image | img_url: '300x200' }}" alt="{{ block.settings.recipe_title }}" width="300" height="200">
+              {% endif %}
+              <h3>{{ block.settings.recipe_title }}</h3>
+              <p>{{ block.settings.prep_time }} • {{ block.settings.servings }}</p>
+            </div>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<script src="{{ 'recipe-filters.js' | asset_url }}" defer></script>
+<script src="{{ 'recipe-print.js' | asset_url }}" defer></script>
+<script src="{{ 'recipe-expand.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Recipes with Filters",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Page description",
+      "default": "Discover authentic Italian recipes using our premium olive oils"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recommendations",
+      "label": "Show recommended recipes",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Spaghetti Aglio e Olio"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "pasta", "label": "Pasta" },
+            { "value": "antipasti", "label": "Appetizers" },
+            { "value": "secondi", "label": "Main Courses" },
+            { "value": "dolci", "label": "Desserts" }
+          ],
+          "default": "pasta"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "text",
+          "id": "prep_time",
+          "label": "Prep Time",
+          "placeholder": "15 minuti"
+        },
+        {
+          "type": "text",
+          "id": "servings",
+          "label": "Servings",
+          "placeholder": "4 persone"
+        },
+        {
+          "type": "text",
+          "id": "chef_name",
+          "label": "Chef Name",
+          "placeholder": "Marco Rossi"
+        },
+        {
+          "type": "url",
+          "id": "chef_link",
+          "label": "Chef Page Link"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description",
+          "placeholder": "A classic Italian pasta dish with garlic, olive oil, and chili flakes"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredients",
+          "label": "Ingredients",
+          "info": "List each ingredient on a new line",
+          "placeholder": "400g spaghetti\n6 cloves garlic, thinly sliced\n1/2 cup Olitalia Extra Virgin Olive Oil\n1 tsp red pepper flakes\nFresh parsley, chopped\nParmigiano-Reggiano cheese"
+        },
+        {
+          "type": "textarea",
+          "id": "instructions",
+          "label": "Instructions",
+          "info": "List each step on a new line",
+          "placeholder": "Cook spaghetti in salted boiling water until al dente\nHeat olive oil in a large pan over medium heat\nAdd garlic and red pepper flakes, cook until fragrant\nAdd cooked pasta to the pan with pasta water\nToss with parsley and serve with cheese"
+        },
+        {
+          "type": "text",
+          "id": "recipe_gallery",
+          "label": "Recipe Gallery URLs",
+          "info": "Comma-separated image URLs",
+          "placeholder": "https://example.com/step1.jpg, https://example.com/step2.jpg"
+        },
+        {
+          "type": "select",
+          "id": "product_type",
+          "label": "Main Product Used",
+          "options": [
+            { "value": "extra-virgin", "label": "Extra Virgin Olive Oil" },
+            { "value": "sunflower", "label": "Sunflower Oil" },
+            { "value": "truffle", "label": "Truffle Oil" },
+            { "value": "avocado", "label": "Avocado Oil" }
+          ],
+          "default": "extra-virgin"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recipes with Filters"
+    }
+  ]
+}
+{% endschema %}

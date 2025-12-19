@@ -1,0 +1,152 @@
+{{ 'section-recipes.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  {% if section.settings.show_page_title %}
+    <header class="section-heading section-heading--center">
+      <h1 class="section-heading__title heading-size--page-title">{{ page.title }}</h1>
+      {% if section.settings.page_description %}
+        <div class="section-heading__subheading text-size--large">
+          <p>{{ section.settings.page_description }}</p>
+        </div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="recipes-grid">
+    {% for block in section.blocks %}
+      <article class="recipe-card card" {{ block.shopify_attributes }}>
+        {% if block.settings.recipe_image %}
+          <div class="recipe-image card__image" data-ratio="0.75">
+            <div class="lazy-image lazy-image--scale-animation" data-ratio="0.75">
+              <img src="{{ block.settings.recipe_image | img_url: '600x450' }}" 
+                   alt="{{ block.settings.recipe_title }}" 
+                   loading="lazy"
+                   class="lazyloaded">
+            </div>
+          </div>
+        {% endif %}
+        
+        <div class="recipe-content card__text">
+          <h3 class="recipe-title">{{ block.settings.recipe_title }}</h3>
+          
+          <div class="recipe-meta">
+            {% if block.settings.prep_time %}
+              <span class="prep-time pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ block.settings.prep_time }}
+              </span>
+            {% endif %}
+            {% if block.settings.servings %}
+              <span class="servings pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ block.settings.servings }}
+              </span>
+            {% endif %}
+          </div>
+
+          {% if block.settings.recipe_description %}
+            <p class="recipe-description">{{ block.settings.recipe_description }}</p>
+          {% endif %}
+
+          {% if block.settings.ingredients %}
+            <div class="recipe-ingredients">
+              <h4>Ingredienti</h4>
+              <div class="ingredients-list">{{ block.settings.ingredients | newline_to_br }}</div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.instructions %}
+            <div class="recipe-instructions">
+              <h4>Preparazione</h4>
+              <div class="instructions-list">{{ block.settings.instructions | newline_to_br }}</div>
+            </div>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Ricette Italiane",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Page description",
+      "default": "Discover authentic Italian recipes using our premium olive oils"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Spaghetti Aglio e Olio"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "text",
+          "id": "prep_time",
+          "label": "Prep Time",
+          "placeholder": "15 minuti"
+        },
+        {
+          "type": "text",
+          "id": "servings",
+          "label": "Servings",
+          "placeholder": "4 persone"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description",
+          "placeholder": "A classic Italian pasta dish with garlic, olive oil, and chili flakes"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredients",
+          "label": "Ingredients",
+          "info": "List each ingredient on a new line",
+          "placeholder": "400g spaghetti\n6 cloves garlic, thinly sliced\n1/2 cup Olitalia Extra Virgin Olive Oil\n1 tsp red pepper flakes\nFresh parsley, chopped\nParmigiano-Reggiano cheese"
+        },
+        {
+          "type": "textarea",
+          "id": "instructions",
+          "label": "Instructions",
+          "info": "List each step on a new line",
+          "placeholder": "Cook spaghetti in salted boiling water until al dente\nHeat olive oil in a large pan over medium heat\nAdd garlic and red pepper flakes, cook until fragrant\nAdd cooked pasta to the pan with pasta water\nToss with parsley and serve with cheese"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ricette Italiane"
+    }
+  ]
+}
+{% endschema %}

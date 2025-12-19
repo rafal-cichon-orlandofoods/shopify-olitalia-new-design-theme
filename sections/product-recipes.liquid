@@ -1,0 +1,833 @@
+{{ 'section-product-recipes.css' | asset_url | stylesheet_tag }}
+
+<div class="dynamic-recipes" 
+     style="--section-bg: {{ section.settings.section_background_color }};"
+     data-section-type="product-recipes" 
+     data-section-id="{{ section.id }}"
+     data-layout="{{ section.settings.layout }}">
+  <div class="container custom-container align-{{ section.settings.section_alignment }}" 
+       style="--max-width: {{ section.settings.max_width }}px; --grid-alignment: {{ section.settings.grid_alignment }};"&gt;
+    {% if section.settings.show_heading and section.settings.heading != blank or section.settings.show_subheading and section.settings.subheading != blank %}
+      <header class="dynamic-recipes-header custom-header align-{{ section.settings.text_alignment }}{% if section.settings.header_background %} has-background{% endif %}{% if section.settings.inline_header %} inline-header{% endif %}" 
+              style="--header-spacing: {{ section.settings.header_spacing }}rem;
+                     --header-bg-color: {{ section.settings.header_bg_color }};
+                     --header-padding: {{ section.settings.header_padding }}rem;
+                     --header-border-radius: {{ section.settings.header_border_radius }}px;
+                     --heading-color: {{ section.settings.heading_color }};
+                     --heading-font-weight: {{ section.settings.heading_font_weight }};
+                     --subheading-color: {{ section.settings.subheading_color }};
+                     --subheading-font-size: {{ section.settings.subheading_font_size }}rem;
+                     --subheading-max-width: {{ section.settings.subheading_max_width }}px;
+                     --subheading-bottom-spacing: {{ section.settings.subheading_bottom_spacing }}rem;
+                     --header-top-spacing: {{ section.settings.header_top_spacing }}rem;
+                     --heading-bottom-spacing: {{ section.settings.heading_bottom_spacing }}rem;
+                     --inline-gap: {{ section.settings.inline_gap }}rem;">
+        {% if section.settings.show_heading and section.settings.heading != blank %}
+          {% case section.settings.heading_size %}
+            {% when 1 %}
+              <h1 class="dynamic-recipes-title custom-heading">{{ section.settings.heading }}</h1>
+            {% when 2 %}
+              <h2 class="dynamic-recipes-title custom-heading">{{ section.settings.heading }}</h2>
+            {% when 3 %}
+              <h3 class="dynamic-recipes-title custom-heading">{{ section.settings.heading }}</h3>
+            {% when 4 %}
+              <h4 class="dynamic-recipes-title custom-heading">{{ section.settings.heading }}</h4>
+            {% when 5 %}
+              <h5 class="dynamic-recipes-title custom-heading">{{ section.settings.heading }}</h5>
+          {% endcase %}
+        {% endif %}
+        {% if section.settings.show_subheading and section.settings.subheading != blank %}
+          <p class="dynamic-recipes-description custom-subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <div class="recipes-grid {{ section.settings.layout }} custom-grid">
+      {% comment %} Dynamic recipe loading from recipe page {% endcomment %}
+      {% assign recipe_count = 0 %}
+      {% assign max_recipes = section.settings.recipes_limit %}
+      {% assign current_product_handle = product.handle | default: section.settings.product_filter %}
+      {% assign current_product_title = product.title | default: section.settings.product_filter %}
+      
+      {% comment %} Get recipes from the specified recipe page {% endcomment %}
+      {% assign recipe_page = pages[section.settings.recipe_page_handle] %}
+      
+      {% if recipe_page %}
+        {% comment %} Look for recipe pages that mention this product {% endcomment %}
+        {% for page in pages %}
+          {% assign page_handle_start = page.handle | slice: 0, 7 %}
+          {% if page_handle_start == 'recipe-' and recipe_count < max_recipes %}
+            
+            {% comment %} Check if this recipe uses the current product {% endcomment %}
+            {% assign show_recipe = false %}
+            
+            {% if section.settings.filter_by_product and current_product_handle != blank %}
+              {% comment %} Filter by product handle or title in page content {% endcomment %}
+              {% assign page_content_lower = page.content | downcase %}
+              {% assign product_handle_lower = current_product_handle | downcase %}
+              {% assign product_title_lower = current_product_title | downcase %}
+              
+              {% if page_content_lower contains product_handle_lower or page_content_lower contains product_title_lower %}
+                {% assign show_recipe = true %}
+              {% endif %}
+            {% else %}
+              {% comment %} Show all recipes if no product filter {% endcomment %}
+              {% assign show_recipe = true %}
+            {% endif %}
+            
+            {% if show_recipe %}
+              {% assign recipe_count = recipe_count | plus: 1 %}
+              
+              {% comment %} Extract recipe data from page {% endcomment %}
+              {% assign recipe_title = page.title %}
+              {% assign recipe_url = page.url %}
+              {% assign recipe_description = page.summary | default: page.content | strip_html | truncate: 120 %}
+              {% assign recipe_image = null %}
+              {% assign recipe_chef = section.settings.default_chef | default: 'Michele Loffreno' %}
+              {% assign recipe_time = '30 min' %}
+              {% assign recipe_category = 'main course' %}
+              {% assign recipe_difficulty = 'easy' %}
+              
+              {% comment %} Map specific recipe data based on handle {% endcomment %}
+              {% case page.handle %}
+                {% when 'recipe-seasonal-roasted-vegetables' %}
+                  {% assign recipe_image = images['Roasted_Seasonal_Veggies.jpg'] %}
+                  {% assign recipe_time = '1h' %}
+                  {% assign recipe_category = 'sides' %}
+                {% when 'recipe-honey-dijon-vinaigrette' %}
+                  {% assign recipe_image = images['Honey-Dijon-Dressing-Web.jpg'] %}
+                  {% assign recipe_time = '5 min' %}
+                  {% assign recipe_category = 'dressings' %}
+                {% when 'recipe-extra-virgin-olive-oil-granola' %}
+                  {% assign recipe_image = images['Granola_Final_Website.jpg'] %}
+                  {% assign recipe_time = '35 min' %}
+                  {% assign recipe_category = 'breakfast' %}
+                {% when 'recipe-evoo-english-muffins' %}
+                  {% assign recipe_image = images['English-Muffins-Web.jpg'] %}
+                  {% assign recipe_time = '13h' %}
+                  {% assign recipe_category = 'breakfast' %}
+                  {% assign recipe_difficulty = 'medium' %}
+                {% when 'recipe-mediterranean-herb-crusted-chicken' %}
+                  {% assign recipe_image = images['Mediterranean-Herb-Crusted-Chicken.jpg'] %}
+                  {% assign recipe_time = '45 min' %}
+                  {% assign recipe_category = 'main course' %}
+                  {% assign recipe_difficulty = 'medium' %}
+              {% endcase %}
+              
+              <article class="recipe-card">
+                <div class="recipe-image-container">
+                  {% if recipe_image %}
+                    <a href="{{ recipe_url }}" class="recipe-image-link">
+                      <img 
+                        src="{{ recipe_image | img_url: '400x300' }}" 
+                        alt="{{ recipe_title }}"
+                        class="recipe-image"
+                        loading="lazy"
+                        style="border-radius: {{ section.settings.image_border_radius }}px;"
+                      >
+                    </a>
+                  {% else %}
+                    <div class="recipe-image-placeholder">
+                      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                        <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                    </div>
+                  {% endif %}
+                  
+                  <!-- Recipe Badges Overlay -->
+                  <div class="recipe-overlay">
+                    {% if section.settings.show_tags and recipe_category != blank %}
+                      <div class="recipe-category-badge">{{ recipe_category | capitalize }}</div>
+                    {% endif %}
+                    {% if section.settings.show_difficulty and recipe_difficulty != blank %}
+                      <div class="recipe-difficulty-badge">{{ recipe_difficulty | capitalize }}</div>
+                    {% endif %}
+                  </div>
+                </div>
+          
+                <div class="recipe-content">
+                  <h3 class="recipe-title">
+                    <a href="{{ recipe_url }}">{{ recipe_title }}</a>
+                  </h3>
+                  
+                  {% if section.settings.show_excerpt and recipe_description != blank %}
+                    <p class="recipe-description">{{ recipe_description }}</p>
+                  {% endif %}
+                  
+                  {% if section.settings.show_tags and recipe_category != blank %}
+                    <div class="recipe-tags">
+                      <span class="recipe-tag">{{ recipe_category | capitalize }}</span>
+                    </div>
+                  {% endif %}
+                  
+                  <div class="recipe-meta">
+                    {% if section.settings.show_time and recipe_time != blank %}
+                      <div class="recipe-time">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                          <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span>{{ recipe_time }}</span>
+                      </div>
+                    {% endif %}
+                    
+                    {% if section.settings.show_chef and recipe_chef != blank %}
+                      <div class="recipe-chef">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                          <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                        <span>{{ recipe_chef }}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                  
+                  {% if section.settings.show_button %}
+                    <a href="{{ recipe_url }}" class="recipe-cta">
+                      {{ section.settings.button_text | default: 'View Recipe' }}
+                    </a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% comment %} Fallback to static blocks if no recipe page specified {% endcomment %}
+        {% for block in section.blocks %}
+          <article class="recipe-card" {{ block.shopify_attributes }}>
+            <div class="recipe-image-container">
+              {% if block.settings.recipe_image %}
+                <a href="{{ block.settings.recipe_url }}" class="recipe-image-link">
+                  <img 
+                    src="{{ block.settings.recipe_image | img_url: '400x300' }}" 
+                    alt="{{ block.settings.recipe_title }}"
+                    class="recipe-image"
+                    loading="lazy"
+                    style="border-radius: {{ section.settings.image_border_radius }}px;"
+                  >
+                </a>
+              {% else %}
+                <div class="recipe-image-placeholder">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                    <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <!-- Recipe Badges Overlay -->
+              <div class="recipe-overlay">
+                {% if section.settings.show_tags and block.settings.category != blank %}
+                  <div class="recipe-category-badge">{{ block.settings.category | capitalize }}</div>
+                {% endif %}
+                {% if section.settings.show_difficulty and block.settings.difficulty != blank %}
+                  <div class="recipe-difficulty-badge">{{ block.settings.difficulty | capitalize }}</div>
+                {% endif %}
+              </div>
+            </div>
+      
+            <div class="recipe-content">
+              <h3 class="recipe-title">
+                <a href="{{ block.settings.recipe_url }}">{{ block.settings.recipe_title }}</a>
+              </h3>
+              
+              {% if section.settings.show_excerpt and block.settings.recipe_description != blank %}
+                <p class="recipe-description">{{ block.settings.recipe_description }}</p>
+              {% endif %}
+              
+              {% if section.settings.show_tags and block.settings.category != blank %}
+                <div class="recipe-tags">
+                  <span class="recipe-tag">{{ block.settings.category | capitalize }}</span>
+                </div>
+              {% endif %}
+              
+              <div class="recipe-meta">
+                {% if section.settings.show_time and block.settings.cooking_time != blank %}
+                  <div class="recipe-time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                      <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>{{ block.settings.cooking_time }}</span>
+                  </div>
+                {% endif %}
+                
+                {% if section.settings.show_chef and block.settings.chef_name != blank %}
+                  <div class="recipe-chef">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                      <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>{{ block.settings.chef_name }}</span>
+                  </div>
+                {% endif %}
+              </div>
+              
+              {% if section.settings.show_button %}
+                <a href="{{ block.settings.recipe_url }}" class="recipe-cta">
+                  {{ section.settings.button_text | default: 'View Recipe' }}
+                </a>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+      
+      {% comment %} Show message if no recipes found {% endcomment %}
+      {% if recipe_count == 0 and section.blocks.size == 0 %}
+        <div class="no-recipes-message">
+          <h3>No recipes found</h3>
+          <p>{% if section.settings.filter_by_product %}No recipes found that use this product.{% else %}No recipe pages found. Create pages with handles starting with 'recipe-'.{% endif %}</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    {% if section.settings.show_view_all and section.settings.view_all_link != blank %}
+      <div class="recipes-cta">
+        <a href="{{ section.settings.view_all_link }}" class="view-all-button">
+          {{ section.settings.view_all_text | default: 'View All Recipes' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product Recipes",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading",
+      "label": "Show heading",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recipe Ideas"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "info": "1 = Largest, 5 = Smallest"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subheading",
+      "label": "Show subheading",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover delicious ways to use this product in your kitchen."
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading font size",
+      "min": 0.8,
+      "max": 1.6,
+      "step": 0.1,
+      "unit": "rem",
+      "default": 1.2
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "inline_header",
+      "label": "Show heading and subheading on same line",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "inline_gap",
+      "label": "Gap between heading and subheading (inline mode)",
+      "min": 0.5,
+      "max": 3,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header bottom spacing",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "rem",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Advanced Header Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "header_background",
+      "label": "Add header background",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "header_bg_color",
+      "label": "Header background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "range",
+      "id": "header_padding",
+      "label": "Header padding",
+      "min": 0,
+      "max": 4,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "header_border_radius",
+      "label": "Header border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "subheading_max_width",
+      "label": "Subheading max width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "subheading_bottom_spacing",
+      "label": "Space after subheading",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "header_top_spacing",
+      "label": "Space before header",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "heading_bottom_spacing",
+      "label": "Space after heading",
+      "min": 0.5,
+      "max": 3,
+      "step": 0.5,
+      "unit": "rem",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Section Alignment & Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_alignment",
+      "label": "Section content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left aligned"
+        },
+        {
+          "value": "center",
+          "label": "Center aligned"
+        },
+        {
+          "value": "right",
+          "label": "Right aligned"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "grid_alignment",
+      "label": "Recipe grid alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left aligned"
+        },
+        {
+          "value": "center",
+          "label": "Center aligned"
+        },
+        {
+          "value": "end",
+          "label": "Right aligned"
+        },
+        {
+          "value": "stretch",
+          "label": "Full width"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Section max width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "header",
+      "content": "Recipe Source"
+    },
+    {
+      "type": "paragraph",
+      "content": "This section can automatically find recipes from your recipe pages and filter them by the current product."
+    },
+    {
+      "type": "text",
+      "id": "recipe_page_handle",
+      "label": "Recipe page handle",
+      "info": "Handle of the main recipe page (optional). Leave empty to search all pages.",
+      "placeholder": "recipes"
+    },
+    {
+      "type": "checkbox",
+      "id": "filter_by_product",
+      "label": "Filter recipes by current product",
+      "info": "Only show recipes that mention the current product in their content",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "product_filter",
+      "label": "Product filter override",
+      "info": "Manually specify a product handle to filter by (overrides current product)",
+      "placeholder": "extra-virgin-olive-oil"
+    },
+    {
+      "type": "range",
+      "id": "recipes_limit",
+      "label": "Maximum recipes to show",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "default_chef",
+      "label": "Default chef name",
+      "default": "Michele Loffreno",
+      "info": "Used when recipe pages don't specify a chef"
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "grid-1",
+          "label": "1 column"
+        },
+        {
+          "value": "grid-2",
+          "label": "2 columns"
+        },
+        {
+          "value": "grid-3",
+          "label": "3 columns"
+        },
+        {
+          "value": "grid-4",
+          "label": "4 columns"
+        }
+      ],
+      "default": "grid-2"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "checkbox",
+      "id": "show_chef",
+      "label": "Show chef name",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "label": "Show recipe excerpt",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_time",
+      "label": "Show cooking time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_difficulty",
+      "label": "Show difficulty level",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "Show recipe tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show view recipe button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Recipe"
+    },
+    {
+      "type": "header",
+      "content": "View All Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all button text",
+      "default": "View All Recipes"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all button link"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section background color",
+      "default": "#fafafa"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Product Recipe",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Garlic Herb Roasted Vegetables"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description",
+          "default": "Simple roasted vegetables enhanced with this premium olive oil."
+        },
+        {
+          "type": "url",
+          "id": "recipe_url",
+          "label": "Recipe Page URL",
+          "info": "Link to the full recipe page"
+        },
+        {
+          "type": "text",
+          "id": "cooking_time",
+          "label": "Cooking Time",
+          "placeholder": "25 min",
+          "default": "25 min"
+        },
+        {
+          "type": "text",
+          "id": "chef_name",
+          "label": "Chef Name",
+          "placeholder": "Michele Loffreno",
+          "default": "Michele Loffreno"
+        },
+        {
+          "type": "select",
+          "id": "difficulty",
+          "label": "Difficulty Level",
+          "options": [
+            { "value": "easy", "label": "Easy" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "hard", "label": "Hard" }
+          ],
+          "default": "easy"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "placeholder": "appetizers, main course, dessert",
+          "info": "Optional category for organization"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Recipes",
+      "blocks": [
+        {
+          "type": "recipe",
+          "settings": {
+            "recipe_title": "Seasonal Roasted Vegetables",
+            "recipe_description": "These one-pan seasonal roasted vegetables bring effortless elegance and vibrant flavor to any table.",
+            "recipe_url": "/pages/recipe-seasonal-roasted-vegetables",
+            "cooking_time": "1h",
+            "chef_name": "Michele Loffreno",
+            "difficulty": "easy",
+            "category": "sides"
+          }
+        },
+        {
+          "type": "recipe",
+          "settings": {
+            "recipe_title": "Honey Dijon Vinaigrette",
+            "recipe_description": "Whisk up a burst of flavor with this Honey Dijon Vinaigrette with Olitalia Extra Virgin Olive Oil.",
+            "recipe_url": "/pages/recipe-honey-dijon-vinaigrette",
+            "cooking_time": "5 min",
+            "chef_name": "Michele Loffreno",
+            "difficulty": "easy",
+            "category": "dressings"
+          }
+        },
+        {
+          "type": "recipe",
+          "settings": {
+            "recipe_title": "Granola",
+            "recipe_description": "Golden, irresistible granola made with the finest Olitalia Extra Virgin Olive Oil.",
+            "recipe_url": "/pages/recipe-extra-virgin-olive-oil-granola",
+            "cooking_time": "35 min",
+            "chef_name": "Michele Loffreno",
+            "difficulty": "easy",
+            "category": "breakfast"
+          }
+        },
+      ]
+    }
+  ]
+}
+{% endschema %}

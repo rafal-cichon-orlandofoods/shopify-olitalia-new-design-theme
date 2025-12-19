@@ -1,0 +1,931 @@
+{% doc %}
+  @prompt
+    make this in a grid like story with images and all - Caring for the Planet
+    We're taking real steps to reduce our environmental impact
+    
+    Plastic No More
+    
+    Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.
+    Used but Full of Life Project
+    
+    Co-created with APCI (the Professional Association of Italian Chefs) and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination. We provide technical guidance, educational materials, and partnerships with certified recovery operators to ensure that used oils are given a second life as renewable energy.
+    Efficient Resource Use
+    
+    We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.
+    Circular Principles
+    
+    We apply circular principles to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources. This approach helps us minimize our environmental footprint while strengthening the link between innovation, efficiency, and responsibility.
+     
+    Collaboration That Creates Change
+    Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.
+    
+    In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.
+    
+    Each collaboration — whether local or international — helps us gro, not this in the grids where we have text on left and image on right and next block it's oppose like that, now add some static number p[lacments just after the text and make sure it does not go bigger then the image on theater side. These number would be big and will have sub text small
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-sustainability-story-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 0;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-sustainability-story__container-{{ ai_gen_id }} {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-sustainability-story__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .ai-sustainability-story__title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 20px;
+    line-height: 1.2;
+  }
+
+  .ai-sustainability-story__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .ai-sustainability-story__item-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: {{ block.settings.grid_gap }}px;
+    align-items: center;
+    margin-bottom: {{ block.settings.item_spacing }}px;
+  }
+
+  .ai-sustainability-story__item-{{ ai_gen_id }}:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-sustainability-story__item--reverse-{{ ai_gen_id }} {
+    direction: rtl;
+  }
+
+  .ai-sustainability-story__item--reverse-{{ ai_gen_id }} > * {
+    direction: ltr;
+  }
+
+  .ai-sustainability-story__content-{{ ai_gen_id }} {
+    padding: 40px;
+  }
+
+  .ai-sustainability-story__item-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.item_title_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 20px;
+    line-height: 1.3;
+  }
+
+  .ai-sustainability-story__item-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.item_text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    margin: 0 0 30px;
+  }
+
+  .ai-sustainability-story__stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+  }
+
+  .ai-sustainability-story__stat-{{ ai_gen_id }} {
+    text-align: left;
+  }
+
+  .ai-sustainability-story__stat-number-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.stat_number_size }}px;
+    color: {{ block.settings.stat_color }};
+    line-height: 1;
+    margin: 0 0 8px;
+  }
+
+  .ai-sustainability-story__stat-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.stat_label_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .ai-sustainability-story__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    background-color: #f4f4f4;
+  }
+
+  .ai-sustainability-story__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-sustainability-story__image-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-sustainability-story__image-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  .ai-sustainability-story__collaboration-{{ ai_gen_id }} {
+    background-color: {{ block.settings.collaboration_bg }};
+    border-radius: {{ block.settings.image_border_radius }}px;
+    padding: 80px 60px;
+    text-align: center;
+    margin-top: {{ block.settings.item_spacing }}px;
+  }
+
+  .ai-sustainability-story__collaboration-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.collaboration_title_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 30px;
+    line-height: 1.2;
+  }
+
+  .ai-sustainability-story__collaboration-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.item_text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  @media screen and (max-width: 990px) {
+    .ai-sustainability-story__item-{{ ai_gen_id }},
+    .ai-sustainability-story__item--reverse-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      direction: ltr;
+      gap: 30px;
+    }
+
+    .ai-sustainability-story__content-{{ ai_gen_id }} {
+      padding: 20px 0;
+    }
+
+    .ai-sustainability-story__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.6);
+    }
+
+    .ai-sustainability-story__collaboration-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.collaboration_title_size }}px * 0.7);
+    }
+
+    .ai-sustainability-story__collaboration-{{ ai_gen_id }} {
+      padding: 50px 30px;
+    }
+
+    .ai-sustainability-story__stat-number-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.stat_number_size }}px * 0.7);
+    }
+
+    .ai-sustainability-story__stats-{{ ai_gen_id }} {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-sustainability-story-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-sustainability-story__container-{{ ai_gen_id }}">
+    <div class="ai-sustainability-story__header-{{ ai_gen_id }}">
+      {% if block.settings.main_title != blank %}
+        <h2 class="ai-sustainability-story__title-{{ ai_gen_id }}">{{ block.settings.main_title }}</h2>
+      {% endif %}
+      {% if block.settings.main_subtitle != blank %}
+        <p class="ai-sustainability-story__subtitle-{{ ai_gen_id }}">{{ block.settings.main_subtitle }}</p>
+      {% endif %}
+    </div>
+
+    {% if block.settings.show_item_1 %}
+      <div class="ai-sustainability-story__item-{{ ai_gen_id }}">
+        <div class="ai-sustainability-story__content-{{ ai_gen_id }}">
+          {% if block.settings.item_1_title != blank %}
+            <h3 class="ai-sustainability-story__item-title-{{ ai_gen_id }}">{{ block.settings.item_1_title }}</h3>
+          {% endif %}
+          {% if block.settings.item_1_text != blank %}
+            <div class="ai-sustainability-story__item-text-{{ ai_gen_id }}">{{ block.settings.item_1_text }}</div>
+          {% endif %}
+          {% if block.settings.show_item_1_stats %}
+            <div class="ai-sustainability-story__stats-{{ ai_gen_id }}">
+              {% if block.settings.item_1_stat_1_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_1_stat_1_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_1_stat_1_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_1_stat_2_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_1_stat_2_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_1_stat_2_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_1_stat_3_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_1_stat_3_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_1_stat_3_label }}</div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ai-sustainability-story__image-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.item_1_image %}
+            <img
+              src="{{ block.settings.item_1_image | image_url: width: 1000 }}"
+              alt="{{ block.settings.item_1_image.alt | escape }}"
+              loading="lazy"
+              width="1000"
+              height="750"
+              class="ai-sustainability-story__image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-sustainability-story__image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_item_2 %}
+      <div class="ai-sustainability-story__item-{{ ai_gen_id }} ai-sustainability-story__item--reverse-{{ ai_gen_id }}">
+        <div class="ai-sustainability-story__content-{{ ai_gen_id }}">
+          {% if block.settings.item_2_title != blank %}
+            <h3 class="ai-sustainability-story__item-title-{{ ai_gen_id }}">{{ block.settings.item_2_title }}</h3>
+          {% endif %}
+          {% if block.settings.item_2_text != blank %}
+            <div class="ai-sustainability-story__item-text-{{ ai_gen_id }}">{{ block.settings.item_2_text }}</div>
+          {% endif %}
+          {% if block.settings.show_item_2_stats %}
+            <div class="ai-sustainability-story__stats-{{ ai_gen_id }}">
+              {% if block.settings.item_2_stat_1_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_2_stat_1_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_2_stat_1_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_2_stat_2_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_2_stat_2_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_2_stat_2_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_2_stat_3_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_2_stat_3_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_2_stat_3_label }}</div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ai-sustainability-story__image-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.item_2_image %}
+            <img
+              src="{{ block.settings.item_2_image | image_url: width: 1000 }}"
+              alt="{{ block.settings.item_2_image.alt | escape }}"
+              loading="lazy"
+              width="1000"
+              height="750"
+              class="ai-sustainability-story__image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-sustainability-story__image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_item_3 %}
+      <div class="ai-sustainability-story__item-{{ ai_gen_id }}">
+        <div class="ai-sustainability-story__content-{{ ai_gen_id }}">
+          {% if block.settings.item_3_title != blank %}
+            <h3 class="ai-sustainability-story__item-title-{{ ai_gen_id }}">{{ block.settings.item_3_title }}</h3>
+          {% endif %}
+          {% if block.settings.item_3_text != blank %}
+            <div class="ai-sustainability-story__item-text-{{ ai_gen_id }}">{{ block.settings.item_3_text }}</div>
+          {% endif %}
+          {% if block.settings.show_item_3_stats %}
+            <div class="ai-sustainability-story__stats-{{ ai_gen_id }}">
+              {% if block.settings.item_3_stat_1_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_3_stat_1_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_3_stat_1_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_3_stat_2_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_3_stat_2_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_3_stat_2_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_3_stat_3_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_3_stat_3_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_3_stat_3_label }}</div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ai-sustainability-story__image-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.item_3_image %}
+            <img
+              src="{{ block.settings.item_3_image | image_url: width: 1000 }}"
+              alt="{{ block.settings.item_3_image.alt | escape }}"
+              loading="lazy"
+              width="1000"
+              height="750"
+              class="ai-sustainability-story__image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-sustainability-story__image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_item_4 %}
+      <div class="ai-sustainability-story__item-{{ ai_gen_id }} ai-sustainability-story__item--reverse-{{ ai_gen_id }}">
+        <div class="ai-sustainability-story__content-{{ ai_gen_id }}">
+          {% if block.settings.item_4_title != blank %}
+            <h3 class="ai-sustainability-story__item-title-{{ ai_gen_id }}">{{ block.settings.item_4_title }}</h3>
+          {% endif %}
+          {% if block.settings.item_4_text != blank %}
+            <div class="ai-sustainability-story__item-text-{{ ai_gen_id }}">{{ block.settings.item_4_text }}</div>
+          {% endif %}
+          {% if block.settings.show_item_4_stats %}
+            <div class="ai-sustainability-story__stats-{{ ai_gen_id }}">
+              {% if block.settings.item_4_stat_1_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_4_stat_1_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_4_stat_1_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_4_stat_2_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_4_stat_2_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_4_stat_2_label }}</div>
+                </div>
+              {% endif %}
+              {% if block.settings.item_4_stat_3_number != blank %}
+                <div class="ai-sustainability-story__stat-{{ ai_gen_id }}">
+                  <div class="ai-sustainability-story__stat-number-{{ ai_gen_id }}">{{ block.settings.item_4_stat_3_number }}</div>
+                  <div class="ai-sustainability-story__stat-label-{{ ai_gen_id }}">{{ block.settings.item_4_stat_3_label }}</div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ai-sustainability-story__image-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.item_4_image %}
+            <img
+              src="{{ block.settings.item_4_image | image_url: width: 1000 }}"
+              alt="{{ block.settings.item_4_image.alt | escape }}"
+              loading="lazy"
+              width="1000"
+              height="750"
+              class="ai-sustainability-story__image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-sustainability-story__image-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_collaboration %}
+      <div class="ai-sustainability-story__collaboration-{{ ai_gen_id }}">
+        {% if block.settings.collaboration_title != blank %}
+          <h2 class="ai-sustainability-story__collaboration-title-{{ ai_gen_id }}">{{ block.settings.collaboration_title }}</h2>
+        {% endif %}
+        {% if block.settings.collaboration_text != blank %}
+          <div class="ai-sustainability-story__collaboration-text-{{ ai_gen_id }}">{{ block.settings.collaboration_text }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sustainability story",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_title",
+      "label": "Title",
+      "default": "Caring for the Planet"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_subtitle",
+      "label": "Subtitle",
+      "default": "We're taking real steps to reduce our environmental impact"
+    },
+    {
+      "type": "header",
+      "content": "Item 1 - Plastic No More"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_1",
+      "label": "Show item 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_1_title",
+      "label": "Title",
+      "default": "Plastic No More"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_text",
+      "label": "Text",
+      "default": "<p>Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_1_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Plastic-free facilities"
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "85%"
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Recyclable packaging"
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_3_number",
+      "label": "Statistic 3 number",
+      "default": "2025"
+    },
+    {
+      "type": "text",
+      "id": "item_1_stat_3_label",
+      "label": "Statistic 3 label",
+      "default": "Full transition year"
+    },
+    {
+      "type": "header",
+      "content": "Item 2 - Used but Full of Life"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_2",
+      "label": "Show item 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_2_title",
+      "label": "Title",
+      "default": "Used but Full of Life Project"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_text",
+      "label": "Text",
+      "default": "<p>Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_2_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Partner restaurants"
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "10K L"
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Oil recovered yearly"
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_3_number",
+      "label": "Statistic 3 number"
+    },
+    {
+      "type": "text",
+      "id": "item_2_stat_3_label",
+      "label": "Statistic 3 label"
+    },
+    {
+      "type": "header",
+      "content": "Item 3 - Efficient Resource Use"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_3",
+      "label": "Show item 3",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_3_title",
+      "label": "Title",
+      "default": "Efficient Resource Use"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_text",
+      "label": "Text",
+      "default": "<p>We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_3_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "40%"
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Water reduction"
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "30%"
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Energy savings"
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_3_number",
+      "label": "Statistic 3 number"
+    },
+    {
+      "type": "text",
+      "id": "item_3_stat_3_label",
+      "label": "Statistic 3 label"
+    },
+    {
+      "type": "header",
+      "content": "Item 4 - Circular Principles"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_4",
+      "label": "Show item 4",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "item_4_title",
+      "label": "Title",
+      "default": "Circular Thinking"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_text",
+      "label": "Text",
+      "default": "<p>We apply circular principles to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_item_4_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "95%"
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Byproduct recovery"
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "Zero"
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Waste to landfill"
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_3_number",
+      "label": "Statistic 3 number"
+    },
+    {
+      "type": "text",
+      "id": "item_4_stat_3_label",
+      "label": "Statistic 3 label"
+    },
+    {
+      "type": "header",
+      "content": "Collaboration section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collaboration",
+      "label": "Show collaboration section",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "collaboration_title",
+      "label": "Title",
+      "default": "Collaboration That Creates Change"
+    },
+    {
+      "type": "richtext",
+      "id": "collaboration_text",
+      "label": "Text",
+      "default": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values. In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "collaboration_bg",
+      "label": "Collaboration background",
+      "default": "#f2efec"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "stat_color",
+      "label": "Statistic numbers",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "dm_sans_n5"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Main title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 14,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Item title size",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "item_text_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Item text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "collaboration_title_size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "label": "Collaboration title size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Statistic number size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Statistic label size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 40,
+      "max": 140,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "label": "Space between text and image",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Space between items",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sustainability story"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,428 @@
+/* Chef Page Styles */
+
+.chef-page {
+    padding: 0;
+}
+
+.chef-hero {
+    margin-bottom: 4rem;
+}
+
+.chef-hero__content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.chef-hero__image {
+    position: relative;
+}
+
+.chef-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.chef-hero__image .chef-image-placeholder {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem;
+}
+
+.chef-hero__image .chef-image-placeholder p {
+    margin: 1rem 0 0 0;
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+.chef-hero__info {
+    padding-top: 1rem;
+}
+
+.chef-header {
+    margin-bottom: 1.5rem;
+}
+
+.chef-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.chef-title {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.chef-quote {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-left: 4px solid #d4af37;
+    border-radius: 8px;
+}
+
+.chef-quote p {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.chef-short-bio {
+    margin: 1.5rem 0;
+}
+
+.chef-short-bio p {
+    font-size: 1rem;
+    color: #5a6c7d;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Simplified Chef Content Styles */
+.chef-content__grid {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.chef-biography {
+    margin-bottom: 3rem;
+}
+
+.chef-bio-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.chef-bio-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Enhanced Quote Styling for Content Area */
+.chef-quote-content {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: none;
+    border-left: 5px solid #2c5530;
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.chef-quote-content p {
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight: 500;
+    color: #2c5530;
+    margin: 0;
+    line-height: 1.5;
+    position: relative;
+}
+
+.chef-quote-content p::before {
+    content: '"';
+    font-size: 3rem;
+    color: #2c5530;
+    opacity: 0.3;
+    position: absolute;
+    left: -1rem;
+    top: -0.5rem;
+    font-family: serif;
+}
+
+.chef-quote-content p::after {
+    content: '"';
+    font-size: 3rem;
+    color: #2c5530;
+    opacity: 0.3;
+    position: absolute;
+    right: -1rem;
+    bottom: -1rem;
+    font-family: serif;
+}
+
+.chef-stats {
+    margin: 2rem 0;
+}
+
+.chef-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.chef-stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.chef-stat:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.chef-stat__icon {
+    flex-shrink: 0;
+    color: #d4af37;
+}
+
+.chef-stat__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.chef-stat__value {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #2c3e50;
+    margin-bottom: 0.25rem;
+}
+
+.chef-stat__label {
+    font-size: 0.875rem;
+    color: #7f8c8d;
+}
+
+.chef-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.chef-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.chef-social-link:hover {
+    background: #b8941f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.3);
+}
+
+.chef-content {
+    margin-top: 3rem;
+}
+
+.chef-content__grid {
+    display: grid;
+    gap: 3rem;
+}
+
+.chef-biography,
+.chef-philosophy,
+.chef-specialties,
+.chef-signature-dishes,
+.chef-olitalia-partnership,
+.chef-background {
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.chef-biography h2,
+.chef-philosophy h3,
+.chef-specialties h3,
+.chef-signature-dishes h3,
+.chef-olitalia-partnership h3,
+.chef-background h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.chef-bio-content p,
+.chef-oil-expertise p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #5a6c7d;
+    margin-bottom: 1rem;
+}
+
+.chef-bio-content p:last-child,
+.chef-oil-expertise p:last-child {
+    margin-bottom: 0;
+}
+
+.chef-philosophy-quote {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #d4af37;
+}
+
+.chef-philosophy-quote p {
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.chef-specialties-grid,
+.chef-recipes-grid,
+.chef-products-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.chef-specialty-item,
+.chef-recipe-item,
+.chef-product-item {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.chef-specialty-item:hover,
+.chef-recipe-item:hover,
+.chef-product-item:hover {
+    background: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.chef-specialty-item h4,
+.chef-recipe-item h4,
+.chef-product-item h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.chef-recipe-item p {
+    font-size: 0.875rem;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+.chef-timeline {
+    margin-top: 1rem;
+}
+
+.chef-timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.chef-timeline-item:last-child {
+    border-bottom: none;
+}
+
+.chef-timeline-year {
+    font-weight: 600;
+    color: #d4af37;
+    font-size: 0.875rem;
+}
+
+.chef-timeline-content h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.chef-timeline-content p {
+    color: #7f8c8d;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chef-hero__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .chef-hero__image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .chef-name {
+        font-size: 2rem;
+    }
+
+    .chef-stats__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chef-specialties-grid,
+    .chef-recipes-grid,
+    .chef-products-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .chef-timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .chef-social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .chef-biography,
+    .chef-philosophy,
+    .chef-specialties,
+    .chef-signature-dishes,
+    .chef-olitalia-partnership,
+    .chef-background {
+        padding: 1.5rem;
+    }
+
+    .chef-name {
+        font-size: 1.75rem;
+    }
+
+    .chef-title {
+        font-size: 1.125rem;
+    }
+}

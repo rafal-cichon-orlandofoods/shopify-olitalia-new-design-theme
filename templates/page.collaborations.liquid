@@ -1,0 +1,126 @@
+{% comment %}
+  Collaborations Page - Olitalia Partnerships
+{% endcomment %}
+
+{{ 'page-collaborations.css' | asset_url | stylesheet_tag }}
+
+<div class="collaborations-page">
+  <!-- Hero Section -->
+  <div class="collaborations-hero">
+    <div class="container">
+      <h1 class="hero-title">Collaborations</h1>
+      <p class="hero-subtitle">At Olitalia, we believe collaboration fuels creativity.</p>
+      <p class="hero-description">By working alongside chefs, culinary schools, and associations, we exchange knowledge, inspire innovation, and strengthen the connection between Italian tradition and global gastronomy.</p>
+    </div>
+  </div>
+
+  <!-- Professional Associations Section -->
+  <div class="collaboration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Professional Associations</h2>
+        <p class="section-description">We proudly partner with organizations that represent culinary excellence and uphold the values we share — authenticity, craftsmanship, and respect for ingredients.</p>
+      </div>
+      
+      <div class="partners-grid">
+        {% comment %} AMPI {% endcomment %}
+        <a href="{{ page.metafields.custom.ampi_url | default: '#' }}" target="_blank" class="partner-card">
+          {% if page.metafields.custom.ampi_image %}
+            <div class="partner-image">
+              <img src="{{ page.metafields.custom.ampi_image | image_url: width: 300 }}" alt="AMPI" loading="lazy">
+            </div>
+          {% else %}
+            <div class="partner-logo">AMPI</div>
+          {% endif %}
+          <p class="partner-name">AMPI</p>
+        </a>
+        
+        {% comment %} AVPN {% endcomment %}
+        <a href="{{ page.metafields.custom.avpn_url | default: '#' }}" target="_blank" class="partner-card">
+          {% if page.metafields.custom.avpn_image %}
+            <div class="partner-image">
+              <img src="{{ page.metafields.custom.avpn_image | image_url: width: 300 }}" alt="AVPN" loading="lazy">
+            </div>
+          {% else %}
+            <div class="partner-logo">AVPN</div>
+          {% endif %}
+          <p class="partner-name">AVPN</p>
+        </a>
+        
+        {% comment %} APCI {% endcomment %}
+        <a href="{{ page.metafields.custom.apci_url | default: '#' }}" target="_blank" class="partner-card">
+          {% if page.metafields.custom.apci_image %}
+            <div class="partner-image">
+              <img src="{{ page.metafields.custom.apci_image | image_url: width: 300 }}" alt="APCI" loading="lazy">
+            </div>
+          {% else %}
+            <div class="partner-logo">APCI</div>
+          {% endif %}
+          <p class="partner-name">APCI</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Culinary Education Partners Section -->
+  <div class="collaboration-section collaboration-section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Culinary Education Partners</h2>
+        <p class="section-description">Education is at the heart of our philosophy. We partner with some of the most respected culinary academies to nurture the next generation of chefs and food professionals.</p>
+      </div>
+      
+      <div class="education-partners-grid">
+        {% assign education_partners = "niko_romito,etoile,cast,dolce_salato,congusto,alma,cibum,iis,serramzzoni" | split: "," %}
+        {% assign education_names = "Niko Romito,Etoile,CAST,Dolce and Salato,Congusto,ALMA,CIBUM,IIS,Serramzzoni" | split: "," %}
+        
+        {% for partner in education_partners %}
+          {% assign index = forloop.index0 %}
+          {% assign partner_name = education_names[index] %}
+          {% assign image_key = partner | append: "_image" %}
+          {% assign url_key = partner | append: "_url" %}
+          
+          <a href="{{ page.metafields.custom[url_key] | default: '#' }}" target="_blank" class="education-partner-card">
+            {% if page.metafields.custom[image_key] %}
+              <div class="education-partner-image">
+                <img src="{{ page.metafields.custom[image_key] | image_url: width: 200 }}" alt="{{ partner_name }}" loading="lazy">
+              </div>
+            {% endif %}
+            <p class="education-partner-name">{{ partner_name }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- University Partnerships Section -->
+  <div class="collaboration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">University Partnerships</h2>
+        <p class="section-description">We believe the future of food depends on research and collaboration between industry and academia. Through these partnerships, we bridge the gap between scientific discovery and practical application — turning knowledge into real solutions for the kitchens and communities of tomorrow.</p>
+      </div>
+      
+      <a href="{{ page.metafields.custom.university_pollenzo_url | default: '#' }}" target="_blank" class="university-card">
+        {% if page.metafields.custom.university_pollenzo_image %}
+          <div class="university-image">
+            <img src="{{ page.metafields.custom.university_pollenzo_image | image_url: width: 600 }}" alt="University of Gastronomic Sciences of Pollenzo" loading="lazy">
+          </div>
+        {% endif %}
+        <div class="university-content">
+          <h3 class="university-name">University of Gastronomic Sciences of Pollenzo</h3>
+          <p class="university-description">Leading institution in gastronomic sciences, research, and sustainable food systems.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Closing Statement -->
+  <div class="collaboration-closing">
+    <div class="container">
+      <h2 class="closing-title">Building the Future of Flavor</h2>
+      <p class="closing-text">These collaborations represent more than partnerships — they are the foundation of a shared vision: to preserve Italy's culinary heritage while shaping the future of global cuisine.</p>
+      <p class="closing-text">Together with chefs, educators, and industry leaders, we continue to bring authentic Italian excellence to tables around the world.</p>
+    </div>
+  </div>
+</div>

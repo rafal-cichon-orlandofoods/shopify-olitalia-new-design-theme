@@ -1,0 +1,71 @@
+{% comment %}
+  Events Listing Page - Olitalia Events
+{% endcomment %}
+
+{{ 'page-events.css' | asset_url | stylesheet_tag }}
+
+<div class="events-page">
+  <!-- Hero Section -->
+  <div class="events-hero">
+    <div class="container">
+      <h1 class="hero-title">Events</h1>
+      <p class="hero-subtitle">Join Us at the Table</p>
+      <p class="hero-description">Explore upcoming events, tastings, and partnerships that bring Olitalia's passion for food, flavor, and connection to life.</p>
+    </div>
+  </div>
+
+  <!-- Upcoming Events Section -->
+  <div class="events-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Upcoming Events</h2>
+      </div>
+      
+      <div class="events-grid">
+        <!-- PLMA Event -->
+        <a href="/pages/olitalia-at-the-plma-show" class="event-card">
+          <div class="event-image">
+            {% if page.metafields.custom.plma_event_image %}
+              <img src="{{ page.metafields.custom.plma_event_image | image_url: width: 800 }}" alt="PLMA Show 2025" loading="lazy">
+            {% else %}
+              <div class="event-image-placeholder">
+                <span class="event-icon">📍</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="event-content">
+            <div class="event-date">November 17–18, 2025</div>
+            <h3 class="event-title">Olitalia at the PLMA Show</h3>
+            <p class="event-location">Chicago, IL | Booth #1838</p>
+            <p class="event-description">Join us at the PLMA Show to discover why Olitalia is the #1 Italian Chefs' Favorite Oil Brand.</p>
+            <span class="event-link-text">Learn More →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Events Section (Optional) -->
+  {% if page.metafields.custom.show_past_events %}
+  <div class="events-section events-section--alt">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Past Events</h2>
+      </div>
+      
+      <div class="past-events-list">
+        <p class="no-events-message">Check back soon for highlights from our past events.</p>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- CTA Section -->
+  <div class="events-cta">
+    <div class="container">
+      <h2 class="cta-title">Stay Connected</h2>
+      <p class="cta-text">Want to be notified about upcoming events, tastings, and exclusive experiences?</p>
+      <a href="/pages/contact" class="cta-button">Get in Touch</a>
+    </div>
+  </div>
+</div>

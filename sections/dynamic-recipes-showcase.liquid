@@ -1,0 +1,120 @@
+{{ 'section-recipes-showcase.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recipes-showcase.js' | asset_url }}" defer></script>
+
+{% comment %} Fetch all pages with recipe template {% endcomment %}
+{% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+
+<div class="recipes-showcase">
+  <div class="container">
+    {% if section.settings.show_page_title %}
+      <header class="recipes-header">
+        <h1 class="recipes-title">{{ page.title | default: "Our Recipes" }}</h1>
+        {% if section.settings.page_description %}
+          <p class="recipes-description">{{ section.settings.page_description }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <!-- Recipe Count -->
+    <div class="recipes-count">
+      <span class="count-number">{{ all_recipe_pages.size }}</span> recipes found
+    </div>
+
+    <!-- Recipes Grid -->
+    <div class="recipes-grid" id="recipes-grid">
+      {% for recipe_page in all_recipe_pages %}
+        {% assign recipe_category = recipe_page.metafields.recipe.category | default: 'Recipe' %}
+        {% assign recipe_difficulty = recipe_page.metafields.recipe.difficulty | default: 'Medium' %}
+        {% assign recipe_chef = recipe_page.metafields.recipe.chef_name | default: 'Olitalia' %}
+        {% assign recipe_time = recipe_page.metafields.recipe.total_time | default: '30 Minutes' %}
+        {% assign recipe_servings = recipe_page.metafields.recipe.servings | default: '4 Servings' %}
+        {% assign recipe_description = recipe_page.metafields.recipe.description | default: recipe_page.content | truncate: 150 %}
+        {% assign recipe_image = recipe_page.metafields.recipe.featured_image %}
+        
+        {% comment %} Translate category {% endcomment %}
+        {% assign category_key = recipe_category | downcase %}
+        {% assign category_display = 'recipes.category.' | append: category_key | t | default: recipe_category %}
+        
+        <article class="recipe-card" 
+                 data-category="{{ recipe_category | downcase }}"
+                 data-difficulty="{{ recipe_difficulty | downcase }}"
+                 data-chef="{{ recipe_chef | handleize }}">
+          <a href="{{ recipe_page.url }}" class="recipe-card__link">
+            {% if recipe_image %}
+              <div class="recipe-card__image">
+                <img src="{{ recipe_image | image_url: width: 600 }}" 
+                     alt="{{ recipe_page.title }}"
+                     loading="lazy">
+              </div>
+            {% endif %}
+            
+            <div class="recipe-card__content">
+              <div class="recipe-card__meta">
+                <span class="recipe-card__category">{{ category_display }}</span>
+                <span class="recipe-card__difficulty">{{ recipe_difficulty }}</span>
+              </div>
+              
+              <h3 class="recipe-card__title">{{ recipe_page.title }}</h3>
+              
+              <p class="recipe-card__description">{{ recipe_description }}</p>
+              
+              <div class="recipe-card__info">
+                <span class="recipe-card__time">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  {{ recipe_time }}
+                </span>
+                <span class="recipe-card__servings">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  {{ recipe_servings }}
+                </span>
+              </div>
+              
+              <div class="recipe-card__chef">
+                By {{ recipe_chef }}
+              </div>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+    
+    {% if all_recipe_pages.size == 0 %}
+      <div class="recipes-empty">
+        <p>No recipes found. Start adding recipe pages with the "recipe" template!</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dynamic Recipes Showcase",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show Page Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "page_description",
+      "label": "Page Description",
+      "default": "Discover how a drizzle of our oil transforms simple ingredients into unforgettable dishes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dynamic Recipes Showcase"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {}
+    },
+    "redesign-recipe": {
+      "type": "redesign-recipe-page",
+      "settings": {}
+    },
+    "redesign-recipes-more": {
+      "type": "redesign-recipes-showcase",
+      "settings": {}
+    },
+    "redesign-newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {}
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "redesign-header",
+    "redesign-recipe",
+    "redesign-recipes-more",
+    "redesign-newsletter",
+    "redesign-footer"
+  ]
+}

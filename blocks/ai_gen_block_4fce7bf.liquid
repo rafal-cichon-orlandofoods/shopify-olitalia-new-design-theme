@@ -1,0 +1,624 @@
+{% doc %}
+  @prompt
+    Collaboration That Creates Change
+    Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.
+    In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.
+    Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.
+    Collaboration That Creates Change
+    Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.
+    In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.
+    Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.
+    
+    People at the Heart
+    Behind every initiative are the people who make it possible.
+     We’re proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.
+    Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food syste
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-sustainability-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-sustainability-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-sustainability-content-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ block.settings.content_gap }}px;
+  }
+
+  .ai-sustainability-section-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    padding: {{ block.settings.card_padding }}px;
+    border-radius: {{ block.settings.card_border_radius }}px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .ai-sustainability-section-{{ ai_gen_id }}--two-column {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .ai-sustainability-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-sustainability-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-sustainability-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    background-color: {{ block.settings.placeholder_background }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    position: relative;
+  }
+
+  .ai-sustainability-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+    opacity: 0.3;
+  }
+
+  .ai-sustainability-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.6;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-sustainability-text-content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-sustainability-heading-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0;
+  }
+
+  .ai-sustainability-text-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-sustainability-text-{{ ai_gen_id }} p {
+    margin: 0 0 16px 0;
+  }
+
+  .ai-sustainability-text-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-sustainability-stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+  }
+
+  .ai-sustainability-stat-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 24px;
+    background-color: {{ block.settings.stat_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+  }
+
+  .ai-sustainability-stat-number-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.stat_number_size }}px;
+    line-height: 1;
+    color: {{ block.settings.stat_number_color }};
+    margin: 0 0 8px 0;
+  }
+
+  .ai-sustainability-stat-label-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.4;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-sustainability-section-{{ ai_gen_id }}--two-column {
+      grid-template-columns: 1fr;
+    }
+
+    .ai-sustainability-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-sustainability-stat-number-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.stat_number_size }}px * 0.8);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-sustainability-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 16px;
+    }
+
+    .ai-sustainability-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.7 }}px;
+    }
+
+    .ai-sustainability-heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.65);
+    }
+
+    .ai-sustainability-text-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.body_size }}px * 0.95);
+    }
+
+    .ai-sustainability-stats-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-sustainability-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-sustainability-container-{{ ai_gen_id }}">
+    <div class="ai-sustainability-content-{{ ai_gen_id }}">
+      
+      {% if block.settings.show_section_1 %}
+        <div class="ai-sustainability-section-{{ ai_gen_id }} {% if block.settings.section_1_layout == 'two_column' %}ai-sustainability-section-{{ ai_gen_id }}--two-column{% endif %}">
+          {% if block.settings.section_1_layout == 'two_column' %}
+            <div class="ai-sustainability-image-wrapper-{{ ai_gen_id }}">
+              {% if block.settings.section_1_image %}
+                <img
+                  src="{{ block.settings.section_1_image | image_url: width: 1200 }}"
+                  alt="{{ block.settings.section_1_image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.section_1_image.width }}"
+                  height="{{ block.settings.section_1_image.height }}"
+                  class="ai-sustainability-image-{{ ai_gen_id }}"
+                >
+              {% else %}
+                <div class="ai-sustainability-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                  <div class="ai-sustainability-empty-state-{{ ai_gen_id }}">
+                    Add an image
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="ai-sustainability-text-content-{{ ai_gen_id }}">
+            {% if block.settings.section_1_heading != blank %}
+              <h2 class="ai-sustainability-heading-{{ ai_gen_id }}">{{ block.settings.section_1_heading }}</h2>
+            {% endif %}
+            
+            {% if block.settings.section_1_text != blank %}
+              <div class="ai-sustainability-text-{{ ai_gen_id }}">
+                {{ block.settings.section_1_text }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_section_2 %}
+        <div class="ai-sustainability-section-{{ ai_gen_id }} {% if block.settings.section_2_layout == 'two_column' %}ai-sustainability-section-{{ ai_gen_id }}--two-column{% endif %}">
+          {% if block.settings.section_2_layout == 'two_column' %}
+            <div class="ai-sustainability-image-wrapper-{{ ai_gen_id }}">
+              {% if block.settings.section_2_image %}
+                <img
+                  src="{{ block.settings.section_2_image | image_url: width: 1200 }}"
+                  alt="{{ block.settings.section_2_image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.section_2_image.width }}"
+                  height="{{ block.settings.section_2_image.height }}"
+                  class="ai-sustainability-image-{{ ai_gen_id }}"
+                >
+              {% else %}
+                <div class="ai-sustainability-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                  <div class="ai-sustainability-empty-state-{{ ai_gen_id }}">
+                    Add an image
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="ai-sustainability-text-content-{{ ai_gen_id }}">
+            {% if block.settings.section_2_heading != blank %}
+              <h2 class="ai-sustainability-heading-{{ ai_gen_id }}">{{ block.settings.section_2_heading }}</h2>
+            {% endif %}
+            
+            {% if block.settings.section_2_text != blank %}
+              <div class="ai-sustainability-text-{{ ai_gen_id }}">
+                {{ block.settings.section_2_text }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_stats %}
+        <div class="ai-sustainability-stats-{{ ai_gen_id }}">
+          {% if block.settings.stat_1_number != blank %}
+            <div class="ai-sustainability-stat-{{ ai_gen_id }}">
+              <div class="ai-sustainability-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_1_number }}</div>
+              <div class="ai-sustainability-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.stat_2_number != blank %}
+            <div class="ai-sustainability-stat-{{ ai_gen_id }}">
+              <div class="ai-sustainability-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_2_number }}</div>
+              <div class="ai-sustainability-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+            </div>
+          {% endif %}
+
+          {% if block.settings.stat_3_number != blank %}
+            <div class="ai-sustainability-stat-{{ ai_gen_id }}">
+              <div class="ai-sustainability-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_3_number }}</div>
+              <div class="ai-sustainability-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_3_label }}</div>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sustainability story",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Gap between sections",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1.33",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "0.75",
+          "label": "Portrait (3:4)"
+        }
+      ],
+      "default": "1.33"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f2efec"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_background",
+      "label": "Placeholder background",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "instrument_serif_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 42
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "raleway_n4"
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "label": "Body size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_1",
+      "label": "Show section 1",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_1_layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "single_column",
+          "label": "Single column"
+        },
+        {
+          "value": "two_column",
+          "label": "Two columns"
+        }
+      ],
+      "default": "two_column"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_1_heading",
+      "label": "Heading",
+      "default": "Collaboration That Creates Change"
+    },
+    {
+      "type": "richtext",
+      "id": "section_1_text",
+      "label": "Text",
+      "default": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.</p><p>Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_2",
+      "label": "Show section 2",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_2_layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "single_column",
+          "label": "Single column"
+        },
+        {
+          "value": "two_column",
+          "label": "Two columns"
+        }
+      ],
+      "default": "two_column"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_2_heading",
+      "label": "Heading",
+      "default": "People at the Heart"
+    },
+    {
+      "type": "richtext",
+      "id": "section_2_text",
+      "label": "Text",
+      "default": "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p><p>Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food system that benefits everyone.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "stat_background",
+      "label": "Stat background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Stat number color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "min": 32,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Stat number size",
+      "default": 48
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 number",
+      "default": "130+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Team members"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Sustainable sourcing"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 number",
+      "default": "50+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "Partner organizations"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sustainability story"
+    }
+  ]
+}
+{% endschema %}

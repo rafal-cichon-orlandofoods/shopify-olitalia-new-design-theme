@@ -1,0 +1,286 @@
+{{ 'section-header-top-bar.css' | asset_url | stylesheet_tag }}
+
+<div class="header-top-bar">
+  <div class="container">
+    <div class="top-bar-content">
+      <!-- Left Side - Business Menu -->
+      <div class="top-bar-left">
+        <nav class="business-menu">
+          <ul>
+            {% for block in section.blocks %}
+              {% if block.type == 'business_link' %}
+                <li class="business-menu-item {% if block.settings.is_active %}active{% endif %}">
+                  <a href="{{ block.settings.link }}" 
+                     {% if block.settings.open_new_tab %}target="_blank"{% endif %}
+                     class="business-link">
+                    {{ block.settings.title }}
+                    {% if block.settings.show_arrow %}
+                      <svg class="arrow-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {% endif %}
+                  </a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Right Side - Utility Menu & Language -->
+      <div class="top-bar-right">
+        <!-- Utility Menu -->
+        {% if section.settings.show_utility_menu %}
+          <nav class="utility-menu">
+            <ul>
+              {% for block in section.blocks %}
+                {% if block.type == 'utility_link' %}
+                  <li>
+                    <a href="{{ block.settings.link }}" 
+                       {% if block.settings.open_new_tab %}target="_blank"{% endif %}
+                       class="utility-link">
+                      {{ block.settings.title }}
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              
+              <!-- Search -->
+              {% if section.settings.show_search %}
+                <li class="search-item">
+                  <button class="search-toggle" aria-label="Toggle search">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                      <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                  </button>
+                  <div class="search-dropdown">
+                    <form action="{{ routes.search_url }}" method="get" class="search-form">
+                      <input type="search" 
+                             name="q" 
+                             placeholder="{{ 'general.search.placeholder' | t }}" 
+                             class="search-input"
+                             autocomplete="off">
+                      <button type="submit" class="search-submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                          <path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                      </button>
+                    </form>
+                  </div>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        {% endif %}
+
+        <!-- Language Selector -->
+        {% if section.settings.show_language_selector %}
+          <div class="language-selector">
+            <button class="language-toggle" aria-label="Select language">
+              {{ localization.language.iso_code | upcase }}
+              <svg class="arrow-icon" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="language-dropdown">
+              {% for language in localization.available_languages %}
+                <a href="{{ language.root_url }}" 
+                   class="language-option {% if language.iso_code == localization.language.iso_code %}active{% endif %}">
+                  {{ language.endonym_name }}
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Mobile Menu Toggle for Top Bar -->
+    <div class="mobile-top-bar">
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-dropdown">
+      <div class="mobile-business-menu">
+        {% for block in section.blocks %}
+          {% if block.type == 'business_link' %}
+            <a href="{{ block.settings.link }}" class="mobile-business-link">
+              {{ block.settings.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="mobile-utility-menu">
+        {% for block in section.blocks %}
+          {% if block.type == 'utility_link' %}
+            <a href="{{ block.settings.link }}" class="mobile-utility-link">
+              {{ block.settings.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'header-top-bar.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Header Top Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Bar Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_utility_menu",
+      "label": "Show utility menu",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language_selector",
+      "label": "Show language selector",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "business_link",
+      "name": "Business Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link text",
+          "default": "At Home"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_active",
+          "label": "Mark as active",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show dropdown arrow",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "utility_link",
+      "name": "Utility Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Link text",
+          "default": "Sustainability"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in new tab",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Top Bar",
+      "blocks": [
+        {
+          "type": "business_link",
+          "settings": {
+            "title": "At Home",
+            "link": "/",
+            "is_active": true,
+            "show_arrow": true
+          }
+        },
+        {
+          "type": "business_link",
+          "settings": {
+            "title": "Chefs & Restaurateurs",
+            "link": "/pages/chefs"
+          }
+        },
+        {
+          "type": "business_link",
+          "settings": {
+            "title": "Company",
+            "link": "/pages/about"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "title": "Sustainability",
+            "link": "/pages/sustainability"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "title": "Magazine",
+            "link": "/blogs/magazine"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "title": "Recipes",
+            "link": "/pages/recipes"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

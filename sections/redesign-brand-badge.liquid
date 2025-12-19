@@ -1,0 +1,37 @@
+{{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-badge">
+  <div class="redesign-badge__wrapper">
+    {% if section.settings.badge_image %}
+      <img 
+        src="{{ section.settings.badge_image | image_url: width: 400 }}" 
+        alt="{{ section.settings.badge_text }}"
+        class="redesign-badge__logo"
+      >
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redesign Brand Badge",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Badge Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Alt Text",
+      "default": "Extravergine Italiano Certificato"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Brand Badge"
+    }
+  ]
+}
+{% endschema %}

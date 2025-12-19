@@ -1,0 +1,660 @@
+{{ 'redesign-recipes-page.css' | asset_url | stylesheet_tag }}
+
+<div class="recipes-showcase">
+  <div class="container">
+    {% if section.settings.show_page_title %}
+      <header class="recipes-header">
+        <h1 class="recipes-title">{{ page.title | default: "Our Recipes" }}</h1>
+        {% if section.settings.page_description %}
+          <p class="recipes-description">{{ section.settings.page_description }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <!-- Main Content Layout -->
+    <div class="recipes-layout">
+      <!-- Left Sidebar Filters -->
+      {% if section.settings.show_category_filter or section.settings.show_chef_filter or section.settings.show_time_filter or section.settings.show_difficulty_filter %}
+        <aside class="recipes-sidebar">
+          <div class="filter-header">
+            <h3 class="filter-title">Filter Recipes</h3>
+            <button class="share-filters-btn" onclick="window.recipesShowcase?.shareFilters()" title="Share filtered results">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="16,6 12,2 8,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="2" x2="12" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Share
+            </button>
+          </div>
+
+          <!-- Category Filter -->
+          {% if section.settings.show_category_filter %}
+            {% if section.settings.auto_fetch_recipes %}
+              {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+              {% assign categories = all_recipe_pages | map: 'metafields' | map: 'recipe' | map: 'category' | uniq | compact %}
+            {% else %}
+              {% assign categories = section.blocks | map: 'settings' | map: 'category' | uniq | compact %}
+            {% endif %}
+            {% if categories.size > 1 %}
+              <div class="filter-group">
+                <h4 class="filter-group-label">Category</h4>
+                <div class="filter-buttons">
+                  <button class="filter-tab active" data-filter="all">All Recipes</button>
+                  {% for category in categories %}
+                    {% if category != blank %}
+                      {% assign category_key = category | downcase %}
+                      {% assign category_label = category | capitalize %}
+                      {% case category_key %}
+                        {% when 'pasta' %}
+                          {% assign category_label = 'Pasta' %}
+                        {% when 'antipasti' %}
+                          {% assign category_label = 'Appetizers' %}
+                        {% when 'secondi' %}
+                          {% assign category_label = 'Main Courses' %}
+                        {% when 'contorni' %}
+                          {% assign category_label = 'Sides' %}
+                        {% when 'condimenti' %}
+                          {% assign category_label = 'Dressings & Sauces' %}
+                        {% when 'dolci' %}
+                          {% assign category_label = 'Desserts' %}
+                        {% when 'primi' %}
+                          {% assign category_label = 'First Courses' %}
+                        {% else %}
+                          {% assign category_label = category | capitalize %}
+                      {% endcase %}
+                      <button class="filter-tab" data-filter="{{ category_key }}">{{ category_label }}</button>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+
+          {% comment %} Check if any secondary filters should be shown {% endcomment %}
+          {% assign show_chef = false %}
+          {% assign show_difficulty = false %}
+          {% assign show_product = false %}
+          
+          {% if section.settings.show_chef_filter %}
+            {% if section.settings.auto_fetch_recipes %}
+              {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+              {% assign chefs = all_recipe_pages | map: 'metafields' | map: 'recipe' | map: 'chef_name' | uniq | compact %}
+            {% else %}
+              {% assign chefs = section.blocks | map: 'settings' | map: 'chef_name' | uniq | compact %}
+            {% endif %}
+            {% if chefs.size > 1 %}
+              {% assign show_chef = true %}
+            {% endif %}
+          {% endif %}
+          
+          {% if section.settings.show_difficulty_filter %}
+            {% if section.settings.auto_fetch_recipes %}
+              {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+              {% assign difficulties = all_recipe_pages | map: 'metafields' | map: 'recipe' | map: 'difficulty' | uniq | compact %}
+            {% else %}
+              {% assign difficulties = section.blocks | map: 'settings' | map: 'difficulty' | uniq | compact %}
+            {% endif %}
+            {% if difficulties.size > 1 %}
+              {% assign show_difficulty = true %}
+            {% endif %}
+          {% endif %}
+          
+          {% if section.settings.show_product_filter %}
+            {% if section.settings.auto_fetch_recipes %}
+              {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+              {% assign products = all_recipe_pages | map: 'metafields' | map: 'recipe' | map: 'featured_product' | uniq | compact %}
+            {% else %}
+              {% assign products = section.blocks | map: 'settings' | map: 'main_product' | uniq | compact %}
+            {% endif %}
+            {% if products.size > 1 %}
+              {% assign show_product = true %}
+            {% endif %}
+          {% endif %}
+
+          <!-- Time Filter -->
+          {% if section.settings.show_time_filter %}
+            <div class="filter-group">
+              <h4 class="filter-group-label">Cooking Time</h4>
+              <div class="filter-buttons">
+                <button class="filter-btn active" data-filter-type="time" data-filter-value="all">Any Time</button>
+                <button class="filter-btn" data-filter-type="time" data-filter-value="quick">Under 30 min</button>
+                <button class="filter-btn" data-filter-type="time" data-filter-value="medium">30-60 min</button>
+                <button class="filter-btn" data-filter-type="time" data-filter-value="long">Over 1 hour</button>
+              </div>
+            </div>
+          {% endif %}
+          
+          <!-- Difficulty Filter -->
+          {% if section.settings.show_difficulty_filter %}
+            {% if show_difficulty %}
+              <div class="filter-group">
+                <h4 class="filter-group-label">Difficulty</h4>
+                <div class="filter-buttons">
+                  <button class="filter-btn active" data-filter-type="difficulty" data-filter-value="all">Any Level</button>
+                  {% for difficulty in difficulties %}
+                    {% if difficulty != blank %}
+                      <button class="filter-btn" data-filter-type="difficulty" data-filter-value="{{ difficulty | downcase }}">{{ difficulty | capitalize }}</button>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+          
+          <!-- Chef Filter -->
+          {% if section.settings.show_chef_filter %}
+            {% if show_chef %}
+              <div class="filter-group">
+                <h4 class="filter-group-label">Chef</h4>
+                <div class="filter-buttons">
+                  <button class="filter-btn active" data-filter-type="chef" data-filter-value="all">All Chefs</button>
+                  {% for chef in chefs %}
+                    {% if chef != blank %}
+                      <button class="filter-btn" data-filter-type="chef" data-filter-value="{{ chef | handleize }}">Chef {{ chef }}</button>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+          
+          <!-- Product Filter -->
+          {% if section.settings.show_product_filter %}
+            {% if show_product %}
+              <div class="filter-group">
+                <h4 class="filter-group-label">Main Oil</h4>
+                <div class="filter-buttons">
+                  <button class="filter-btn active" data-filter-type="product" data-filter-value="all">Any Oil</button>
+                  {% assign product_labels = 'extra-virgin-olive-oil:Extra Virgin,truffle-oil:Truffle Oil,sunflower-oil:Sunflower,avocado-oil:Avocado,coconut-oil:Coconut,grapeseed-oil:Grapeseed,sesame-oil:Sesame' | split: ',' %}
+                  {% for product in products %}
+                    {% if product != blank %}
+                      {% assign product_label = product | replace: '-', ' ' | capitalize %}
+                      {% for label_pair in product_labels %}
+                        {% assign pair = label_pair | split: ':' %}
+                        {% if pair[0] == product %}
+                          {% assign product_label = pair[1] %}
+                          {% break %}
+                        {% endif %}
+                      {% endfor %}
+                      <button class="filter-btn" data-filter-type="product" data-filter-value="{{ product }}">{{ product_label }}</button>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endif %}
+
+          <!-- Clear Filters Button -->
+          <div class="filter-clear-section">
+            <button class="clear-filters-btn" onclick="window.recipesShowcase?.clearFilters()" title="Clear all filters">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 6V20A2 2 0 0 1 17 22H7A2 2 0 0 1 5 20V6M8 6V4A2 2 0 0 1 10 2H14A2 2 0 0 1 16 4V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="10" y1="11" x2="10" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="14" y1="11" x2="14" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Clear All Filters
+            </button>
+          </div>
+        </aside>
+      {% endif %}
+
+      <!-- Recipe Grid -->
+      <main class="recipes-main">
+        <div class="recipes-grid" id="recipes-grid">
+      
+      {% comment %} Check if we should use automatic recipe fetching {% endcomment %}
+      {% if section.settings.auto_fetch_recipes %}
+        {% comment %} AUTO MODE: Fetch all pages with recipe template {% endcomment %}
+        {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+        
+        {% for recipe_page in all_recipe_pages %}
+          {% assign recipe_category = recipe_page.metafields.recipe.category | default: 'recipe' %}
+          {% assign recipe_difficulty = recipe_page.metafields.recipe.difficulty | default: 'medium' | downcase %}
+          {% assign recipe_chef = recipe_page.metafields.recipe.chef_name | default: recipe_page.metafields.recipe.chef | default: 'Olitalia Chef' %}
+          {% assign recipe_time = recipe_page.metafields.recipe.total_time | default: '30 Minutes' %}
+          {% assign recipe_servings = recipe_page.metafields.recipe.servings | default: '4 Servings' %}
+          {% assign recipe_description = recipe_page.metafields.recipe.description | default: recipe_page.content | strip_html | truncate: 120 %}
+          {% assign recipe_image = recipe_page.metafields.recipe.featured_image %}
+          {% assign recipe_prep_time = recipe_page.metafields.recipe.prep_time | default: '15 min' %}
+          {% assign recipe_cook_time = recipe_page.metafields.recipe.cook_time | default: '15 min' %}
+          {% assign recipe_featured_product = recipe_page.metafields.recipe.featured_product | default: 'extra-virgin-olive-oil-500ml' %}
+          
+          {% comment %} Extract numeric values from time strings for calculation {% endcomment %}
+          {% comment %} Parse total_time metafield which may contain "5 Minutes", "13 Hours", etc. {% endcomment %}
+          {% assign total_minutes = 0 %}
+          
+          {% if recipe_time contains 'Hour' or recipe_time contains 'hour' %}
+            {% comment %} Handle hour-based times {% endcomment %}
+            {% assign time_clean = recipe_time | replace: ' Hours', '' | replace: ' Hour', '' | replace: ' hours', '' | replace: ' hour', '' | replace: 'Hours', '' | replace: 'Hour', '' | replace: 'hours', '' | replace: 'hour', '' | strip %}
+            {% assign hours = time_clean | plus: 0 %}
+            {% assign total_minutes = hours | times: 60 %}
+          {% elsif recipe_time contains 'Minute' or recipe_time contains 'minute' or recipe_time contains 'min' %}
+            {% comment %} Handle minute-based times {% endcomment %}
+            {% assign time_clean = recipe_time | replace: ' Minutes', '' | replace: ' Minute', '' | replace: ' minutes', '' | replace: ' minute', '' | replace: ' mins', '' | replace: ' min', '' | replace: 'Minutes', '' | replace: 'Minute', '' | replace: 'minutes', '' | replace: 'minute', '' | replace: 'mins', '' | replace: 'min', '' | strip %}
+            {% assign total_minutes = time_clean | plus: 0 %}
+          {% else %}
+            {% comment %} Fallback: calculate from prep + cook times {% endcomment %}
+            {% assign prep_clean = recipe_prep_time | replace: ' min', '' | replace: ' minutes', '' | replace: ' minuti', '' | replace: 'min', '' | replace: 'minutes', '' | replace: 'minuti', '' | strip %}
+            {% assign cook_clean = recipe_cook_time | replace: ' min', '' | replace: ' minutes', '' | replace: ' minuti', '' | replace: 'min', '' | replace: 'minutes', '' | replace: 'minuti', '' | strip %}
+            {% assign prep_minutes = prep_clean | plus: 0 %}
+            {% assign cook_minutes = cook_clean | plus: 0 %}
+            {% assign total_minutes = prep_minutes | plus: cook_minutes %}
+          {% endif %}
+          
+          {% comment %} Determine time category {% endcomment %}
+          {% assign time_category = 'medium' %}
+          {% if total_minutes == 0 %}
+            {% assign time_category = 'quick' %}
+          {% elsif total_minutes <= 30 %}
+            {% assign time_category = 'quick' %}
+          {% elsif total_minutes > 60 %}
+            {% assign time_category = 'long' %}
+          {% endif %}
+          
+          {% comment %} Translate Italian categories to English {% endcomment %}
+          {% assign category_key = recipe_category | downcase %}
+          {% assign category_display = recipe_category %}
+          {% case category_key %}
+            {% when 'pasta' %}
+              {% assign category_display = 'Pasta' %}
+            {% when 'antipasti' %}
+              {% assign category_display = 'Appetizers' %}
+            {% when 'secondi' %}
+              {% assign category_display = 'Main Courses' %}
+            {% when 'contorni' %}
+              {% assign category_display = 'Sides' %}
+            {% when 'condimenti' %}
+              {% assign category_display = 'Dressings & Sauces' %}
+            {% when 'dolci' %}
+              {% assign category_display = 'Desserts' %}
+            {% when 'primi' %}
+              {% assign category_display = 'First Courses' %}
+            {% else %}
+              {% assign category_display = recipe_category | capitalize %}
+          {% endcase %}
+          
+          <article class="recipe-card" 
+                   data-category="{{ recipe_category | downcase }}"
+                   data-difficulty="{{ recipe_difficulty }}"
+                   data-chef="{{ recipe_chef | handleize | default: 'chef' }}"
+                   data-time="{{ time_category }}"
+                   data-product="{{ recipe_featured_product }}"
+>
+            
+            <div class="recipe-image-container">
+              {% if recipe_image %}
+                {% comment %} Use higher resolution for larger cards {% endcomment %}
+                {% assign image_width = 400 %}
+                {% if forloop.index == 1 %}
+                  {% assign image_width = 800 %}
+                {% elsif forloop.index == 2 or forloop.index == 6 or forloop.index == 7 %}
+                  {% assign image_width = 600 %}
+                {% endif %}
+                <img src="{{ recipe_image | image_url: width: image_width }}" 
+                     alt="{{ recipe_page.title }}" 
+                     class="recipe-image"
+                     loading="lazy">
+              {% else %}
+                <div class="recipe-image-placeholder">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                    <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <div class="recipe-overlay">
+                <div class="recipe-category-badge">{{ category_display }}</div>
+                <div class="recipe-difficulty">{{ recipe_difficulty }}</div>
+              </div>
+            </div>
+            
+            <div class="recipe-content">
+              <h3 class="recipe-title">{{ recipe_page.title }}</h3>
+              
+              <div class="recipe-meta">
+                <div class="recipe-time">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>{{ recipe_time }}</span>
+                </div>
+                
+                <div class="recipe-servings">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>{{ recipe_servings }}</span>
+                </div>
+              </div>
+              
+              <div class="recipe-chef">
+                <span>by <a href="/pages/chefs" class="chef-link">{{ recipe_chef }}</a></span>
+              </div>
+              
+              <p class="recipe-description">{{ recipe_description }}</p>
+              
+              <div class="recipe-actions">
+                <a href="{{ recipe_page.url }}" class="view-recipe-btn">View Recipe</a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+        
+      {% else %}
+        {% comment %} MANUAL MODE: Use blocks {% endcomment %}
+        {% for block in section.blocks %}
+        {% assign total_time = block.settings.prep_time | plus: block.settings.cook_time %}
+        {% assign time_category = 'medium' %}
+        {% if total_time < 30 %}
+          {% assign time_category = 'quick' %}
+        {% elsif total_time > 60 %}
+          {% assign time_category = 'long' %}
+        {% endif %}
+        
+        <article class="recipe-card" 
+                 data-category="{{ block.settings.category }}" 
+                 data-chef="{{ block.settings.chef_name | handleize }}"
+                 data-time="{{ time_category }}"
+                 data-difficulty="{{ block.settings.difficulty }}"
+                 data-product="{{ block.settings.main_product }}"
+                 {{ block.shopify_attributes }}>
+          
+          <div class="recipe-image-container">
+            {% if block.settings.recipe_image %}
+              {% comment %} Use higher resolution for larger cards {% endcomment %}
+              {% assign image_size = '400x300' %}
+              {% if forloop.index == 1 %}
+                {% assign image_size = '800x600' %}
+              {% elsif forloop.index == 2 or forloop.index == 6 or forloop.index == 7 %}
+                {% assign image_size = '600x450' %}
+              {% endif %}
+              <img src="{{ block.settings.recipe_image | img_url: image_size }}" 
+                   alt="{{ block.settings.recipe_title }}" 
+                   class="recipe-image"
+                   loading="lazy">
+            {% else %}
+              <div class="recipe-image-placeholder">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                  <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+            {% endif %}
+            
+            <div class="recipe-overlay">
+              <div class="recipe-category-badge">
+                {% assign category_label = block.settings.category | capitalize %}
+                {% assign category_labels = 'pasta:Pasta,antipasti:Appetizers,secondi:Main Courses,contorni:Sides,condimenti:Dressings & Sauces,dolci:Desserts' | split: ',' %}
+                {% for label_pair in category_labels %}
+                  {% assign pair = label_pair | split: ':' %}
+                  {% if pair[0] == block.settings.category %}
+                    {% assign category_label = pair[1] %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {{ category_label }}
+              </div>
+              {% if block.settings.difficulty %}
+                <div class="recipe-difficulty">{{ block.settings.difficulty }}</div>
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="recipe-content">
+            <h3 class="recipe-title">{{ block.settings.recipe_title }}</h3>
+            
+            <div class="recipe-meta">
+              <div class="recipe-time">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <span>
+                  {% if block.settings.prep_time and block.settings.cook_time %}
+                    {% assign total_time = block.settings.prep_time | plus: block.settings.cook_time %}
+                    {% if total_time >= 60 %}
+                      {% assign hours = total_time | divided_by: 60 %}
+                      {% assign remaining_mins = total_time | modulo: 60 %}
+                      {% if remaining_mins > 0 %}
+                        {{ hours }}h {{ remaining_mins }}m
+                      {% else %}
+                        {{ hours }}h
+                      {% endif %}
+                    {% else %}
+                      {{ total_time }} min
+                    {% endif %}
+                  {% elsif block.settings.prep_time %}
+                    {% if block.settings.prep_time >= 60 %}
+                      {% assign hours = block.settings.prep_time | divided_by: 60 %}
+                      {% assign remaining_mins = block.settings.prep_time | modulo: 60 %}
+                      {% if remaining_mins > 0 %}
+                        {{ hours }}h {{ remaining_mins }}m prep
+                      {% else %}
+                        {{ hours }}h prep
+                      {% endif %}
+                    {% else %}
+                      {{ block.settings.prep_time }} min prep
+                    {% endif %}
+                  {% else %}
+                    30 min
+                  {% endif %}
+                </span>
+              </div>
+              
+              {% if block.settings.servings %}
+                <div class="recipe-servings">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  <span>{{ block.settings.servings }}</span>
+                </div>
+              {% endif %}
+            </div>
+            
+            {% if block.settings.chef_name %}
+              <div class="recipe-chef">
+                <span>by <a href="/pages/chefs" class="chef-link">Chef {{ block.settings.chef_name }}</a></span>
+              </div>
+            {% endif %}
+            
+            {% if block.settings.recipe_description %}
+              <p class="recipe-description">{{ block.settings.recipe_description | truncate: 120 }}</p>
+            {% endif %}
+            
+            <div class="recipe-actions">
+              {% if block.settings.recipe_page_url %}
+                {% if block.settings.recipe_page_url contains 'http' %}
+                  <a href="{{ block.settings.recipe_page_url }}" class="view-recipe-btn" target="_blank" rel="noopener">View Recipe</a>
+                {% else %}
+                  <a href="{{ block.settings.recipe_page_url }}" class="view-recipe-btn">View Recipe</a>
+                {% endif %}
+              {% else %}
+                <a href="/pages/recipe-{{ block.settings.recipe_title | handleize }}" class="view-recipe-btn">View Recipe</a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      {% endif %}
+        </div>
+        
+        {% if section.settings.auto_fetch_recipes == false and section.blocks.size == 0 %}
+          <div class="no-recipes">
+            <h3>No recipes found</h3>
+            <p>Check back soon for delicious Italian recipes featuring our premium olive oils.</p>
+          </div>
+        {% endif %}
+      </main>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'recipes-showcase.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Recipes Showcase",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_fetch_recipes",
+      "label": "Automatically fetch all recipe pages",
+      "info": "When enabled, automatically shows all pages with 'recipe' template. When disabled, use manual recipe blocks below.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Page description",
+      "default": "Discover authentic Italian recipes crafted by our expert chefs using premium Olitalia oils"
+    },
+    {
+      "type": "header",
+      "content": "Filter Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_category_filter",
+      "label": "Show category filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_chef_filter",
+      "label": "Show chef filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_time_filter",
+      "label": "Show time filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_difficulty_filter",
+      "label": "Show difficulty filter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_filter",
+      "label": "Show product filter",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Spaghetti Aglio e Olio"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Category",
+          "options": [
+            { "value": "pasta", "label": "Pasta" },
+            { "value": "antipasti", "label": "Appetizers" },
+            { "value": "secondi", "label": "Main Courses" },
+            { "value": "contorni", "label": "Sides" },
+            { "value": "condimenti", "label": "Dressings & Sauces" },
+            { "value": "dolci", "label": "Desserts" }
+          ],
+          "default": "pasta"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "number",
+          "id": "prep_time",
+          "label": "Prep Time (minutes)",
+          "default": 15
+        },
+        {
+          "type": "number",
+          "id": "cook_time",
+          "label": "Cook Time (minutes)",
+          "default": 15
+        },
+        {
+          "type": "text",
+          "id": "servings",
+          "label": "Servings",
+          "placeholder": "4 people",
+          "default": "4 people"
+        },
+        {
+          "type": "select",
+          "id": "difficulty",
+          "label": "Difficulty",
+          "options": [
+            { "value": "easy", "label": "Easy" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "hard", "label": "Hard" }
+          ],
+          "default": "easy"
+        },
+        {
+          "type": "text",
+          "id": "chef_name",
+          "label": "Chef Name",
+          "placeholder": "Marco Rossi"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description",
+          "placeholder": "A classic Italian pasta dish with garlic, olive oil, and chili flakes"
+        },
+        {
+          "type": "text",
+          "id": "recipe_page_url",
+          "label": "Recipe Page URL",
+          "info": "Link to the full recipe page (use full URL for external links)"
+        },
+        {
+          "type": "select",
+          "id": "main_product",
+          "label": "Main Olitalia Product",
+          "options": [
+            { "value": "extra-virgin-olive-oil", "label": "Extra Virgin Olive Oil" },
+            { "value": "truffle-oil", "label": "Truffle Oil" },
+            { "value": "sunflower-oil", "label": "Sunflower Oil" },
+            { "value": "avocado-oil", "label": "Avocado Oil" },
+            { "value": "coconut-oil", "label": "Coconut Oil" },
+            { "value": "grapeseed-oil", "label": "Grapeseed Oil" },
+            { "value": "sesame-oil", "label": "Sesame Oil" }
+          ],
+          "default": "extra-virgin-olive-oil"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recipes Showcase"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+{{ 'redesign-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="redesign-footer">
+  <div class="redesign-footer__container">
+    
+    {% comment %} Logo Column {% endcomment %}
+    <div class="redesign-footer__logo">
+      {% if section.settings.logo %}
+        <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+      {% else %}
+        <img src="https://cdn.shopify.com/s/files/1/0766/7109/0927/files/Olitalia-Logo.png?v=1234" alt="Olitalia" style="height: 50px;">
+      {% endif %}
+    </div>
+    
+    {% comment %} Our World Column {% endcomment %}
+    <div class="redesign-footer__column">
+      <h3 class="redesign-footer__title">Our World</h3>
+      <ul class="redesign-footer__links">
+        <li><a href="/pages/recipes" class="redesign-footer__link">Recipes</a></li>
+        <li><a href="/collections/all" class="redesign-footer__link">Products</a></li>
+        <li><a href="/pages/contact" class="redesign-footer__link">Contact</a></li>
+        <li><a href="/pages/chefs" class="redesign-footer__link">Wholesale</a></li>
+        <li><a href="/pages/events" class="redesign-footer__link">Movements</a></li>
+      </ul>
+    </div>
+    
+    {% comment %} Beyond the Plate Column {% endcomment %}
+    <div class="redesign-footer__column">
+      <h3 class="redesign-footer__title">Beyond the Plate</h3>
+      <ul class="redesign-footer__links">
+        <li><a href="/blogs/news" class="redesign-footer__link">Press</a></li>
+        <li><a href="/blogs/blog" class="redesign-footer__link">Blog</a></li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  {% comment %} Copyright {% endcomment %}
+  <div class="redesign-footer__bottom">
+    <p class="redesign-footer__copyright">
+      © {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Redesign Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Footer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,154 @@
+/* Olitalia-inspired recipe styling */
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--gutter-xlarge);
+  margin-top: var(--gutter-xlarge);
+}
+
+.recipe-card {
+  background: var(--color-background-cards);
+  border-radius: var(--border-radius-cards);
+  border: 1px solid var(--color-borders-cards);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.recipe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.recipe-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.recipe-card:hover .recipe-image img {
+  transform: scale(1.05);
+}
+
+.recipe-content {
+  padding: var(--gutter-large);
+}
+
+.recipe-title {
+  font-family: var(--font-stack-headings-primary);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-headings-primary);
+  margin-bottom: var(--gutter-regular);
+  color: var(--color-text-cards);
+  line-height: 1.3;
+}
+
+.recipe-meta {
+  display: flex;
+  gap: var(--gutter-regular);
+  margin-bottom: var(--gutter-regular);
+  font-size: 0.9rem;
+  color: var(--color-secondary-text-main);
+  font-weight: 500;
+}
+
+.recipe-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--color-third-background-main);
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.recipe-description {
+  margin-bottom: var(--gutter-large);
+  color: var(--color-text-cards);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.recipe-ingredients,
+.recipe-instructions {
+  margin-bottom: var(--gutter-large);
+}
+
+.recipe-ingredients h4,
+.recipe-instructions h4 {
+  font-family: var(--font-stack-headings-primary);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-headings-primary);
+  margin-bottom: var(--gutter-small);
+  color: var(--color-accent-main);
+  position: relative;
+}
+
+.recipe-ingredients h4:after,
+.recipe-instructions h4:after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--color-accent-main);
+}
+
+.ingredients-list,
+.instructions-list {
+  color: var(--color-text-cards);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.ingredients-list {
+  background: var(--color-background-main-secondary);
+  padding: var(--gutter-regular);
+  border-radius: var(--border-radius-forms);
+  border-left: 4px solid var(--color-accent-main);
+}
+
+/* Italian flag colors for variety */
+.recipe-card:nth-child(3n+1) .recipe-ingredients h4:after,
+.recipe-card:nth-child(3n+1) .recipe-instructions h4:after {
+  background: #2E7D32; /* Italian green */
+}
+
+.recipe-card:nth-child(3n+2) .recipe-ingredients h4:after,
+.recipe-card:nth-child(3n+2) .recipe-instructions h4:after {
+  background: #D32F2F; /* Italian red */
+}
+
+@media (max-width: 1023px) {
+  .recipes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--gutter-large);
+  }
+}
+
+@media (max-width: 767px) {
+  .recipes-grid {
+    grid-template-columns: 1fr;
+    gap: var(--gutter-regular);
+  }
+  
+  .recipe-content {
+    padding: var(--gutter-regular);
+  }
+  
+  .recipe-title {
+    font-size: 1.5rem;
+  }
+  
+  .recipe-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

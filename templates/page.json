@@ -1,0 +1,184 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "center": false,
+        "page_cover_metafield": "",
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "height": "small"
+      }
+    },
+    "1762196846e6409c45": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2fff632_kqwKW8": {
+          "type": "ai_gen_block_2fff632",
+          "settings": {
+            "show_intro": true,
+            "intro_title": "Where Innovation Meets Integrity",
+            "intro_text": "The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them. Italian taste has deep historic and cultural roots, admired and celebrated around the world.",
+            "show_stats": true,
+            "stat_1_number": "1,600+",
+            "stat_1_label": "Olive Cultivars Wordwide",
+            "stat_2_number": "600+",
+            "stat_2_label": "Italian Olive Varieties",
+            "item_1_enabled": true,
+            "item_1_title": "Controlled Quality at Every Stage",
+            "item_1_text": "Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency.\nYou deserve to know that what’s inside every bottle meets the highest standards.",
+            "item_1_image": "shopify://shop_images/Olitalia-115_1.jpg",
+            "item_1_layout": "image_right",
+            "item_2_enabled": true,
+            "item_2_title": "Innovation with Purpose",
+            "item_2_text": "We believe innovation should protect, not replace, tradition. That's why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars.",
+            "item_2_image": "shopify://shop_images/Olitalia-80_1.jpg",
+            "item_2_layout": "image_left",
+            "item_3_enabled": true,
+            "item_3_title": "Craftsmanship Meets Modern Efficiency",
+            "item_3_text": "Behind every bottle is the experience of our people, who evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific profiles. Supported by modern tools that ensure precision and consistency, it’s this balance of craftsmanship and innovation that lets us deliver quality you can taste — time and time again.",
+            "item_3_image": "shopify://shop_images/Olitalia-84.jpg",
+            "item_3_layout": "image_right",
+            "item_4_enabled": true,
+            "item_4_title": "Sustainability Through Smart Production",
+            "item_4_text": "Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.",
+            "item_4_image": "shopify://shop_images/77DB91B4-007C-4513-92E9-AC3CD2B8EBAA.jpg",
+            "item_4_layout": "image_left",
+            "item_5_enabled": false,
+            "item_5_title": "",
+            "item_5_text": "",
+            "item_5_image": "shopify://shop_images/AA17D6E3-AA30-4B47-9E6B-08CFAFC2BE5E.jpg",
+            "item_5_layout": "image_right",
+            "show_closing": true,
+            "closing_title": "From Our Facility to Your Table",
+            "closing_text": "Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.",
+            "max_width": 1400,
+            "section_padding": 80,
+            "spacing_between_items": 80,
+            "grid_gap": 60,
+            "image_border_radius": 14,
+            "intro_title_size": 48,
+            "intro_text_size": 18,
+            "stat_number_size": 48,
+            "stat_label_size": 16,
+            "title_size": 32,
+            "text_size": 16,
+            "closing_title_size": 48,
+            "closing_text_size": 18,
+            "background_color": "#ffffff",
+            "text_color": "#000000",
+            "accent_color": "#004f2f"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2fff632_kqwKW8"
+      ],
+      "settings": {}
+    },
+    "1760539556c88ca419": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_f4d407a_8Yn4eR": {
+          "type": "ai_gen_block_f4d407a",
+          "disabled": true,
+          "settings": {
+            "show_header": true,
+            "main_title": "Where Innovation Meets Integrity",
+            "intro_text": "<p>The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them. Italian taste has deep historic and cultural roots, admired and celebrated around the world.</p>",
+            "header_alignment": "center",
+            "show_stats": true,
+            "stat_1_number": "1,600+",
+            "stat_1_label": "Olive cultivars worldwide",
+            "stat_2_number": "600+",
+            "stat_2_label": "Italian olive varieties",
+            "stat_3_number": "",
+            "stat_3_label": "",
+            "section_1_title": "Controlled Quality at Every Stage",
+            "section_1_content": "<p>Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency. Traceability is maintained across the entire supply chain, giving us complete visibility and control from origin to finished product.</p>",
+            "section_1_image": "shopify://shop_images/Olitalia-115_1.jpg",
+            "section_1_image_alt": "Quality control in production",
+            "section_2_title": "Innovation with Purpose",
+            "section_2_content": "<p>We believe innovation should protect, not replace, tradition. That's why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars.</p>",
+            "section_2_image_alt": "Modern production facility",
+            "section_3_title": "Craftsmanship Meets Modern Efficiency",
+            "section_3_content": "<p>Behind every bottle is the experience of our people. Skilled professionals guide each phase of production, supported by modern tools that ensure precision and consistency. Our specialists evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific product profiles.</p>",
+            "section_3_image": "shopify://shop_images/77DB91B4-007C-4513-92E9-AC3CD2B8EBAA.jpg",
+            "section_3_image_alt": "Craftsmanship and modern efficiency",
+            "section_4_title": "Sustainability Through Smart Production",
+            "section_4_content": "<p>Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.</p>",
+            "section_4_image": "shopify://shop_images/AA17D6E3-AA30-4B47-9E6B-08CFAFC2BE5E.jpg",
+            "section_4_image_alt": "Sustainable production practices",
+            "section_5_title": "From Our Facility to Your Table",
+            "section_5_content": "<p>Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.</p>",
+            "section_5_image_alt": "From facility to your table",
+            "section_image_gap": 20,
+            "image_border_radius": 8,
+            "max_width": 1200,
+            "section_padding": 60,
+            "header_spacing": 40,
+            "content_spacing": 50,
+            "content_gap": 30,
+            "heading_font": "instrument_serif_n4",
+            "heading_size": 48,
+            "title_spacing": 20,
+            "intro_size": 18,
+            "intro_max_width": 800,
+            "section_heading_font": "dm_sans_n5",
+            "section_heading_size": 24,
+            "section_title_spacing": 16,
+            "body_text_size": 16,
+            "paragraph_spacing": 16,
+            "stats_spacing": 40,
+            "stats_gap": 30,
+            "stat_padding": 20,
+            "stat_number_size": 42,
+            "stat_number_spacing": 10,
+            "stat_label_size": 14,
+            "card_padding": 40,
+            "card_border_radius": 14,
+            "card_border_width": 1,
+            "highlight_padding": 20,
+            "highlight_margin": 20,
+            "highlight_border_width": 4,
+            "background_color": "#ffffff",
+            "heading_color": "#004f2f",
+            "section_heading_color": "#004f2f",
+            "text_color": "#1b1a1a",
+            "card_background": "#f2efec",
+            "card_border_color": "rgba(0,0,0,0)",
+            "stat_number_color": "#004f2f",
+            "highlight_background": "#f2efec",
+            "highlight_border_color": "#004f2f"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_f4d407a_8Yn4eR"
+      ],
+      "settings": {}
+    },
+    "1760539706a0000ad4": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "1762196846e6409c45",
+    "1760539556c88ca419",
+    "1760539706a0000ad4"
+  ]
+}

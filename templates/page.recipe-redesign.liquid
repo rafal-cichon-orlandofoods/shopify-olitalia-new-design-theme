@@ -1,0 +1,170 @@
+{{ 'redesign-recipe-page.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Get recipe data from metafields {% endcomment %}
+{% assign recipe_title = page.metafields.recipe.title | default: page.title %}
+{% assign recipe_image = page.metafields.recipe.featured_image %}
+{% assign recipe_description = page.metafields.recipe.description %}
+{% assign recipe_prep_time = page.metafields.recipe.prep_time %}
+{% assign recipe_cook_time = page.metafields.recipe.cook_time %}
+{% assign recipe_total_time = page.metafields.recipe.total_time %}
+{% assign recipe_servings = page.metafields.recipe.servings %}
+{% assign recipe_difficulty = page.metafields.recipe.difficulty %}
+{% assign recipe_category = page.metafields.recipe.category %}
+{% assign recipe_ingredients = page.metafields.recipe.ingredients %}
+{% assign recipe_instructions = page.metafields.recipe.instructions %}
+{% assign recipe_chef_name = page.metafields.recipe.chef_name %}
+{% assign recipe_chef_image = page.metafields.recipe.chef_image %}
+
+<div class="redesign-recipe-page">
+  
+  {% comment %} Recipe Hero {% endcomment %}
+  <section class="redesign-recipe-hero">
+    {% if recipe_image %}
+      <img 
+        src="{{ recipe_image | image_url: width: 1920 }}" 
+        alt="{{ recipe_title }}"
+        class="redesign-recipe-hero__image"
+      >
+    {% endif %}
+    
+    <div class="redesign-recipe-hero__overlay">
+      <h1 class="redesign-recipe-hero__title">{{ recipe_title }}</h1>
+    </div>
+  </section>
+  
+  {% comment %} Recipe Content {% endcomment %}
+  <div class="redesign-recipe-content">
+    <div class="redesign-recipe-grid">
+      
+      {% comment %} Sidebar - Recipe Meta {% endcomment %}
+      <aside class="redesign-recipe-meta">
+        
+        {% comment %} Time & Servings {% endcomment %}
+        <div class="redesign-recipe-meta__section">
+          <h3 class="redesign-recipe-meta__title">Recipe Info</h3>
+          <ul class="redesign-recipe-meta__list">
+            {% if recipe_prep_time %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+                <span><strong>Prep:</strong> {{ recipe_prep_time }}</span>
+              </li>
+            {% endif %}
+            
+            {% if recipe_cook_time %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z"/>
+                  <ellipse cx="12" cy="14" rx="8" ry="6"/>
+                </svg>
+                <span><strong>Cook:</strong> {{ recipe_cook_time }}</span>
+              </li>
+            {% endif %}
+            
+            {% if recipe_total_time %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 6v6l4 2"/>
+                </svg>
+                <span><strong>Total:</strong> {{ recipe_total_time }}</span>
+              </li>
+            {% endif %}
+            
+            {% if recipe_servings %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                </svg>
+                <span><strong>Servings:</strong> {{ recipe_servings }}</span>
+              </li>
+            {% endif %}
+            
+            {% if recipe_difficulty %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <span><strong>Difficulty:</strong> {{ recipe_difficulty | capitalize }}</span>
+              </li>
+            {% endif %}
+            
+            {% if recipe_category %}
+              <li class="redesign-recipe-meta__item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                  <line x1="7" y1="7" x2="7.01" y2="7"/>
+                </svg>
+                <span><strong>Category:</strong> {{ recipe_category | capitalize }}</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+        {% comment %} Chef Info {% endcomment %}
+        {% if recipe_chef_name %}
+          <div class="redesign-recipe-chef">
+            {% if recipe_chef_image %}
+              <img 
+                src="{{ recipe_chef_image | image_url: width: 160 }}" 
+                alt="{{ recipe_chef_name }}"
+                class="redesign-recipe-chef__avatar"
+              >
+            {% endif %}
+            <div class="redesign-recipe-chef__info">
+              <p class="redesign-recipe-chef__label">Recipe by</p>
+              <h3 class="redesign-recipe-chef__name">Chef {{ recipe_chef_name }}</h3>
+            </div>
+          </div>
+        {% endif %}
+        
+      </aside>
+      
+      {% comment %} Main Content {% endcomment %}
+      <main class="redesign-recipe-main">
+        
+        {% comment %} Description {% endcomment %}
+        {% if recipe_description %}
+          <div style="margin-bottom: 40px;">
+            <p style="font-size: 16px; line-height: 1.7; color: #666;">{{ recipe_description }}</p>
+          </div>
+        {% endif %}
+        
+        {% comment %} Ingredients {% endcomment %}
+        {% if recipe_ingredients %}
+          <div class="redesign-recipe-ingredients">
+            <h2 class="redesign-recipe-ingredients__title">Ingredients</h2>
+            <ul class="redesign-recipe-ingredients__list">
+              {% assign ingredients_array = recipe_ingredients | split: ',' %}
+              {% for ingredient in ingredients_array %}
+                <li class="redesign-recipe-ingredients__item">{{ ingredient | strip }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+        
+        {% comment %} Instructions {% endcomment %}
+        {% if recipe_instructions %}
+          <div class="redesign-recipe-instructions">
+            <h2 class="redesign-recipe-instructions__title">Instructions</h2>
+            <ol class="redesign-recipe-instructions__list">
+              {% assign instructions_array = recipe_instructions | split: '|' %}
+              {% for instruction in instructions_array %}
+                <li class="redesign-recipe-instructions__step">
+                  <div class="redesign-recipe-instructions__number"></div>
+                  <div class="redesign-recipe-instructions__text">{{ instruction | strip }}</div>
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
+        {% endif %}
+        
+      </main>
+      
+    </div>
+  </div>
+  
+</div>

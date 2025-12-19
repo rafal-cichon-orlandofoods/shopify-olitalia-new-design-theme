@@ -1,0 +1,218 @@
+{{ 'recipe-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recipe-print.js' | asset_url }}" defer></script>
+<script src="{{ 'recipe-interactions.js' | asset_url }}" defer></script>
+
+{% comment %} Get recipe data from metafields with fallbacks {% endcomment %}
+{% assign recipe_image = page.metafields.recipe.featured_image | default: 'https://cdn.shopify.com/s/files/1/0766/7109/0927/files/Honey-Dijon-Dressing-Web.jpg?v=1761681585' %}
+{% assign recipe_category = page.metafields.recipe.category | default: 'Condimenti' %}
+{% assign recipe_difficulty = page.metafields.recipe.difficulty | default: 'Easy' %}
+{% assign recipe_title = page.title %}
+{% assign recipe_chef = page.metafields.recipe.chef_name | default: 'Michele Loffreno' %}
+{% assign recipe_chef_url = page.metafields.recipe.chef_page_url | default: '/pages/chefs' %}
+{% assign recipe_description = page.metafields.recipe.description | default: 'Whisk up a burst of flavor with this Honey Dijon Vinaigrette with Olitalia Extra Virgin Olive Oil for a light, zesty dressing ready in minutes.' %}
+{% assign recipe_time = page.metafields.recipe.total_time | default: '5 Minutes' %}
+{% assign recipe_servings = page.metafields.recipe.servings | default: '1¼ Cups' %}
+{% assign recipe_ingredients = page.metafields.recipe.ingredients %}
+{% assign recipe_instructions = page.metafields.recipe.instructions %}
+
+<div class="recipe-page">
+  <div class="container container--large">
+    
+    <!-- Featured Image -->
+    <div class="recipe-featured-image gutter-bottom--large">
+      {% if recipe_image contains 'cdn.shopify.com' %}
+        <img src="{{ recipe_image }}" 
+             alt="{{ recipe_title }}"
+             class="recipe-image">
+      {% else %}
+        <img src="{{ recipe_image | image_url: width: 1200 }}" 
+             alt="{{ recipe_title }}"
+             class="recipe-image">
+      {% endif %}
+    </div>
+    
+    <!-- Recipe Header -->
+    <div class="recipe-header gutter-bottom--xlarge">
+      <div class="recipe-header__content">
+        <div class="recipe-meta gutter-bottom--regular">
+          <span class="recipe-category">{{ recipe_category }}</span>
+          <span class="recipe-difficulty">{{ recipe_difficulty }}</span>
+        </div>
+        
+        <h1 class="recipe-title text-size--xxlarge text-weight--bold gutter-bottom--regular">
+          {{ recipe_title }}
+        </h1>
+        
+        <div class="recipe-chef gutter-bottom--regular">
+          <span class="text-size--regular text-color--subdued">{{ 'recipes.by_chef' | t }}</span>
+          <a href="{{ recipe_chef_url }}" class="text-size--regular text-weight--medium chef-profile-link">{{ recipe_chef }}</a>
+        </div>
+        
+        <p class="recipe-description text-size--large text-line-height--medium gutter-bottom--large">
+          {{ recipe_description }}
+        </p>
+        
+        <!-- Recipe Action Buttons -->
+        <div class="recipe-actions gutter-bottom--regular">
+          <button class="print-recipe-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9V2H18V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 18H4C3.44772 18 3 17.5523 3 17V11C3 10.4477 3.44772 10 4 10H20C20.5523 10 21 10.4477 21 11V17C21 17.5523 20.5523 18 20 18H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 14H18V22H6V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Print Recipe
+          </button>
+          
+          <button class="reset-progress-btn" onclick="window.recipeInteractions?.resetProgress()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 12A9 9 0 0 1 12 3A9 9 0 0 1 21 12A9 9 0 0 1 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12L12 16L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Reset Progress
+          </button>
+        </div>
+        
+        <!-- Recipe Stats -->
+        <div class="recipe-stats">
+          <div class="recipe-stats__grid">
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-clock' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.total_time' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_time }}</span>
+              </div>
+            </div>
+            
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-users' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.servings' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_servings }}</span>
+              </div>
+            </div>
+            
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-chef-hat' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.difficulty_label' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_difficulty }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Recipe Content -->
+    <div class="recipe-content">
+      <div class="recipe-content__grid">
+        
+        <!-- Ingredients -->
+        <div class="recipe-ingredients">
+          <h2 class="text-size--xlarge text-weight--bold gutter-bottom--regular">
+            {{ 'recipes.ingredients' | t }}
+          </h2>
+          
+          <ul class="recipe-ingredients__list">
+            {% if recipe_ingredients %}
+              {% for ingredient in recipe_ingredients %}
+                <li class="recipe-ingredient{% if ingredient.featured %} recipe-ingredient--featured{% endif %}">
+                  <span class="recipe-ingredient__amount">{{ ingredient.amount }}</span>
+                  <span class="recipe-ingredient__name">{{ ingredient.name }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">¼ Cup</span>
+                <span class="recipe-ingredient__name">Lemon Juice</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">1 Tablespoon</span>
+                <span class="recipe-ingredient__name">Dijon Mustard</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">1 Tablespoon</span>
+                <span class="recipe-ingredient__name">Honey</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">¼ Teaspoon</span>
+                <span class="recipe-ingredient__name">Onion Powder</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">To Taste</span>
+                <span class="recipe-ingredient__name">Salt and Pepper</span>
+              </li>
+              <li class="recipe-ingredient recipe-ingredient--featured">
+                <span class="recipe-ingredient__amount">1 Cup</span>
+                <span class="recipe-ingredient__name">Olitalia Extra Virgin Olive Oil</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="recipe-instructions">
+          <h2 class="text-size--xlarge text-weight--bold gutter-bottom--regular">
+            {{ 'recipes.directions' | t }}
+          </h2>
+          
+          <ol class="recipe-instructions__list">
+            {% if recipe_instructions %}
+              {% for instruction in recipe_instructions %}
+                <li class="recipe-instruction">
+                  <div class="recipe-instruction__number">{{ forloop.index }}</div>
+                  <div class="recipe-instruction__content">
+                    <p>{{ instruction.step }}</p>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">1</div>
+                <div class="recipe-instruction__content">
+                  <p>In a large bowl, whisk together the lemon juice, Dijon mustard, honey, onion powder, salt, and pepper.</p>
+                </div>
+              </li>
+              
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">2</div>
+                <div class="recipe-instruction__content">
+                  <p>While whisking, slowly stream in the Olitalia Extra Virgin Olive Oil until fully combined and emulsified.</p>
+                </div>
+              </li>
+              
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">3</div>
+                <div class="recipe-instruction__content">
+                  <p>Serve over your favorite salad or use as a bright, balanced dressing for grilled vegetables or grain bowls. Store in an airtight container in the refrigerator for up to 1 week.</p>
+                </div>
+              </li>
+            {% endif %}
+          </ol>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Featured Product -->
+    <div class="recipe-featured-product gutter-top--xlarge">
+      <div class="featured-product-card">
+        <h3 class="text-size--large text-weight--bold gutter-bottom--regular">
+          {{ 'recipes.featured_product' | t }}
+        </h3>
+        <p class="text-size--regular gutter-bottom--regular">
+          This vinaigrette showcases the pure, authentic flavor of our Extra Virgin Olive Oil - perfect for creating smooth, flavorful dressings that enhance any dish.
+        </p>
+        <a href="https://usa.olitalia.com/products/extra-virgin-olive-oil-500ml" class="button button--solid" target="_blank" rel="noopener">
+          {{ 'recipes.shop_ingredient' | t }}
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</div>

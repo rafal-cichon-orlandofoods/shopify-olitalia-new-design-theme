@@ -1,0 +1,276 @@
+{{ 'recipe-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recipe-print.js' | asset_url }}" defer></script>
+<script src="{{ 'recipe-interactions.js' | asset_url }}" defer></script>
+
+{% comment %} Get recipe data from metafields with fallbacks {% endcomment %}
+{% assign recipe_image = page.metafields.recipe.featured_image | default: 'https://cdn.shopify.com/s/files/1/0766/7109/0927/files/English-Muffins-Web.jpg?v=1761745107' %}
+{% assign recipe_category = page.metafields.recipe.category | default: 'Dolci' %}
+{% assign recipe_difficulty = page.metafields.recipe.difficulty | default: 'Medium' %}
+{% assign recipe_title = page.title %}
+{% assign recipe_chef = page.metafields.recipe.chef_name | default: 'Michele Loffreno' %}
+{% assign recipe_chef_url = page.metafields.recipe.chef_page_url | default: '/pages/chefs' %}
+{% assign recipe_description = page.metafields.recipe.description | default: 'Fluffy, golden English muffins made with Olitalia Extra Virgin Olive Oil. Easy, elegant, and bakery quality right at home.' %}
+{% assign recipe_time = page.metafields.recipe.total_time | default: '13 Hours' %}
+{% assign recipe_servings = page.metafields.recipe.servings | default: '8 Muffins' %}
+{% assign recipe_ingredients = page.metafields.recipe.ingredients %}
+{% assign recipe_instructions = page.metafields.recipe.instructions %}
+
+<div class="recipe-page">
+  <div class="container container--large">
+    
+    <!-- Featured Image -->
+    <div class="recipe-featured-image gutter-bottom--large">
+      {% if recipe_image contains 'cdn.shopify.com' %}
+        <img src="{{ recipe_image }}" 
+             alt="{{ recipe_title }}"
+             class="recipe-image">
+      {% else %}
+        <img src="{{ recipe_image | image_url: width: 1200 }}" 
+             alt="{{ recipe_title }}"
+             class="recipe-image">
+      {% endif %}
+    </div>
+    
+    <!-- Recipe Header -->
+    <div class="recipe-header gutter-bottom--xlarge">
+      <div class="recipe-header__content">
+        <div class="recipe-meta gutter-bottom--regular">
+          <span class="recipe-category">{{ recipe_category }}</span>
+          <span class="recipe-difficulty">{{ recipe_difficulty }}</span>
+        </div>
+        
+        <h1 class="recipe-title text-size--xxlarge text-weight--bold gutter-bottom--regular">
+          {{ recipe_title }}
+        </h1>
+        
+        <div class="recipe-chef gutter-bottom--regular">
+          <span class="text-size--regular text-color--subdued">{{ 'recipes.by_chef' | t }}</span>
+          <a href="{{ recipe_chef_url }}" class="text-size--regular text-weight--medium chef-profile-link">{{ recipe_chef }}</a>
+        </div>
+        
+        <p class="recipe-description text-size--large text-line-height--medium gutter-bottom--large">
+          {{ recipe_description }}
+        </p>
+        
+        <!-- Recipe Action Buttons -->
+        <div class="recipe-actions gutter-bottom--regular">
+          <button class="print-recipe-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9V2H18V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 18H4C3.44772 18 3 17.5523 3 17V11C3 10.4477 3.44772 10 4 10H20C20.5523 10 21 10.4477 21 11V17C21 17.5523 20.5523 18 20 18H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 14H18V22H6V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Print Recipe
+          </button>
+          
+          <button class="reset-progress-btn" onclick="window.recipeInteractions?.resetProgress()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 12A9 9 0 0 1 12 3A9 9 0 0 1 21 12A9 9 0 0 1 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12L12 16L16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Reset Progress
+          </button>
+        </div>
+        
+        <!-- Recipe Stats -->
+        <div class="recipe-stats">
+          <div class="recipe-stats__grid">
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-clock' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.total_time' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_time }}</span>
+              </div>
+            </div>
+            
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-users' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.servings' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_servings }}</span>
+              </div>
+            </div>
+            
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-chef-hat' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.difficulty_label' | t }}</span>
+                <span class="recipe-stat__value">{{ recipe_difficulty }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Recipe Content -->
+    <div class="recipe-content">
+      <div class="recipe-content__grid">
+        
+        <!-- Ingredients -->
+        <div class="recipe-ingredients">
+          <h2 class="text-size--xlarge text-weight--bold gutter-bottom--regular">
+            {{ 'recipes.ingredients' | t }}
+          </h2>
+          
+          <ul class="recipe-ingredients__list">
+            {% if recipe_ingredients %}
+              {% for ingredient in recipe_ingredients %}
+                <li class="recipe-ingredient{% if ingredient.featured %} recipe-ingredient--featured{% endif %}">
+                  <span class="recipe-ingredient__amount">{{ ingredient.amount }}</span>
+                  <span class="recipe-ingredient__name">{{ ingredient.name }}</span>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">3 Cups</span>
+                <span class="recipe-ingredient__name">Caputo "00" Chefs Flour</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">1 Teaspoon</span>
+                <span class="recipe-ingredient__name">Salt</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">2 ½ Teaspoons</span>
+                <span class="recipe-ingredient__name">Instant Yeast</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">2 Tablespoons</span>
+                <span class="recipe-ingredient__name">Sugar</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">1 Cup</span>
+                <span class="recipe-ingredient__name">Milk</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">¼ Cup</span>
+                <span class="recipe-ingredient__name">Water</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">1 Large</span>
+                <span class="recipe-ingredient__name">Egg, beaten</span>
+              </li>
+              <li class="recipe-ingredient recipe-ingredient--featured">
+                <span class="recipe-ingredient__amount">¼ Cup</span>
+                <span class="recipe-ingredient__name">Olitalia Extra Virgin Olive Oil, plus extra for preparing</span>
+              </li>
+              <li class="recipe-ingredient">
+                <span class="recipe-ingredient__amount">As needed</span>
+                <span class="recipe-ingredient__name">Caputo Semolina Flour, for dusting</span>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+        
+        <!-- Instructions -->
+        <div class="recipe-instructions">
+          <h2 class="text-size--xlarge text-weight--bold gutter-bottom--regular">
+            {{ 'recipes.directions' | t }}
+          </h2>
+          
+          <ol class="recipe-instructions__list">
+            {% if recipe_instructions %}
+              {% for instruction in recipe_instructions %}
+                <li class="recipe-instruction">
+                  <div class="recipe-instruction__number">{{ forloop.index }}</div>
+                  <div class="recipe-instruction__content">
+                    <p>{{ instruction.step }}</p>
+                  </div>
+                </li>
+              {% endfor %}
+            {% else %}
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">1</div>
+                <div class="recipe-instruction__content">
+                  <p>In a large bowl, combine Caputo "00" Chef's Flour and salt. Mix to combine, then set aside.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">2</div>
+                <div class="recipe-instruction__content">
+                  <p>In the bowl of a stand mixer fitted with a paddle attachment, combine the yeast and sugar. Add the warm milk and water, and let the mixture sit for about 5 minutes, until the yeast becomes active and foamy.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">3</div>
+                <div class="recipe-instruction__content">
+                  <p>Once frothy, add the beaten egg and Olitalia Extra Virgin Olive Oil. Gradually add the flour and salt mixture, mixing on medium speed for 2-3 minutes, then increase to high speed for about 5 minutes.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">4</div>
+                <div class="recipe-instruction__content">
+                  <p>Transfer the dough to a lightly oiled bowl, cover, and refrigerate overnight.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">5</div>
+                <div class="recipe-instruction__content">
+                  <p>The next day, remove the dough from the refrigerator and punch it down. Let it rest at room temperature for 1-2 hours before rolling and cutting.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">6</div>
+                <div class="recipe-instruction__content">
+                  <p>Generously dust a half-sheet tray with Caputo Semolina Flour and set aside.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">7</div>
+                <div class="recipe-instruction__content">
+                  <p>Turn the dough out onto a semolina-floured surface and roll it to about ½ inch thick. Using a 3-inch round cookie cutter, cut out about 8 rounds. Place them on the floured tray, cover them with a tea towel, and let rest for 30 minutes.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">8</div>
+                <div class="recipe-instruction__content">
+                  <p>While the muffins rest, preheat a cast-iron pan over low to medium heat for about 10 minutes.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">9</div>
+                <div class="recipe-instruction__content">
+                  <p>Sprinkle a bit more Caputo Semolina Flour into the pan and add 3-4 English muffins at a time. Cover and cook for 5-8 minutes per side, until both sides are golden and toasted.</p>
+                </div>
+              </li>
+              <li class="recipe-instruction">
+                <div class="recipe-instruction__number">10</div>
+                <div class="recipe-instruction__content">
+                  <p>Remove from the pan and let cool before slicing and toasting.</p>
+                </div>
+              </li>
+            {% endif %}
+          </ol>
+          
+          <!-- Chef's Note -->
+          <div class="recipe-note gutter-top--large">
+            <h3 class="text-size--large text-weight--bold gutter-bottom--small">Chef's Note</h3>
+            <p>If you don't plan to use all the English muffins at once, slice them and store them in a sealed plastic bag in the freezer. When ready to enjoy, simply toast from frozen, they'll taste freshly made every time!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Featured Product -->
+    <div class="recipe-featured-product gutter-top--xlarge">
+      <div class="featured-product-card">
+        <h3 class="text-size--large text-weight--bold gutter-bottom--regular">
+          {{ 'recipes.featured_product' | t }}
+        </h3>
+        <p class="text-size--regular gutter-bottom--regular">
+          This recipe showcases the rich, buttery flavor of our Extra Virgin Olive Oil - perfect for creating bakery-quality English muffins at home.
+        </p>
+        <a href="https://usa.olitalia.com/products/extra-virgin-olive-oil-500ml" class="button button--solid" target="_blank" rel="noopener">
+          {{ 'recipes.shop_ingredient' | t }}
+        </a>
+      </div>
+    </div>
+    
+  </div>
+</div>

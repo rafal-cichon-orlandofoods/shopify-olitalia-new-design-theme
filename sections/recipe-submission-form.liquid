@@ -1,0 +1,114 @@
+{{ 'section-recipe-form.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  <header class="section-heading section-heading--center">
+    <h2 class="section-heading__title">{{ section.settings.heading | default: "Share Your Recipe" }}</h2>
+    {% if section.settings.subheading %}
+      <div class="section-heading__subheading">
+        <p>{{ section.settings.subheading }}</p>
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="recipe-form-wrapper">
+    <form class="recipe-form" action="{{ routes.root_url }}contact" method="post" accept-charset="UTF-8">
+      <input type="hidden" name="form_type" value="contact">
+      <input type="hidden" name="utf8" value="✓">
+      <input type="hidden" name="contact[tags]" value="recipe-submission">
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="recipe-name">Your Name *</label>
+          <input type="text" id="recipe-name" name="contact[name]" required>
+        </div>
+        <div class="form-field">
+          <label for="recipe-email">Email *</label>
+          <input type="email" id="recipe-email" name="contact[email]" required>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="recipe-title">Recipe Title *</label>
+        <input type="text" id="recipe-title" name="contact[recipe_title]" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="prep-time">Prep Time</label>
+          <input type="text" id="prep-time" name="contact[prep_time]" placeholder="e.g., 30 minutes">
+        </div>
+        <div class="form-field">
+          <label for="servings">Servings</label>
+          <input type="text" id="servings" name="contact[servings]" placeholder="e.g., 4 people">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="recipe-description">Recipe Description</label>
+        <textarea id="recipe-description" name="contact[description]" rows="3" placeholder="Brief description of your recipe"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="ingredients-1">Ingredients 1 *</label>
+        <textarea id="ingredients-1" name="contact[ingredients_1]" rows="4" required placeholder="Main ingredients:&#10;400g spaghetti&#10;6 cloves garlic"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="ingredients-2">Ingredients 2</label>
+        <textarea id="ingredients-2" name="contact[ingredients_2]" rows="4" placeholder="Oils & seasonings:&#10;1/2 cup Olitalia Extra Virgin Olive Oil&#10;1 tsp red pepper flakes"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="ingredients-3">Ingredients 3</label>
+        <textarea id="ingredients-3" name="contact[ingredients_3]" rows="4" placeholder="Herbs & garnishes:&#10;Fresh parsley, chopped&#10;Parmigiano-Reggiano cheese"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="ingredients-4">Ingredients 4</label>
+        <textarea id="ingredients-4" name="contact[ingredients_4]" rows="4" placeholder="Additional ingredients (optional)"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="instructions">Instructions *</label>
+        <textarea id="instructions" name="contact[instructions]" rows="8" required placeholder="List each step on a new line:&#10;1. Cook spaghetti in salted boiling water&#10;2. Heat olive oil in a large pan&#10;3. Add garlic and cook until fragrant"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label for="recipe-image">Recipe Image URL</label>
+        <input type="url" id="recipe-image" name="contact[image_url]" placeholder="https://example.com/your-recipe-image.jpg">
+        <small>Please provide a direct link to your recipe image</small>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="button button--solid">Submit Recipe</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="{{ 'recipe-form.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Recipe Submission Form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Share Your Recipe"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Share your favorite recipes using Olitalia products with our community"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recipe Submission Form"
+    }
+  ]
+}
+{% endschema %}

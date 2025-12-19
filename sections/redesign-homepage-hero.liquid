@@ -1,0 +1,113 @@
+{{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-hero">
+  {% if section.settings.background_image %}
+    <img 
+      src="{{ section.settings.background_image | image_url: width: 2500 }}" 
+      alt="Background"
+      class="redesign-hero__background"
+      loading="eager"
+      style="object-position: {{ section.settings.image_position_x }}% {{ section.settings.image_position_y }}%;"
+    >
+  {% endif %}
+  
+  <div class="redesign-hero__content">
+    <div class="redesign-hero__text">
+      {% if section.settings.title != blank %}
+        <h1 class="redesign-hero__title">{{ section.settings.title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <p class="redesign-hero__description">{{ section.settings.description }}</p>
+      {% endif %}
+      
+      {% if section.settings.button_text != blank %}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="redesign-hero__button">
+          {{ section.settings.button_text }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+    
+    <div class="redesign-hero__product">
+      {% if section.settings.product_image %}
+        <img 
+          src="{{ section.settings.product_image | image_url: width: 800 }}" 
+          alt="{{ section.settings.title }}"
+          class="redesign-hero__product-image"
+          loading="eager"
+        >
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redesign Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Extra Virgin Olive Oil"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Crafted from the finest olives, our Extra Virgin Olive Oil brings authentic Mediterranean flavor to every dish."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "image_position_x",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Horizontal Position",
+      "default": 50,
+      "info": "0% = left, 50% = center, 100% = right"
+    },
+    {
+      "type": "range",
+      "id": "image_position_y",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Image Vertical Position",
+      "default": 50,
+      "info": "0% = top, 50% = center, 100% = bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Hero"
+    }
+  ]
+}
+{% endschema %}

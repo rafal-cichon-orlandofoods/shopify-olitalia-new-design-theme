@@ -1,0 +1,91 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
+    "redesign-about": {
+      "type": "redesign-about-us",
+      "blocks": {
+        "value-1": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/olitalia-map.jpg",
+            "title": "Sustainability in Motion",
+            "description": "Caring for the planet is part of caring for what we create. Our Plastic No More initiative reflects that promise: to reduce our footprint, preserve nature’s balance, and ensure that the future of flavor is also a future of responsibility."
+          }
+        },
+        "value-2": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/Sustainability_in_Motion_plastic_no_more.png",
+            "title": "A Global Team",
+            "description": "From Italy to over 120 countries, Olitalia brings the warmth of Mediterranean flavor to tables across the world. Wherever you are, a taste of our oil carries the sun, the soil, and the spirit of Italy."
+          }
+        },
+        "value-3": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/154_n_leadership-foodservice-olitalia.jpg",
+            "title": "For Chefs, With Chefs",
+            "description": "We’ve always believed that great cooking starts with great oil. From our earliest days, we’ve listened to chefs - their challenges, their inspirations, their pursuit of perfection - and grown alongside them, developing products, techniques, and partnerships that elevate kitchens everywhere."
+          }
+        }
+      },
+      "block_order": [
+        "value-1",
+        "value-2",
+        "value-3"
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/image_7.png",
+        "title": "About Us",
+        "intro_text": "<p>Every great meal begins with a moment of care and choosing ingredients that tell a story. Ours begins in Italy, where food is an expression of love, family, and tradition. From the heart of Emilia-Romagna, our family has dedicated generations to crafting oils and vinegars that bring people together around the table. Led today by Angelo, Elisabetta, and Camillo Cremonini, we continue the vision of our founder, Giuseppe Cremonini, whose belief in authenticity, care, and quality has guided us for over fifty years. Our family has worked to share the taste of Italy with the world—blending tradition and innovation to create products that celebrate flavor, inspire creativity, and turn everyday meals into something extraordinary.</p>",
+        "intro_video_file": "https://cdn.shopify.com/videos/c/o/v/ee041fed29cd49a49f86ce605701a836.mp4",
+        "intro_video_url": "",
+        "intro_video_thumbnail": "shopify://shop_images/Group_31.png",
+        "quote": "“We believe in food that connects people, nurtures balance, and celebrates a way of life that is both good—and good for you.”",
+        "video_url": ""
+      }
+    },
+    "redesign_recipes_showcase_y46DHV": {
+      "type": "redesign-recipes-showcase",
+      "name": "Redesign Recipes Showcase",
+      "settings": {
+        "recipe_limit": 6
+      }
+    },
+    "redesign-newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    }
+  },
+  "order": [
+    "redesign-header",
+    "redesign-about",
+    "redesign_recipes_showcase_y46DHV",
+    "redesign-newsletter",
+    "redesign-footer"
+  ]
+}

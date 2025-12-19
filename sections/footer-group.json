@@ -1,0 +1,77 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:sections.refactor_words.labels.footer_group",
+  "sections": {
+    "70891002-5c86-4940-a47d-afc05e118d48": {
+      "type": "search",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "text": "",
+        "is_fullwidth": true,
+        "color_background_main": "#101010",
+        "color_text_main": "#f2efec",
+        "color_borders_main": "#ffffff",
+        "remove_margin": true,
+        "remove_bottom_margin": true,
+        "seo_h_tag": "h3"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_mijHcU": {
+          "type": "menu",
+          "name": "Menu 1",
+          "settings": {
+            "title": "Our World",
+            "menu": "footer",
+            "menu_target": false,
+            "menu_style": true
+          }
+        },
+        "menu_mC8kzN": {
+          "type": "menu",
+          "name": "Menu 2",
+          "settings": {
+            "title": "Beyond the Plate",
+            "menu": "footer-menu-2",
+            "menu_target": false,
+            "menu_style": true
+          }
+        },
+        "newsletter_RtwrJa": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Newsletter"
+          }
+        }
+      },
+      "block_order": [
+        "menu_mijHcU",
+        "menu_mC8kzN",
+        "newsletter_RtwrJa"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "grid-3 grid-lap-1",
+        "show_locale_selector": true,
+        "show_country_selector": false,
+        "seo_h_tag": "h2"
+      }
+    }
+  },
+  "order": [
+    "70891002-5c86-4940-a47d-afc05e118d48",
+    "footer"
+  ]
+}

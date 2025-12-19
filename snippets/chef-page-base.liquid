@@ -1,0 +1,162 @@
+{% comment %}
+  Chef Page Base Template
+  Uses metafields for structured data while allowing individual page customization
+{% endcomment %}
+
+{{ 'chef-page.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Get chef data from metafields with fallbacks {% endcomment %}
+{% assign chef_name = page.metafields.chef.name | default: page.title %}
+{% assign chef_title = page.metafields.chef.title | default: 'Executive Chef' %}
+{% assign chef_bio = page.metafields.chef.bio %}
+{% assign chef_short_bio = page.metafields.chef.short_bio %}
+{% assign chef_image = page.metafields.chef.profile_image %}
+{% assign chef_gallery = page.metafields.chef.gallery_images %}
+{% assign chef_experience = page.metafields.chef.experience_years %}
+{% assign chef_specialties = page.metafields.chef.specialties %}
+{% assign chef_restaurant = page.metafields.chef.current_restaurant %}
+{% assign chef_location = page.metafields.chef.restaurant_location %}
+{% assign chef_awards = page.metafields.chef.awards %}
+{% assign chef_certifications = page.metafields.chef.certifications %}
+{% assign chef_education = page.metafields.chef.culinary_education %}
+{% assign chef_philosophy = page.metafields.chef.cooking_philosophy %}
+{% assign chef_signature_dishes = page.metafields.chef.signature_dishes %}
+{% assign favorite_ingredients = page.metafields.chef.favorite_ingredients %}
+{% assign favorite_products = page.metafields.chef.favorite_olitalia_products %}
+{% assign oil_expertise = page.metafields.chef.oil_usage_expertise %}
+{% assign chef_quote = page.metafields.chef.chef_quote %}
+{% assign chef_hometown = page.metafields.chef.hometown %}
+{% assign chef_languages = page.metafields.chef.languages_spoken %}
+{% assign fun_facts = page.metafields.chef.fun_facts %}
+{% assign chef_instagram = page.metafields.chef.instagram_handle %}
+{% assign chef_website = page.metafields.chef.website_url %}
+{% assign chef_facebook = page.metafields.chef.facebook_url %}
+{% assign chef_video = page.metafields.chef.video_url %}
+
+{% comment %} Fallback data for known chefs {% endcomment %}
+{% if chef_image == blank %}
+  {% case page.handle %}
+    {% when 'chef-michele-loffreno' %}
+      {% assign chef_name = 'Michele Loffreno' %}
+      {% assign chef_title = 'Executive Chef & Olitalia Ambassador' %}
+      {% assign chef_short_bio = 'Master of Mediterranean cuisine with over 15 years of experience creating authentic Italian dishes with premium Olitalia oils.' %}
+      {% assign chef_experience = 15 %}
+      {% assign chef_recipe_count = 5 %}
+      {% assign chef_image = 'https://cdn.shopify.com/s/files/1/0766/7109/0927/files/Michele_Loffreno.jpg?v=1761753084' %}
+      {% assign chef_restaurant = 'Olitalia Test Kitchen' %}
+      {% assign chef_location = 'Italy' %}
+      {% assign chef_quote = 'Great cooking starts with great ingredients, and Olitalia oils are the foundation of exceptional flavor.' %}
+    {% when 'chef-giuseppe-bianchi' %}
+      {% assign chef_name = 'Giuseppe Bianchi' %}
+      {% assign chef_title = 'Traditional Italian Chef' %}
+      {% assign chef_short_bio = 'Specializing in classic Italian appetizers and traditional recipes passed down through generations.' %}
+      {% assign chef_experience = 12 %}
+      {% assign chef_recipe_count = 2 %}
+    {% when 'chef-marco-rossi' %}
+      {% assign chef_name = 'Marco Rossi' %}
+      {% assign chef_title = 'Pasta Specialist' %}
+      {% assign chef_short_bio = 'Expert in authentic Italian pasta dishes, bringing the flavors of Italy to every plate.' %}
+      {% assign chef_experience = 10 %}
+      {% assign chef_recipe_count = 1 %}
+  {% endcase %}
+{% endif %}
+
+{% comment %} JSON-LD Structured Data for SEO {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  "name": "{{ chef_name | escape }}",
+  {% if chef_image %}"image": "{{ chef_image | img_url: 'master' }}",{% endif %}
+  {% if chef_bio %}"description": "{{ chef_bio | strip_html | escape }}",{% endif %}
+  "jobTitle": "{{ chef_title | escape }}",
+  {% if chef_restaurant %}"worksFor": {
+    "@type": "Organization",
+    "name": "{{ chef_restaurant | escape }}"{% if chef_location %},
+    "address": "{{ chef_location | escape }}"{% endif %}
+  },{% endif %}
+  {% if chef_website %}"url": "{{ chef_website }}",{% endif %}
+  "sameAs": [
+    {% if chef_instagram %}"https://instagram.com/{{ chef_instagram }}"{% if chef_facebook or chef_website %},{% endif %}{% endif %}
+    {% if chef_facebook %}"{{ chef_facebook }}"{% if chef_website %},{% endif %}{% endif %}
+    {% if chef_website %}"{{ chef_website }}"{% endif %}
+  ]
+}
+</script>
+
+<div class="chef-page">
+  <div class="container container--large">
+    
+    <!-- Chef Hero Section -->
+    <div class="chef-hero gutter-bottom--xlarge">
+      <div class="chef-hero__content">
+        <div class="chef-hero__image">
+          {% if chef_image %}
+            <img src="{{ chef_image | img_url: '600x800' }}" 
+                 alt="{{ chef_name }}"
+                 class="chef-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          {% endif %}
+          <div class="chef-image-placeholder" {% if chef_image %}style="display: none;"{% endif %}>
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21V19A4 4 0 0 0 16 15H8A4 4 0 0 0 4 19V21" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <p>{{ chef_name }}</p>
+          </div>
+        </div>
+        
+        <div class="chef-hero__info">
+          <header class="chef-header">
+            <h1 class="chef-name text-size--xxlarge text-weight--bold">{{ chef_name }}</h1>
+            {% if chef_title %}
+              <p class="chef-title text-size--large text-color--subdued">{{ chef_title }}</p>
+            {% endif %}
+          </header>
+          
+          {% if chef_quote %}
+            <blockquote class="chef-quote gutter-top--regular">
+              <p class="text-size--large text-style--italic">"{{ chef_quote }}"</p>
+            </blockquote>
+          {% endif %}
+          
+          {% if chef_short_bio %}
+            <div class="chef-short-bio gutter-top--regular">
+              <p class="text-size--regular">{{ chef_short_bio }}</p>
+            </div>
+          {% endif %}
+          
+
+          
+          <!-- Social Links -->
+          {% if chef_instagram or chef_website or chef_facebook %}
+            <div class="chef-social gutter-top--large">
+              {% if chef_instagram %}
+                <a href="https://instagram.com/{{ chef_instagram }}" target="_blank" rel="noopener" class="chef-social-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Follow on Instagram
+                </a>
+              {% endif %}
+              
+              {% if chef_website %}
+                <a href="{{ chef_website }}" target="_blank" rel="noopener" class="chef-social-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2A15.3 15.3 0 0 1 4 12A15.3 15.3 0 0 1 12 22A15.3 15.3 0 0 0 20 12A15.3 15.3 0 0 0 12 2Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Visit Website
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Chef Content Slot - Individual pages can override this -->
+    {% comment %} This section will be customized per chef page {% endcomment %}

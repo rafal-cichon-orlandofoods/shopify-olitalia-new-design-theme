@@ -1,0 +1,76 @@
+/* HubSpot Newsletter Form Styling */
+
+/* Make the form more compact */
+#hubspot-newsletter-form .hs-form {
+    max-width: 400px;
+    margin: -1.5rem auto 0;
+}
+
+#hubspot-newsletter-form .hs-form-field {
+    margin-bottom: 0.5rem !important;
+}
+
+/* Style the input field */
+#hubspot-newsletter-form input[type="email"],
+#hubspot-newsletter-form input[type="text"] {
+    font-family: 'Raleway', Arial, sans-serif !important;
+    font-size: 0.875rem !important;
+    padding: 0.625rem 1rem !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Style the submit button */
+#hubspot-newsletter-form input[type="submit"],
+#hubspot-newsletter-form .hs-button {
+    font-family: 'Raleway', Arial, sans-serif !important;
+    font-size: 0.875rem !important;
+    padding: 0.625rem 1.5rem !important;
+    background-color: #2c5530 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+#hubspot-newsletter-form input[type="submit"]:hover,
+#hubspot-newsletter-form .hs-button:hover {
+    background-color: #1f3d22 !important;
+}
+
+/* Hide labels if they exist */
+#hubspot-newsletter-form label {
+    display: none !important;
+}
+
+/* Style error messages */
+#hubspot-newsletter-form .hs-error-msgs {
+    font-size: 0.75rem !important;
+    color: #d32f2f !important;
+    margin-top: 0.25rem !important;
+}
+
+/* Success message */
+#hubspot-newsletter-form .submitted-message {
+    font-family: 'Raleway', Arial, sans-serif !important;
+    font-size: 0.875rem !important;
+    color: #2c5530 !important;
+    padding: 1rem !important;
+    text-align: center !important;
+}
+
+/* Remove extra spacing */
+#hubspot-newsletter-form .hs-form fieldset {
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Make form inline if needed */
+@media (min-width: 768px) {
+    #hubspot-newsletter-form .hs-form {
+        max-width: 100%;
+    }
+}

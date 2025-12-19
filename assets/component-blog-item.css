@@ -1,0 +1,293 @@
+/* Enhanced Blog Item Styling */
+.blog-item {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f5f5f5;
+}
+
+.blog-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (max-width: 767px) {
+  .blog-item:not(.css-slide):not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 474px) {
+  .blog-item:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
+.blog-item__image {
+  display: block;
+  border-radius: var(--blog-item-border-radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-item__image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.blog-item:hover .blog-item__image::after {
+  opacity: 1;
+}
+
+.blog-item__image figure,
+.blog-item__image img {
+  border-radius: var(--blog-item-border-radius);
+  transition: transform 0.3s ease;
+}
+
+.blog-item:hover .blog-item__image img {
+  transform: scale(1.05);
+}
+
+.blog-item__meta {
+  color: var(--color-secondary-text-main);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.blog-item__meta span {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: #f8f9fa;
+  border-radius: 20px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.blog-item__meta span:hover {
+  background: #000000;
+  color: white;
+}
+
+.blog-item__meta span:not(:last-child):after {
+  content: none;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  height: 100%;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.blog-tags .pill {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blog-tags .pill:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+}
+
+.blog-tags .pill--outline {
+  background: white;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.blog-tags .pill--outline:hover {
+  background: #000000;
+  color: white;
+}
+
+.blog-tags .pill--outline-active {
+  background: #000000;
+  color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .blog-tags {
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+  }
+}
+
+.blog-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media screen and (max-width: 767px) {
+  .blog-header {
+    gap: 0;
+    grid-template-columns: 100%;
+  }
+}
+
+/* Enhanced Blog Content Styling */
+.blog-item__title-holder {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.blog-item__title-holder a {
+  text-decoration: none;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.blog-item__title-holder a:hover {
+  color: #1a1a1a;
+}
+
+.blog-item__title-holder span {
+  font-family: 'Soho Pro', Arial, sans-serif;
+  line-height: 1.3;
+  display: block;
+}
+
+/* Remove default underline animation for "Make Olive Oil Your Daily Ritual" article */
+.blog-item__title-holder a[href*="olive-oil-daily-ritual"] span.text-animation--underline,
+.blog-item__title-holder a[title*="Make Olive Oil Your Daily Ritual"] span.text-animation--underline {
+  background-image: none !important;
+  background-size: 0 !important;
+  padding-bottom: 0;
+}
+
+/* Add custom underline on hover only */
+.blog-item:hover .blog-item__title-holder a[href*="olive-oil-daily-ritual"] span.text-animation--underline,
+.blog-item:hover .blog-item__title-holder a[title*="Make Olive Oil Your Daily Ritual"] span.text-animation--underline {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  text-decoration-color: #000000;
+}
+
+.blog-item__excerpt {
+  padding: 0 1.5rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.blog-item__tags {
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-item__tags .pill {
+  background: #f0f4f0;
+  color: #000000;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.blog-item__tags .pill:hover {
+  background: #000000;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.blog-item .gutter-top--small {
+  padding: 0 1.5rem 1.5rem;
+}
+
+/* Enhanced Grid Layout */
+.grid--layout.grid-1 .blog-item {
+  margin-bottom: 2rem;
+}
+
+.grid--layout.grid-2 .blog-item {
+  height: fit-content;
+}
+
+/* Blog Item Meta Enhancement */
+.blog-item .blog-item__meta {
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Responsive Enhancements */
+@media screen and (max-width: 767px) {
+
+  .blog-item__title-holder,
+  .blog-item__excerpt,
+  .blog-item__tags,
+  .blog-item .gutter-top--small,
+  .blog-item .blog-item__meta {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .blog-item__title-holder {
+    padding-top: 1rem;
+  }
+
+  .blog-item .gutter-top--small {
+    padding-bottom: 1rem;
+  }
+}
+
+/* Enhanced Button Styling */
+.blog-item .button {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+}
+
+.blog-item .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+}
+
+.blog-item .button--outline {
+  background: white;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.blog-item .button--outline:hover {
+  background: #000000;
+  color: white;
+}

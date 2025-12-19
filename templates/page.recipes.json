@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "redesign_header_N7bm7m": {
+      "type": "redesign-header",
+      "name": "Redesign Header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
+    "main": {
+      "type": "recipes-showcase",
+      "settings": {
+        "auto_fetch_recipes": true,
+        "show_page_title": true,
+        "page_description": "Discover how a drizzle of our oil transforms simple ingredients into unforgettable dishes",
+        "show_category_filter": true,
+        "show_chef_filter": true,
+        "show_time_filter": true,
+        "show_difficulty_filter": true,
+        "show_product_filter": true
+      }
+    }
+  },
+  "order": [
+    "redesign_header_N7bm7m",
+    "main"
+  ]
+}

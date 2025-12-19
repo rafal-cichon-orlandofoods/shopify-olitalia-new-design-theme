@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+    "sections": {
+        "1760540079139a844c": {
+            "type": "_blocks",
+            "blocks": {
+                "ai_gen_block_2b450f8_A9VF7R": {
+                    "type": "ai_gen_block_2b450f8",
+                    "settings": {
+                        "subtitle": "O.I.L.",
+                        "title": "Olitalia Innovation Lab",
+                        "intro_text": "<p>Every great discovery begins with a question — and at the Olitalia Innovation Lab, ours is simple: <em>what truly makes great oil great?<\/em><\/p>",
+                        "show_image": true,
+                        "featured_image": "shopify:\/\/shop_images\/1345_n_fotoAteneo.jpg",
+                        "card_1_title": "Science",
+                        "card_1_text": "<p>We study oil not just as an ingredient, but as a living element that connects food, health, and pleasure.<\/p>",
+                        "card_2_title": "Curiosity",
+                        "card_2_text": "<p>A place where knowledge meets curiosity, designed to understand how oil behaves in every culinary context.<\/p>",
+                        "card_3_title": "Passion",
+                        "card_3_text": "<p>How it cooks, reacts, enhances, and elevates — we explore every dimension of this remarkable ingredient.<\/p>",
+                        "button_text": "",
+                        "button_link": "https:\/\/www.olitalia.com\/ww-en\/the-olitalia-innovation-lab-school",
+                        "text_alignment": "center",
+                        "columns_desktop": 3,
+                        "columns_tablet": 2,
+                        "container_width": 1200,
+                        "show_icons": true,
+                        "show_decorative_elements": true,
+                        "background_color": "#ffffff",
+                        "title_color": "#000000",
+                        "subtitle_color": "#ffffff",
+                        "text_color": "#1b1a1a",
+                        "card_background": "#ffffff",
+                        "card_border_color": "#ffffff",
+                        "icon_background": "#000000",
+                        "icon_color": "#ffffff",
+                        "button_background": "#000000",
+                        "button_hover_background": "#1a1a1a",
+                        "button_text_color": "#ffffff",
+                        "decorative_color": "#000000",
+                        "subtitle_size": 14,
+                        "subtitle_letter_spacing": 2,
+                        "title_size": 48,
+                        "intro_size": 18,
+                        "card_title_size": 20,
+                        "card_text_size": 15,
+                        "button_text_size": 16,
+                        "padding_top": 80,
+                        "padding_bottom": 80,
+                        "padding_horizontal": 30,
+                        "header_spacing": 50,
+                        "title_spacing": 20,
+                        "intro_spacing": 40,
+                        "intro_max_width": 800,
+                        "image_spacing": 50,
+                        "content_gap": 30,
+                        "content_spacing": 50,
+                        "card_padding": 30,
+                        "card_border_radius": 14,
+                        "card_border_width": 1,
+                        "card_hover_lift": 4,
+                        "icon_size": 60,
+                        "image_border_radius": 14,
+                        "button_padding_vertical": 16,
+                        "button_padding_horizontal": 40,
+                        "button_border_radius": 6,
+                        "decorative_opacity": 0.1
+                    },
+                    "blocks": {}
+                }
+            },
+            "block_order": [
+                "ai_gen_block_2b450f8_A9VF7R"
+            ],
+            "settings": {}
+        },
+        "main": {
+            "type": "main-page",
+            "disabled": true,
+            "settings": {
+                "center": false,
+                "page_cover_metafield": "",
+                "color_background_main": "rgba(0,0,0,0)",
+                "color_text_main": "rgba(0,0,0,0)",
+                "height": "small"
+            }
+        },
+        "17605403617783333c": {
+            "type": "_blocks",
+            "blocks": {
+                "ai_gen_block_ae211d8_xaCQKw": {
+                    "type": "ai_gen_block_ae211d8",
+                    "settings": {
+                        "show_intro": true,
+                        "main_title": "",
+                        "intro_text": "<p>A space where science meets the senses, and every discovery transforms the way we understand oil.<\/p>",
+                        "show_section_1": true,
+                        "section_1_title": "A Bridge Between Science and the Senses",
+                        "section_1_content": "<p>The lab was born from a simple belief: that understanding oil deeply can change the way we cook and the way we eat. At O.I.L., research is not confined to data. It's tasted, smelled, and felt. Through collaboration with chefs, researchers, and culinary schools, we analyze how oils perform under different cooking methods — how they respond to temperature, interact with ingredients, and release their unique flavor profiles.<\/p><p>From controlled heat testing to molecular analysis, every study deepens our understanding of how oil behaves in the real world — both in professional kitchens and at home. This knowledge guides everything we create and uncovers how to protect what makes oil extraordinary: its aroma, its taste, and its natural nutritional properties. It's where every insight has the power to transform the way we cook.<\/p>",
+                        "show_section_2": true,
+                        "section_2_title": "Where Learning Becomes Inspiration",
+                        "section_2_content": "<p>The discoveries born in the Lab shape everything we create at Olitalia. Our research drives the development of high-performance oils for chefs and accessible, high-quality products for everyday cooking. Each innovation reflects a promise: to preserve purity, enhance flavor, and protect the natural integrity of oil from grove to table.<\/p><p>Because true innovation isn't about changing what nature gives us — it's about understanding it deeply enough to honor it.<\/p>",
+                        "show_section_3": true,
+                        "section_3_title": "The Future of Flavor",
+                        "section_3_content": "<p>The Olitalia Innovation Lab is where knowledge becomes inspiration. Every experiment, every class, every collaboration brings us closer to understanding how to create oils that are not only technically perfect, but emotionally powerful — oils that turn cooking into connection. At its heart lies the belief that flavor is both an art and a science.<\/p><p>In this space of curiosity and craft, the science of oil becomes something more — a celebration of life, creativity, and the beauty of a single drop that can change everything.<\/p>",
+                        "max_width": 1200,
+                        "section_padding": 80,
+                        "spacing_between_sections": 50,
+                        "card_padding": 40,
+                        "card_border_radius": 14,
+                        "card_border_width": 1,
+                        "heading_font": "instrument_serif_n4",
+                        "heading_size": 56,
+                        "section_heading_size": 32,
+                        "body_font": "raleway_n4",
+                        "body_size": 17,
+                        "title_spacing": 24,
+                        "section_title_spacing": 20,
+                        "paragraph_spacing": 18,
+                        "background_color": "#ffffff",
+                        "card_background": "#f1f1f1",
+                        "card_border_color": "rgba(0,0,0,0)",
+                        "heading_color": "#000000",
+                        "text_color": "#1b1a1a",
+                        "highlight_color": "#000000"
+                    },
+                    "blocks": {}
+                },
+                "ai_gen_block_2a44c24_meTQkr": {
+                    "type": "ai_gen_block_2a44c24",
+                    "settings": {
+                        "button_text": "Explore the Lab",
+                        "button_link": "https:\/\/www.olitalia.com\/ww-en\/the-olitalia-innovation-lab-school",
+                        "button_background": "#000000",
+                        "button_text_color": "#ffffff",
+                        "button_border_color": "#000000",
+                        "button_hover_background": "#1a1a1a",
+                        "button_hover_text_color": "#ffffff",
+                        "button_hover_border_color": "#1a1a1a",
+                        "button_font_size": 16,
+                        "button_font_weight": "500",
+                        "button_padding_vertical": 14,
+                        "button_padding_horizontal": 32,
+                        "button_border_width": 1,
+                        "button_border_radius": 6,
+                        "vertical_padding": 20
+                    },
+                    "blocks": {}
+                }
+            },
+            "block_order": [
+                "ai_gen_block_ae211d8_xaCQKw",
+                "ai_gen_block_2a44c24_meTQkr"
+            ],
+            "settings": {}
+        }
+    },
+    "order": [
+        "1760540079139a844c",
+        "main",
+        "17605403617783333c"
+    ]
+}

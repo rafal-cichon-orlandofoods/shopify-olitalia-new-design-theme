@@ -1,0 +1,183 @@
+{{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-recipes">
+  <div class="redesign-recipes__container">
+    {% if section.settings.title != blank %}
+      <h2 class="redesign-recipes__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    <div class="redesign-recipes__grid">
+      {% comment %} Auto-fetch recipe pages {% endcomment %}
+      {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+      {% assign recipe_limit = section.settings.recipe_limit | default: 6 %}
+      
+      {% for recipe_page in all_recipe_pages limit: recipe_limit %}
+        {% assign recipe_image = recipe_page.metafields.recipe.featured_image %}
+        {% assign recipe_description = recipe_page.metafields.recipe.description | default: recipe_page.content | strip_html | truncate: 100 %}
+        
+        <a href="{{ recipe_page.url }}" class="redesign-recipe-card">
+          <div class="redesign-recipe-card__image-wrapper">
+            {% if recipe_image %}
+              <img 
+                src="{{ recipe_image | image_url: width: 680 }}" 
+                alt="{{ recipe_page.title }}"
+                class="redesign-recipe-card__image"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="redesign-recipe-card__image redesign-recipe-card__image--placeholder">
+                <span>No Image</span>
+              </div>
+            {% endif %}
+          </div>
+          
+          <div class="redesign-recipe-card__content">
+            <h3 class="redesign-recipe-card__title">{{ recipe_page.title }}</h3>
+            
+            {% if recipe_description != blank %}
+              <p class="redesign-recipe-card__description">{{ recipe_description }}</p>
+            {% endif %}
+            
+            <span class="redesign-recipe-card__button">
+              Try Recipe →
+            </span>
+          </div>
+        </a>
+      {% endfor %}
+      
+      {% comment %} Show message if no recipes {% endcomment %}
+      {% if all_recipe_pages.size == 0 %}
+        <div style="padding: 60px 20px; text-align: center; color: #666;">
+          <p>No recipes available yet.</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    {% comment %} Scroll Dots {% endcomment %}
+    {% if all_recipe_pages.size > 1 %}
+      <div class="redesign-recipes__dots">
+        {% for i in (1..all_recipe_pages.size) limit: recipe_limit %}
+          <div class="redesign-recipes__dot {% if forloop.first %}active{% endif %}"></div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const grid = document.querySelector('.redesign-recipes__grid');
+  const cards = document.querySelectorAll('.redesign-recipe-card');
+  const dots = document.querySelectorAll('.redesign-recipes__dot');
+  
+  if (!grid || cards.length === 0 || dots.length === 0) return;
+  
+  let isScrolling = false;
+  
+  function updateActiveCard() {
+    if (isScrolling) return;
+    
+    const scrollLeft = grid.scrollLeft;
+    const containerWidth = grid.offsetWidth;
+    const totalWidth = grid.scrollWidth;
+    let activeIndex = 0;
+    
+    // Check if we're at the very end (last card should be active)
+    if (scrollLeft + containerWidth >= totalWidth - 10) {
+      activeIndex = cards.length - 1;
+    } else {
+      // Calculate which card is most visible
+      let maxVisibility = 0;
+      
+      cards.forEach((card, index) => {
+        const cardLeft = card.offsetLeft;
+        const cardRight = cardLeft + card.offsetWidth;
+        const visibleLeft = Math.max(cardLeft, scrollLeft);
+        const visibleRight = Math.min(cardRight, scrollLeft + containerWidth);
+        const visibility = Math.max(0, visibleRight - visibleLeft) / card.offsetWidth;
+        
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          activeIndex = index;
+        }
+      });
+    }
+    
+    // Update card opacity
+    cards.forEach((card, index) => {
+      card.style.opacity = index === activeIndex ? '1' : '0.3';
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+  
+  grid.addEventListener('scroll', updateActiveCard);
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      if (index >= cards.length) return;
+      
+      isScrolling = true;
+      const targetCard = cards[index];
+      const isLastCard = index === cards.length - 1;
+      
+      let scrollPosition;
+      if (isLastCard) {
+        // For the last card, scroll to the very end
+        scrollPosition = grid.scrollWidth - grid.offsetWidth;
+      } else {
+        // For other cards, center them
+        scrollPosition = targetCard.offsetLeft - (grid.offsetWidth - targetCard.offsetWidth) / 2;
+      }
+      
+      grid.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth'
+      });
+      
+      // Reset scrolling flag after animation
+      setTimeout(() => {
+        isScrolling = false;
+        updateActiveCard();
+      }, 500);
+    });
+  });
+  
+  // Initial update
+  setTimeout(updateActiveCard, 100);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Redesign Recipes Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Recipes"
+    },
+    {
+      "type": "range",
+      "id": "recipe_limit",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "label": "Number of recipes to show",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Recipes Showcase"
+    }
+  ]
+}
+{% endschema %}

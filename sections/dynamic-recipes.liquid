@@ -1,0 +1,325 @@
+{{ 'section-dynamic-recipes.css' | asset_url | stylesheet_tag }}
+
+<div class="dynamic-recipes" 
+     style="background: {{ section.settings.background_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;"
+     data-section-type="dynamic-recipes" 
+     data-section-id="{{ section.id }}">
+  <div class="container">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      <header class="dynamic-recipes-header">
+        {% if section.settings.heading != blank %}
+          <h2 class="dynamic-recipes-title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p class="dynamic-recipes-description">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <div class="recipes-grid">
+      
+      {% comment %} Check if we should use automatic recipe fetching {% endcomment %}
+      {% if section.settings.auto_fetch_recipes %}
+        {% comment %} AUTO MODE: Fetch all pages with recipe template {% endcomment %}
+        {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
+        {% assign recipe_limit = section.settings.recipe_limit | default: 3 %}
+        
+        {% for recipe_page in all_recipe_pages limit: recipe_limit %}
+          {% assign recipe_category = recipe_page.metafields.recipe.category | default: 'Recipe' %}
+          {% assign recipe_difficulty = recipe_page.metafields.recipe.difficulty | default: 'Medium' %}
+          {% assign recipe_chef = recipe_page.metafields.recipe.chef_name | default: 'Olitalia' %}
+          {% assign recipe_time = recipe_page.metafields.recipe.total_time | default: '30 Minutes' %}
+          {% assign recipe_servings = recipe_page.metafields.recipe.servings | default: '4 Servings' %}
+          {% assign recipe_description = recipe_page.metafields.recipe.description | default: recipe_page.content | truncate: 120 %}
+          {% assign recipe_image = recipe_page.metafields.recipe.featured_image %}
+          
+          {% comment %} Translate category {% endcomment %}
+          {% assign category_key = recipe_category | downcase %}
+          {% assign category_display = 'recipes.category.' | append: category_key | t | default: recipe_category %}
+          
+          <article class="recipe-card">
+            <div class="recipe-image-container">
+              {% if recipe_image %}
+                <a href="{{ recipe_page.url }}" class="recipe-image-link">
+                  <img 
+                    src="{{ recipe_image | image_url: width: 400 }}" 
+                    alt="{{ recipe_page.title }}"
+                    class="recipe-image"
+                    loading="lazy"
+                  >
+                </a>
+              {% else %}
+                <div class="recipe-image-placeholder">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                    <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <div class="recipe-overlay">
+                <span class="recipe-category">{{ category_display }}</span>
+              </div>
+            </div>
+      
+            <div class="recipe-content">
+              <h3 class="recipe-title">
+                <a href="{{ recipe_page.url }}">{{ recipe_page.title }}</a>
+              </h3>
+              
+              <p class="recipe-description">{{ recipe_description }}</p>
+              
+              <div class="recipe-meta">
+                <span class="recipe-time">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  {{ recipe_time }}
+                </span>
+                <span class="recipe-servings">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  {{ recipe_servings }}
+                </span>
+              </div>
+              
+              <div class="recipe-chef">
+                <span>by Chef {{ recipe_chef }}</span>
+              </div>
+              
+              <a href="{{ recipe_page.url }}" class="recipe-link">View Recipe</a>
+            </div>
+          </article>
+        {% endfor %}
+        
+      {% else %}
+        {% comment %} MANUAL MODE: Use blocks {% endcomment %}
+        {% for block in section.blocks %}
+          <article class="recipe-card" {{ block.shopify_attributes }}>
+            <div class="recipe-image-container">
+              {% if block.settings.recipe_image %}
+                <a href="{{ block.settings.recipe_url }}" class="recipe-image-link">
+                  <img 
+                    src="{{ block.settings.recipe_image | img_url: '400x300' }}" 
+                    alt="{{ block.settings.recipe_title }}"
+                    class="recipe-image"
+                    loading="lazy"
+                  >
+                </a>
+              {% else %}
+                <div class="recipe-image-placeholder">
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                    <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <div class="recipe-overlay">
+                {% if block.settings.category != blank %}
+                  <div class="recipe-category-badge">{{ block.settings.category | capitalize }}</div>
+                {% endif %}
+              </div>
+            </div>
+      
+            <div class="recipe-content">
+              <h3 class="recipe-title">
+                <a href="{{ block.settings.recipe_url }}">{{ block.settings.recipe_title }}</a>
+              </h3>
+              
+              {% if block.settings.recipe_description != blank %}
+                <p class="recipe-description">{{ block.settings.recipe_description }}</p>
+              {% endif %}
+              
+              <div class="recipe-meta">
+                {% if block.settings.cooking_time != blank %}
+                  <div class="recipe-time">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                      <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>{{ block.settings.cooking_time }}</span>
+                  </div>
+                {% endif %}
+                
+                {% if block.settings.chef_name != blank %}
+                  <div class="recipe-chef">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                      <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span>{{ block.settings.chef_name }}</span>
+                  </div>
+                {% endif %}
+              </div>
+              
+              <a href="{{ block.settings.recipe_url }}" class="recipe-cta">View Recipe</a>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+    
+    {% if section.settings.show_view_all and section.settings.view_all_link != blank %}
+      <div class="recipes-cta">
+        <a href="{{ section.settings.view_all_link }}" class="view-all-button">
+          {{ section.settings.view_all_text | default: 'View All Recipes' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dynamic Recipes",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "auto_fetch_recipes",
+      "label": "Automatically fetch recipe pages",
+      "info": "When enabled, automatically shows recipe pages with 'recipe' template. When disabled, use manual recipe blocks below.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "recipe_limit",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Number of recipes to show (auto mode)",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Recipes"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover how a drizzle of our oil transforms simple ingredients into unforgettable dishes"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all button text",
+      "default": "View All Recipes"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all button link"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title",
+          "default": "Seasonal Roasted Vegetables"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description",
+          "default": "These one-pan seasonal roasted vegetables bring effortless elegance and vibrant flavor to any table."
+        },
+        {
+          "type": "url",
+          "id": "recipe_url",
+          "label": "Recipe Page URL",
+          "info": "Link to the full recipe page"
+        },
+        {
+          "type": "text",
+          "id": "cooking_time",
+          "label": "Cooking Time",
+          "placeholder": "30 min",
+          "default": "30 min"
+        },
+        {
+          "type": "text",
+          "id": "chef_name",
+          "label": "Chef Name",
+          "placeholder": "Michele Loffreno",
+          "default": "Michele Loffreno"
+        },
+        {
+          "type": "select",
+          "id": "difficulty",
+          "label": "Difficulty Level",
+          "options": [
+            { "value": "easy", "label": "Easy" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "hard", "label": "Hard" }
+          ],
+          "default": "easy"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "placeholder": "appetizers, main course, dessert",
+          "info": "Optional category for organization"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dynamic Recipes"
+    }
+  ]
+}
+{% endschema %}

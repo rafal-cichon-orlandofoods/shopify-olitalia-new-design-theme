@@ -1,0 +1,345 @@
+{{ 'section-chefs-showcase.css' | asset_url | stylesheet_tag }}
+
+<div class="chefs-showcase" 
+     data-section-type="chefs-showcase" 
+     data-section-id="{{ section.id }}">
+  <div class="container">
+    {% if section.settings.show_page_title %}
+      <header class="chefs-header">
+        <h1 class="chefs-title">{{ page.title | default: section.settings.heading | default: "Our Chefs" }}</h1>
+        {% if section.settings.page_description %}
+          <p class="chefs-description">{{ section.settings.page_description }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <!-- Chefs Grid -->
+    <div class="chefs-grid">
+      {% assign chef_count = 0 %}
+      {% assign max_chefs = section.settings.chefs_limit | default: 12 %}
+      
+      {% comment %} Find and display chef pages {% endcomment %}
+      {% for page in pages %}
+        {% assign handle_start = page.handle | slice: 0, 5 %}
+        {% if handle_start == 'chef-' and chef_count < max_chefs %}
+          {% assign chef_count = chef_count | plus: 1 %}
+          
+          {% comment %} Get chef data from metafields with fallbacks {% endcomment %}
+          {% assign chef_name = page.metafields.chef.name | default: page.title %}
+          {% assign chef_title = page.metafields.chef.title | default: 'Executive Chef' %}
+          {% assign chef_bio = page.metafields.chef.bio | default: page.summary %}
+          {% assign chef_short_bio = page.metafields.chef.short_bio | default: chef_bio | strip_html | truncate: 120 %}
+          {% assign chef_image = page.metafields.chef.profile_image %}
+          {% assign chef_experience = page.metafields.chef.experience_years %}
+          {% assign chef_specialties = page.metafields.chef.specialties %}
+          {% assign chef_restaurant = page.metafields.chef.current_restaurant %}
+          {% assign chef_location = page.metafields.chef.restaurant_location %}
+          {% assign chef_awards = page.metafields.chef.awards %}
+          {% assign chef_featured = page.metafields.chef.featured_chef %}
+          {% assign chef_recipe_count = page.metafields.chef.recipe_count | default: 0 %}
+          {% assign chef_instagram = page.metafields.chef.instagram_handle %}
+          {% assign chef_website = page.metafields.chef.website_url %}
+          {% assign favorite_products = page.metafields.chef.favorite_olitalia_products %}
+          
+          {% comment %} Fallback data for known chefs {% endcomment %}
+          {% if chef_image == blank %}
+            {% case page.handle %}
+              {% when 'chef-michele-loffreno' %}
+                {% assign chef_name = 'Michele Loffreno' %}
+                {% assign chef_title = 'Owner of Food Is Good F.I.G. Food Styling' %}
+                {% assign chef_short_bio = 'Food Stylist and Culinary Producer with experience on Emmy-Award-Winning shows and leading food brands.' %}
+                {% assign chef_experience = 15 %}
+                {% assign chef_recipe_count = 5 %}
+                {% assign chef_image = 'https://cdn.shopify.com/s/files/1/0766/7109/0927/files/Michele_Loffreno.jpg?v=1761753084' %}
+              {% when 'chef-giuseppe-bianchi' %}
+                {% assign chef_name = 'Giuseppe Bianchi' %}
+                {% assign chef_title = 'Traditional Italian Chef' %}
+                {% assign chef_short_bio = 'Specializing in classic Italian appetizers and traditional recipes passed down through generations.' %}
+                {% assign chef_experience = 12 %}
+                {% assign chef_recipe_count = 2 %}
+              {% when 'chef-marco-rossi' %}
+                {% assign chef_name = 'Marco Rossi' %}
+                {% assign chef_title = 'Pasta Specialist' %}
+                {% assign chef_short_bio = 'Expert in authentic Italian pasta dishes, bringing the flavors of Italy to every plate.' %}
+                {% assign chef_experience = 10 %}
+                {% assign chef_recipe_count = 1 %}
+            {% endcase %}
+          {% endif %}
+
+          <article class="chef-card" 
+                   data-chef="{{ chef_name | handleize }}"
+                   data-featured="{{ chef_featured }}"
+                   data-experience="{{ chef_experience }}">
+            <div class="chef-image-container">
+              {% if chef_image %}
+                {% comment %} Check if it's a Shopify image or external URL {% endcomment %}
+                {% if chef_image contains 'cdn.shopify.com' and chef_image contains 'files/' %}
+                  {% comment %} External Shopify file URL - use as is {% endcomment %}
+                  <img src="{{ chef_image }}" 
+                       alt="{{ chef_name }}" 
+                       class="chef-image"
+                       loading="lazy">
+                {% else %}
+                  {% comment %} Shopify image object - apply img_url filter {% endcomment %}
+                  <img src="{{ chef_image | img_url: '600x800' }}" 
+                       alt="{{ chef_name }}" 
+                       class="chef-image"
+                       loading="lazy">
+                {% endif %}
+              {% else %}
+                <div class="chef-image-placeholder">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 21V19A4 4 0 0 0 16 15H8A4 4 0 0 0 4 19V21" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              {% if chef_featured %}
+                <div class="chef-featured-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="currentColor"/>
+                  </svg>
+                  Featured
+                </div>
+              {% endif %}
+            </div>
+            
+            <div class="chef-content">
+              <header class="chef-header">
+                <h2 class="chef-name">{{ chef_name }}</h2>
+                {% if chef_title %}
+                  <p class="chef-title">{{ chef_title }}</p>
+                {% endif %}
+              </header>
+
+              {% if section.settings.show_chef_stats %}
+                <div class="chef-stats">
+                  {% if chef_experience %}
+                    <div class="chef-stat">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                      <span>{{ chef_experience }} years experience</span>
+                    </div>
+                  {% endif %}
+                  
+                  {% if chef_recipe_count > 0 %}
+                    <div class="chef-stat">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C13.1 2 14 2.9 14 4V6C14 7.1 13.1 8 12 8C10.9 8 10 7.1 10 6V4C10 2.9 10.9 2 12 2Z" fill="currentColor"/>
+                        <ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                      <span>{{ chef_recipe_count }} recipes</span>
+                    </div>
+                  {% endif %}
+                  
+                  {% if chef_restaurant %}
+                    <div class="chef-stat">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10C21 17 12 23 12 23S3 17 3 10A9 9 0 0 1 21 10Z" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                      </svg>
+                      <span>{{ chef_restaurant }}{% if chef_location %}, {{ chef_location }}{% endif %}</span>
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+              {% if section.settings.show_specialties and chef_specialties %}
+                <div class="chef-specialties">
+                  <h4 class="chef-specialties-title">Specialties</h4>
+                  <div class="chef-specialties-list">
+                    {% for specialty in chef_specialties %}
+                      <span class="chef-specialty-tag">{{ specialty }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.show_bio and chef_short_bio %}
+                <div class="chef-bio">
+                  <p>{{ chef_short_bio }}</p>
+                </div>
+              {% endif %}
+
+              {% if section.settings.show_olitalia_products and favorite_products %}
+                <div class="chef-products">
+                  <h4 class="chef-products-title">Favorite Olitalia Products</h4>
+                  <div class="chef-products-list">
+                    {% for product in favorite_products %}
+                      <span class="chef-product-tag">{{ product }}</span>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.show_awards and chef_awards %}
+                <div class="chef-awards">
+                  <h4 class="chef-awards-title">Recognition</h4>
+                  <ul class="chef-awards-list">
+                    {% for award in chef_awards limit: 3 %}
+                      <li>{{ award }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+
+              <div class="chef-actions">
+                {% if section.settings.show_social_links %}
+                  <div class="chef-social">
+                    {% if chef_instagram %}
+                      <a href="https://instagram.com/{{ chef_instagram }}" target="_blank" rel="noopener" class="chef-social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                      </a>
+                    {% endif %}
+                    
+                    {% if chef_website %}
+                      <a href="{{ chef_website }}" target="_blank" rel="noopener" class="chef-social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                          <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                          <path d="M12 2A15.3 15.3 0 0 1 4 12A15.3 15.3 0 0 1 12 22A15.3 15.3 0 0 0 20 12A15.3 15.3 0 0 0 12 2Z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                
+                <a href="{{ page.url }}" class="view-chef-btn">
+                  {{ section.settings.button_text | default: 'View Profile' }}
+                </a>
+              </div>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Show message if no chefs found {% endcomment %}
+      {% if chef_count == 0 %}
+        <div class="no-chefs">
+          <h3>No chefs found</h3>
+          <p>Create chef pages with handles starting with "chef-" to display them here.</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    {% if section.settings.show_view_all and section.settings.view_all_link != blank %}
+      <div class="chefs-cta">
+        <a href="{{ section.settings.view_all_link }}" class="view-all-button">
+          {{ section.settings.view_all_text | default: 'Meet All Our Chefs' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Dynamic Chefs Showcase",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Chefs"
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Chef Display"
+    },
+    {
+      "type": "range",
+      "id": "chefs_limit",
+      "label": "Maximum chefs to show",
+      "min": 3,
+      "max": 20,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "show_chef_stats",
+      "label": "Show chef statistics",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_specialties",
+      "label": "Show chef specialties",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bio",
+      "label": "Show chef biography",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_olitalia_products",
+      "label": "Show favorite Olitalia products",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_awards",
+      "label": "Show awards and recognition",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_links",
+      "label": "Show social media links",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Profile"
+    },
+    {
+      "type": "header",
+      "content": "View All Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show view all button",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all text",
+      "default": "Meet All Our Chefs"
+    }
+  ]
+}
+{% endschema %}

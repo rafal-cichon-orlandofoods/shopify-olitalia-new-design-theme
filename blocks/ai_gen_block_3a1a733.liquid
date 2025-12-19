@@ -1,0 +1,659 @@
+{% doc %}
+  @prompt
+    create faq page -
+    Product	Are your products genetically modified?	No, all of our products are non-GMO!
+    Product	What is the best way to store your products?	Always store your oil in a cool, dry place, sheltered from light and heat.
+    Company	Where can I find the best buy date?	Our best buy dates are printed on the back of our bottles in the American format (month/day/year)
+    Product	Are your products kosher?	Yes, our products are kosher!
+    Product	Are your products dairy free?	Yes, our products are dairy free!
+    Order	Do you offer wholesale?	For any wholesale inquiries, please visit www.orlandofoods.com
+    Shipping	Do you ship internationally?	At this time we only ship within the USA.
+    Shipping	Do you have physical coupons available?	No, at this time we do not have coupons available to mail. 
+    Company	Where can I find Olitalia next?	Head to our Events page to see where we'll be! 
+    Order	Can I cancel my subscription?	Yes, you can cancel  your subscription at any time. 
+    Shipping	Can I get my order on the same day?	No, we are unable to deliver your products same day.
+    Order	Can I cancel my order?	Unfortunately, once orders are placed, they cannot be cancelled.
+    Order	Can I exchange/return my order?	For any information regarding returns and exchanges, please contact us at ___. Any concerns regarding orders not placed on usa.olitalia.com or from a retailer must be communicated directly to that vendor. Unfortunately, we cannot assist with returns or replacements for products purchased outside of usa.olitalia.com
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-faq-container-{{ ai_gen_id }} {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  .ai-faq-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ai-faq-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 15px;
+    font-family: {{ block.settings.title_font.family }}, {{ block.settings.title_font.fallback_families }};
+    font-weight: {{ block.settings.title_font.weight }};
+  }
+
+  .ai-faq-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    margin: 0;
+  }
+
+  .ai-faq-categories-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-faq-category-btn-{{ ai_gen_id }} {
+    padding: 10px 20px;
+    background-color: {{ block.settings.category_bg_color }};
+    color: {{ block.settings.category_text_color }};
+    border: 2px solid {{ block.settings.category_border_color }};
+    border-radius: {{ block.settings.category_border_radius }}px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-faq-category-btn-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.category_hover_bg_color }};
+    color: {{ block.settings.category_hover_text_color }};
+    border-color: {{ block.settings.category_hover_border_color }};
+  }
+
+  .ai-faq-category-btn-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.category_active_bg_color }};
+    color: {{ block.settings.category_active_text_color }};
+    border-color: {{ block.settings.category_active_border_color }};
+  }
+
+  .ai-faq-list-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ai-faq-item-{{ ai_gen_id }} {
+    background-color: {{ block.settings.item_bg_color }};
+    border: 1px solid {{ block.settings.item_border_color }};
+    border-radius: {{ block.settings.item_border_radius }}px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .ai-faq-item-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.item_hover_border_color }};
+  }
+
+  .ai-faq-question-{{ ai_gen_id }} {
+    width: 100%;
+    padding: 20px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    font-size: {{ block.settings.question_size }}px;
+    color: {{ block.settings.question_color }};
+    font-weight: 600;
+  }
+
+  .ai-faq-question-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.question_hover_color }};
+  }
+
+  .ai-faq-icon-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    color: {{ block.settings.icon_color }};
+  }
+
+  .ai-faq-item-{{ ai_gen_id }}.active .ai-faq-icon-{{ ai_gen_id }} {
+    transform: rotate(180deg);
+  }
+
+  .ai-faq-answer-{{ ai_gen_id }} {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    padding: 0 20px;
+  }
+
+  .ai-faq-item-{{ ai_gen_id }}.active .ai-faq-answer-{{ ai_gen_id }} {
+    max-height: 500px;
+    padding: 0 20px 20px;
+  }
+
+  .ai-faq-answer-content-{{ ai_gen_id }} {
+    font-size: {{ block.settings.answer_size }}px;
+    color: {{ block.settings.answer_color }};
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-faq-title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.7);
+    }
+
+    .ai-faq-categories-{{ ai_gen_id }} {
+      gap: 8px;
+    }
+
+    .ai-faq-category-btn-{{ ai_gen_id }} {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .ai-faq-question-{{ ai_gen_id }} {
+      padding: 15px;
+      font-size: calc({{ block.settings.question_size }}px * 0.9);
+    }
+
+    .ai-faq-item-{{ ai_gen_id }}.active .ai-faq-answer-{{ ai_gen_id }} {
+      padding: 0 15px 15px;
+    }
+  }
+{% endstyle %}
+
+<faq-accordion-{{ ai_gen_id }} class="ai-faq-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-faq-header-{{ ai_gen_id }}">
+    {% if block.settings.title != blank %}
+      <h2 class="ai-faq-title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+    {% endif %}
+    {% if block.settings.description != blank %}
+      <div class="ai-faq-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+    {% endif %}
+  </div>
+
+  <div class="ai-faq-categories-{{ ai_gen_id }}">
+    <button class="ai-faq-category-btn-{{ ai_gen_id }} active" data-category="all">
+      All
+    </button>
+    <button class="ai-faq-category-btn-{{ ai_gen_id }}" data-category="product">
+      Product
+    </button>
+    <button class="ai-faq-category-btn-{{ ai_gen_id }}" data-category="company">
+      Company
+    </button>
+    <button class="ai-faq-category-btn-{{ ai_gen_id }}" data-category="order">
+      Order
+    </button>
+    <button class="ai-faq-category-btn-{{ ai_gen_id }}" data-category="shipping">
+      Shipping
+    </button>
+  </div>
+
+  <div class="ai-faq-list-{{ ai_gen_id }}">
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="product">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Are your products genetically modified?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          No, all of our products are non-GMO!
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="product">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>What is the best way to store your products?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Always store your oil in a cool, dry place, sheltered from light and heat.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="company">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Where can I find the best buy date?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Our best buy dates are printed on the back of our bottles in the American format (month/day/year)
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="product">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Are your products kosher?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Yes, our products are kosher!
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="product">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Are your products dairy free?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Yes, our products are dairy free!
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="order">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Do you offer wholesale?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          For any wholesale inquiries, please visit www.orlandofoods.com
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="shipping">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Do you ship internationally?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          At this time we only ship within the USA.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="shipping">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Do you have physical coupons available?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          No, at this time we do not have coupons available to mail.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="company">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Where can I find Olitalia next?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Head to our Events page to see where we'll be!
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="order">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Can I cancel my subscription?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Yes, you can cancel your subscription at any time.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="shipping">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Can I get my order on the same day?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          No, we are unable to deliver your products same day.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="order">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Can I cancel my order?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          Unfortunately, once orders are placed, they cannot be cancelled.
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-faq-item-{{ ai_gen_id }}" data-category="order">
+      <button class="ai-faq-question-{{ ai_gen_id }}" aria-expanded="false">
+        <span>Can I exchange/return my order?</span>
+        <svg class="ai-faq-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+      <div class="ai-faq-answer-{{ ai_gen_id }}">
+        <div class="ai-faq-answer-content-{{ ai_gen_id }}">
+          For any information regarding returns and exchanges, please contact us. Any concerns regarding orders not placed on olitaliausa.com or from a retailer must be communicated directly to that vendor. Unfortunately, we cannot assist with returns or replacements for products purchased outside of olitaliausa.com
+        </div>
+      </div>
+    </div>
+  </div>
+</faq-accordion-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FaqAccordion{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.categoryButtons = this.querySelectorAll('.ai-faq-category-btn-{{ ai_gen_id }}');
+        this.faqItems = this.querySelectorAll('.ai-faq-item-{{ ai_gen_id }}');
+        this.questionButtons = this.querySelectorAll('.ai-faq-question-{{ ai_gen_id }}');
+        
+        this.setupCategoryFilters();
+        this.setupAccordion();
+      }
+
+      setupCategoryFilters() {
+        this.categoryButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const category = button.getAttribute('data-category');
+            
+            this.categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            this.faqItems.forEach(item => {
+              const itemCategory = item.getAttribute('data-category');
+              if (category === 'all' || itemCategory === category) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+                item.classList.remove('active');
+                const questionBtn = item.querySelector('.ai-faq-question-{{ ai_gen_id }}');
+                if (questionBtn) {
+                  questionBtn.setAttribute('aria-expanded', 'false');
+                }
+              }
+            });
+          });
+        });
+      }
+
+      setupAccordion() {
+        this.questionButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const item = button.closest('.ai-faq-item-{{ ai_gen_id }}');
+            const isActive = item.classList.contains('active');
+            
+            item.classList.toggle('active');
+            button.setAttribute('aria-expanded', !isActive);
+          });
+        });
+      }
+    }
+
+    customElements.define('faq-accordion-{{ ai_gen_id }}', FaqAccordion{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ page",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "font_picker",
+      "id": "title_font",
+      "label": "Title font",
+      "default": "dm_sans_n5"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Find answers to common questions about our products and services"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Category filters"
+    },
+    {
+      "type": "color",
+      "id": "category_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "category_text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "category_border_color",
+      "label": "Border",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "category_hover_bg_color",
+      "label": "Hover background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "category_hover_text_color",
+      "label": "Hover text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "category_hover_border_color",
+      "label": "Hover border",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "category_active_bg_color",
+      "label": "Active background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "category_active_text_color",
+      "label": "Active text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "category_active_border_color",
+      "label": "Active border",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "category_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "FAQ items"
+    },
+    {
+      "type": "color",
+      "id": "item_bg_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_border_color",
+      "label": "Border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "item_hover_border_color",
+      "label": "Hover border",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Question"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "question_hover_color",
+      "label": "Hover color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Answer"
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Color",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ page"
+    }
+  ]
+}
+{% endschema %}

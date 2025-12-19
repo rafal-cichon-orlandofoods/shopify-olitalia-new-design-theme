@@ -1,0 +1,58 @@
+{{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-newsletter">
+  <div class="redesign-newsletter__container">
+    {% if section.settings.title != blank %}
+      <h2 class="redesign-newsletter__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% form 'customer', class: 'redesign-newsletter__form' %}
+      {% if form.posted_successfully? %}
+        <p class="form-success">{{ 'newsletter.success' | t }}</p>
+      {% endif %}
+      
+      <input 
+        type="email" 
+        name="contact[email]" 
+        placeholder="{{ section.settings.placeholder | default: 'Enter your email' }}"
+        class="redesign-newsletter__input"
+        required
+      >
+      
+      <button type="submit" class="redesign-newsletter__button">
+        {{ section.settings.button_text | default: 'Sign Up' }}
+      </button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redesign Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Read Our Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Email Placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Sign Up"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Newsletter"
+    }
+  ]
+}
+{% endschema %}

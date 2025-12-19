@@ -1,0 +1,613 @@
+.redesign-product {
+    background: transparent;
+    min-height: 100vh;
+    padding: 60px 20px;
+    color: #ffffff;
+}
+
+.redesign-product__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.redesign-product__media {
+    position: sticky;
+    top: 100px;
+    align-self: start;
+}
+
+.redesign-product__main-image {
+    background: transparent;
+    border-radius: 20px;
+    padding: 0;
+    margin: 0 auto 20px;
+    max-width: 400px;
+    position: relative;
+}
+
+.redesign-product__main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.redesign-product__thumbnails-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.redesign-product__thumbnails {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    flex: 1;
+}
+
+.redesign-product__thumbnails::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.redesign-product__thumbnail {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    width: 120px;
+}
+
+.redesign-product__thumbnail:hover,
+.redesign-product__thumbnail.active {
+    border-color: #ffffff;
+    background: transparent;
+}
+
+.redesign-product__thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.redesign-product__thumbnails-arrow {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.redesign-product__thumbnails-arrow:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.redesign-product__thumbnails-arrow svg {
+    display: block;
+}
+
+.redesign-product__info {
+    padding-top: 20px;
+}
+
+.redesign-product__title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 20px;
+    color: #ffffff;
+}
+
+.redesign-product__description {
+    font-size: 16px;
+    line-height: 1.8;
+    margin: 30px 0 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.redesign-product__highlights {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.redesign-product__highlights ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.redesign-product__highlights li {
+    padding-left: 0;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.redesign-product__highlights li:before {
+    content: "– ";
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.redesign-product__price {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.redesign-product__intro-text {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.redesign-product__buttons-row {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
+.redesign-product__quantity-wrapper {
+    flex-shrink: 0;
+}
+
+.redesign-product__quantity-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.redesign-product__quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    width: fit-content;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 56px;
+}
+
+.redesign-product__quantity-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    width: 45px;
+    height: 52px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.redesign-product__quantity-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.redesign-product__quantity-input {
+    width: 60px;
+    height: 52px;
+    border: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    background: transparent;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: none !important;
+}
+
+.redesign-product__quantity-input:focus {
+    outline: none;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove number input arrows */
+.redesign-product__quantity-input::-webkit-inner-spin-button,
+.redesign-product__quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.redesign-product__quantity-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.redesign-product__add-to-cart {
+    flex: 1;
+    background: #ffffff;
+    color: #001a4d;
+    border: none;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    height: 56px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.redesign-product__add-to-cart:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.redesign-product__buy-now {
+    width: 100%;
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 18px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.redesign-product__buy-now:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.redesign-product__accordions {
+    margin-bottom: 30px;
+}
+
+.redesign-product__accordion {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px 0;
+}
+
+.redesign-product__accordion:last-child {
+    border-bottom: none;
+}
+
+.redesign-product__accordion summary {
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+}
+
+.redesign-product__accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.redesign-product__accordion summary::after {
+    content: '+';
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.redesign-product__accordion[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.redesign-product__accordion-content {
+    padding-top: 15px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.redesign-product__share {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.redesign-product__share span {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.redesign-product__share a {
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+.redesign-product__share a:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .redesign-product__container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .redesign-product__media {
+        position: relative;
+        top: 0;
+    }
+
+    .redesign-product__title {
+        font-size: 36px;
+    }
+
+    .redesign-product__price {
+        font-size: 28px;
+    }
+
+    .redesign-product__thumbnails-wrapper {
+        gap: 10px;
+    }
+
+    .redesign-product__thumbnail {
+        width: 100px;
+    }
+
+    .redesign-product__thumbnails-arrow {
+        width: 36px;
+        height: 36px;
+    }
+
+    .redesign-product__buttons-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .redesign-product__quantity-wrapper {
+        width: 100%;
+    }
+
+    .redesign-product__quantity-selector {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .redesign-product__quantity-input {
+        flex: 1;
+    }
+
+    .redesign-product__add-to-cart {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .redesign-product__add-to-cart {
+        font-size: 16px;
+        padding: 18px 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .redesign-product__add-to-cart {
+        font-size: 14px;
+        padding: 18px 15px;
+        letter-spacing: 0.3px;
+    }
+}
+
+/*
+ Enhanced gradient background for entire product page */
+body.template-product {
+    background:
+        /* Top gradient overlay for depth */
+        linear-gradient(135deg, rgba(0, 26, 77, 0.3) 0%, transparent 50%),
+        /* Bottom gradient overlay */
+        linear-gradient(45deg, rgba(0, 40, 100, 0.4) 0%, transparent 60%),
+        /* Radial gradient for center highlight */
+        radial-gradient(ellipse at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        /* Subtle color variation */
+        linear-gradient(180deg, rgba(0, 26, 77, 0.2) 0%, rgba(0, 40, 100, 0.3) 100%),
+        /* Original background image */
+        url('https://cdn.shopify.com/s/files/1/0766/7109/0927/files/Rectangle_13.png?v=1764780135') center center no-repeat;
+    background-size: cover, cover, cover, cover, cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Ensure all shopify-section wrappers are transparent on product page */
+body.template-product .shopify-section {
+    background: transparent !important;
+}
+
+body.template-product #main {
+    background: transparent !important;
+}
+
+/* Remove individual section backgrounds */
+.redesign-product {
+    background: transparent;
+    min-height: auto;
+}
+
+/* Ensure recipes showcase has transparent background */
+.redesign-recipes-showcase {
+    background: transparent !important;
+}
+
+/* Ensure newsletter has transparent background */
+.redesign-newsletter {
+    background: transparent !important;
+}
+
+/* Ensure footer has transparent background */
+.redesign-footer {
+    background: transparent !important;
+}
+
+
+/* Product page sections - White text styling */
+
+/* Header on Product Page */
+body.template-product .redesign-header__icon,
+body[class*="product"] .redesign-header__icon {
+    color: #ffffff !important;
+}
+
+body.template-product .redesign-header__icon:hover,
+body[class*="product"] .redesign-header__icon:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.template-product .redesign-header__logo img,
+body[class*="product"] .redesign-header__logo img {
+    filter: brightness(0) invert(1) !important;
+}
+
+body.template-product .redesign-header__menu-line,
+body[class*="product"] .redesign-header__menu-line {
+    background: #ffffff !important;
+}
+
+/* Recipe Section on Product Page */
+.template-product .redesign-recipe-card {
+    background: transparent;
+}
+
+.template-product .redesign-recipe-card__title {
+    color: #ffffff;
+}
+
+.template-product .redesign-recipe-card__description {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.template-product .redesign-recipe-card__button {
+    background: #ffffff;
+    color: #001a4d;
+}
+
+.template-product .redesign-recipes__dot {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.template-product .redesign-recipes__dot.active {
+    background: #ffffff;
+}
+
+/* Newsletter Section on Product Page */
+.template-product .redesign-newsletter {
+    padding-bottom: 0;
+    margin-bottom: 60px;
+}
+
+.template-product .redesign-newsletter__title {
+    color: #ffffff;
+}
+
+.template-product .redesign-newsletter__input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.template-product .redesign-newsletter__input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.template-product .redesign-newsletter__input:focus {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.template-product .redesign-newsletter__button {
+    background: #ffffff;
+    color: #001a4d;
+}
+
+.template-product .redesign-newsletter__button:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Recipes Showcase on Product Page */
+.template-product .redesign-recipes__title {
+    color: #ffffff !important;
+}
+
+.template-product .redesign-recipe-card__title {
+    color: #ffffff !important;
+}
+
+.template-product .redesign-recipe-card__description {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.template-product .redesign-recipe-card__button {
+    background: #ffffff !important;
+    color: #001a4d !important;
+    border: 2px solid #ffffff !important;
+}
+
+.template-product .redesign-recipe-card:hover .redesign-recipe-card__button {
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-color: #ffffff !important;
+}
+
+.template-product .redesign-recipes__dot {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.template-product .redesign-recipes__dot.active {
+    background: #ffffff !important;
+}
+
+.template-product .redesign-recipe-card__image--placeholder {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Footer on Product Page */
+.template-product .redesign-footer {
+    color: #ffffff;
+}
+
+.template-product .redesign-footer__title {
+    color: #ffffff;
+}
+
+.template-product .redesign-footer a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.template-product .redesign-footer a:hover {
+    color: #ffffff;
+}

@@ -1,0 +1,106 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": false,
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "height": "small"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "quick_buy": {
+          "type": "quick_buy",
+          "settings": {
+            "type": "inline",
+            "show_only_available": false,
+            "show_price": true,
+            "variant_default": false,
+            "unavailable_variants": "hide"
+          }
+        }
+      },
+      "block_order": [
+        "price",
+        "title",
+        "quick_buy"
+      ],
+      "settings": {
+        "products_number": 12,
+        "enable_filtering": true,
+        "enable_sorting": true,
+        "image_filter_layout": "twocolumns",
+        "filters_position": "top",
+        "layout_desktop": "three-columns",
+        "layout_mobile": "grid-palm-2"
+      }
+    },
+    "products_bundle_qFHDr8": {
+      "type": "products-bundle",
+      "blocks": {
+        "price_QeRKxF": {
+          "type": "price",
+          "settings": {}
+        },
+        "title_KbXwP6": {
+          "type": "title",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "price_QeRKxF",
+        "title_KbXwP6"
+      ],
+      "disabled": true,
+      "name": "t:sections.bundle-extra-words.sections.products_bundle.name",
+      "settings": {
+        "heading": "Buy Both and Save",
+        "subheading": "",
+        "section_heading_size": "text-size--large",
+        "section_heading_layout": "section-heading--center section-heading--two-rows",
+        "cta_label": "",
+        "cta_url": "",
+        "select_collection": "frontpage",
+        "collection_limit": 3,
+        "select_products": [],
+        "limit_bundles": true,
+        "layout_mobile": "grid-palm-1",
+        "discount_title": "Add to Cart Together & Save",
+        "discount_items": 2,
+        "limit_maximum": false,
+        "panel_bg_color": "#3e3e3e",
+        "panel_text_color": "#f5f5f5",
+        "discount_opened": true,
+        "gutter_decrease": false,
+        "seo_h_tag": "h2"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "products_bundle_qFHDr8"
+  ]
+}

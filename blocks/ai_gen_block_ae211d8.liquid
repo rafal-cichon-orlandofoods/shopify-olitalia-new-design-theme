@@ -1,0 +1,472 @@
+{% doc %}
+  @prompt
+    A Bridge Between Science and the Senses
+    The lab was born from a simple belief: that understanding oil deeply can change the way we cook and the way we eat.  At O.I.L., research is not confined to data. It’s tasted, smelled, and felt. Through collaboration with chefs, researchers, and culinary schools, we analyze how oils perform under different cooking methods — how they respond to temperature, interact with ingredients, and release their unique flavor profiles. From controlled heat testing to molecular analysis, every study deepens our understanding of how oil behaves in the real world — both in professional kitchens and at home. This knowledge guides everything we create and uncovers how to protect what makes oil extraordinary: its aroma, its taste, and its natural nutritional properties. It’s where every insight has the power to transform the way we cook.
+    
+    Where Learning Becomes Inspiration
+    The discoveries born in the Lab shape everything we create at Olitalia. Our research drives the development of high-performance oils for chefs and accessible, high-quality products for everyday cooking. Each innovation reflects a promise: to preserve purity, enhance flavor, and protect the natural integrity of oil from grove to table.
+    Because true innovation isn’t about changing what nature gives us — it’s about understanding it deeply enough to honor it.
+    
+    The Future of Flavor
+    The Olitalia Innovation Lab is where knowledge becomes inspiration. Every experiment, every class, every collaboration brings us closer to understanding how to create oils that are not only technically perfect, but emotionally powerful — oils that turn cooking into connection. At its heart lies the belief that flavor is both an art and a science. 
+    In this space of curiosity and craft, the science of oil becomes something more — a celebration of life, creativity, and the beauty of a single drop that can change everything.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-innovation-lab-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-innovation-lab-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-innovation-lab-intro-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.spacing_between_sections }}px;
+  }
+
+  .ai-innovation-lab-intro-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.title_spacing }}px;
+  }
+
+  .ai-innovation-lab-intro-text-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.text_color }};
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .ai-innovation-lab-sections-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.spacing_between_sections }}px;
+  }
+
+  .ai-innovation-lab-section-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding: {{ block.settings.card_padding }}px;
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+  }
+
+  .ai-innovation-lab-section-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.section_heading_size }}px;
+    line-height: 1.3;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.section_title_spacing }}px;
+  }
+
+  .ai-innovation-lab-section-content-{{ ai_gen_id }} {
+    font-family: {{ block.settings.body_font.family }}, {{ block.settings.body_font.fallback_families }};
+    font-weight: {{ block.settings.body_font.weight }};
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.7;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-innovation-lab-section-content-{{ ai_gen_id }} p {
+    margin: 0 0 {{ block.settings.paragraph_spacing }}px;
+  }
+
+  .ai-innovation-lab-section-content-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-innovation-lab-highlight-{{ ai_gen_id }} {
+    font-style: italic;
+    color: {{ block.settings.highlight_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-innovation-lab-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 16px;
+    }
+
+    .ai-innovation-lab-intro-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.6 }}px;
+    }
+
+    .ai-innovation-lab-section-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.section_heading_size | times: 0.7 }}px;
+    }
+
+    .ai-innovation-lab-intro-text-{{ ai_gen_id }},
+    .ai-innovation-lab-section-content-{{ ai_gen_id }} {
+      font-size: {{ block.settings.body_size | times: 0.9 }}px;
+    }
+
+    .ai-innovation-lab-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.7 }}px;
+    }
+
+    .ai-innovation-lab-intro-{{ ai_gen_id }} {
+      margin-bottom: {{ block.settings.spacing_between_sections | times: 0.7 }}px;
+    }
+
+    .ai-innovation-lab-sections-{{ ai_gen_id }} {
+      gap: {{ block.settings.spacing_between_sections | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-innovation-lab-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-innovation-lab-container-{{ ai_gen_id }}">
+    {% if block.settings.show_intro %}
+      <div class="ai-innovation-lab-intro-{{ ai_gen_id }}">
+        {% if block.settings.main_title != blank %}
+          <h2 class="ai-innovation-lab-intro-title-{{ ai_gen_id }}">
+            {{ block.settings.main_title }}
+          </h2>
+        {% endif %}
+        {% if block.settings.intro_text != blank %}
+          <div class="ai-innovation-lab-intro-text-{{ ai_gen_id }}">
+            {{ block.settings.intro_text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-innovation-lab-sections-{{ ai_gen_id }}">
+      {% if block.settings.show_section_1 %}
+        <div class="ai-innovation-lab-section-{{ ai_gen_id }}">
+          {% if block.settings.section_1_title != blank %}
+            <h3 class="ai-innovation-lab-section-title-{{ ai_gen_id }}">
+              {{ block.settings.section_1_title }}
+            </h3>
+          {% endif %}
+          {% if block.settings.section_1_content != blank %}
+            <div class="ai-innovation-lab-section-content-{{ ai_gen_id }}">
+              {{ block.settings.section_1_content }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_section_2 %}
+        <div class="ai-innovation-lab-section-{{ ai_gen_id }}">
+          {% if block.settings.section_2_title != blank %}
+            <h3 class="ai-innovation-lab-section-title-{{ ai_gen_id }}">
+              {{ block.settings.section_2_title }}
+            </h3>
+          {% endif %}
+          {% if block.settings.section_2_content != blank %}
+            <div class="ai-innovation-lab-section-content-{{ ai_gen_id }}">
+              {{ block.settings.section_2_content }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_section_3 %}
+        <div class="ai-innovation-lab-section-{{ ai_gen_id }}">
+          {% if block.settings.section_3_title != blank %}
+            <h3 class="ai-innovation-lab-section-title-{{ ai_gen_id }}">
+              {{ block.settings.section_3_title }}
+            </h3>
+          {% endif %}
+          {% if block.settings.section_3_content != blank %}
+            <div class="ai-innovation-lab-section-content-{{ ai_gen_id }}">
+              {{ block.settings.section_3_content }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Innovation Lab story",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Introduction"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_intro",
+      "label": "Show introduction",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_title",
+      "label": "Main title",
+      "default": "The Olitalia Innovation Lab"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introduction text",
+      "default": "<p>A space where science meets the senses, and every discovery transforms the way we understand oil.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_1",
+      "label": "Show section 1",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_1_title",
+      "label": "Title",
+      "default": "A Bridge Between Science and the Senses"
+    },
+    {
+      "type": "richtext",
+      "id": "section_1_content",
+      "label": "Content",
+      "default": "<p>The lab was born from a simple belief: that understanding oil deeply can change the way we cook and the way we eat. At O.I.L., research is not confined to data. It's tasted, smelled, and felt. Through collaboration with chefs, researchers, and culinary schools, we analyze how oils perform under different cooking methods — how they respond to temperature, interact with ingredients, and release their unique flavor profiles.</p><p>From controlled heat testing to molecular analysis, every study deepens our understanding of how oil behaves in the real world — both in professional kitchens and at home. This knowledge guides everything we create and uncovers how to protect what makes oil extraordinary: its aroma, its taste, and its natural nutritional properties. It's where every insight has the power to transform the way we cook.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_2",
+      "label": "Show section 2",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_2_title",
+      "label": "Title",
+      "default": "Where Learning Becomes Inspiration"
+    },
+    {
+      "type": "richtext",
+      "id": "section_2_content",
+      "label": "Content",
+      "default": "<p>The discoveries born in the Lab shape everything we create at Olitalia. Our research drives the development of high-performance oils for chefs and accessible, high-quality products for everyday cooking. Each innovation reflects a promise: to preserve purity, enhance flavor, and protect the natural integrity of oil from grove to table.</p><p>Because true innovation isn't about changing what nature gives us — it's about understanding it deeply enough to honor it.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_3",
+      "label": "Show section 3",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_3_title",
+      "label": "Title",
+      "default": "The Future of Flavor"
+    },
+    {
+      "type": "richtext",
+      "id": "section_3_content",
+      "label": "Content",
+      "default": "<p>The Olitalia Innovation Lab is where knowledge becomes inspiration. Every experiment, every class, every collaboration brings us closer to understanding how to create oils that are not only technically perfect, but emotionally powerful — oils that turn cooking into connection. At its heart lies the belief that flavor is both an art and a science.</p><p>In this space of curiosity and craft, the science of oil becomes something more — a celebration of life, creativity, and the beauty of a single drop that can change everything.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "spacing_between_sections",
+      "label": "Space between sections",
+      "min": 30,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "label": "Card border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "instrument_serif_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Main title size",
+      "min": 30,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "section_heading_size",
+      "label": "Section title size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "font_picker",
+      "id": "body_font",
+      "label": "Body font",
+      "default": "raleway_n4"
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "label": "Title bottom spacing",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_title_spacing",
+      "label": "Section title bottom spacing",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "paragraph_spacing",
+      "label": "Paragraph spacing",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f2efec"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight text",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Innovation Lab story"
+    }
+  ]
+}
+{% endschema %}

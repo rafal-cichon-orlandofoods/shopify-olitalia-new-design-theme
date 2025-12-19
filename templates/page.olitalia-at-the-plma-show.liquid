@@ -1,0 +1,128 @@
+{% comment %}
+  PLMA Event Page - November 2025
+  URL: /pages/olitalia-at-the-plma-show
+{% endcomment %}
+
+{{ 'page-events.css' | asset_url | stylesheet_tag }}
+
+<div class="event-detail-page">
+  <!-- Event Hero -->
+  <div class="event-detail-hero">
+    <div class="container">
+      <div class="event-hero-content">
+        <div class="event-badge">Upcoming Event</div>
+        <h1 class="event-hero-title">Olitalia at the PLMA Show</h1>
+        <div class="event-hero-meta">
+          <span class="meta-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.833 3.333H4.167C3.247 3.333 2.5 4.08 2.5 5v11.667c0 .92.747 1.666 1.667 1.666h11.666c.92 0 1.667-.746 1.667-1.666V5c0-.92-.747-1.667-1.667-1.667zM15.833 16.667H4.167V8.333h11.666v8.334zM4.167 6.667V5h11.666v1.667H4.167z" fill="currentColor"/>
+            </svg>
+            November 17–18, 2025
+          </span>
+          <span class="meta-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2.5c-4.142 0-7.5 3.358-7.5 7.5s3.358 7.5 7.5 7.5 7.5-3.358 7.5-7.5-3.358-7.5-7.5-7.5zm0 13.333c-3.222 0-5.833-2.611-5.833-5.833S6.778 4.167 10 4.167s5.833 2.611 5.833 5.833-2.611 5.833-5.833 5.833z" fill="currentColor"/>
+              <path d="M10.417 6.667H9.167v4.166l3.541 2.125.625-1.025-2.916-1.733V6.667z" fill="currentColor"/>
+            </svg>
+            Chicago, IL
+          </span>
+          <span class="meta-item">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 2.5c-2.758 0-5 2.242-5 5 0 3.75 5 10 5 10s5-6.25 5-10c0-2.758-2.242-5-5-5zm0 6.667c-.92 0-1.667-.747-1.667-1.667S9.08 5.833 10 5.833s1.667.747 1.667 1.667S10.92 9.167 10 9.167z" fill="currentColor"/>
+            </svg>
+            Booth #1838
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Image -->
+  {% if page.metafields.custom.event_hero_image %}
+  <div class="event-detail-image">
+    <div class="container">
+      <img src="{{ page.metafields.custom.event_hero_image | image_url: width: 1400 }}" alt="PLMA Show 2025" loading="lazy">
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Event Content -->
+  <div class="event-detail-content">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-main">
+          <h2 class="content-title">Discover Why Olitalia is the #1 Italian Chefs' Favorite Oil Brand</h2>
+          
+          <p class="content-text">Join us at the PLMA Show to discover why Olitalia is the #1 Italian Chefs' Favorite Oil Brand. Explore our latest innovations — from the award-winning Cobalt Blue Bottle EVOO to the sustainable 3L Bag-in-Box and our patented FRIENN Frying Oil.</p>
+
+          <h3 class="content-subtitle">What to Expect</h3>
+          <ul class="content-list">
+            <li>Exclusive tastings of our premium extra virgin olive oils</li>
+            <li>Live demonstrations featuring our innovative product line</li>
+            <li>Meet our team of culinary experts and brand ambassadors</li>
+            <li>Learn about our sustainable packaging solutions</li>
+            <li>Discover the story behind Italy's most trusted oil brand</li>
+          </ul>
+
+          <h3 class="content-subtitle">Featured Products</h3>
+          <div class="featured-products">
+            <div class="product-highlight">
+              <h4>Cobalt Blue Bottle EVOO</h4>
+              <p>Our award-winning extra virgin olive oil in distinctive cobalt blue glass protection</p>
+            </div>
+            <div class="product-highlight">
+              <h4>3L Bag-in-Box</h4>
+              <p>Sustainable, space-saving packaging that keeps oil fresh longer</p>
+            </div>
+            <div class="product-highlight">
+              <h4>FRIENN Frying Oil</h4>
+              <p>Our patented frying oil technology for professional kitchens</p>
+            </div>
+          </div>
+
+          <div class="content-cta">
+            <h3 class="cta-heading">Visit Us at Booth #1838</h3>
+            <p class="cta-subtext">We look forward to welcoming you at the PLMA Show in Chicago</p>
+          </div>
+        </div>
+
+        <div class="content-sidebar">
+          <div class="sidebar-card">
+            <h3 class="sidebar-title">Event Details</h3>
+            <div class="sidebar-details">
+              <div class="detail-item">
+                <strong>Event:</strong>
+                <span>PLMA Show</span>
+              </div>
+              <div class="detail-item">
+                <strong>Dates:</strong>
+                <span>November 17–18, 2025</span>
+              </div>
+              <div class="detail-item">
+                <strong>Location:</strong>
+                <span>Chicago, IL</span>
+              </div>
+              <div class="detail-item">
+                <strong>Booth:</strong>
+                <span>#1838</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card sidebar-card--dark">
+            <h3 class="sidebar-title">Questions?</h3>
+            <p class="sidebar-text">Want to schedule a meeting or learn more about our products?</p>
+            <a href="/pages/contact" class="sidebar-button">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Events -->
+  <div class="event-back-section">
+    <div class="container">
+      <a href="/pages/events" class="back-link">← Back to All Events</a>
+    </div>
+  </div>
+</div>

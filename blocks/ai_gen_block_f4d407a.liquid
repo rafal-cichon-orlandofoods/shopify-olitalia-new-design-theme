@@ -1,0 +1,919 @@
+{% doc %}
+  @prompt
+    Where Innovation Meets Integrity
+    The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them.
+    Italian taste has deep historic and cultural roots, admired and celebrated around the world. At Olitalia, we give that heritage new meaning through our oils. For us, production is more than a process—it’s a promise. Every decision, from sourcing to bottling, is guided by decades of experience and know-how, precision, care, and the belief that quality begins with attention to detail. From the moment ingredients enter our facilities to the moment a bottle reaches your kitchen, we work to preserve what makes our oils and vinegars truly exceptional.
+    Controlled Quality at Every Stage
+    Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency. Traceability is maintained across the entire supply chain, giving us complete visibility and control from origin to finished product. You deserve to know that what’s inside every bottle meets the highest standards.
+    Innovation with Purpose
+    We believe innovation should protect, not replace, tradition. That’s why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars. Automation ensures accuracy and repeatability, while expert oversight guarantees that no detail is left to chance.
+    Craftsmanship Meets Modern Efficiency
+    Behind every bottle is the experience of our people. Skilled professionals guide each phase of production, supported by modern tools that ensure precision and consistency.  Our specialists evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific product profiles. It’s this balance of crafts, add these as well - Sustainability Through Smart Production
+    Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.
+    From Our Facility to Your Table
+    Every bottle we make carries our family’s commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-innovation-story-{{ ai_gen_id }} {
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-innovation-story-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-innovation-story-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.header_alignment }};
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-innovation-story-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 {{ block.settings.title_spacing }}px;
+  }
+
+  .ai-innovation-story-intro-{{ ai_gen_id }} {
+    font-size: {{ block.settings.intro_size }}px;
+    line-height: 1.6;
+    color: {{ block.settings.text_color }};
+    max-width: {{ block.settings.intro_max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-innovation-story-content-{{ ai_gen_id }} {
+    display: grid;
+    gap: {{ block.settings.content_gap }}px;
+    margin-top: {{ block.settings.content_spacing }}px;
+  }
+
+  .ai-innovation-story-section-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    padding: {{ block.settings.card_padding }}px;
+    border-radius: {{ block.settings.card_border_radius }}px;
+    border: {{ block.settings.card_border_width }}px solid {{ block.settings.card_border_color }};
+    display: grid;
+    gap: {{ block.settings.section_image_gap | default: 20 }}px;
+  }
+
+  .ai-innovation-story-section-with-image-{{ ai_gen_id }} {
+    grid-template-columns: 1fr 300px;
+    align-items: start;
+  }
+
+  .ai-innovation-story-section-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: {{ block.settings.image_border_radius | default: 8 }}px;
+  }
+
+  .ai-innovation-story-section-content-{{ ai_gen_id }} {
+    min-width: 0;
+  }
+
+  .ai-innovation-story-section-title-{{ ai_gen_id }} {
+    font-family: {{ block.settings.section_heading_font.family }}, {{ block.settings.section_heading_font.fallback_families }};
+    font-weight: {{ block.settings.section_heading_font.weight }};
+    font-size: {{ block.settings.section_heading_size }}px;
+    line-height: 1.3;
+    color: {{ block.settings.section_heading_color }};
+    margin: 0 0 {{ block.settings.section_title_spacing }}px;
+  }
+
+  .ai-innovation-story-section-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.body_text_size }}px;
+    line-height: 1.7;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  .ai-innovation-story-section-text-{{ ai_gen_id }} p {
+    margin: 0 0 {{ block.settings.paragraph_spacing }}px;
+  }
+
+  .ai-innovation-story-section-text-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-innovation-story-highlight-{{ ai_gen_id }} {
+    background-color: {{ block.settings.highlight_background }};
+    padding: {{ block.settings.highlight_padding }}px;
+    border-left: {{ block.settings.highlight_border_width }}px solid {{ block.settings.highlight_border_color }};
+    margin: {{ block.settings.highlight_margin }}px 0;
+  }
+
+  .ai-innovation-story-stats-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: {{ block.settings.stats_gap }}px;
+    margin-top: {{ block.settings.stats_spacing }}px;
+  }
+
+  .ai-innovation-story-stat-{{ ai_gen_id }} {
+    text-align: center;
+    padding: {{ block.settings.stat_padding }}px;
+  }
+
+  .ai-innovation-story-stat-number-{{ ai_gen_id }} {
+    font-family: {{ block.settings.heading_font.family }}, {{ block.settings.heading_font.fallback_families }};
+    font-weight: {{ block.settings.heading_font.weight }};
+    font-size: {{ block.settings.stat_number_size }}px;
+    line-height: 1;
+    color: {{ block.settings.stat_number_color }};
+    margin: 0 0 {{ block.settings.stat_number_spacing }}px;
+  }
+
+  .ai-innovation-story-stat-label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.stat_label_size }}px;
+    line-height: 1.4;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-innovation-story-{{ ai_gen_id }} {
+      padding: {{ block.settings.section_padding | times: 0.6 }}px 16px;
+    }
+
+    .ai-innovation-story-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.6 }}px;
+    }
+
+    .ai-innovation-story-intro-{{ ai_gen_id }} {
+      font-size: {{ block.settings.intro_size | times: 0.9 }}px;
+    }
+
+    .ai-innovation-story-section-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.section_heading_size | times: 0.8 }}px;
+    }
+
+    .ai-innovation-story-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.7 }}px;
+    }
+
+    .ai-innovation-story-stat-number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.stat_number_size | times: 0.7 }}px;
+    }
+
+    .ai-innovation-story-section-with-image-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: {{ block.settings.section_image_gap | default: 20 | times: 0.7 }}px;
+    }
+
+    .ai-innovation-story-section-image-{{ ai_gen_id }} {
+      height: 180px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-innovation-story-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-innovation-story-container-{{ ai_gen_id }}">
+    {% if block.settings.show_header %}
+      <div class="ai-innovation-story-header-{{ ai_gen_id }}">
+        {% if block.settings.main_title != blank %}
+          <h2 class="ai-innovation-story-title-{{ ai_gen_id }}">{{ block.settings.main_title }}</h2>
+        {% endif %}
+        {% if block.settings.intro_text != blank %}
+          <div class="ai-innovation-story-intro-{{ ai_gen_id }}">
+            {{ block.settings.intro_text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_stats %}
+      <div class="ai-innovation-story-stats-{{ ai_gen_id }}">
+        {% if block.settings.stat_1_number != blank %}
+          <div class="ai-innovation-story-stat-{{ ai_gen_id }}">
+            <div class="ai-innovation-story-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_1_number }}</div>
+            <div class="ai-innovation-story-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_1_label }}</div>
+          </div>
+        {% endif %}
+        {% if block.settings.stat_2_number != blank %}
+          <div class="ai-innovation-story-stat-{{ ai_gen_id }}">
+            <div class="ai-innovation-story-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_2_number }}</div>
+            <div class="ai-innovation-story-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_2_label }}</div>
+          </div>
+        {% endif %}
+        {% if block.settings.stat_3_number != blank %}
+          <div class="ai-innovation-story-stat-{{ ai_gen_id }}">
+            <div class="ai-innovation-story-stat-number-{{ ai_gen_id }}">{{ block.settings.stat_3_number }}</div>
+            <div class="ai-innovation-story-stat-label-{{ ai_gen_id }}">{{ block.settings.stat_3_label }}</div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="ai-innovation-story-content-{{ ai_gen_id }}">
+      {% if block.settings.section_1_title != blank or block.settings.section_1_content != blank %}
+        <div class="ai-innovation-story-section-{{ ai_gen_id }} {% if block.settings.section_1_image %}ai-innovation-story-section-with-image-{{ ai_gen_id }}{% endif %}">
+          <div class="ai-innovation-story-section-content-{{ ai_gen_id }}">
+            {% if block.settings.section_1_title != blank %}
+              <h3 class="ai-innovation-story-section-title-{{ ai_gen_id }}">{{ block.settings.section_1_title }}</h3>
+            {% endif %}
+            {% if block.settings.section_1_content != blank %}
+              <div class="ai-innovation-story-section-text-{{ ai_gen_id }}">
+                {{ block.settings.section_1_content }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.section_1_image %}
+            <img src="{{ block.settings.section_1_image | img_url: '400x300' }}" 
+                 alt="{{ block.settings.section_1_image_alt | default: 'Production facility' }}" 
+                 class="ai-innovation-story-section-image-{{ ai_gen_id }}"
+                 loading="lazy">
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.section_2_title != blank or block.settings.section_2_content != blank %}
+        <div class="ai-innovation-story-section-{{ ai_gen_id }} {% if block.settings.section_2_image %}ai-innovation-story-section-with-image-{{ ai_gen_id }}{% endif %}">
+          <div class="ai-innovation-story-section-content-{{ ai_gen_id }}">
+            {% if block.settings.section_2_title != blank %}
+              <h3 class="ai-innovation-story-section-title-{{ ai_gen_id }}">{{ block.settings.section_2_title }}</h3>
+            {% endif %}
+            {% if block.settings.section_2_content != blank %}
+              <div class="ai-innovation-story-section-text-{{ ai_gen_id }}">
+                {{ block.settings.section_2_content }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.section_2_image %}
+            <img src="{{ block.settings.section_2_image | img_url: '400x300' }}" 
+                 alt="{{ block.settings.section_2_image_alt | default: 'Production facility' }}" 
+                 class="ai-innovation-story-section-image-{{ ai_gen_id }}"
+                 loading="lazy">
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.section_3_title != blank or block.settings.section_3_content != blank %}
+        <div class="ai-innovation-story-section-{{ ai_gen_id }} {% if block.settings.section_3_image %}ai-innovation-story-section-with-image-{{ ai_gen_id }}{% endif %}">
+          <div class="ai-innovation-story-section-content-{{ ai_gen_id }}">
+            {% if block.settings.section_3_title != blank %}
+              <h3 class="ai-innovation-story-section-title-{{ ai_gen_id }}">{{ block.settings.section_3_title }}</h3>
+            {% endif %}
+            {% if block.settings.section_3_content != blank %}
+              <div class="ai-innovation-story-section-text-{{ ai_gen_id }}">
+                {{ block.settings.section_3_content }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.section_3_image %}
+            <img src="{{ block.settings.section_3_image | img_url: '400x300' }}" 
+                 alt="{{ block.settings.section_3_image_alt | default: 'Production facility' }}" 
+                 class="ai-innovation-story-section-image-{{ ai_gen_id }}"
+                 loading="lazy">
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.section_4_title != blank or block.settings.section_4_content != blank %}
+        <div class="ai-innovation-story-section-{{ ai_gen_id }} {% if block.settings.section_4_image %}ai-innovation-story-section-with-image-{{ ai_gen_id }}{% endif %}">
+          <div class="ai-innovation-story-section-content-{{ ai_gen_id }}">
+            {% if block.settings.section_4_title != blank %}
+              <h3 class="ai-innovation-story-section-title-{{ ai_gen_id }}">{{ block.settings.section_4_title }}</h3>
+            {% endif %}
+            {% if block.settings.section_4_content != blank %}
+              <div class="ai-innovation-story-section-text-{{ ai_gen_id }}">
+                {{ block.settings.section_4_content }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.section_4_image %}
+            <img src="{{ block.settings.section_4_image | img_url: '400x300' }}" 
+                 alt="{{ block.settings.section_4_image_alt | default: 'Production facility' }}" 
+                 class="ai-innovation-story-section-image-{{ ai_gen_id }}"
+                 loading="lazy">
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.section_5_title != blank or block.settings.section_5_content != blank %}
+        <div class="ai-innovation-story-section-{{ ai_gen_id }} {% if block.settings.section_5_image %}ai-innovation-story-section-with-image-{{ ai_gen_id }}{% endif %}">
+          <div class="ai-innovation-story-section-content-{{ ai_gen_id }}">
+            {% if block.settings.section_5_title != blank %}
+              <h3 class="ai-innovation-story-section-title-{{ ai_gen_id }}">{{ block.settings.section_5_title }}</h3>
+            {% endif %}
+            {% if block.settings.section_5_content != blank %}
+              <div class="ai-innovation-story-section-text-{{ ai_gen_id }}">
+                {{ block.settings.section_5_content }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.section_5_image %}
+            <img src="{{ block.settings.section_5_image | img_url: '400x300' }}" 
+                 alt="{{ block.settings.section_5_image_alt | default: 'Production facility' }}" 
+                 class="ai-innovation-story-section-image-{{ ai_gen_id }}"
+                 loading="lazy">
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Innovation story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "inline_richtext",
+      "id": "main_title",
+      "label": "Main title",
+      "default": "Where Innovation Meets Integrity"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introduction text",
+      "default": "<p>The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them. Italian taste has deep historic and cultural roots, admired and celebrated around the world.</p>"
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Statistics"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show statistics",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Statistic 1 number",
+      "default": "1,600+"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Statistic 1 label",
+      "default": "Olive cultivars worldwide"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Statistic 2 number",
+      "default": "600+"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Statistic 2 label",
+      "default": "Italian olive varieties"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Statistic 3 number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Statistic 3 label",
+      "default": "Quality controlled"
+    },
+    {
+      "type": "header",
+      "content": "Section 1"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_1_title",
+      "label": "Title",
+      "default": "Controlled Quality at Every Stage"
+    },
+    {
+      "type": "richtext",
+      "id": "section_1_content",
+      "label": "Content",
+      "default": "<p>Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency. Traceability is maintained across the entire supply chain, giving us complete visibility and control from origin to finished product.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_1_image",
+      "label": "Section 1 image"
+    },
+    {
+      "type": "text",
+      "id": "section_1_image_alt",
+      "label": "Section 1 image alt text",
+      "default": "Quality control in production"
+    },
+    {
+      "type": "header",
+      "content": "Section 2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_2_title",
+      "label": "Title",
+      "default": "Innovation with Purpose"
+    },
+    {
+      "type": "richtext",
+      "id": "section_2_content",
+      "label": "Content",
+      "default": "<p>We believe innovation should protect, not replace, tradition. That's why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_2_image",
+      "label": "Section 2 image"
+    },
+    {
+      "type": "text",
+      "id": "section_2_image_alt",
+      "label": "Section 2 image alt text",
+      "default": "Modern production facility"
+    },
+    {
+      "type": "header",
+      "content": "Section 3"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_3_title",
+      "label": "Title",
+      "default": "Craftsmanship Meets Modern Efficiency"
+    },
+    {
+      "type": "richtext",
+      "id": "section_3_content",
+      "label": "Content",
+      "default": "<p>Behind every bottle is the experience of our people. Skilled professionals guide each phase of production, supported by modern tools that ensure precision and consistency. Our specialists evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific product profiles.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_3_image",
+      "label": "Section 3 image"
+    },
+    {
+      "type": "text",
+      "id": "section_3_image_alt",
+      "label": "Section 3 image alt text",
+      "default": "Craftsmanship and modern efficiency"
+    },
+    {
+      "type": "header",
+      "content": "Section 4"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_4_title",
+      "label": "Title",
+      "default": "Sustainability Through Smart Production"
+    },
+    {
+      "type": "richtext",
+      "id": "section_4_content",
+      "label": "Content",
+      "default": "<p>Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_4_image",
+      "label": "Section 4 image"
+    },
+    {
+      "type": "text",
+      "id": "section_4_image_alt",
+      "label": "Section 4 image alt text",
+      "default": "Sustainable production practices"
+    },
+    {
+      "type": "header",
+      "content": "Section 5"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "section_5_title",
+      "label": "Title",
+      "default": "From Our Facility to Your Table"
+    },
+    {
+      "type": "richtext",
+      "id": "section_5_content",
+      "label": "Content",
+      "default": "<p>Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_5_image",
+      "label": "Section 5 image"
+    },
+    {
+      "type": "text",
+      "id": "section_5_image_alt",
+      "label": "Section 5 image alt text",
+      "default": "From facility to your table"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "range",
+      "id": "section_image_gap",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Image gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum width",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Header spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "label": "Content spacing",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Content gap",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "instrument_serif_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Main heading size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_spacing",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Title spacing",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "intro_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Introduction size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "intro_max_width",
+      "min": 400,
+      "max": 900,
+      "step": 50,
+      "unit": "px",
+      "label": "Introduction max width",
+      "default": 800
+    },
+    {
+      "type": "font_picker",
+      "id": "section_heading_font",
+      "label": "Section heading font",
+      "default": "dm_sans_n5"
+    },
+    {
+      "type": "range",
+      "id": "section_heading_size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Section heading size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_title_spacing",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Section title spacing",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_text_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Body text size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "paragraph_spacing",
+      "min": 10,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Paragraph spacing",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Statistics style"
+    },
+    {
+      "type": "range",
+      "id": "stats_spacing",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Statistics spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "stats_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Statistics gap",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "stat_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Stat padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "stat_number_size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Stat number size",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "stat_number_spacing",
+      "min": 5,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Stat number spacing",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "stat_label_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Stat label size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 20,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Card padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Card border width",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Highlight style"
+    },
+    {
+      "type": "range",
+      "id": "highlight_padding",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Highlight padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "highlight_margin",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "label": "Highlight margin",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "highlight_border_width",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "unit": "px",
+      "label": "Highlight border width",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "section_heading_color",
+      "label": "Section heading",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f2efec"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "stat_number_color",
+      "label": "Stat number",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "highlight_background",
+      "label": "Highlight background",
+      "default": "#f2efec"
+    },
+    {
+      "type": "color",
+      "id": "highlight_border_color",
+      "label": "Highlight border",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Innovation story"
+    }
+  ]
+}
+{% endschema %}

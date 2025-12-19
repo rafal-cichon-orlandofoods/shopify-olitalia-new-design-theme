@@ -1,0 +1,412 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "heading": "Choose variants",
+            "variants_style": "radio",
+            "variant_labels": true,
+            "color_swatches": true,
+            "style": "outline",
+            "unavailable_variants": "show"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_preorder": false,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false,
+            "show_price": true,
+            "style": "outline",
+            "color_text_buttons": "rgba(0,0,0,0)"
+          }
+        },
+        "product_promotion_LXEqpq": {
+          "type": "product_promotion",
+          "settings": {
+            "heading": "Product promotion",
+            "product": "",
+            "show_price_free": true,
+            "text": "Add product promotions or upsell individual items.",
+            "style": "outline",
+            "hide_block_if": false
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "product_description_truncated": "full",
+            "collapsible": false,
+            "heading": "Description"
+          }
+        },
+        "cross_sell_kTCW7C": {
+          "type": "cross_sell",
+          "settings": {
+            "heading": "You May Also Like",
+            "product": "extra-virgin-olive-oil-500ml",
+            "style": "outline",
+            "hide_block_if": false
+          }
+        },
+        "9b1a91e5-90a2-497c-b45f-9c015716506d": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care and Storage",
+            "content": "<p>Store in a cool, dry place sheltered from heat and light.</p>",
+            "page": "",
+            "hide_block_if": false
+          }
+        },
+        "2bdfc862-603c-438a-8416-322db1fd4145": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "content": "<p>High-oleic sunflower oil, antioxidants: tocopherol and rosemary extract</p>",
+            "page": "",
+            "hide_block_if": false
+          }
+        },
+        "4130c556-d90e-497b-825c-6aa7a8e6cda3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Allergens",
+            "content": "",
+            "page": "",
+            "hide_block_if": false
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "product_promotion_LXEqpq",
+        "description",
+        "cross_sell_kTCW7C",
+        "9b1a91e5-90a2-497c-b45f-9c015716506d",
+        "2bdfc862-603c-438a-8416-322db1fd4145",
+        "4130c556-d90e-497b-825c-6aa7a8e6cda3"
+      ],
+      "settings": {
+        "gallery_layout": "one-col scroll",
+        "enhance_first_image": true,
+        "gallery_desktop_width": "two-thirds",
+        "gallery_mobile_width": 100,
+        "gallery_mobile_margin": true,
+        "gallery_aspect_ratio": "0.666667",
+        "gallery_fit": true,
+        "gallery_padding": 15,
+        "gallery_background": "rgba(0,0,0,0)",
+        "gallery_border": "rgba(0,0,0,0)",
+        "border_radius": 0,
+        "show_thumbnails": false,
+        "enable_zoom": true,
+        "enable_video_looping": true,
+        "enable_video_autoplay": true,
+        "video_fit": false,
+        "default_to_first_variant": true,
+        "sticky_add_to_cart": true,
+        "sticky_atc_variants": false,
+        "sticky_atc_style": "floating",
+        "sticky_bar_bgcolor": "#2e2e2e",
+        "sticky_bar_txtcolor": "#ffffff"
+      }
+    },
+    "text_columns_icons_NaGP7D": {
+      "type": "text-columns-icons",
+      "blocks": {
+        "image_rwBbnk": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "star",
+            "image": "shopify://shop_images/chef_hat_icon_df62499a-882f-489d-aa1c-862dd7031794.png",
+            "crop": false,
+            "title": "Trusted by Chefs Worldwide",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_hTkgQ6": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "star",
+            "image": "shopify://shop_images/air_fryer_icon_a235bafa-a2bb-40a1-b1fd-68a5e855897f.png",
+            "crop": false,
+            "title": "Can be used for Air frying",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_3HxVf8": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "star",
+            "image": "shopify://shop_images/fryer_basket_icon_e07d48f0-e460-4b8f-9138-a92e6097ce15.png",
+            "crop": false,
+            "title": "Can be used for Deep frying",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_Fr6wfk": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "star",
+            "image": "shopify://shop_images/image.jpg",
+            "crop": false,
+            "title": "Product of Italy",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "image_rwBbnk",
+        "image_hTkgQ6",
+        "image_3HxVf8",
+        "image_Fr6wfk"
+      ],
+      "name": "t:sections-categories.presets.logo_list",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--center section-heading--two-rows",
+        "cta_label": "",
+        "cta_url": "",
+        "style": "slider",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-palm-1",
+        "border_radius": 0,
+        "hide_borders": true,
+        "opacity_on_hover": false,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "gutter_decrease": false,
+        "remove_bottom_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "custom_liquid_HLkWt3": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "t:sections.refactor_words.custom_code.name",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--left section-heading--one-row",
+        "cta_label": "",
+        "cta_url": "",
+        "custom_liquid": "<style>\n.compare-chart {\n  padding: 60px 0;\n  background: white;\n}\n\n.compare-chart__title {\n  text-align: center;\n  font-size: 2.5rem;\n  font-weight: 700;\n  margin-bottom: 3rem;\n  color: #2c3e50;\n  text-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}\n\n.compare-chart__grid {\n  display: grid;\n  grid-template-columns:\n    minmax(8rem, 1fr)\n    repeat(3, 1fr)\n    minmax(12rem, 1.5fr)\n    minmax(10rem, 1.2fr);\n  gap: 2px;\n  max-width: 1200px;\n  margin: 0 auto;\n  border-radius: 16px;\n  overflow: hidden;\n  box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n}\n\n.compare-chart__cell {\n  font-size: 1rem;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 1.5rem 1rem;\n  background: #fff;\n  text-align: center;\n  line-height: 1.4;\n  transition: all 0.3s ease;\n  position: relative;\n}\n\n.compare-chart__cell:hover {\n  transform: translateY(-2px);\n  box-shadow: 0 5px 15px rgba(0,0,0,0.1);\n}\n\n.compare-chart__cell--header {\n  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);\n  color: #fff;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 0.9rem;\n  letter-spacing: 0.1em;\n  text-shadow: 0 1px 2px rgba(0,0,0,0.3);\n}\n\n.compare-chart__cell--premium {\n  background: linear-gradient(135deg, #f1c40f 0%, #d4af37 100%);\n  color: #2c3e50;\n  font-weight: 600;\n  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);\n}\n\n.compare-chart__cell--premium:hover {\n  box-shadow: 0 5px 25px rgba(212, 175, 55, 0.4);\n}\n\n.premium__logo {\n  font-size: 2rem;\n  margin-bottom: 0.25em;\n  font-weight: 800;\n}\n\n.premium__label {\n  font-weight: 600;\n  text-transform: uppercase;\n  font-size: 0.85rem;\n  letter-spacing: 0.05em;\n}\n\n.compare-chart__cell--why {\n  background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);\n  color: #2c3e50;\n  text-align: left;\n  font-size: 0.9rem;\n  line-height: 1.5;\n  padding: 1.5rem;\n  font-weight: 500;\n}\n\n.compare-chart__cell--why.compare-chart__cell--header {\n  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);\n  color: #fff;\n  text-align: center;\n  font-weight: 700;\n}\n\n.check-icon {\n  color: #27ae60;\n  font-size: 1.8rem;\n  font-weight: bold;\n  text-shadow: 0 1px 2px rgba(0,0,0,0.2);\n}\n\n.x-icon {\n  color: #e74c3c;\n  font-size: 1.8rem;\n  font-weight: bold;\n  text-shadow: 0 1px 2px rgba(0,0,0,0.2);\n}\n\n@media (max-width: 1024px) {\n  .compare-chart__grid {\n    grid-template-columns: minmax(6rem, 1fr) repeat(4, 1fr);\n    font-size: 0.85rem;\n  }\n  \n  .compare-chart__cell {\n    padding: 0.75rem 0.5rem;\n  }\n  \n  .premium__logo {\n    font-size: 1.5rem;\n  }\n  \n  .premium__label {\n    font-size: 0.7rem;\n  }\n}\n\n@media (max-width: 768px) {\n  .compare-chart {\n    padding: 40px 20px;\n  }\n  \n  .compare-chart__grid {\n    display: none;\n  }\n  \n  .mobile-layout {\n    display: block !important;\n  }\n  \n  .mobile-row {\n    background: #fff;\n    margin-bottom: 1.5rem;\n    border-radius: 8px;\n    box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n    overflow: hidden;\n  }\n  \n  .mobile-category {\n    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);\n    color: #fff;\n    font-weight: 700;\n    text-transform: uppercase;\n    font-size: 1rem;\n    padding: 1rem;\n    text-align: center;\n  }\n  \n  .mobile-comparison {\n    padding: 1rem;\n  }\n  \n  .mobile-item {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 0.75rem 0;\n    border-bottom: 1px solid #f0f0f0;\n  }\n  \n  .mobile-item:last-child {\n    border-bottom: none;\n  }\n  \n  .mobile-brand {\n    font-weight: 600;\n    color: #666;\n    font-size: 0.9rem;\n  }\n  \n  .mobile-value {\n    font-weight: 600;\n    text-align: right;\n  }\n  \n  .mobile-value--premium {\n    color: #d4af37;\n    font-weight: 700;\n  }\n  \n  .compare-chart__title {\n    font-size: 2rem;\n    margin-bottom: 2rem;\n  }\n}\n</style>\n\n<section class=\"compare-chart\">\n  <div class=\"page-width\">\n    \n    <!-- Desktop/Tablet Grid -->\n    <div class=\"compare-chart__grid\">\n\n      <div class=\"compare-chart__cell compare-chart__cell--header\">Category</div>\n      <div class=\"compare-chart__cell compare-chart__cell--header\">Regular Frying Oils</div>\n      <div class=\"compare-chart__cell compare-chart__cell--header\">Standard Sunflower</div>\n      <div class=\"compare-chart__cell compare-chart__cell--header\">Premium Competitors</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium compare-chart__cell--header\">\n        <div>\n          <div class=\"premium__logo\">Frienn</div>\n          <div class=\"premium__label\">High Oleic Sunflower Oil</div>\n        </div>\n      </div>\n      <div class=\"compare-chart__cell compare-chart__cell--header compare-chart__cell--why\">Why It Matters</div>\n\n      <div class=\"compare-chart__cell\">Frying Performance</div>\n      <div class=\"compare-chart__cell\">Breaks down quickly</div>\n      <div class=\"compare-chart__cell\">Average performance</div>\n      <div class=\"compare-chart__cell\">Good for multiple uses</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium\">Up to 3x longer frying life</div>\n      <div class=\"compare-chart__cell compare-chart__cell--why\">Superior stability means less oil changes and better food quality</div>\n\n      <div class=\"compare-chart__cell\">Temperature Resistance</div>\n      <div class=\"compare-chart__cell\">Up to 350°F</div>\n      <div class=\"compare-chart__cell\">Up to 400°F</div>\n      <div class=\"compare-chart__cell\">Up to 435°F</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium\">Up to 465°F</div>\n      <div class=\"compare-chart__cell compare-chart__cell--why\">Higher smoke point prevents burning and maintains food quality</div>\n\n      <div class=\"compare-chart__cell\">Food Quality</div>\n      <div class=\"compare-chart__cell\">Absorbs into food</div>\n      <div class=\"compare-chart__cell\">Some absorption</div>\n      <div class=\"compare-chart__cell\">Minimal absorption</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium\">Crispy, light results</div>\n      <div class=\"compare-chart__cell compare-chart__cell--why\">Less oil absorption means healthier, crispier fried foods</div>\n\n      <div class=\"compare-chart__cell\">Cost Efficiency</div>\n      <div class=\"compare-chart__cell\">Frequent replacement</div>\n      <div class=\"compare-chart__cell\">Regular replacement</div>\n      <div class=\"compare-chart__cell\">Extended use</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium\">Maximum value</div>\n      <div class=\"compare-chart__cell compare-chart__cell--why\">Longer lasting oil reduces overall cooking costs</div>\n\n      <div class=\"compare-chart__cell\">Professional Grade</div>\n      <div class=\"compare-chart__cell\"><span class=\"x-icon\">✕</span></div>\n      <div class=\"compare-chart__cell\"><span class=\"x-icon\">✕</span></div>\n      <div class=\"compare-chart__cell\">Sometimes</div>\n      <div class=\"compare-chart__cell compare-chart__cell--premium\"><span class=\"check-icon\">✔</span></div>\n      <div class=\"compare-chart__cell compare-chart__cell--why\">Restaurant-quality results for home and professional kitchens</div>\n\n    </div>\n    \n    <!-- Mobile Layout -->\n    <div class=\"mobile-layout\" style=\"display: none;\">\n      <div class=\"mobile-row\">\n        <div class=\"mobile-category\">Frying Performance</div>\n        <div class=\"mobile-comparison\">\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Regular Oils</span>\n            <span class=\"mobile-value\">Breaks down quickly</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Standard Sunflower</span>\n            <span class=\"mobile-value\">Average performance</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Premium Competitors</span>\n            <span class=\"mobile-value\">Good for multiple uses</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Frienn</span>\n            <span class=\"mobile-value mobile-value--premium\">Up to 3x longer frying life</span>\n          </div>\n        </div>\n        <div class=\"compare-chart__cell--why\">Superior stability means less oil changes and better food quality</div>\n      </div>\n      \n      <div class=\"mobile-row\">\n        <div class=\"mobile-category\">Temperature Resistance</div>\n        <div class=\"mobile-comparison\">\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Regular Oils</span>\n            <span class=\"mobile-value\">Up to 350°F</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Standard Sunflower</span>\n            <span class=\"mobile-value\">Up to 400°F</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Premium Competitors</span>\n            <span class=\"mobile-value\">Up to 435°F</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Frienn</span>\n            <span class=\"mobile-value mobile-value--premium\">Up to 465°F</span>\n          </div>\n        </div>\n        <div class=\"compare-chart__cell--why\">Higher smoke point prevents burning and maintains food quality</div>\n      </div>\n      \n      <div class=\"mobile-row\">\n        <div class=\"mobile-category\">Food Quality</div>\n        <div class=\"mobile-comparison\">\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Regular Oils</span>\n            <span class=\"mobile-value\">Absorbs into food</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Standard Sunflower</span>\n            <span class=\"mobile-value\">Some absorption</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Premium Competitors</span>\n            <span class=\"mobile-value\">Minimal absorption</span>\n          </div>\n          <div class=\"mobile-item\">\n            <span class=\"mobile-brand\">Frienn</span>\n            <span class=\"mobile-value mobile-value--premium\">Crispy, light results</span>\n          </div>\n        </div>\n        <div class=\"compare-chart__cell--why\">Less oil absorption means healthier, crispier fried foods</div>\n      </div>\n    </div>\n  </div>\n</section>",
+        "full_width": true,
+        "remove_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "blocks": {
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "product_link": {
+          "type": "product_link",
+          "settings": {
+            "button_label": "View product"
+          }
+        }
+      },
+      "block_order": [
+        "price",
+        "title",
+        "product_link"
+      ],
+      "settings": {
+        "heading": "Recommended",
+        "subheading": "You may also <strong>like</strong> these products",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--left section-heading--one-row",
+        "layout_desktop": "four-columns",
+        "layout_mobile": "grid-palm-2",
+        "style": "grid",
+        "layout_mobile_less_items": true,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "gutter_decrease": false,
+        "remove_bottom_margin": false
+      }
+    },
+    "text_columns_images_4pYbUm": {
+      "type": "text-columns-images",
+      "blocks": {
+        "image_ye9pfc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Pasta_alla_siracusana.jpg",
+            "title": "Pasta alla siracusana",
+            "caption": "25 mins",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_wpy66T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Olitalia_giugno.jpg",
+            "title": "Giugno",
+            "caption": "30 mins",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_TaeaDe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tonno-in-crosta.jpg",
+            "title": "Tonno In Crosta",
+            "caption": "1 hour 25 mins",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_Q4WAEB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/VELLUTATA-POMODORO.jpg",
+            "title": "Vellutata Pomodoro",
+            "caption": "30 mins",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "image_ye9pfc",
+        "image_wpy66T",
+        "image_TaeaDe",
+        "image_Q4WAEB"
+      ],
+      "name": "t:sections.text-columns-with-images.name",
+      "settings": {
+        "heading": "Palm-oil free and made from 100% Italian sunflower seeds",
+        "subheading": "Create appetizing and crispy recipes with Frienn and its innovative formulation rich with oleic acid, vitamin E, and antioxidants",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--left section-heading--one-row",
+        "cta_label": "",
+        "cta_url": "",
+        "text_alignment": "text-align--center",
+        "style": "slider",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-palm-1",
+        "image_aspect_ratio": "1",
+        "border_radius": 0,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "gutter_decrease": false,
+        "remove_bottom_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
+    "video_gTFhgP": {
+      "type": "video",
+      "name": "t:sections.local-extra-words.sections.video.name",
+      "settings": {
+        "heading": "All About FRIENN",
+        "subheading": "",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--center section-heading--two-rows",
+        "video": "",
+        "image": "shopify://shop_images/REGA6287.jpg",
+        "video_title": "",
+        "title_size": "heading-size--large",
+        "color_background_main": "rgba(0,0,0,0)",
+        "color_text_main": "rgba(0,0,0,0)",
+        "gutter_decrease": false,
+        "seo_h_tag": "h3"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_columns_icons_NaGP7D",
+    "custom_liquid_HLkWt3",
+    "product-recommendations",
+    "text_columns_images_4pYbUm",
+    "video_gTFhgP"
+  ]
+}

@@ -1,0 +1,197 @@
+{{ 'redesign-recipe-page.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-recipe">
+  <div class="redesign-recipe__hero">
+    {% if page.metafields.recipe.featured_image %}
+      <img 
+        src="{{ page.metafields.recipe.featured_image | image_url: width: 1200 }}" 
+        alt="{{ page.title }}"
+        class="redesign-recipe__hero-image"
+      >
+    {% endif %}
+  </div>
+
+  <div class="redesign-recipe__container">
+    <div class="redesign-recipe__header">
+      <h1 class="redesign-recipe__title">{{ page.title }}</h1>
+      
+      {% if page.metafields.recipe.category or page.metafields.recipe.difficulty %}
+        <div class="redesign-recipe__tags">
+          {% if page.metafields.recipe.category %}
+            {% assign category_key = page.metafields.recipe.category | downcase %}
+            {% assign category_display = 'recipes.category.' | append: category_key | t | default: page.metafields.recipe.category %}
+            <span class="redesign-recipe__tag">{{ category_display }}</span>
+          {% endif %}
+          {% if page.metafields.recipe.difficulty %}
+            {% assign difficulty_key = page.metafields.recipe.difficulty | downcase %}
+            {% assign difficulty_display = 'recipes.difficulty.' | append: difficulty_key | t | default: page.metafields.recipe.difficulty %}
+            <span class="redesign-recipe__tag">{{ difficulty_display }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+      
+      {% if page.metafields.recipe.description %}
+        <div class="redesign-recipe__description">
+          {{ page.metafields.recipe.description }}
+        </div>
+      {% elsif page.content != blank %}
+        <div class="redesign-recipe__description">
+          {{ page.content }}
+        </div>
+      {% endif %}
+
+      <div class="redesign-recipe__meta">
+        {% if page.metafields.recipe.prep_time %}
+          <div class="redesign-recipe__meta-item">
+            <span class="redesign-recipe__meta-label">Prep Time</span>
+            <span class="redesign-recipe__meta-value">{{ page.metafields.recipe.prep_time }}</span>
+          </div>
+        {% endif %}
+        
+        {% if page.metafields.recipe.cook_time %}
+          <div class="redesign-recipe__meta-item">
+            <span class="redesign-recipe__meta-label">Cook Time</span>
+            <span class="redesign-recipe__meta-value">{{ page.metafields.recipe.cook_time }}</span>
+          </div>
+        {% endif %}
+        
+        {% if page.metafields.recipe.total_time %}
+          <div class="redesign-recipe__meta-item">
+            <span class="redesign-recipe__meta-label">Total Time</span>
+            <span class="redesign-recipe__meta-value">{{ page.metafields.recipe.total_time }}</span>
+          </div>
+        {% endif %}
+        
+        {% if page.metafields.recipe.servings %}
+          <div class="redesign-recipe__meta-item">
+            <span class="redesign-recipe__meta-label">Servings</span>
+            <span class="redesign-recipe__meta-value">{{ page.metafields.recipe.servings }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="redesign-recipe__body">
+      <aside class="redesign-recipe__sidebar">
+      <div class="redesign-recipe__sidebar-sticky">
+        {% comment %} Load featured product once for use in both ingredients and product card {% endcomment %}
+        {% assign product_handle = page.metafields.recipe.featured_product | default: section.settings.featured_product %}
+        {% assign featured_product = all_products[product_handle] %}
+        
+        {% if page.metafields.recipe.ingredients %}
+          <div class="redesign-recipe__sidebar-section">
+            <h3>Ingredients</h3>
+            <div class="redesign-recipe__sidebar-list">
+              <ul>
+                
+                {% if page.metafields.recipe.ingredients.value %}
+                  {% for ingredient in page.metafields.recipe.ingredients.value %}
+                    {% assign is_featured = false %}
+                    {% if ingredient.featured == true or ingredient.featured == "true" %}
+                      {% assign is_featured = true %}
+                    {% endif %}
+                    {% comment %} Fallback: Check if ingredient name contains "Olitalia" {% endcomment %}
+                    {% if ingredient.name contains "Olitalia" %}
+                      {% assign is_featured = true %}
+                    {% endif %}
+                    <li {% if is_featured %}class="featured-ingredient"{% endif %}>
+                      <label class="redesign-recipe__checkbox-label">
+                        <input type="checkbox" class="redesign-recipe__checkbox">
+                        <span class="redesign-recipe__checkbox-custom"></span>
+                        <span class="redesign-recipe__ingredient-text">{{ ingredient.amount }} {{ ingredient.name }}</span>
+                        {% if is_featured and featured_product and featured_product.featured_image %}
+                          <img src="{{ featured_product.featured_image | image_url: width: 60 }}" alt="{{ featured_product.title }}" class="ingredient-product-icon">
+                        {% endif %}
+                      </label>
+                    </li>
+                  {% endfor %}
+                {% else %}
+                  {% assign ingredients_json = page.metafields.recipe.ingredients %}
+                  {% for ingredient in ingredients_json %}
+                    {% assign is_featured = false %}
+                    {% if ingredient.featured == true or ingredient.featured == "true" %}
+                      {% assign is_featured = true %}
+                    {% endif %}
+                    {% comment %} Fallback: Check if ingredient name contains "Olitalia" {% endcomment %}
+                    {% if ingredient.name contains "Olitalia" %}
+                      {% assign is_featured = true %}
+                    {% endif %}
+                    <li {% if is_featured %}class="featured-ingredient"{% endif %}>
+                      <label class="redesign-recipe__checkbox-label">
+                        <input type="checkbox" class="redesign-recipe__checkbox">
+                        <span class="redesign-recipe__checkbox-custom"></span>
+                        <span class="redesign-recipe__ingredient-text">{{ ingredient.amount }} {{ ingredient.name }}</span>
+                        {% if is_featured and featured_product and featured_product.featured_image %}
+                          <img src="{{ featured_product.featured_image | image_url: width: 60 }}" alt="{{ featured_product.title }}" class="ingredient-product-icon">
+                        {% endif %}
+                      </label>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      </aside>
+
+      <div class="redesign-recipe__content">
+        {% if page.metafields.recipe.instructions %}
+          <div class="redesign-recipe__section">
+            <h2 class="redesign-recipe__section-title">Instructions</h2>
+            <div class="redesign-recipe__instructions">
+              <ul class="redesign-recipe__instructions-list">
+                {% if page.metafields.recipe.instructions.value %}
+                  {% for step in page.metafields.recipe.instructions.value %}
+                    <li class="redesign-recipe__instruction-item">
+                      <label class="redesign-recipe__checkbox-label">
+                        <input type="checkbox" class="redesign-recipe__checkbox">
+                        <span class="redesign-recipe__checkbox-custom"></span>
+                        <span class="redesign-recipe__instruction-text">{{ step.step }}</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                {% else %}
+                  {% assign instructions_json = page.metafields.recipe.instructions %}
+                  {% for step in instructions_json %}
+                    <li class="redesign-recipe__instruction-item">
+                      <label class="redesign-recipe__checkbox-label">
+                        <input type="checkbox" class="redesign-recipe__checkbox">
+                        <span class="redesign-recipe__checkbox-custom"></span>
+                        <span class="redesign-recipe__instruction-text">{{ step.step }}</span>
+                      </label>
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redesign Recipe Page",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "ingredients",
+      "label": "Ingredients",
+      "info": "List of ingredients"
+    },
+    {
+      "type": "richtext",
+      "id": "instructions",
+      "label": "Instructions",
+      "info": "Step by step instructions"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

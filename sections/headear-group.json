@@ -1,0 +1,207 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+    "type": "header",
+    "name": "t:sections.refactor_words.labels.header_group",
+    "sections": {
+        "header-top-bar": {
+            "type": "header-top-bar",
+            "blocks": {
+                "business_1": {
+                    "type": "business_link",
+                    "settings": {
+                        "title": "At Home",
+                        "link": "/",
+                        "is_active": true,
+                        "show_arrow": true
+                    }
+                },
+                "business_2": {
+                    "type": "business_link",
+                    "settings": {
+                        "title": "Chefs & Restaurateurs",
+                        "link": "/pages/chefs"
+                    }
+                },
+                "business_3": {
+                    "type": "business_link",
+                    "settings": {
+                        "title": "Company",
+                        "link": "/pages/about"
+                    }
+                },
+                "utility_1": {
+                    "type": "utility_link",
+                    "settings": {
+                        "title": "Sustainability",
+                        "link": "/pages/sustainability"
+                    }
+                },
+                "utility_2": {
+                    "type": "utility_link",
+                    "settings": {
+                        "title": "Magazine",
+                        "link": "/blogs/magazine"
+                    }
+                },
+                "utility_3": {
+                    "type": "utility_link",
+                    "settings": {
+                        "title": "Recipes",
+                        "link": "/pages/recipes"
+                    }
+                }
+            },
+            "block_order": [
+                "business_1",
+                "business_2",
+                "business_3",
+                "utility_1",
+                "utility_2",
+                "utility_3"
+            ],
+            "settings": {
+                "show_utility_menu": true,
+                "show_search": true,
+                "show_language_selector": true,
+                "background_color": "#ffffff",
+                "text_color": "#333333"
+            }
+        },
+        "header": {
+            "type": "header",
+            "blocks": {
+                "menu": {
+                    "type": "menu",
+                    "name": "Menu 1",
+                    "settings": {
+                        "linklist": "main-menu"
+                    }
+                },
+                "mega_menu_brA4ky": {
+                    "type": "mega-menu",
+                    "name": "Our Story",
+                    "settings": {
+                        "title": "Our Story",
+                        "linklist": "our-story",
+                        "show_promotion_block_1": false,
+                        "promotion_image_link_1": "",
+                        "promotion_content_1": "<p>Lead customers to your best offers or great product stories.<br\/><a href=\"#\">Learn more<\/a><\/p>",
+                        "show_promotion_block_2": false,
+                        "promotion_image_link_2": "",
+                        "promotion_content_2": "<p>Lead customers to your best offers or great product stories.<br\/><a href=\"#\">Learn more<\/a><\/p>",
+                        "promotion_width": "fourth",
+                        "image_border_radius": 0
+                    }
+                },
+                "menu_qhmkqz": {
+                    "type": "menu",
+                    "name": "Menu 2",
+                    "settings": {
+                        "linklist": "main-menu-2"
+                    }
+                },
+                "mega_menu_QPgzmG": {
+                    "type": "mega-menu",
+                    "name": "Our World",
+                    "settings": {
+                        "title": "Our World",
+                        "linklist": "our-world",
+                        "show_promotion_block_1": false,
+                        "promotion_image_link_1": "",
+                        "promotion_content_1": "<p>Lead customers to your best offers or great product stories.<br\/><a href=\"#\">Learn more<\/a><\/p>",
+                        "show_promotion_block_2": false,
+                        "promotion_image_link_2": "",
+                        "promotion_content_2": "<p>Lead customers to your best offers or great product stories.<br\/><a href=\"#\">Learn more<\/a><\/p>",
+                        "promotion_width": "fourth",
+                        "image_border_radius": 0
+                    }
+                }
+            },
+            "block_order": [
+                "menu",
+                "mega_menu_brA4ky",
+                "menu_qhmkqz",
+                "mega_menu_QPgzmG"
+            ],
+            "custom_css": [],
+            "settings": {
+                "logo_src": "shopify:\/\/shop_images\/olitalialogo.svg",
+                "logo_height": 90,
+                "logo_mobile_src": "shopify:\/\/shop_images\/olitalialogo.svg",
+                "logo_mobile_height": 60,
+                "style": "one-row",
+                "menu_type": "classic",
+                "alignment": "left",
+                "label_style": "tooltip",
+                "sticky_header": true,
+                "show_header_border_bottom": true,
+                "show_header_border_top": false,
+                "hide_search": false,
+                "hide_cart": false,
+                "custom_icon_select": "no-icon",
+                "label_text": "",
+                "custom_icon_link": "",
+                "open_in_new_window": false,
+                "header_absolute_homepage": false,
+                "header_absolute_collection": false,
+                "header_absolute_custom": "",
+                "color_text_header": "#000000",
+                "logo_src_transparent": "shopify:\/\/shop_images\/olitalialogo.svg",
+                "logo_mobile_src_transparent": "shopify:\/\/shop_images\/olitalialogo.svg",
+                "hide_header_border": true,
+                "use_default_header": "",
+                "show_locale_selector": true,
+                "show_country_selector": true,
+                "show_social_icons": true
+            }
+        },
+        "announcement": {
+            "type": "announcement-bar",
+            "blocks": {
+                "content": {
+                    "type": "content",
+                    "settings": {
+                        "text": "Caputo",
+                        "link": "https:\/\/caputoflour.com",
+                        "target": true
+                    }
+                },
+                "content_HDXmJk": {
+                    "type": "content",
+                    "settings": {
+                        "text": "Ciao",
+                        "link": "https:\/\/ciaotomatoes.com",
+                        "target": true
+                    }
+                }
+            },
+            "block_order": [
+                "content",
+                "content_HDXmJk"
+            ],
+            "disabled": true,
+            "settings": {
+                "visibility": "all",
+                "show_locale_selector": true,
+                "show_country_selector": true,
+                "show_social_icons": true,
+                "bar_bgcolor": "#111111",
+                "bar_txtcolor": "#ffffff",
+                "border_color": "rgba(0,0,0,0)"
+            }
+        }
+    },
+    "order": [
+        "header-top-bar",
+        "header",
+        "announcement"
+    ]
+}

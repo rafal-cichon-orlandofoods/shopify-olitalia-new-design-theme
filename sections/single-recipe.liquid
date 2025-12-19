@@ -1,0 +1,120 @@
+{{ 'section-single-recipe.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  <article class="single-recipe">
+    <header class="recipe-header">
+      <h1 class="recipe-title">{{ section.settings.recipe_title }}</h1>
+      {% if section.settings.chef_name %}
+        <div class="recipe-chef">
+          {% if section.settings.chef_link %}
+            <a href="{{ section.settings.chef_link }}" class="chef-link">Chef {{ section.settings.chef_name }}</a>
+          {% else %}
+            <span class="chef-name">Chef {{ section.settings.chef_name }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="recipe-content">
+      {% if section.settings.recipe_image %}
+        <div class="recipe-image">
+          <img src="{{ section.settings.recipe_image | img_url: '800x600' }}" alt="{{ section.settings.recipe_title }}">
+        </div>
+      {% endif %}
+
+      <div class="recipe-details">
+        <div class="recipe-meta">
+          {% if section.settings.prep_time %}
+            <div class="meta-item">
+              <strong>Time:</strong> {{ section.settings.prep_time }}
+            </div>
+          {% endif %}
+          {% if section.settings.servings %}
+            <div class="meta-item">
+              <strong>Servings:</strong> {{ section.settings.servings }}
+            </div>
+          {% endif %}
+        </div>
+
+        {% if section.settings.recipe_description %}
+          <div class="recipe-description">
+            <p>{{ section.settings.recipe_description }}</p>
+          </div>
+        {% endif %}
+
+        {% if section.settings.ingredients %}
+          <div class="recipe-section">
+            <h2>Ingredients</h2>
+            <div class="ingredients-list">{{ section.settings.ingredients | newline_to_br }}</div>
+          </div>
+        {% endif %}
+
+        {% if section.settings.instructions %}
+          <div class="recipe-section">
+            <h2>Instructions</h2>
+            <div class="instructions-list">{{ section.settings.instructions | newline_to_br }}</div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </article>
+</div>
+
+{% schema %}
+{
+  "name": "Single Recipe",
+  "settings": [
+    {
+      "type": "text",
+      "id": "recipe_title",
+      "label": "Recipe Title",
+      "default": "Spaghetti Aglio e Olio"
+    },
+    {
+      "type": "text",
+      "id": "chef_name",
+      "label": "Chef Name"
+    },
+    {
+      "type": "url",
+      "id": "chef_link",
+      "label": "Chef Page Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "recipe_image",
+      "label": "Recipe Image"
+    },
+    {
+      "type": "text",
+      "id": "prep_time",
+      "label": "Prep Time"
+    },
+    {
+      "type": "text",
+      "id": "servings",
+      "label": "Servings"
+    },
+    {
+      "type": "textarea",
+      "id": "recipe_description",
+      "label": "Recipe Description"
+    },
+    {
+      "type": "textarea",
+      "id": "ingredients",
+      "label": "Ingredients"
+    },
+    {
+      "type": "textarea",
+      "id": "instructions",
+      "label": "Instructions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Single Recipe"
+    }
+  ]
+}
+{% endschema %}

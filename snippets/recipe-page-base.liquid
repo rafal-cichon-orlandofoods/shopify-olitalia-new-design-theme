@@ -1,0 +1,156 @@
+{% comment %}
+  Recipe Page Base Template
+  Uses metafields for structured data while allowing individual page customization
+{% endcomment %}
+
+{{ 'recipe-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'recipe-print.js' | asset_url }}" defer></script>
+<script src="{{ 'recipe-interactions.js' | asset_url }}" defer></script>
+
+{% comment %} Get recipe data from metafields with fallbacks {% endcomment %}
+{% assign recipe_title = page.metafields.recipe.title | default: page.title %}
+{% assign recipe_description = page.metafields.recipe.description %}
+{% assign recipe_image = page.metafields.recipe.featured_image %}
+{% assign recipe_chef = page.metafields.recipe.chef_name | default: 'Michele Loffreno' %}
+{% assign recipe_category = page.metafields.recipe.category | default: 'dolci' %}
+{% assign recipe_difficulty = page.metafields.recipe.difficulty | default: 'medium' %}
+{% assign prep_time = page.metafields.recipe.prep_time | plus: 0 %}
+{% assign cook_time = page.metafields.recipe.cook_time | plus: 0 %}
+{% assign total_time = prep_time | plus: cook_time %}
+{% assign servings = page.metafields.recipe.servings %}
+
+{% comment %} JSON-LD Structured Data for SEO {% endcomment %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": "{{ recipe_title | escape }}",
+  {% if recipe_image %}"image": "{{ recipe_image | img_url: 'master' }}",{% endif %}
+  {% if recipe_description %}"description": "{{ recipe_description | escape }}",{% endif %}
+  {% if prep_time > 0 %}"prepTime": "PT{{ prep_time }}M",{% endif %}
+  {% if cook_time > 0 %}"cookTime": "PT{{ cook_time }}M",{% endif %}
+  {% if total_time > 0 %}"totalTime": "PT{{ total_time }}M",{% endif %}
+  {% if servings %}"recipeYield": "{{ servings | escape }}",{% endif %}
+  "recipeCategory": "{{ recipe_category | capitalize }}",
+  "recipeCuisine": "Italian",
+  {% if recipe_difficulty %}"difficulty": "{{ recipe_difficulty | capitalize }}",{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ recipe_chef | escape }}"
+  }
+}
+</script>
+
+<div class="recipe-page">
+  <div class="container container--large">
+    
+    <!-- Featured Image -->
+    {% if recipe_image %}
+      <div class="recipe-featured-image gutter-bottom--large">
+        <img src="{{ recipe_image | img_url: '1200x800' }}" 
+             alt="{{ recipe_title }}"
+             class="recipe-image">
+      </div>
+    {% endif %}
+    
+    <!-- Recipe Header -->
+    <div class="recipe-header gutter-bottom--xlarge">
+      <div class="recipe-header__content">
+        <div class="recipe-meta gutter-bottom--regular">
+          <span class="recipe-category">{{ 'recipes.category.' | append: recipe_category | t }}</span>
+          <span class="recipe-difficulty">{{ 'recipes.difficulty.' | append: recipe_difficulty | t }}</span>
+        </div>
+        
+        <h1 class="recipe-title text-size--xxlarge text-weight--bold gutter-bottom--regular">
+          {{ recipe_title }}
+        </h1>
+        
+        <div class="recipe-chef gutter-bottom--regular">
+          <span class="text-size--regular text-color--subdued">{{ 'recipes.by_chef' | t }}</span>
+          <a href="/pages/chefs" class="text-size--regular text-weight--medium chef-profile-link">{{ recipe_chef }}</a>
+        </div>
+        
+        {% if recipe_description %}
+          <p class="recipe-description text-size--large text-line-height--medium gutter-bottom--large">
+            {{ recipe_description }}
+          </p>
+        {% endif %}
+        
+        <!-- Recipe Action Buttons -->
+        <div class="recipe-actions gutter-bottom--regular">
+          <button class="print-recipe-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9V2H18V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 18H4A2 2 0 0 1 2 16V10A2 2 0 0 1 4 8H20A2 2 0 0 1 22 10V16A2 2 0 0 1 20 18H18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 14H18V22H6V14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ 'recipes.print_recipe' | t }}
+          </button>
+          
+          <button class="share-recipe-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+              <circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="2"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" stroke="currentColor" stroke-width="2"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            {{ 'recipes.share_recipe' | t }}
+          </button>
+        </div>
+        
+        <!-- Recipe Stats -->
+        <div class="recipe-stats">
+          <div class="recipe-stats__grid">
+            {% if total_time > 0 %}
+              <div class="recipe-stat">
+                <div class="recipe-stat__icon">
+                  {% render 'icon-clock' %}
+                </div>
+                <div class="recipe-stat__content">
+                  <span class="recipe-stat__label">{{ 'recipes.total_time' | t }}</span>
+                  <span class="recipe-stat__value">
+                    {% if total_time >= 60 %}
+                      {% assign hours = total_time | divided_by: 60 %}
+                      {% assign remaining_mins = total_time | modulo: 60 %}
+                      {% if remaining_mins > 0 %}
+                        {{ hours }}h {{ remaining_mins }}m
+                      {% else %}
+                        {{ hours }}h
+                      {% endif %}
+                    {% else %}
+                      {{ total_time }} min
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+            
+            {% if servings %}
+              <div class="recipe-stat">
+                <div class="recipe-stat__icon">
+                  {% render 'icon-users' %}
+                </div>
+                <div class="recipe-stat__content">
+                  <span class="recipe-stat__label">{{ 'recipes.servings' | t }}</span>
+                  <span class="recipe-stat__value">{{ servings }}</span>
+                </div>
+              </div>
+            {% endif %}
+            
+            <div class="recipe-stat">
+              <div class="recipe-stat__icon">
+                {% render 'icon-chef-hat' %}
+              </div>
+              <div class="recipe-stat__content">
+                <span class="recipe-stat__label">{{ 'recipes.difficulty_label' | t }}</span>
+                <span class="recipe-stat__value">{{ 'recipes.difficulty.' | append: recipe_difficulty | t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Recipe Content Slot - Individual pages can override this -->
+    {% comment %} This section will be customized per recipe page {% endcomment %}

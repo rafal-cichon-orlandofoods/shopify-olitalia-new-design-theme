@@ -1,0 +1,192 @@
+/* AGGRESSIVE OVERRIDE - Force Redesign Header and Footer */
+
+/* ========== HEADER OVERRIDES ========== */
+
+/* Force hide header top bar */
+.header__top-bar,
+.site-header__top-bar,
+#site-header .header__top,
+.header-top-bar,
+header .header__top {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+}
+
+/* Force white background on header */
+.site-header,
+#site-header,
+.header__bottom,
+header {
+    background: #fff !important;
+    background-color: #fff !important;
+}
+
+/* Simplify header layout - force flex */
+.site-header .header__bottom,
+#site-header .header__bottom,
+header .header__bottom {
+    padding: 20px 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Center logo - absolute positioning */
+.site-header .header__logo,
+#site-header .header__logo,
+.header__logo,
+header .header__logo {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+}
+
+/* Left side - search and cart icons */
+.site-header .header__icons--left,
+#site-header .header__icons--left,
+header .header__icons--left {
+    display: flex !important;
+    gap: 20px !important;
+    order: 1 !important;
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+/* Right side - menu icon */
+.site-header .header__icons--right,
+#site-header .header__icons--right,
+.site-header .mobile-nav__toggle,
+#site-header .mobile-nav__toggle,
+header .header__icons--right,
+header .mobile-nav__toggle {
+    order: 3 !important;
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+/* Hide main navigation on desktop */
+@media (min-width: 1024px) {
+
+    .site-header .site-nav,
+    #site-header .site-nav,
+    .site-nav,
+    header .site-nav,
+    .header__navigation {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+/* Style header icons */
+.site-header .header__icon svg,
+#site-header .header__icon svg,
+header .header__icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    color: #2c2c2c !important;
+    stroke: #2c2c2c !important;
+    fill: none !important;
+}
+
+/* ========== FOOTER OVERRIDES ========== */
+
+/* Force white background and clean styling */
+.site-footer,
+#site-footer,
+footer {
+    padding: 60px 40px 40px !important;
+    background: #fff !important;
+    background-color: #fff !important;
+    border-top: 1px solid #f0f0f0 !important;
+}
+
+/* Force grid layout for footer blocks */
+.site-footer .footer__blocks,
+#site-footer .footer__blocks,
+footer .footer__blocks {
+    display: grid !important;
+    grid-template-columns: 1fr 2fr 2fr !important;
+    gap: 60px !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+}
+
+/* Footer headings styling */
+.site-footer .footer__title,
+#site-footer .footer__title,
+footer .footer__title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin-bottom: 20px !important;
+    color: #2c2c2c !important;
+}
+
+/* Footer links styling */
+.site-footer .footer__menu-item a,
+#site-footer .footer__menu-item a,
+footer .footer__menu-item a {
+    font-size: 14px !important;
+    color: #666 !important;
+    padding: 6px 0 !important;
+    text-decoration: none !important;
+}
+
+.site-footer .footer__menu-item a:hover,
+#site-footer .footer__menu-item a:hover,
+footer .footer__menu-item a:hover {
+    color: #000 !important;
+}
+
+/* Footer bottom section */
+.site-footer .footer__bottom,
+#site-footer .footer__bottom,
+footer .footer__bottom {
+    margin-top: 40px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #f0f0f0 !important;
+    text-align: center !important;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 1024px) {
+
+    .site-footer .footer__blocks,
+    #site-footer .footer__blocks,
+    footer .footer__blocks {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 40px !important;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .site-header .header__bottom,
+    #site-header .header__bottom,
+    header .header__bottom {
+        padding: 15px 20px !important;
+    }
+
+    .site-footer,
+    #site-footer,
+    footer {
+        padding: 40px 20px 30px !important;
+    }
+
+    .site-footer .footer__blocks,
+    #site-footer .footer__blocks,
+    footer .footer__blocks {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+}

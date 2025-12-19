@@ -1,0 +1,79 @@
+.recipe-form-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recipe-form {
+  background: var(--color-background-cards);
+  padding: 2rem;
+  border-radius: var(--border-radius-cards);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-weight-body-primary-bold);
+  color: var(--color-text-main);
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-borders-main);
+  border-radius: var(--border-radius-buttons);
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: var(--color-text-main);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-field small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.form-actions .button {
+  min-width: 200px;
+  padding: 1rem 2rem;
+}
+
+@media screen and (max-width: 767px) {
+  .recipe-form {
+    padding: 1.5rem;
+  }
+}

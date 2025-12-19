@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "redesign_header_q6fMM4": {
+      "type": "redesign-header",
+      "name": "Redesign Header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
+    "redesign_homepage_hero_nt3CBz": {
+      "type": "redesign-homepage-hero",
+      "name": "Redesign Hero",
+      "settings": {
+        "background_image": "shopify://shop_images/3S7A3731_1.jpg",
+        "title": "Extra Virgin Olive Oil",
+        "description": "Crafted from the finest olives, our Extra Virgin Olive Oil brings authentic Mediterranean flavor to every dish.",
+        "button_text": "Shop Now",
+        "button_link": "shopify://products/extra-virgin-olive-oil-500ml"
+      }
+    },
+    "redesign_testimonial_simple_YUfKBx": {
+      "type": "redesign-testimonial-simple",
+      "name": "Redesign Testimonial",
+      "settings": {
+        "quote": "I love the aroma of this olive oil. Perfect for cooking and doesn't overpower the dish!",
+        "author_name": "Samantha King",
+        "author_role": "Customer"
+      }
+    },
+    "redesign_recipes_showcase_hjzBjp": {
+      "type": "redesign-recipes-showcase",
+      "name": "Redesign Recipes Showcase",
+      "settings": {
+        "recipe_limit": 6
+      }
+    },
+    "redesign_brand_badge_RBGDHC": {
+      "type": "redesign-brand-badge",
+      "name": "Redesign Brand Badge",
+      "settings": {
+        "badge_image": "shopify://shop_images/Layer_1.png",
+        "badge_text": "Extravergine Italiano Certificato"
+      }
+    },
+    "redesign_newsletter_simple_xkJBAf": {
+      "type": "redesign-newsletter-simple",
+      "name": "Redesign Newsletter",
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
+    },
+    "redesign_footer_h9EXLr": {
+      "type": "redesign-footer",
+      "name": "Redesign Footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    }
+  },
+  "order": [
+    "redesign_header_q6fMM4",
+    "redesign_homepage_hero_nt3CBz",
+    "redesign_testimonial_simple_YUfKBx",
+    "redesign_recipes_showcase_hjzBjp",
+    "redesign_brand_badge_RBGDHC",
+    "redesign_newsletter_simple_xkJBAf",
+    "redesign_footer_h9EXLr"
+  ]
+}

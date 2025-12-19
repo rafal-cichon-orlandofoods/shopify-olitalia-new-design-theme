@@ -1,0 +1,158 @@
+{% comment %}
+  Generic Chef Profile Template
+  
+  This template automatically displays chef information from metafields.
+  Works for any page with handle starting with "chef-"
+  
+  Metafields used (namespace: chef):
+  - name: Chef's full name
+  - title: Professional title
+  - profile_image: Profile photo
+  - bio: Full biography
+  - short_bio: Brief bio for hero section
+  - cooking_philosophy: Chef's cooking philosophy quote
+  - chef_quote: Featured quote
+  - instagram_handle: Instagram username
+  - website_url: Personal/restaurant website
+  - facebook_url: Facebook page
+{% endcomment %}
+
+{{ 'chef-page.css' | asset_url | stylesheet_tag }}
+
+{% comment %} Get chef data from metafields {% endcomment %}
+{% assign chef_name = page.metafields.chef.name | default: page.title %}
+{% assign chef_title = page.metafields.chef.title | default: 'Executive Chef' %}
+{% assign chef_bio = page.metafields.chef.bio | default: page.content %}
+{% assign chef_short_bio = page.metafields.chef.short_bio %}
+{% assign chef_image = page.metafields.chef.profile_image %}
+{% assign chef_philosophy = page.metafields.chef.cooking_philosophy %}
+{% assign chef_quote = page.metafields.chef.chef_quote %}
+{% assign chef_instagram = page.metafields.chef.instagram_handle %}
+{% assign chef_website = page.metafields.chef.website_url %}
+{% assign chef_facebook = page.metafields.chef.facebook_url %}
+
+<div class="chef-page">
+  <div class="container container--large">
+    
+    <!-- Chef Hero Section -->
+    <div class="chef-hero gutter-bottom--xlarge">
+      <div class="chef-hero__content">
+        <div class="chef-hero__image">
+          {% if chef_image %}
+            {% comment %} Check if it's a Shopify image or external URL {% endcomment %}
+            {% if chef_image contains 'cdn.shopify.com' and chef_image contains 'files/' %}
+              {% comment %} External Shopify file URL - use as is {% endcomment %}
+              <img src="{{ chef_image }}" 
+                   alt="{{ chef_name }}"
+                   class="chef-image"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            {% else %}
+              {% comment %} Shopify image object - apply img_url filter {% endcomment %}
+              <img src="{{ chef_image | img_url: '600x800' }}" 
+                   alt="{{ chef_name }}"
+                   class="chef-image"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            {% endif %}
+          {% endif %}
+          <div class="chef-image-placeholder" {% if chef_image %}style="display: none;"{% endif %}>
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 21V19A4 4 0 0 0 16 15H8A4 4 0 0 0 4 19V21" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <p>{{ chef_name }}</p>
+          </div>
+        </div>
+        
+        <div class="chef-hero__info">
+          <header class="chef-header">
+            <h1 class="chef-name text-size--xxlarge text-weight--bold">{{ chef_name }}</h1>
+            {% if chef_title %}
+              <p class="chef-title text-size--large text-color--subdued">{{ chef_title }}</p>
+            {% endif %}
+          </header>
+          
+          {% if chef_quote %}
+            <blockquote class="chef-quote gutter-top--regular">
+              <p class="text-size--large text-style--italic">"{{ chef_quote }}"</p>
+            </blockquote>
+          {% endif %}
+          
+          {% if chef_short_bio %}
+            <div class="chef-short-bio gutter-top--regular">
+              <p class="text-size--regular">{{ chef_short_bio }}</p>
+            </div>
+          {% endif %}
+          
+          <!-- Social Links -->
+          {% if chef_instagram or chef_website or chef_facebook %}
+            <div class="chef-social gutter-top--large">
+              {% if chef_instagram %}
+                <a href="https://instagram.com/{{ chef_instagram }}" target="_blank" rel="noopener" class="chef-social-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Follow on Instagram
+                </a>
+              {% endif %}
+              
+              {% if chef_website %}
+                <a href="{{ chef_website }}" target="_blank" rel="noopener" class="chef-social-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                    <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 2A15.3 15.3 0 0 1 4 12A15.3 15.3 0 0 1 12 22A15.3 15.3 0 0 0 20 12A15.3 15.3 0 0 0 12 2Z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Visit Website
+                </a>
+              {% endif %}
+              
+              {% if chef_facebook %}
+                <a href="{{ chef_facebook }}" target="_blank" rel="noopener" class="chef-social-link">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                  Facebook
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Chef Biography Section -->
+    <div class="chef-content">
+      <div class="chef-content__grid">
+        
+        <!-- Biography -->
+        <div class="chef-biography">
+          <h2 class="text-size--xlarge text-weight--bold gutter-bottom--regular">About {{ chef_name | split: ' ' | first }}</h2>
+          
+          {% if chef_bio %}
+            <div class="chef-bio-content">
+              {{ chef_bio }}
+            </div>
+          {% else %}
+            <div class="chef-bio-content">
+              <p class="text-size--regular text-line-height--medium">
+                {{ page.content }}
+              </p>
+            </div>
+          {% endif %}
+        </div>
+        
+        <!-- Cooking Philosophy -->
+        {% if chef_philosophy %}
+          <blockquote class="chef-quote-content gutter-top--xlarge">
+            <p class="text-size--large text-style--italic text-color--accent">
+              "{{ chef_philosophy }}"
+            </p>
+          </blockquote>
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,100 @@
+{{ 'section-recipe-cards.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  <div class="recipes-grid">
+    {% for block in section.blocks %}
+      <article class="recipe-card card" {{ block.shopify_attributes }}>
+        {% if block.settings.recipe_image %}
+          <div class="recipe-image card__image" data-ratio="0.75">
+            <a href="{{ block.settings.recipe_url }}">
+              <img src="{{ block.settings.recipe_image | img_url: '400x300' }}" 
+                   alt="{{ block.settings.recipe_title }}" 
+                   loading="lazy"
+                   width="400"
+                   height="300">
+            </a>
+          </div>
+        {% endif %}
+        
+        <div class="recipe-content card__text">
+          <h3 class="recipe-title">
+            <a href="{{ block.settings.recipe_url }}">{{ block.settings.recipe_title }}</a>
+          </h3>
+          
+          <div class="recipe-meta">
+            {% if block.settings.prep_time %}
+              <span class="prep-time">{{ block.settings.prep_time }}</span>
+            {% endif %}
+            {% if block.settings.servings %}
+              <span class="servings">{{ block.settings.servings }}</span>
+            {% endif %}
+          </div>
+
+          {% if block.settings.chef_name %}
+            <div class="recipe-chef">
+              <span class="chef-name">Chef {{ block.settings.chef_name }}</span>
+            </div>
+          {% endif %}
+
+          {% if block.settings.recipe_description %}
+            <p class="recipe-description">{{ block.settings.recipe_description }}</p>
+          {% endif %}
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Recipe Cards Only",
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "recipe_title",
+          "label": "Recipe Title"
+        },
+        {
+          "type": "url",
+          "id": "recipe_url",
+          "label": "Recipe Page URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "recipe_image",
+          "label": "Recipe Image"
+        },
+        {
+          "type": "text",
+          "id": "prep_time",
+          "label": "Prep Time"
+        },
+        {
+          "type": "text",
+          "id": "servings",
+          "label": "Servings"
+        },
+        {
+          "type": "text",
+          "id": "chef_name",
+          "label": "Chef Name"
+        },
+        {
+          "type": "textarea",
+          "id": "recipe_description",
+          "label": "Recipe Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recipe Cards Only"
+    }
+  ]
+}
+{% endschema %}

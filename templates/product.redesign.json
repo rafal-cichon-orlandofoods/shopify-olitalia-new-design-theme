@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {}
+    },
+    "redesign-product": {
+      "type": "redesign-product-page",
+      "settings": {
+        "show_accordions": true,
+        "care_title": "Care and Storage",
+        "care_text": "<p>Store in a cool, dry place away from direct sunlight. Once opened, use within 3-6 months for optimal freshness.</p>",
+        "ingredients_title": "Ingredients",
+        "ingredients_text": "<p>100% Extra Virgin Olive Oil</p>",
+        "certifications_title": "Certifications/Quality/Assurance",
+        "certifications_text": "<p>Certified Extra Virgin Olive Oil from Italy. Cold-pressed from the finest Mediterranean olives.</p>"
+      }
+    },
+    "redesign-recipes": {
+      "type": "redesign-recipes-showcase",
+      "settings": {}
+    },
+    "redesign-newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {}
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "redesign-header",
+    "redesign-product",
+    "redesign-recipes",
+    "redesign-newsletter",
+    "redesign-footer"
+  ]
+}

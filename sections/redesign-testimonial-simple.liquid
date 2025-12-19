@@ -1,0 +1,236 @@
+{{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-testimonial">
+  <div class="redesign-testimonial__container">
+    {% comment %} Always show slideshow format {% endcomment %}
+    <div class="redesign-testimonial__grid">
+      {% if section.blocks.size > 0 %}
+        {% comment %} Use custom blocks if available {% endcomment %}
+        {% for block in section.blocks %}
+          <div class="redesign-testimonial__slide">
+            {% if block.settings.quote != blank %}
+              <blockquote class="redesign-testimonial__quote">
+                "{{ block.settings.quote }}"
+              </blockquote>
+            {% endif %}
+            
+            {% if block.settings.author_name != blank %}
+              <p class="redesign-testimonial__author">{{ block.settings.author_name }}</p>
+            {% endif %}
+            
+            {% if block.settings.author_role != blank %}
+              <p class="redesign-testimonial__role">{{ block.settings.author_role }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% comment %} Default testimonials if no blocks are added {% endcomment %}
+        <div class="redesign-testimonial__slide">
+          <blockquote class="redesign-testimonial__quote">
+            "I love the aroma of this olive oil. Perfect for cooking and doesn't overpower the dish!"
+          </blockquote>
+          <p class="redesign-testimonial__author">Samantha King</p>
+          <p class="redesign-testimonial__role">Customer</p>
+        </div>
+        
+        <div class="redesign-testimonial__slide">
+          <blockquote class="redesign-testimonial__quote">
+            "This olive oil has transformed my cooking. The flavor is incredible and it's perfect for both cooking and finishing dishes."
+          </blockquote>
+          <p class="redesign-testimonial__author">Marco Rodriguez</p>
+          <p class="redesign-testimonial__role">Home Chef</p>
+        </div>
+      {% endif %}
+    </div>
+    
+    {% comment %} Scroll Dots {% endcomment %}
+    {% assign total_testimonials = section.blocks.size %}
+    {% if total_testimonials == 0 %}
+      {% assign total_testimonials = 2 %}
+    {% endif %}
+    
+    {% if total_testimonials > 1 %}
+      <div class="redesign-testimonial__dots">
+        {% for i in (1..total_testimonials) %}
+          <div class="redesign-testimonial__dot {% if forloop.first %}active{% endif %}"></div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const grid = document.querySelector('.redesign-testimonial__grid');
+  const slides = document.querySelectorAll('.redesign-testimonial__slide');
+  const dots = document.querySelectorAll('.redesign-testimonial__dot');
+  
+  if (!grid || slides.length === 0 || dots.length === 0) return;
+  
+  let isScrolling = false;
+  
+  function updateActiveSlide() {
+    if (isScrolling) return;
+    
+    const scrollLeft = grid.scrollLeft;
+    const containerWidth = grid.offsetWidth;
+    const totalWidth = grid.scrollWidth;
+    let activeIndex = 0;
+    
+    // Check if we're at the very end (last slide should be active)
+    if (scrollLeft + containerWidth >= totalWidth - 10) {
+      activeIndex = slides.length - 1;
+    } else {
+      // Calculate which slide is most visible
+      let maxVisibility = 0;
+      
+      slides.forEach((slide, index) => {
+        const slideLeft = slide.offsetLeft;
+        const slideRight = slideLeft + slide.offsetWidth;
+        const visibleLeft = Math.max(slideLeft, scrollLeft);
+        const visibleRight = Math.min(slideRight, scrollLeft + containerWidth);
+        const visibility = Math.max(0, visibleRight - visibleLeft) / slide.offsetWidth;
+        
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          activeIndex = index;
+        }
+      });
+    }
+    
+    // Update slide opacity
+    slides.forEach((slide, index) => {
+      slide.style.opacity = index === activeIndex ? '1' : '0.3';
+    });
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      if (index === activeIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+  
+  grid.addEventListener('scroll', updateActiveSlide);
+  
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      if (index >= slides.length) return;
+      
+      isScrolling = true;
+      const targetSlide = slides[index];
+      const isLastSlide = index === slides.length - 1;
+      
+      let scrollPosition;
+      if (isLastSlide) {
+        // For the last slide, scroll to the very end
+        scrollPosition = grid.scrollWidth - grid.offsetWidth;
+      } else {
+        // For other slides, center them
+        scrollPosition = targetSlide.offsetLeft - (grid.offsetWidth - targetSlide.offsetWidth) / 2;
+      }
+      
+      grid.scrollTo({
+        left: Math.max(0, scrollPosition),
+        behavior: 'smooth'
+      });
+      
+      // Reset scrolling flag after animation
+      setTimeout(() => {
+        isScrolling = false;
+        updateActiveSlide();
+      }, 500);
+    });
+  });
+  
+  // Initial update
+  setTimeout(updateActiveSlide, 100);
+});
+</script>
+
+{% schema %}
+{
+  "name": "Testimonial Slideshow",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Single Testimonial (Legacy)"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "info": "Leave blank to use blocks below for slideshow"
+    },
+    {
+      "type": "text",
+      "id": "author_name",
+      "label": "Author Name"
+    },
+    {
+      "type": "text",
+      "id": "author_role",
+      "label": "Author Role"
+    },
+    {
+      "type": "header",
+      "content": "Multiple Testimonials (Slideshow)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add testimonial blocks below to create a slideshow. If blocks are added, the single testimonial above will be ignored."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "I love the aroma of this olive oil. Perfect for cooking and doesn't overpower the dish!"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Samantha King"
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Author Role",
+          "default": "Customer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slideshow",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I love the aroma of this olive oil. Perfect for cooking and doesn't overpower the dish!",
+            "author_name": "Samantha King",
+            "author_role": "Customer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "This olive oil has transformed my cooking. The flavor is incredible and it's perfect for both cooking and finishing dishes.",
+            "author_name": "Marco Rodriguez",
+            "author_role": "Home Chef"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

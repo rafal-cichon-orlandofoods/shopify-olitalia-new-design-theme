@@ -1,0 +1,249 @@
+{{ 'redesign-about-us.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-about">
+  {% comment %} Hero Image {% endcomment %}
+  {% if section.settings.hero_image %}
+    <div class="redesign-about__hero">
+      <img 
+        src="{{ section.settings.hero_image | image_url: width: 1400 }}" 
+        alt="About Us"
+        class="redesign-about__hero-image"
+      >
+    </div>
+  {% endif %}
+
+  <div class="redesign-about__container">
+    {% comment %} About Us Title and Content {% endcomment %}
+    <div class="redesign-about__intro">
+      <h1 class="redesign-about__title">{{ section.settings.title | default: 'About Us' }}</h1>
+      {% if section.settings.intro_text %}
+        <div class="redesign-about__intro-text">
+          {{ section.settings.intro_text }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% comment %} Video with Custom Thumbnail {% endcomment %}
+    {% if section.settings.intro_video_file or section.settings.intro_video_url %}
+      <div class="redesign-about__intro-video">
+        <div class="redesign-about__intro-video-wrapper">
+          {% if section.settings.intro_video_thumbnail %}
+            <img 
+              src="{{ section.settings.intro_video_thumbnail | image_url: width: 1200 }}" 
+              alt="Video thumbnail"
+              class="redesign-about__intro-video-thumbnail"
+              id="videoThumbnail"
+            >
+            <button class="redesign-about__intro-video-play" id="playButton" aria-label="Play video">
+              <svg viewBox="0 0 24 24" fill="white" width="60" height="60">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            </button>
+          {% endif %}
+          <div class="redesign-about__intro-video-container" id="videoContainer" style="display: none;">
+            {% if section.settings.intro_video_file %}
+              <video 
+                controls 
+                autoplay 
+                class="redesign-about__intro-video-player"
+                id="videoPlayer">
+                <source src="{{ section.settings.intro_video_file }}" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            {% elsif section.settings.intro_video_url contains 'youtube.com' or section.settings.intro_video_url contains 'youtu.be' %}
+              {% assign video_id = section.settings.intro_video_url | split: 'v=' | last | split: '/' | last | split: '&' | first %}
+              <iframe 
+                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="redesign-about__intro-video-iframe"
+                id="videoIframe">
+              </iframe>
+            {% elsif section.settings.intro_video_url contains 'vimeo.com' %}
+              {% assign video_id = section.settings.intro_video_url | split: '/' | last %}
+              <iframe 
+                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen
+                class="redesign-about__intro-video-iframe"
+                id="videoIframe">
+              </iframe>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const playButton = document.getElementById('playButton');
+          const thumbnail = document.getElementById('videoThumbnail');
+          const videoContainer = document.getElementById('videoContainer');
+          
+          if (playButton && thumbnail && videoContainer) {
+            playButton.addEventListener('click', function() {
+              thumbnail.style.display = 'none';
+              playButton.style.display = 'none';
+              videoContainer.style.display = 'block';
+            });
+          }
+        });
+      </script>
+    {% endif %}
+
+    {% comment %} Pouring Oil Image {% endcomment %}
+    {% if section.settings.pouring_image %}
+      <div class="redesign-about__image-section">
+        <img 
+          src="{{ section.settings.pouring_image | image_url: width: 1200 }}" 
+          alt="Pouring olive oil"
+          class="redesign-about__image"
+        >
+      </div>
+    {% endif %}
+
+    {% comment %} Quote Section {% endcomment %}
+    {% if section.settings.quote %}
+      <div class="redesign-about__quote">
+        <blockquote>{{ section.settings.quote }}</blockquote>
+      </div>
+    {% endif %}
+
+    {% comment %} Values/Features Grid {% endcomment %}
+    {% if section.blocks.size > 0 %}
+      <div class="redesign-about__values">
+        {% for block in section.blocks %}
+          <div class="redesign-about__value-item" {{ block.shopify_attributes }}>
+            {% if block.settings.image %}
+              <div class="redesign-about__value-image">
+                <img 
+                  src="{{ block.settings.image | image_url: width: 400 }}" 
+                  alt="{{ block.settings.title }}"
+                >
+              </div>
+            {% endif %}
+            <div class="redesign-about__value-content">
+              <h3 class="redesign-about__value-title">{{ block.settings.title }}</h3>
+              {% if block.settings.description %}
+                <p class="redesign-about__value-description">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Video Section {% endcomment %}
+  {% if section.settings.video_url %}
+    <div class="redesign-about__video">
+      <div class="redesign-about__video-container">
+        {% if section.settings.video_url contains 'youtube.com' or section.settings.video_url contains 'youtu.be' %}
+          {% assign video_id = section.settings.video_url | split: 'v=' | last | split: '/' | last | split: '&' | first %}
+          <iframe 
+            src="https://www.youtube.com/embed/{{ video_id }}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            class="redesign-about__video-iframe">
+          </iframe>
+        {% elsif section.settings.video_url contains 'vimeo.com' %}
+          {% assign video_id = section.settings.video_url | split: '/' | last %}
+          <iframe 
+            src="https://player.vimeo.com/video/{{ video_id }}" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            class="redesign-about__video-iframe">
+          </iframe>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Redesign About Us",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "About Us"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introduction Text"
+    },
+    {
+      "type": "text",
+      "id": "intro_video_file",
+      "label": "Intro Video File URL",
+      "info": "Paste the URL of a video file from Shopify Files (e.g., .mp4). This takes priority over YouTube/Vimeo URL."
+    },
+    {
+      "type": "url",
+      "id": "intro_video_url",
+      "label": "Intro Video URL (YouTube or Vimeo)",
+      "info": "Alternative: paste a YouTube or Vimeo URL if not using uploaded file"
+    },
+    {
+      "type": "image_picker",
+      "id": "intro_video_thumbnail",
+      "label": "Intro Video Thumbnail Image",
+      "info": "Custom thumbnail for the intro video"
+    },
+    {
+      "type": "image_picker",
+      "id": "pouring_image",
+      "label": "Pouring Oil Image"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL (YouTube or Vimeo)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign About Us"
+    }
+  ]
+}
+{% endschema %}

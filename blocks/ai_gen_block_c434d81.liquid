@@ -1,0 +1,557 @@
+{% doc %}
+  @prompt
+    An interactive vertical timeline that highlights as the user scrolls, Caring for the Planet
+    We’re taking real steps to reduce our environmental impact:
+    •	Plastic No More – Our long-term project to reduce plastic waste across every stage of production. We’ve replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.
+    •	“Used but Full of Life” Project – co-created with APCI (the Professional Association of Italian Chefs) and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination. We provide technical guidance, educational materials, and partnerships with certified recovery operators to ensure that used oils are given a second life as renewable energy.
+    •	Efficient Resource Use – We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.
+    •	Circular Thinking -- We apply circular principles to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources. This approach helps us minimize our environmental footprint while strengthening the link between innovation, efficiency, and responsibility.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-timeline-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .ai-timeline-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .ai-timeline-main-title-{{ ai_gen_id }} {
+    color: {{ block.settings.main_title_color }};
+    font-size: {{ block.settings.main_title_size }}px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+  }
+
+  .ai-timeline-intro-{{ ai_gen_id }} {
+    color: {{ block.settings.intro_color }};
+    font-size: {{ block.settings.intro_size }}px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ai-timeline-{{ ai_gen_id }} {
+    position: relative;
+    padding-left: 60px;
+  }
+
+  .ai-timeline-line-{{ ai_gen_id }} {
+    position: absolute;
+    left: 20px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: {{ block.settings.line_inactive_color }};
+    border-radius: 2px;
+  }
+
+  .ai-timeline-line-progress-{{ ai_gen_id }} {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0%;
+    background-color: {{ block.settings.line_active_color }};
+    border-radius: 2px;
+    transition: height 0.3s ease;
+  }
+
+  .ai-timeline-item-{{ ai_gen_id }} {
+    position: relative;
+    margin-bottom: {{ block.settings.item_spacing }}px;
+    opacity: 0.4;
+    transition: opacity 0.4s ease;
+  }
+
+  .ai-timeline-item-{{ ai_gen_id }}.active {
+    opacity: 1;
+  }
+
+  .ai-timeline-dot-{{ ai_gen_id }} {
+    position: absolute;
+    left: -48px;
+    top: 8px;
+    width: {{ block.settings.dot_size }}px;
+    height: {{ block.settings.dot_size }}px;
+    background-color: {{ block.settings.dot_inactive_color }};
+    border: 3px solid {{ block.settings.dot_border_color }};
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    z-index: 2;
+  }
+
+  .ai-timeline-item-{{ ai_gen_id }}.active .ai-timeline-dot-{{ ai_gen_id }} {
+    background-color: {{ block.settings.dot_active_color }};
+    transform: scale(1.3);
+    box-shadow: 0 0 0 8px {{ block.settings.dot_active_color }}33;
+  }
+
+  .ai-timeline-content-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_background }};
+    padding: {{ block.settings.card_padding }}px;
+    border-radius: {{ block.settings.card_border_radius }}px;
+    border: 1px solid {{ block.settings.card_border_color }};
+    transition: all 0.4s ease;
+    margin: 0 10rem 0 8rem;
+  }
+
+  .ai-timeline-item-{{ ai_gen_id }}.active .ai-timeline-content-{{ ai_gen_id }} {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateX(8px);
+  }
+
+  .ai-timeline-title-{{ ai_gen_id }} {
+    color: {{ block.settings.title_color }};
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    line-height: 1.3;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} {
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    line-height: 1.6;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} p {
+    margin: 0 0 12px 0;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} p:last-child {
+    margin-bottom: 0;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} li {
+    margin-bottom: 8px;
+  }
+
+  .ai-timeline-description-{{ ai_gen_id }} strong {
+    color: {{ block.settings.title_color }};
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ai-timeline-{{ ai_gen_id }} {
+      padding-left: 40px;
+    }
+
+    .ai-timeline-dot-{{ ai_gen_id }} {
+      left: -32px;
+    }
+
+    .ai-timeline-content-{{ ai_gen_id }} {
+      padding: {{ block.settings.card_padding | times: 0.75 }}px;
+    }
+
+    .ai-timeline-main-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.main_title_size | times: 0.75 }}px;
+    }
+
+    .ai-timeline-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.85 }}px;
+    }
+  }
+{% endstyle %}
+
+<scroll-timeline-{{ ai_gen_id }} class="ai-timeline-container-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.main_title != blank or block.settings.intro_text != blank %}
+    <div class="ai-timeline-header-{{ ai_gen_id }}">
+      {% if block.settings.main_title != blank %}
+        <h2 class="ai-timeline-main-title-{{ ai_gen_id }}">{{ block.settings.main_title }}</h2>
+      {% endif %}
+      {% if block.settings.intro_text != blank %}
+        <div class="ai-timeline-intro-{{ ai_gen_id }}">{{ block.settings.intro_text }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="ai-timeline-{{ ai_gen_id }}">
+    <div class="ai-timeline-line-{{ ai_gen_id }}">
+      <div class="ai-timeline-line-progress-{{ ai_gen_id }}"></div>
+    </div>
+
+    {% for i in (1..6) %}
+      {% liquid
+        assign title_key = 'item_' | append: i | append: '_title'
+        assign description_key = 'item_' | append: i | append: '_description'
+        
+        assign item_title = block.settings[title_key]
+        assign item_description = block.settings[description_key]
+      %}
+
+      {% if item_title != blank %}
+        <div class="ai-timeline-item-{{ ai_gen_id }}" data-timeline-item>
+          <div class="ai-timeline-dot-{{ ai_gen_id }}"></div>
+          <div class="ai-timeline-content-{{ ai_gen_id }}">
+            <h3 class="ai-timeline-title-{{ ai_gen_id }}">{{ item_title }}</h3>
+            {% if item_description != blank %}
+              <div class="ai-timeline-description-{{ ai_gen_id }}">{{ item_description }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</scroll-timeline-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ScrollTimeline{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.timeline = this.querySelector('.ai-timeline-{{ ai_gen_id }}');
+        this.items = this.querySelectorAll('[data-timeline-item]');
+        this.progressBar = this.querySelector('.ai-timeline-line-progress-{{ ai_gen_id }}');
+        this.handleScroll = this.handleScroll.bind(this);
+      }
+
+      connectedCallback() {
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleScroll);
+        this.handleScroll();
+      }
+
+      disconnectedCallback() {
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleScroll);
+      }
+
+      handleScroll() {
+        const timelineRect = this.timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const scrollTrigger = windowHeight * 0.7;
+
+        let activeIndex = -1;
+        let maxProgress = 0;
+
+        this.items.forEach((item, index) => {
+          const itemRect = item.getBoundingClientRect();
+          const itemTop = itemRect.top;
+          const itemMiddle = itemTop + (itemRect.height / 2);
+
+          if (itemMiddle < scrollTrigger) {
+            activeIndex = index;
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+
+        if (activeIndex >= 0 && this.items.length > 0) {
+          const lastActiveItem = this.items[activeIndex];
+          const lastActiveRect = lastActiveItem.getBoundingClientRect();
+          const timelineTop = timelineRect.top;
+          const itemRelativeTop = lastActiveRect.top - timelineTop;
+          const itemHeight = lastActiveRect.height;
+          const progressPoint = itemRelativeTop + (itemHeight / 2);
+          
+          maxProgress = (progressPoint / timelineRect.height) * 100;
+          maxProgress = Math.max(0, Math.min(100, maxProgress));
+        } else {
+          maxProgress = 0;
+        }
+
+        this.progressBar.style.height = maxProgress + '%';
+      }
+    }
+
+    customElements.define('scroll-timeline-{{ ai_gen_id }}', ScrollTimeline{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scroll timeline",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header"
+    },
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main title",
+      "default": "Caring for the Planet"
+    },
+    {
+      "type": "range",
+      "id": "main_title_size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "label": "Main title size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "main_title_color",
+      "label": "Main title color",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introduction text",
+      "default": "<p>We're taking real steps to reduce our environmental impact</p>"
+    },
+    {
+      "type": "range",
+      "id": "intro_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Introduction size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "intro_color",
+      "label": "Introduction color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Timeline line"
+    },
+    {
+      "type": "color",
+      "id": "line_inactive_color",
+      "label": "Inactive color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "line_active_color",
+      "label": "Active color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Timeline dots"
+    },
+    {
+      "type": "range",
+      "id": "dot_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Dot size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "dot_inactive_color",
+      "label": "Inactive color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "dot_active_color",
+      "label": "Active color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "dot_border_color",
+      "label": "Border color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Timeline cards"
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 40,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "label": "Spacing between items",
+      "default": 80
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1b1a1a"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 18,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Description color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 1"
+    },
+    {
+      "type": "text",
+      "id": "item_1_title",
+      "label": "Title",
+      "default": "Plastic No More"
+    },
+    {
+      "type": "richtext",
+      "id": "item_1_description",
+      "label": "Description",
+      "default": "<p>Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 2"
+    },
+    {
+      "type": "text",
+      "id": "item_2_title",
+      "label": "Title",
+      "default": "Used but Full of Life Project"
+    },
+    {
+      "type": "richtext",
+      "id": "item_2_description",
+      "label": "Description",
+      "default": "<p>Co-created with APCI (the Professional Association of Italian Chefs) and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination. We provide technical guidance, educational materials, and partnerships with certified recovery operators to ensure that used oils are given a second life as renewable energy.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 3"
+    },
+    {
+      "type": "text",
+      "id": "item_3_title",
+      "label": "Title",
+      "default": "Efficient Resource Use"
+    },
+    {
+      "type": "richtext",
+      "id": "item_3_description",
+      "label": "Description",
+      "default": "<p>We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 4"
+    },
+    {
+      "type": "text",
+      "id": "item_4_title",
+      "label": "Title",
+      "default": "Circular Thinking"
+    },
+    {
+      "type": "richtext",
+      "id": "item_4_description",
+      "label": "Description",
+      "default": "<p>We apply circular principles to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources. This approach helps us minimize our environmental footprint while strengthening the link between innovation, efficiency, and responsibility.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 5"
+    },
+    {
+      "type": "text",
+      "id": "item_5_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "item_5_description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Timeline item 6"
+    },
+    {
+      "type": "text",
+      "id": "item_6_title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "id": "item_6_description",
+      "label": "Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll timeline"
+    }
+  ]
+}
+{% endschema %}

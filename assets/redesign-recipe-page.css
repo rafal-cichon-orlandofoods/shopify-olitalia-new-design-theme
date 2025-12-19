@@ -1,0 +1,464 @@
+/* Redesigned Recipe Page */
+
+.redesign-recipe {
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.redesign-recipe__hero {
+    width: 100%;
+    height: auto;
+    background: #f5f5f5;
+}
+
+.redesign-recipe__hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.redesign-recipe__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.redesign-recipe__header {
+    margin-bottom: 60px;
+}
+
+.redesign-recipe__body {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 80px;
+}
+
+.redesign-recipe__content {
+    max-width: 800px;
+}
+
+.redesign-recipe__title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 42px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin: 0 0 16px;
+    line-height: 1.2;
+}
+
+.redesign-recipe__tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.redesign-recipe__tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #f5f5f5;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    text-transform: capitalize;
+}
+
+.redesign-recipe__description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.redesign-recipe__meta {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.redesign-recipe__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.redesign-recipe__meta-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #999;
+    font-weight: 600;
+}
+
+.redesign-recipe__meta-value {
+    font-size: 16px;
+    color: #2c2c2c;
+    font-weight: 500;
+}
+
+.redesign-recipe__section {
+    margin-bottom: 50px;
+}
+
+.redesign-recipe__section-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin: 0 0 20px;
+}
+
+.redesign-recipe__ingredients ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.redesign-recipe__instructions ol {
+    padding-left: 30px;
+    margin: 0;
+    list-style: decimal;
+}
+
+.redesign-recipe__ingredients li,
+.redesign-recipe__instructions li {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.redesign-recipe__instructions li {
+    padding-left: 15px;
+}
+
+.redesign-recipe__product-hero {
+    position: relative;
+    height: 500px;
+    margin-top: 80px;
+    overflow: hidden;
+    background: #f8f5f2;
+}
+
+.redesign-recipe__product-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.redesign-recipe__product-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.redesign-recipe__product-content {
+    max-width: 500px;
+}
+
+.redesign-recipe__product-label {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.redesign-recipe__product-title {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 42px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin: 0 0 20px;
+    line-height: 1.2;
+}
+
+.redesign-recipe__product-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    margin: 0;
+}
+
+.redesign-recipe__product-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #000;
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.redesign-recipe__product-button:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.redesign-recipe__product-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Sidebar */
+.redesign-recipe__sidebar {
+    position: relative;
+}
+
+.redesign-recipe__sidebar-sticky {
+    position: sticky;
+    top: 100px;
+}
+
+.redesign-recipe__sidebar-section {
+    background: #f8f8f8;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.redesign-recipe__sidebar-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.redesign-recipe__sidebar-list {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+}
+
+.redesign-recipe__sidebar-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.redesign-recipe__sidebar-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+    position: relative;
+}
+
+.redesign-recipe__sidebar-list li:last-child {
+    border-bottom: none;
+}
+
+.redesign-recipe__sidebar-list li.featured-ingredient {
+    color: #2c5530;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.ingredient-product-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.redesign-recipe__sidebar-product {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.redesign-recipe__sidebar-product img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .redesign-recipe__container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .redesign-recipe__sidebar-sticky {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .redesign-recipe__hero {
+        height: 300px;
+    }
+
+    .redesign-recipe__container {
+        padding: 40px 20px;
+    }
+
+    .redesign-recipe__title {
+        font-size: 32px;
+    }
+
+    .redesign-recipe__meta {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .redesign-recipe__product-hero {
+        height: 400px;
+    }
+
+    .redesign-recipe__product-bg {
+        width: 100%;
+        opacity: 0.3;
+    }
+
+    .redesign-recipe__product-overlay {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .redesign-recipe__product-title {
+        font-size: 32px;
+    }
+
+    .redesign-recipe__product-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* Interactive Checkboxes */
+.redesign-recipe__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+}
+
+.redesign-recipe__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.redesign-recipe__checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+    margin-top: 2px;
+}
+
+.redesign-recipe__checkbox:checked+.redesign-recipe__checkbox-custom {
+    background: #2c2c2c;
+    border-color: #2c2c2c;
+}
+
+.redesign-recipe__checkbox:checked+.redesign-recipe__checkbox-custom::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.redesign-recipe__checkbox:checked~.redesign-recipe__ingredient-text,
+.redesign-recipe__checkbox:checked~.redesign-recipe__instruction-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.redesign-recipe__ingredient-text,
+.redesign-recipe__instruction-text {
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.redesign-recipe__checkbox-label:hover .redesign-recipe__checkbox-custom {
+    border-color: #2c2c2c;
+}
+
+/* Instructions list specific styling */
+.redesign-recipe__instructions-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    counter-reset: step-counter;
+}
+
+.redesign-recipe__instruction-item {
+    margin-bottom: 24px;
+    counter-increment: step-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.redesign-recipe__instruction-item::before {
+    content: counter(step-counter);
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    background: #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.redesign-recipe__instruction-item .redesign-recipe__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+}
+
+.redesign-recipe__instruction-item .redesign-recipe__checkbox-custom {
+    position: static;
+    margin-top: 2px;
+}

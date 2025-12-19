@@ -1,0 +1,436 @@
+.collaborations-page {
+    font-family: 'Raleway', Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.collaborations-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero Section */
+.collaborations-hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: 'Soho Pro', serif;
+    font-size: 3.5rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #000;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Collaboration Sections */
+.collaboration-section {
+    padding: 5rem 0;
+}
+
+.collaboration-section--alt {
+    background: #fafafa;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-family: 'Soho Pro', serif;
+    font-size: 2.5rem;
+    color: #000;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.section-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Partners Grid */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    background: white;
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+}
+
+.partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.partner-logo {
+    font-family: 'Soho Pro', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 1rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-name {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Partners List (Tags) */
+.partners-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.partner-tag {
+    background: white;
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid #000;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.partner-tag:hover {
+    background: #000;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* University Card */
+.university-card {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.university-name {
+    font-family: 'Soho Pro', serif;
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.university-description {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* Closing Section */
+.collaboration-closing {
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    color: white;
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.closing-title {
+    font-family: 'Soho Pro', serif;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+.closing-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    opacity: 0.9;
+}
+
+.closing-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (min-width: 1400px) {
+    .collaborations-page .container {
+        max-width: 1400px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .collaborations-page .container {
+        max-width: 1600px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .collaborations-hero {
+        padding: 3rem 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .collaboration-section {
+        padding: 3rem 0;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-description {
+        font-size: 1rem;
+    }
+
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .partner-logo {
+        font-size: 2rem;
+        min-height: 60px;
+    }
+
+    .partners-list {
+        gap: 1rem;
+    }
+
+    .partner-tag {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .university-card {
+        padding: 2rem;
+    }
+
+    .university-name {
+        font-size: 1.5rem;
+    }
+
+    .university-description {
+        font-size: 1rem;
+    }
+
+    .collaboration-closing {
+        padding: 3rem 0;
+    }
+
+    .closing-title {
+        font-size: 2rem;
+    }
+
+    .closing-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .collaborations-page .container {
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* Pa
+rtner Images */
+.partner-card {
+    text-decoration: none;
+    display: block;
+}
+
+.partner-image {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.partner-image img {
+    max-width: 100%;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Education Partners Grid */
+.education-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.education-partner-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    text-decoration: none;
+    display: block;
+}
+
+.education-partner-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.education-partner-image {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.education-partner-image img {
+    max-width: 100%;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.education-partner-name {
+    font-size: 1rem;
+    color: #000;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* University Image */
+.university-card {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
+.university-image {
+    margin-bottom: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.university-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive for Education Partners */
+@media (max-width: 1024px) {
+    .education-partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .education-partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .education-partner-card {
+        padding: 1.5rem;
+    }
+
+    .education-partner-image {
+        min-height: 60px;
+    }
+
+    .education-partner-image img {
+        max-height: 60px;
+    }
+
+    .partner-image {
+        min-height: 100px;
+    }
+
+    .partner-image img {
+        max-height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .education-partners-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,124 @@
+{{ 'section-blog-recipes.css' | asset_url | stylesheet_tag }}
+
+<div class="container--large container--vertical-space">
+  {% if section.settings.show_page_title %}
+    <header class="section-heading section-heading--center">
+      <h1 class="section-heading__title heading-size--page-title">{{ blog.title }}</h1>
+      {% if section.settings.page_description %}
+        <div class="section-heading__subheading text-size--large">
+          <p>{{ section.settings.page_description }}</p>
+        </div>
+      {% endif %}
+    </header>
+  {% endif %}
+
+  <div class="recipe-filters">
+    <div class="filter-group">
+      <label>Category:</label>
+      <button class="filter-btn active" data-filter="category" data-value="all">All</button>
+      <button class="filter-btn" data-filter="category" data-value="pasta">Pasta</button>
+      <button class="filter-btn" data-filter="category" data-value="appetizers">Appetizers</button>
+      <button class="filter-btn" data-filter="category" data-value="main-courses">Main Courses</button>
+      <button class="filter-btn" data-filter="category" data-value="desserts">Desserts</button>
+    </div>
+    
+    <div class="filter-group">
+      <label>Chef:</label>
+      <button class="filter-btn active" data-filter="chef" data-value="all">All Chefs</button>
+      {% assign chefs = blog.articles | map: 'metafields.recipe.chef_name' | uniq %}
+      {% for chef in chefs %}
+        {% if chef != blank %}
+          <button class="filter-btn" data-filter="chef" data-value="{{ chef | handleize }}">{{ chef }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="recipes-grid" id="recipes-grid">
+    {% for article in blog.articles %}
+      {% assign recipe_category = article.metafields.recipe.category %}
+      {% assign chef_name = article.metafields.recipe.chef_name %}
+      {% assign prep_time = article.metafields.recipe.time %}
+      {% assign servings = article.metafields.recipe.recipe_serving_size %}
+      
+      <article class="recipe-card card" 
+               data-category="{{ recipe_category }}" 
+               data-chef="{{ chef_name | handleize }}">
+        
+        {% if article.image %}
+          <div class="recipe-image card__image" data-ratio="0.75">
+            <img src="{{ article.image | img_url: '600x450' }}" 
+                 alt="{{ article.title }}" 
+                 loading="lazy"
+                 width="600"
+                 height="450">
+          </div>
+        {% endif %}
+        
+        <div class="recipe-content card__text">
+          <h3 class="recipe-title">{{ article.title }}</h3>
+          
+          <div class="recipe-meta">
+            {% if prep_time %}
+              <span class="prep-time pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ prep_time }}
+              </span>
+            {% endif %}
+            {% if servings %}
+              <span class="servings pill pill--no-bg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                {{ servings }}
+              </span>
+            {% endif %}
+          </div>
+
+          {% if chef_name %}
+            <div class="recipe-chef">
+              <span class="chef-name">Chef {{ chef_name }}</span>
+            </div>
+          {% endif %}
+
+          {% if article.excerpt %}
+            <p class="recipe-description">{{ article.excerpt | strip_html | truncate: 120 }}</p>
+          {% endif %}
+
+          <a href="{{ article.url }}" class="view-recipe-btn">View Full Recipe</a>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{{ 'recipe-filters.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Blog Recipes",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_page_title",
+      "label": "Show page title",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "page_description",
+      "label": "Page description",
+      "default": "Discover authentic Italian recipes using our premium olive oils"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Recipes"
+    }
+  ]
+}
+{% endschema %}
