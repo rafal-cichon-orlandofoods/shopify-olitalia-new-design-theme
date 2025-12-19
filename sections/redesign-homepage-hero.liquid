@@ -1,14 +1,20 @@
 {{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
 
-<section class="redesign-hero">
+<section
+  class="redesign-hero"
+  style="--motion-strength: {{ section.settings.motion_strength | default: 6 }}%;"
+>
   {% if section.settings.background_image %}
-    <img 
-      src="{{ section.settings.background_image | image_url: width: 2500 }}" 
-      alt="Background"
-      class="redesign-hero__background"
-      loading="eager"
-      style="object-position: {{ section.settings.image_position_x }}% {{ section.settings.image_position_y }}%;"
-    >
+<img 
+  src="{{ section.settings.background_image | image_url: width: 2500 }}" 
+  alt="Background"
+  class="redesign-hero__background{% if section.settings.enable_motion %} redesign-hero__background--motion{% endif %}"
+  loading="eager"
+  decoding="async"
+  fetchpriority="high"
+  style="object-position: {{ section.settings.image_position_x }}% {{ section.settings.image_position_y }}%;"
+>
+
   {% endif %}
   
   <div class="redesign-hero__content">
@@ -53,6 +59,23 @@
       "id": "background_image",
       "label": "Background Image"
     },
+    {
+  "type": "checkbox",
+  "id": "enable_motion",
+  "label": "Enable subtle background motion",
+  "default": true
+},
+{
+  "type": "range",
+  "id": "motion_strength",
+  "min": 2,
+  "max": 12,
+  "step": 1,
+  "unit": "%",
+  "label": "Motion strength",
+  "default": 6
+},
+
     {
       "type": "image_picker",
       "id": "product_image",
