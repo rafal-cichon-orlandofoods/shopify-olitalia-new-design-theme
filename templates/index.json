@@ -20,11 +20,15 @@
       "type": "redesign-homepage-hero",
       "name": "Redesign Hero",
       "settings": {
-        "background_image": "shopify://shop_images/3S7A3731_1.jpg",
+        "background_image": "shopify://shop_images/3S7A3731.png",
+        "enable_motion": true,
+        "motion_strength": 6,
         "title": "Extra Virgin Olive Oil",
         "description": "Crafted from the finest olives, our Extra Virgin Olive Oil brings authentic Mediterranean flavor to every dish.",
         "button_text": "Shop Now",
-        "button_link": "shopify://products/extra-virgin-olive-oil-500ml"
+        "button_link": "shopify://products/extra-virgin-olive-oil-500ml",
+        "image_position_x": 50,
+        "image_position_y": 50
       }
     },
     "redesign_testimonial_simple_YUfKBx": {
@@ -40,6 +44,7 @@
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
       "settings": {
+        "title": "Featured Recipes",
         "recipe_limit": 6
       }
     },
