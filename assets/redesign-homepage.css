@@ -621,13 +621,34 @@
   will-change: transform;
   transform: scale(1.06) translate3d(0,0,0);
   animation: redesignKenBurnsVar 14s ease-in-out infinite alternate;
+  /* Force hardware acceleration on mobile */
+  -webkit-transform: scale(1.06) translate3d(0,0,0);
+  -webkit-animation: redesignKenBurnsVar 14s ease-in-out infinite alternate;
+  /* Ensure animation runs on mobile */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 @keyframes redesignKenBurnsVar{
   from {
     transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
   }
   to {
+    transform: scale(1.15) translate3d(1%, 0.5%, 0);
+    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
+  }
+}
+
+/* Webkit keyframes for iOS Safari */
+@-webkit-keyframes redesignKenBurnsVar{
+  from {
+    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+  }
+  to {
+    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
     transform: scale(1.15) translate3d(1%, 0.5%, 0);
   }
 }
@@ -636,22 +657,33 @@
 /* Disable motion for accessibility and performance */
 @media (prefers-reduced-motion: reduce){
   .redesign-hero__background--motion{
-    animation: none;
-    transform: none;
+    animation: none !important;
+    -webkit-animation: none !important;
+    transform: scale(1.06) translate3d(0,0,0) !important;
+    -webkit-transform: scale(1.06) translate3d(0,0,0) !important;
   }
 }
 
 /* Optimize motion for different screen sizes */
 @media (max-width: 768px) {
   .redesign-hero__background--motion {
-    --ms: calc(var(--motion-strength, 6%) * 0.9); /* 90% intensity on tablets */
     animation-duration: 15s;
+    -webkit-animation-duration: 15s;
+    /* Force animation on tablets */
+    animation-play-state: running !important;
+    -webkit-animation-play-state: running !important;
   }
 }
 
 @media (max-width: 480px) {
   .redesign-hero__background--motion {
-    --ms: calc(var(--motion-strength, 6%) * 1.2); /* 120% intensity on phones - more visible on small screens */
     animation-duration: 16s;
+    -webkit-animation-duration: 16s;
+    /* Force animation on mobile phones */
+    animation-play-state: running !important;
+    -webkit-animation-play-state: running !important;
+    /* Additional mobile optimizations */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
   }
 }
