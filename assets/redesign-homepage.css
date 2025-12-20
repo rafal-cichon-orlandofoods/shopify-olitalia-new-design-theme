@@ -625,17 +625,33 @@
 
 @keyframes redesignKenBurnsVar{
   from {
-    transform: scale(1.06) translate3d(calc(var(--ms) * -0.25), calc(var(--ms) * -0.15), 0);
+    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
   }
   to {
-    transform: scale(1.12) translate3d(calc(var(--ms) * 0.25),  calc(var(--ms) * 0.15), 0);
+    transform: scale(1.15) translate3d(1%, 0.5%, 0);
   }
 }
 
 
+/* Disable motion for accessibility and performance */
 @media (prefers-reduced-motion: reduce){
   .redesign-hero__background--motion{
     animation: none;
     transform: none;
+  }
+}
+
+/* Optimize motion for different screen sizes */
+@media (max-width: 768px) {
+  .redesign-hero__background--motion {
+    --ms: calc(var(--motion-strength, 6%) * 0.9); /* 90% intensity on tablets */
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  .redesign-hero__background--motion {
+    --ms: calc(var(--motion-strength, 6%) * 1.2); /* 120% intensity on phones - more visible on small screens */
+    animation-duration: 16s;
   }
 }
