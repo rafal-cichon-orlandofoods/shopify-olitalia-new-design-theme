@@ -17,8 +17,8 @@
         "height": "small"
       }
     },
-    "redesign-sustainability": {
-      "type": "redesign-sustainability-page",
+    "sustainability-figma": {
+      "type": "sustainability-figma",
       "settings": {
         "hero_title": "Looking Forward",
         "hero_subtitle": "Sustainability at Olitalia is not a destination — it's a direction.",
@@ -63,7 +63,7 @@
   "order": [
     "redesign-header",
     "main",
-    "redesign-sustainability",
+    "sustainability-figma",
     "redesign-footer"
   ]
 }

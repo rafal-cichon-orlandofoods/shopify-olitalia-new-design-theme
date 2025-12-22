@@ -1,14 +1,15 @@
-/* Sustainability Page - Exact Figma Implementation */
-.sustainability-page {
+/* Sustainability Figma - Exact Implementation */
+.sustainability-figma {
   background: #ffffff;
   color: #121212;
   font-family: 'Inter', Arial, sans-serif;
   position: relative;
   width: 100%;
+  min-height: 8000px;
 }
 
-/* Hero Background Image */
-.sustainability-hero-bg {
+/* Hero Background Image - Exact Figma positioning */
+.sustainability-figma__hero-bg {
   position: absolute;
   height: 734px;
   left: 0;
@@ -17,7 +18,7 @@
   overflow: hidden;
 }
 
-.sustainability-hero-bg__image {
+.sustainability-figma__hero-image {
   position: absolute;
   height: 240.08%;
   left: -58.47%;
@@ -26,19 +27,19 @@
   object-fit: cover;
 }
 
-/* Hero Text Content */
-.sustainability-hero-text {
+/* Hero Text Content - Exact Figma positioning */
+.sustainability-figma__hero-text {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   line-height: 36px;
-  left: calc(50% - 604px);
+  left: calc(50% - 587.5px);
   top: 1065px;
   width: 1175px;
   color: #121212;
 }
 
-.sustainability-hero-text__title {
+.sustainability-figma__hero-title {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
@@ -46,27 +47,27 @@
   line-height: 1;
 }
 
-.sustainability-hero-text__subtitle {
+.sustainability-figma__hero-subtitle {
   font-size: 32px;
   margin: 0 0 32px 0;
   line-height: 1.2;
 }
 
-.sustainability-hero-text__description {
+.sustainability-figma__hero-description {
   font-size: 32px;
   line-height: 1.4;
 }
 
-.sustainability-hero-text__description p {
+.sustainability-figma__hero-description p {
   margin: 0;
 }
 
-/* Plastic No More Section */
-.sustainability-plastic {
+/* Plastic No More Section - Exact Figma positioning */
+.sustainability-figma__plastic {
   position: relative;
 }
 
-.sustainability-plastic__icon {
+.sustainability-figma__plastic-icon {
   position: absolute;
   left: 110px;
   top: 1628px;
@@ -74,19 +75,19 @@
   height: 379px;
 }
 
-.sustainability-plastic__icon-img {
+.sustainability-figma__plastic-icon-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
-.sustainability-plastic__title {
+.sustainability-figma__plastic-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 203px);
+  left: calc(50% - 419px);
   top: 1678px;
   width: 838px;
   height: 116px;
@@ -97,13 +98,13 @@
   text-overflow: ellipsis;
 }
 
-.sustainability-plastic__description {
+.sustainability-figma__plastic-description {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 197px);
+  left: calc(50% - 395px);
   top: 1777px;
   width: 790px;
   height: 230px;
@@ -111,7 +112,7 @@
   color: #121212;
 }
 
-.sustainability-plastic__stat {
+.sustainability-figma__plastic-stat {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -119,43 +120,32 @@
   color: #121212;
 }
 
-.sustainability-plastic__stat--left {
-  left: calc(50% - 197px);
+.sustainability-figma__plastic-stat--left {
+  left: calc(50% - 395px);
   top: 1996px;
   width: 391px;
   height: 319px;
 }
 
-.sustainability-plastic__stat--right {
+.sustainability-figma__plastic-stat--right {
   left: calc(50% + 268px);
   top: 1996px;
   width: 367px;
   height: 321px;
 }
 
-.sustainability-plastic__stat-number {
-  display: block;
-  font-size: 64px;
-  margin-bottom: 0;
-}
-
-.sustainability-plastic__stat-label {
-  display: block;
-  font-size: 48px;
-}
-
-/* Collaboration Section */
-.sustainability-collaboration {
+/* Collaboration Section - Exact Figma positioning */
+.sustainability-figma__collaboration {
   position: relative;
 }
 
-.sustainability-collaboration__title {
+.sustainability-figma__collaboration-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 2558px;
   width: 1175px;
   height: 201px;
@@ -163,7 +153,7 @@
   color: #121212;
 }
 
-.sustainability-collaboration__image {
+.sustainability-figma__collaboration-image {
   position: absolute;
   height: 591px;
   left: 142px;
@@ -173,45 +163,45 @@
   overflow: hidden;
 }
 
-.sustainability-collaboration__image-img {
+.sustainability-figma__collaboration-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50px;
 }
 
-.sustainability-collaboration__text {
+.sustainability-figma__collaboration-text {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 3386px;
   width: 1175px;
   color: #121212;
 }
 
-.sustainability-collaboration__text p {
+.sustainability-figma__collaboration-text p {
   margin: 0 0 24px 0;
 }
 
-.sustainability-collaboration__text p:last-child {
+.sustainability-figma__collaboration-text p:last-child {
   margin-bottom: 0;
 }
 
-/* Full Circle Thinking Section */
-.sustainability-circle {
+/* Full Circle Thinking Section - Exact Figma positioning */
+.sustainability-figma__circle {
   position: relative;
 }
 
-.sustainability-circle__title {
+.sustainability-figma__circle-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 614px);
+  left: calc(50% - 388.5px);
   top: 3968px;
   width: 777px;
   height: 222px;
@@ -221,20 +211,20 @@
   text-overflow: ellipsis;
 }
 
-.sustainability-circle__description {
+.sustainability-figma__circle-description {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 4190px;
   width: 1175px;
   margin: 0;
   color: #121212;
 }
 
-.sustainability-circle__stat {
+.sustainability-figma__circle-stat {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -242,43 +232,32 @@
   color: #121212;
 }
 
-.sustainability-circle__stat--left {
-  left: calc(50% - 614px);
+.sustainability-figma__circle-stat--left {
+  left: calc(50% - 587.5px);
   top: 4329px;
   width: 383px;
   height: 269px;
 }
 
-.sustainability-circle__stat--right {
-  left: calc(50% - 147px);
+.sustainability-figma__circle-stat--right {
+  left: calc(50% - 115px);
   top: 4329px;
   width: 230px;
   height: 269px;
 }
 
-.sustainability-circle__stat-number {
-  display: block;
-  font-size: 64px;
-  margin-bottom: 0;
-}
-
-.sustainability-circle__stat-label {
-  display: block;
-  font-size: 48px;
-}
-
-/* Used but Full of Life Project Section */
-.sustainability-life {
+/* Used but Full of Life Project Section - Exact Figma positioning */
+.sustainability-figma__life {
   position: relative;
 }
 
-.sustainability-life__title {
+.sustainability-figma__life-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 614px);
+  left: calc(50% - 388.5px);
   top: 4839px;
   width: 777px;
   height: 222px;
@@ -288,20 +267,20 @@
   text-overflow: ellipsis;
 }
 
-.sustainability-life__description {
+.sustainability-figma__life-description {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 5044px;
   width: 1175px;
   margin: 0;
   color: #121212;
 }
 
-.sustainability-life__image {
+.sustainability-figma__life-image {
   position: absolute;
   height: 555px;
   left: 142px;
@@ -311,7 +290,7 @@
   overflow: hidden;
 }
 
-.sustainability-life__image-img {
+.sustainability-figma__life-img {
   position: absolute;
   height: 100%;
   left: -18.92%;
@@ -321,7 +300,7 @@
   border-radius: 50px;
 }
 
-.sustainability-life__stat {
+.sustainability-figma__life-stat {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -329,50 +308,39 @@
   color: #121212;
 }
 
-.sustainability-life__stat--first {
+.sustainability-figma__life-stat--first {
   left: calc(50% + 120px);
   top: 5147px;
   width: 383px;
   height: 269px;
 }
 
-.sustainability-life__stat--second {
+.sustainability-figma__life-stat--second {
   left: calc(50% + 130px);
   top: 5464px;
   width: 407px;
   height: 269px;
 }
 
-.sustainability-life__stat-number {
-  display: block;
-  font-size: 64px;
-  margin-bottom: 0;
-}
-
-.sustainability-life__stat-label {
-  display: block;
-  font-size: 48px;
-}
-
-/* People at Heart Section */
-.sustainability-people {
+/* People at Heart Section - Exact Figma positioning */
+.sustainability-figma__people {
   position: relative;
 }
 
-.sustainability-people__title {
+.sustainability-figma__people-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 5974px;
   width: 1175px;
   margin: 0;
   color: #121212;
 }
 
-.sustainability-people__image {
+.sustainability-figma__people-image {
   position: absolute;
   height: 591px;
   left: 142px;
@@ -382,7 +350,7 @@
   overflow: hidden;
 }
 
-.sustainability-people__image-img {
+.sustainability-figma__people-img {
   position: absolute;
   height: 145.7%;
   left: -1.91%;
@@ -392,38 +360,38 @@
   border-radius: 50px;
 }
 
-.sustainability-people__text {
+.sustainability-figma__people-text {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 6707px;
   width: 1175px;
   color: #121212;
 }
 
-.sustainability-people__text p {
+.sustainability-figma__people-text p {
   margin: 0 0 24px 0;
 }
 
-.sustainability-people__text p:last-child {
+.sustainability-figma__people-text p:last-child {
   margin-bottom: 0;
 }
 
-/* Efficient Resource Use Section */
-.sustainability-resource {
+/* Efficient Resource Use Section - Exact Figma positioning */
+.sustainability-figma__resource {
   position: relative;
 }
 
-.sustainability-resource__title {
+.sustainability-figma__resource-title {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 614px);
+  left: calc(50% - 388.5px);
   top: 7217px;
   width: 777px;
   height: 222px;
@@ -433,20 +401,20 @@
   text-overflow: ellipsis;
 }
 
-.sustainability-resource__description {
+.sustainability-figma__resource-description {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 24px;
   line-height: 36px;
-  left: calc(50% - 614px);
+  left: calc(50% - 587.5px);
   top: 7439px;
   width: 1175px;
   margin: 0;
   color: #121212;
 }
 
-.sustainability-resource__stat {
+.sustainability-figma__resource-stat {
   position: absolute;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -454,109 +422,121 @@
   color: #121212;
 }
 
-.sustainability-resource__stat--left {
-  left: calc(50% - 614px);
+.sustainability-figma__resource-stat--left {
+  left: calc(50% - 587.5px);
   top: 7578px;
   width: 295px;
   height: 269px;
 }
 
-.sustainability-resource__stat--right {
-  left: calc(50% - 147px);
+.sustainability-figma__resource-stat--right {
+  left: calc(50% - 159px);
   top: 7578px;
   width: 318px;
   height: 269px;
 }
 
-.sustainability-resource__stat-number {
+/* Shared Stat Styles */
+.sustainability-figma__stat-number {
   display: block;
   font-size: 64px;
   margin-bottom: 0;
 }
 
-.sustainability-resource__stat-label {
+.sustainability-figma__stat-label {
   display: block;
   font-size: 48px;
 }
 
 /* Responsive Design */
 @media (max-width: 1400px) {
-  .sustainability-hero-text {
+  .sustainability-figma__hero-text {
     left: calc(50% - 500px);
     width: 1000px;
   }
   
-  .sustainability-plastic__title {
-    left: calc(50% - 200px);
+  .sustainability-figma__plastic-title {
+    left: calc(50% - 350px);
     width: 700px;
   }
   
-  .sustainability-plastic__description {
-    left: calc(50% - 200px);
+  .sustainability-figma__plastic-description {
+    left: calc(50% - 350px);
     width: 600px;
   }
   
-  .sustainability-collaboration__title,
-  .sustainability-collaboration__text,
-  .sustainability-circle__title,
-  .sustainability-circle__description,
-  .sustainability-life__title,
-  .sustainability-life__description,
-  .sustainability-people__title,
-  .sustainability-people__text,
-  .sustainability-resource__title,
-  .sustainability-resource__description {
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__life-title,
+  .sustainability-figma__life-description,
+  .sustainability-figma__people-title,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-title,
+  .sustainability-figma__resource-description {
     left: calc(50% - 500px);
     width: 1000px;
+  }
+  
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__people-image {
+    left: 100px;
+    width: 1000px;
+  }
+  
+  .sustainability-figma__life-image {
+    left: 100px;
+    width: 500px;
   }
 }
 
 @media (max-width: 1024px) {
-  .sustainability-hero-text__title,
-  .sustainability-plastic__title,
-  .sustainability-collaboration__title,
-  .sustainability-circle__title,
-  .sustainability-life__title,
-  .sustainability-people__title,
-  .sustainability-resource__title {
+  .sustainability-figma__hero-title,
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__life-title,
+  .sustainability-figma__people-title,
+  .sustainability-figma__resource-title {
     font-size: 72px;
   }
   
-  .sustainability-hero-text__subtitle {
+  .sustainability-figma__hero-subtitle {
     font-size: 28px;
   }
   
-  .sustainability-hero-text__description {
+  .sustainability-figma__hero-description {
     font-size: 24px;
   }
   
-  .sustainability-plastic__stat-number,
-  .sustainability-circle__stat-number,
-  .sustainability-life__stat-number,
-  .sustainability-resource__stat-number {
+  .sustainability-figma__stat-number {
     font-size: 48px;
   }
   
-  .sustainability-plastic__stat-label,
-  .sustainability-circle__stat-label,
-  .sustainability-life__stat-label,
-  .sustainability-resource__stat-label {
+  .sustainability-figma__stat-label {
     font-size: 36px;
+  }
+  
+  .sustainability-figma__plastic-icon {
+    width: 280px;
+    height: 280px;
   }
 }
 
 @media (max-width: 768px) {
-  .sustainability-page {
+  .sustainability-figma {
     position: static;
+    min-height: auto;
   }
   
-  .sustainability-hero-bg {
+  .sustainability-figma__hero-bg {
     position: relative;
     top: 0;
     height: 400px;
   }
   
-  .sustainability-hero-text {
+  .sustainability-figma__hero-text {
     position: relative;
     left: 20px;
     top: 40px;
@@ -567,49 +547,49 @@
     margin-bottom: 60px;
   }
   
-  .sustainability-hero-text__title {
+  .sustainability-figma__hero-title {
     font-size: 48px;
   }
   
-  .sustainability-hero-text__subtitle {
+  .sustainability-figma__hero-subtitle {
     font-size: 24px;
   }
   
-  .sustainability-hero-text__description {
+  .sustainability-figma__hero-description {
     font-size: 18px;
   }
   
   /* Reset all absolute positioning for mobile */
-  .sustainability-plastic,
-  .sustainability-collaboration,
-  .sustainability-circle,
-  .sustainability-life,
-  .sustainability-people,
-  .sustainability-resource {
+  .sustainability-figma__plastic,
+  .sustainability-figma__collaboration,
+  .sustainability-figma__circle,
+  .sustainability-figma__life,
+  .sustainability-figma__people,
+  .sustainability-figma__resource {
     position: relative;
     padding: 60px 20px;
   }
   
-  .sustainability-plastic__icon,
-  .sustainability-plastic__title,
-  .sustainability-plastic__description,
-  .sustainability-plastic__stat,
-  .sustainability-collaboration__title,
-  .sustainability-collaboration__image,
-  .sustainability-collaboration__text,
-  .sustainability-circle__title,
-  .sustainability-circle__description,
-  .sustainability-circle__stat,
-  .sustainability-life__title,
-  .sustainability-life__description,
-  .sustainability-life__image,
-  .sustainability-life__stat,
-  .sustainability-people__title,
-  .sustainability-people__image,
-  .sustainability-people__text,
-  .sustainability-resource__title,
-  .sustainability-resource__description,
-  .sustainability-resource__stat {
+  .sustainability-figma__plastic-icon,
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__plastic-stat,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__circle-stat,
+  .sustainability-figma__life-title,
+  .sustainability-figma__life-description,
+  .sustainability-figma__life-image,
+  .sustainability-figma__life-stat,
+  .sustainability-figma__people-title,
+  .sustainability-figma__people-image,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-title,
+  .sustainability-figma__resource-description,
+  .sustainability-figma__resource-stat {
     position: relative;
     left: auto;
     top: auto;
@@ -618,64 +598,58 @@
     margin-bottom: 30px;
   }
   
-  .sustainability-plastic__icon {
+  .sustainability-figma__plastic-icon {
     text-align: center;
     margin-bottom: 40px;
   }
   
-  .sustainability-plastic__icon-img {
+  .sustainability-figma__plastic-icon-img {
     width: 200px;
     height: 200px;
   }
   
-  .sustainability-plastic__title,
-  .sustainability-collaboration__title,
-  .sustainability-circle__title,
-  .sustainability-life__title,
-  .sustainability-people__title,
-  .sustainability-resource__title {
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__life-title,
+  .sustainability-figma__people-title,
+  .sustainability-figma__resource-title {
     font-size: 48px;
     text-align: center;
     white-space: normal;
   }
   
-  .sustainability-plastic__description,
-  .sustainability-collaboration__text,
-  .sustainability-circle__description,
-  .sustainability-life__description,
-  .sustainability-people__text,
-  .sustainability-resource__description {
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__life-description,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-description {
     font-size: 18px;
     text-align: center;
   }
   
-  .sustainability-collaboration__image,
-  .sustainability-life__image,
-  .sustainability-people__image {
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__life-image,
+  .sustainability-figma__people-image {
     width: 100%;
     height: 300px;
     margin: 30px 0;
   }
   
-  .sustainability-plastic__stat,
-  .sustainability-circle__stat,
-  .sustainability-life__stat,
-  .sustainability-resource__stat {
+  .sustainability-figma__plastic-stat,
+  .sustainability-figma__circle-stat,
+  .sustainability-figma__life-stat,
+  .sustainability-figma__resource-stat {
     text-align: center;
     margin: 20px 0;
   }
   
-  .sustainability-plastic__stat-number,
-  .sustainability-circle__stat-number,
-  .sustainability-life__stat-number,
-  .sustainability-resource__stat-number {
+  .sustainability-figma__stat-number {
     font-size: 40px;
   }
   
-  .sustainability-plastic__stat-label,
-  .sustainability-circle__stat-label,
-  .sustainability-life__stat-label,
-  .sustainability-resource__stat-label {
+  .sustainability-figma__stat-label {
     font-size: 24px;
   }
 }

@@ -1,102 +1,122 @@
-{{ 'redesign-sustainability-page.css' | asset_url | stylesheet_tag }}
+{{ 'sustainability-figma.css' | asset_url | stylesheet_tag }}
 
-<div class="sustainability-page">
+<div class="sustainability-figma">
   
   {% comment %} Hero Background Image {% endcomment %}
-  <div class="sustainability-hero-bg">
-    <img src="{{ section.settings.hero_image | image_url: width: 1512 }}" alt="Sustainability Hero" class="sustainability-hero-bg__image">
+  <div class="sustainability-figma__hero-bg">
+    <img src="{{ section.settings.hero_image | image_url: width: 1512 }}" 
+         alt="Sustainability Hero" 
+         class="sustainability-figma__hero-image"
+         width="1512" 
+         height="734">
   </div>
 
   {% comment %} Hero Text Content {% endcomment %}
-  <div class="sustainability-hero-text">
-    <h1 class="sustainability-hero-text__title">{{ section.settings.hero_title | default: "Looking Forward" }}</h1>
-    <p class="sustainability-hero-text__subtitle">{{ section.settings.hero_subtitle | default: "Sustainability at Olitalia is not a destination — it's a direction." }}</p>
-    <div class="sustainability-hero-text__description">
+  <div class="sustainability-figma__hero-text">
+    <h1 class="sustainability-figma__hero-title">{{ section.settings.hero_title | default: "Looking Forward" }}</h1>
+    <p class="sustainability-figma__hero-subtitle">{{ section.settings.hero_subtitle | default: "Sustainability at Olitalia is not a destination — it's a direction." }}</p>
+    <div class="sustainability-figma__hero-description">
       {{ section.settings.hero_text | default: "<p>We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future. Because protecting what matters today is the best way to safeguard the future of flavor and ensuring that used oils are given a second life as renewable energy.</p>" }}
     </div>
   </div>
 
   {% comment %} Plastic No More Section {% endcomment %}
-  <div class="sustainability-plastic">
-    <div class="sustainability-plastic__icon">
-      <img src="{{ section.settings.plastic_icon | image_url: width: 379 }}" alt="Plastic No More Icon" class="sustainability-plastic__icon-img">
+  <div class="sustainability-figma__plastic">
+    <div class="sustainability-figma__plastic-icon">
+      <img src="{{ section.settings.plastic_icon | image_url: width: 379 }}" 
+           alt="Plastic No More Icon" 
+           class="sustainability-figma__plastic-icon-img"
+           width="379" 
+           height="379">
     </div>
-    <h2 class="sustainability-plastic__title">{{ section.settings.plastic_title | default: "Plastic No More" }}</h2>
-    <p class="sustainability-plastic__description">{{ section.settings.plastic_description | default: "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials." }}</p>
-    <div class="sustainability-plastic__stat sustainability-plastic__stat--left">
-      <span class="sustainability-plastic__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
-      <span class="sustainability-plastic__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
+    <h2 class="sustainability-figma__plastic-title">{{ section.settings.plastic_title | default: "Plastic No More" }}</h2>
+    <p class="sustainability-figma__plastic-description">{{ section.settings.plastic_description | default: "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials." }}</p>
+    <div class="sustainability-figma__plastic-stat sustainability-figma__plastic-stat--left">
+      <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
     </div>
-    <div class="sustainability-plastic__stat sustainability-plastic__stat--right">
-      <span class="sustainability-plastic__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
-      <span class="sustainability-plastic__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
+    <div class="sustainability-figma__plastic-stat sustainability-figma__plastic-stat--right">
+      <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
     </div>
   </div>
 
   {% comment %} Collaboration Section {% endcomment %}
-  <div class="sustainability-collaboration">
-    <h2 class="sustainability-collaboration__title">{{ section.settings.collaboration_title | default: "Collaboration That Creates Change" }}</h2>
-    <div class="sustainability-collaboration__image">
-      <img src="{{ section.settings.collaboration_image | image_url: width: 1207 }}" alt="Collaboration" class="sustainability-collaboration__image-img">
+  <div class="sustainability-figma__collaboration">
+    <h2 class="sustainability-figma__collaboration-title">{{ section.settings.collaboration_title | default: "Collaboration That Creates Change" }}</h2>
+    <div class="sustainability-figma__collaboration-image">
+      <img src="{{ section.settings.collaboration_image | image_url: width: 1207 }}" 
+           alt="Collaboration" 
+           class="sustainability-figma__collaboration-img"
+           width="1207" 
+           height="591">
     </div>
-    <div class="sustainability-collaboration__text">
+    <div class="sustainability-figma__collaboration-text">
       {{ section.settings.collaboration_description | default: "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.</p><p>Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.</p>" }}
     </div>
   </div>
 
   {% comment %} Full Circle Thinking Section {% endcomment %}
-  <div class="sustainability-circle">
-    <h2 class="sustainability-circle__title">{{ section.settings.circle_title | default: "Full Circle Thinking" }}</h2>
-    <p class="sustainability-circle__description">{{ section.settings.circle_description | default: "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources." }}</p>
-    <div class="sustainability-circle__stat sustainability-circle__stat--left">
-      <span class="sustainability-circle__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
-      <span class="sustainability-circle__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
+  <div class="sustainability-figma__circle">
+    <h2 class="sustainability-figma__circle-title">{{ section.settings.circle_title | default: "Full Circle Thinking" }}</h2>
+    <p class="sustainability-figma__circle-description">{{ section.settings.circle_description | default: "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources." }}</p>
+    <div class="sustainability-figma__circle-stat sustainability-figma__circle-stat--left">
+      <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
     </div>
-    <div class="sustainability-circle__stat sustainability-circle__stat--right">
-      <span class="sustainability-circle__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
-      <span class="sustainability-circle__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
+    <div class="sustainability-figma__circle-stat sustainability-figma__circle-stat--right">
+      <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
     </div>
   </div>
 
   {% comment %} Used but Full of Life Project Section {% endcomment %}
-  <div class="sustainability-life">
-    <h2 class="sustainability-life__title">{{ section.settings.life_title | default: "Used but Full of Life Project" }}</h2>
-    <p class="sustainability-life__description">{{ section.settings.life_description | default: "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination." }}</p>
-    <div class="sustainability-life__image">
-      <img src="{{ section.settings.life_image | image_url: width: 662 }}" alt="Used but Full of Life Project" class="sustainability-life__image-img">
+  <div class="sustainability-figma__life">
+    <h2 class="sustainability-figma__life-title">{{ section.settings.life_title | default: "Used but Full of Life Project" }}</h2>
+    <p class="sustainability-figma__life-description">{{ section.settings.life_description | default: "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination." }}</p>
+    <div class="sustainability-figma__life-image">
+      <img src="{{ section.settings.life_image | image_url: width: 662 }}" 
+           alt="Used but Full of Life Project" 
+           class="sustainability-figma__life-img"
+           width="662" 
+           height="555">
     </div>
-    <div class="sustainability-life__stat sustainability-life__stat--first">
-      <span class="sustainability-life__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
-      <span class="sustainability-life__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
+    <div class="sustainability-figma__life-stat sustainability-figma__life-stat--first">
+      <span class="sustainability-figma__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
     </div>
-    <div class="sustainability-life__stat sustainability-life__stat--second">
-      <span class="sustainability-life__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
-      <span class="sustainability-life__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
+    <div class="sustainability-figma__life-stat sustainability-figma__life-stat--second">
+      <span class="sustainability-figma__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
     </div>
   </div>
 
   {% comment %} People at Heart Section {% endcomment %}
-  <div class="sustainability-people">
-    <h2 class="sustainability-people__title">{{ section.settings.people_title | default: "People at Heart" }}</h2>
-    <div class="sustainability-people__image">
-      <img src="{{ section.settings.people_image | image_url: width: 1207 }}" alt="People at Heart" class="sustainability-people__image-img">
+  <div class="sustainability-figma__people">
+    <h2 class="sustainability-figma__people-title">{{ section.settings.people_title | default: "People at Heart" }}</h2>
+    <div class="sustainability-figma__people-image">
+      <img src="{{ section.settings.people_image | image_url: width: 1207 }}" 
+           alt="People at Heart" 
+           class="sustainability-figma__people-img"
+           width="1207" 
+           height="591">
     </div>
-    <div class="sustainability-people__text">
+    <div class="sustainability-figma__people-text">
       {{ section.settings.people_description | default: "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p><p>Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food system that benefits everyone.</p>" }}
     </div>
   </div>
 
   {% comment %} Efficient Resource Use Section {% endcomment %}
-  <div class="sustainability-resource">
-    <h2 class="sustainability-resource__title">{{ section.settings.resource_title | default: "Efficient Resource Use" }}</h2>
-    <p class="sustainability-resource__description">{{ section.settings.resource_description | default: "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste." }}</p>
-    <div class="sustainability-resource__stat sustainability-resource__stat--left">
-      <span class="sustainability-resource__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
-      <span class="sustainability-resource__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
+  <div class="sustainability-figma__resource">
+    <h2 class="sustainability-figma__resource-title">{{ section.settings.resource_title | default: "Efficient Resource Use" }}</h2>
+    <p class="sustainability-figma__resource-description">{{ section.settings.resource_description | default: "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste." }}</p>
+    <div class="sustainability-figma__resource-stat sustainability-figma__resource-stat--left">
+      <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
     </div>
-    <div class="sustainability-resource__stat sustainability-resource__stat--right">
-      <span class="sustainability-resource__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
-      <span class="sustainability-resource__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
+    <div class="sustainability-figma__resource-stat sustainability-figma__resource-stat--right">
+      <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
+      <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
     </div>
   </div>
 
@@ -104,7 +124,7 @@
 
 {% schema %}
 {
-  "name": "Sustainability Redesign",
+  "name": "Sustainability Figma",
   "settings": [
     {
       "type": "header",
