@@ -1,39 +1,39 @@
 {{ 'redesign-sustainability-page.css' | asset_url | stylesheet_tag }}
 
-<div class="redesign-sustainability">
+<div class="sustainability-page">
   
-  {% comment %} Hero Section - Looking Forward {% endcomment %}
-  <section class="redesign-sustainability__hero">
-    <div class="redesign-sustainability__hero-bg">
-      <img src="{{ section.settings.hero_image | image_url: width: 1512 }}" alt="Sustainability Hero" class="redesign-sustainability__hero-image">
+  {% comment %} Hero Section with Background Image {% endcomment %}
+  <section class="sustainability-hero">
+    <div class="sustainability-hero__background">
+      <img src="{{ section.settings.hero_image | image_url: width: 1512 }}" alt="Sustainability Hero" class="sustainability-hero__image">
     </div>
-    <div class="redesign-sustainability__hero-content">
-      <h1 class="redesign-sustainability__hero-title">{{ section.settings.hero_title | default: "Looking Forward" }}</h1>
-      <p class="redesign-sustainability__hero-subtitle">{{ section.settings.hero_subtitle | default: "Sustainability at Olitalia is not a destination — it's a direction." }}</p>
-      <div class="redesign-sustainability__hero-text">
+    <div class="sustainability-hero__content">
+      <h1 class="sustainability-hero__title">{{ section.settings.hero_title | default: "Looking Forward" }}</h1>
+      <p class="sustainability-hero__subtitle">{{ section.settings.hero_subtitle | default: "Sustainability at Olitalia is not a destination — it's a direction." }}</p>
+      <div class="sustainability-hero__description">
         {{ section.settings.hero_text | default: "<p>We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future. Because protecting what matters today is the best way to safeguard the future of flavor and ensuring that used oils are given a second life as renewable energy.</p>" }}
       </div>
     </div>
   </section>
 
   {% comment %} Plastic No More Section {% endcomment %}
-  <section class="redesign-sustainability__section">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content">
-        <div class="redesign-sustainability__icon">
-          <img src="{{ section.settings.plastic_icon | image_url: width: 379 }}" alt="Plastic No More Icon" class="redesign-sustainability__section-icon">
+  <section class="sustainability-section sustainability-section--plastic">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--icon-left">
+        <div class="sustainability-icon">
+          <img src="{{ section.settings.plastic_icon | image_url: width: 379 }}" alt="Plastic No More Icon" class="sustainability-icon__image">
         </div>
-        <div class="redesign-sustainability__text">
-          <h2 class="redesign-sustainability__section-title">{{ section.settings.plastic_title | default: "Plastic No More" }}</h2>
-          <p class="redesign-sustainability__section-description">{{ section.settings.plastic_description | default: "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials." }}</p>
-          <div class="redesign-sustainability__stats">
-            <div class="redesign-sustainability__stat">
-              <span class="redesign-sustainability__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
-              <span class="redesign-sustainability__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
+        <div class="sustainability-text">
+          <h2 class="sustainability-title">{{ section.settings.plastic_title | default: "Plastic No More" }}</h2>
+          <p class="sustainability-description">{{ section.settings.plastic_description | default: "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials." }}</p>
+          <div class="sustainability-stats">
+            <div class="sustainability-stat">
+              <span class="sustainability-stat__number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
+              <span class="sustainability-stat__label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
             </div>
-            <div class="redesign-sustainability__stat">
-              <span class="redesign-sustainability__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
-              <span class="redesign-sustainability__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
+            <div class="sustainability-stat">
+              <span class="sustainability-stat__number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
+              <span class="sustainability-stat__label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
             </div>
           </div>
         </div>
@@ -42,36 +42,36 @@
   </section>
 
   {% comment %} Collaboration Section {% endcomment %}
-  <section class="redesign-sustainability__section redesign-sustainability__section--collaboration">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content redesign-sustainability__content--reverse">
-        <div class="redesign-sustainability__text">
-          <h2 class="redesign-sustainability__section-title">{{ section.settings.collaboration_title | default: "Collaboration That Creates Change" }}</h2>
-          <div class="redesign-sustainability__section-description">
+  <section class="sustainability-section sustainability-section--collaboration">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--text-left">
+        <div class="sustainability-text">
+          <h2 class="sustainability-title">{{ section.settings.collaboration_title | default: "Collaboration That Creates Change" }}</h2>
+          <div class="sustainability-description">
             {{ section.settings.collaboration_description | default: "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.</p><p>Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.</p>" }}
           </div>
         </div>
-        <div class="redesign-sustainability__image">
-          <img src="{{ section.settings.collaboration_image | image_url: width: 1207 }}" alt="Collaboration" class="redesign-sustainability__section-image">
+        <div class="sustainability-image">
+          <img src="{{ section.settings.collaboration_image | image_url: width: 1207 }}" alt="Collaboration" class="sustainability-image__img">
         </div>
       </div>
     </div>
   </section>
 
   {% comment %} Full Circle Thinking Section {% endcomment %}
-  <section class="redesign-sustainability__section">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content redesign-sustainability__content--center">
-        <h2 class="redesign-sustainability__section-title">{{ section.settings.circle_title | default: "Full Circle Thinking" }}</h2>
-        <p class="redesign-sustainability__section-description">{{ section.settings.circle_description | default: "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources." }}</p>
-        <div class="redesign-sustainability__stats">
-          <div class="redesign-sustainability__stat">
-            <span class="redesign-sustainability__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
-            <span class="redesign-sustainability__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
+  <section class="sustainability-section sustainability-section--centered">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--center">
+        <h2 class="sustainability-title">{{ section.settings.circle_title | default: "Full Circle Thinking" }}</h2>
+        <p class="sustainability-description">{{ section.settings.circle_description | default: "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources." }}</p>
+        <div class="sustainability-stats">
+          <div class="sustainability-stat">
+            <span class="sustainability-stat__number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
+            <span class="sustainability-stat__label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
           </div>
-          <div class="redesign-sustainability__stat">
-            <span class="redesign-sustainability__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
-            <span class="redesign-sustainability__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
+          <div class="sustainability-stat">
+            <span class="sustainability-stat__number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
+            <span class="sustainability-stat__label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
           </div>
         </div>
       </div>
@@ -79,61 +79,61 @@
   </section>
 
   {% comment %} Used but Full of Life Project Section {% endcomment %}
-  <section class="redesign-sustainability__section">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content">
-        <div class="redesign-sustainability__text">
-          <h2 class="redesign-sustainability__section-title">{{ section.settings.life_title | default: "Used but Full of Life Project" }}</h2>
-          <p class="redesign-sustainability__section-description">{{ section.settings.life_description | default: "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination." }}</p>
-          <div class="redesign-sustainability__stats">
-            <div class="redesign-sustainability__stat">
-              <span class="redesign-sustainability__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
-              <span class="redesign-sustainability__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
+  <section class="sustainability-section sustainability-section--life-project">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--image-left">
+        <div class="sustainability-image">
+          <img src="{{ section.settings.life_image | image_url: width: 662 }}" alt="Used but Full of Life Project" class="sustainability-image__img">
+        </div>
+        <div class="sustainability-text">
+          <h2 class="sustainability-title">{{ section.settings.life_title | default: "Used but Full of Life Project" }}</h2>
+          <p class="sustainability-description">{{ section.settings.life_description | default: "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination." }}</p>
+          <div class="sustainability-stats sustainability-stats--vertical">
+            <div class="sustainability-stat">
+              <span class="sustainability-stat__number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
+              <span class="sustainability-stat__label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
             </div>
-            <div class="redesign-sustainability__stat">
-              <span class="redesign-sustainability__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
-              <span class="redesign-sustainability__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
+            <div class="sustainability-stat">
+              <span class="sustainability-stat__number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
+              <span class="sustainability-stat__label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
             </div>
           </div>
-        </div>
-        <div class="redesign-sustainability__image">
-          <img src="{{ section.settings.life_image | image_url: width: 662 }}" alt="Used but Full of Life Project" class="redesign-sustainability__section-image">
         </div>
       </div>
     </div>
   </section>
 
   {% comment %} People at Heart Section {% endcomment %}
-  <section class="redesign-sustainability__section">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content redesign-sustainability__content--reverse">
-        <div class="redesign-sustainability__text">
-          <h2 class="redesign-sustainability__section-title">{{ section.settings.people_title | default: "People at Heart" }}</h2>
-          <div class="redesign-sustainability__section-description">
+  <section class="sustainability-section sustainability-section--people">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--text-left">
+        <div class="sustainability-text">
+          <h2 class="sustainability-title">{{ section.settings.people_title | default: "People at Heart" }}</h2>
+          <div class="sustainability-description">
             {{ section.settings.people_description | default: "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p><p>Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food system that benefits everyone.</p>" }}
           </div>
         </div>
-        <div class="redesign-sustainability__image">
-          <img src="{{ section.settings.people_image | image_url: width: 1207 }}" alt="People at Heart" class="redesign-sustainability__section-image">
+        <div class="sustainability-image">
+          <img src="{{ section.settings.people_image | image_url: width: 1207 }}" alt="People at Heart" class="sustainability-image__img">
         </div>
       </div>
     </div>
   </section>
 
   {% comment %} Efficient Resource Use Section {% endcomment %}
-  <section class="redesign-sustainability__section">
-    <div class="redesign-sustainability__container">
-      <div class="redesign-sustainability__content redesign-sustainability__content--center">
-        <h2 class="redesign-sustainability__section-title">{{ section.settings.resource_title | default: "Efficient Resource Use" }}</h2>
-        <p class="redesign-sustainability__section-description">{{ section.settings.resource_description | default: "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste." }}</p>
-        <div class="redesign-sustainability__stats">
-          <div class="redesign-sustainability__stat">
-            <span class="redesign-sustainability__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
-            <span class="redesign-sustainability__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
+  <section class="sustainability-section sustainability-section--centered">
+    <div class="sustainability-container">
+      <div class="sustainability-content sustainability-content--center">
+        <h2 class="sustainability-title">{{ section.settings.resource_title | default: "Efficient Resource Use" }}</h2>
+        <p class="sustainability-description">{{ section.settings.resource_description | default: "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste." }}</p>
+        <div class="sustainability-stats">
+          <div class="sustainability-stat">
+            <span class="sustainability-stat__number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
+            <span class="sustainability-stat__label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
           </div>
-          <div class="redesign-sustainability__stat">
-            <span class="redesign-sustainability__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
-            <span class="redesign-sustainability__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
+          <div class="sustainability-stat">
+            <span class="sustainability-stat__number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
+            <span class="sustainability-stat__label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
           </div>
         </div>
       </div>
