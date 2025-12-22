@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -265,14 +271,22 @@
         "ai_gen_block_4f0722b_k74A8d"
       ],
       "settings": {}
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
     }
   },
   "order": [
+    "redesign-header",
     "main",
     "17621796276782166d",
     "1760538986027e974e",
     "1761915419c2016844",
     "176053916919190fa4",
-    "1760539281b3e54e35"
+    "1760539281b3e54e35",
+    "redesign-footer"
   ]
 }
