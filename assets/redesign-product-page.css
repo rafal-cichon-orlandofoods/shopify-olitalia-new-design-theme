@@ -3,6 +3,8 @@
     min-height: 100vh;
     padding: 60px 20px;
     color: #ffffff;
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .redesign-product__container {
@@ -12,6 +14,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .redesign-product__media {
@@ -356,40 +360,71 @@
 }
 
 @media (max-width: 768px) {
+    .redesign-product {
+        padding: 20px 15px; /* Reduced padding for mobile */
+        min-height: auto; /* Remove min-height constraint */
+    }
+    
     .redesign-product__container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 20px; /* Reduced gap for better spacing */
+        max-width: 100%; /* Ensure full width usage */
+        margin: 0;
     }
 
     .redesign-product__media {
         position: relative;
         top: 0;
+        width: 100%;
+        overflow: hidden; /* Prevent overflow */
+    }
+    
+    .redesign-product__main-image {
+        max-width: 100%;
+        margin: 0 auto 15px;
+        /* Limit image height to 50% of viewport for better UX */
+        max-height: 50vh;
+    }
+    
+    .redesign-product__main-image img {
+        width: 100%;
+        height: auto; /* Keep auto height to maintain aspect ratio */
+        max-height: 50vh; /* Limit height but don't force it */
+        object-fit: contain; /* Show full image without cropping */
+        object-position: center;
     }
 
     .redesign-product__title {
-        font-size: 36px;
+        font-size: 28px; /* Smaller title for mobile */
+        line-height: 1.2;
+        margin-bottom: 10px;
     }
 
     .redesign-product__price {
-        font-size: 28px;
+        font-size: 24px;
+        margin-bottom: 15px;
     }
 
     .redesign-product__thumbnails-wrapper {
-        gap: 10px;
+        gap: 8px;
+        margin: 0 -5px 20px; /* Add bottom margin and use full width */
+        /* Remove order: -1 to keep thumbnails in normal position */
     }
 
     .redesign-product__thumbnail {
-        width: 100px;
+        width: 60px; /* Smaller thumbnails for mobile */
+        padding: 3px;
     }
 
     .redesign-product__thumbnails-arrow {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
     }
 
     .redesign-product__buttons-row {
         flex-direction: column;
         align-items: stretch;
+        gap: 15px;
     }
 
     .redesign-product__quantity-wrapper {
@@ -398,6 +433,27 @@
 
     .redesign-product__quantity-selector {
         width: 100%;
+    }
+    
+    /* Ensure no horizontal overflow */
+    .redesign-product__info {
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+    
+    /* Fix any potential text overflow */
+    .redesign-product__description {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    /* Make sure media section flows naturally */
+    .redesign-product__media {
+        display: block; /* Remove flex to maintain normal flow */
+    }
+}
         justify-content: space-between;
     }
 
@@ -610,4 +666,48 @@ body[class*="product"] .redesign-header__menu-line {
 
 .template-product .redesign-footer a:hover {
     color: #ffffff;
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .redesign-product {
+        padding: 15px 10px;
+    }
+    
+    .redesign-product__container {
+        gap: 15px;
+    }
+    
+    .redesign-product__main-image {
+        max-height: 45vh; /* Even smaller on tiny screens */
+    }
+    
+    .redesign-product__main-image img {
+        max-height: 45vh;
+        object-fit: contain; /* Keep full image visible */
+    }
+    
+    .redesign-product__title {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+    
+    .redesign-product__price {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .redesign-product__thumbnail {
+        width: 50px;
+        padding: 2px;
+    }
+    
+    .redesign-product__thumbnails-arrow {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .redesign-product__description {
+        font-size: 13px;
+    }
 }
