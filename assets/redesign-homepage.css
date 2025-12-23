@@ -443,6 +443,82 @@
     height: auto;
     margin: 0 auto 30px;
     display: block;
+    /* Enhanced 3D luxury effect */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08));
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.redesign-badge__logo:hover {
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.2)) drop-shadow(0 20px 48px rgba(0, 0, 0, 0.12));
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Premium 3D shine effect for badge logo */
+.redesign-badge__wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.redesign-badge__wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(255, 255, 255, 0.1) 45%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        rgba(255, 255, 255, 0.1) 55%, 
+        transparent 70%
+    );
+    opacity: 0;
+    transition: all 0.8s ease;
+    pointer-events: none;
+    border-radius: 8px;
+    animation: badge-shine 6s ease-in-out infinite;
+}
+
+.redesign-badge__wrapper:hover::before {
+    opacity: 1;
+    animation-duration: 3s;
+}
+
+/* 3D badge shine animation */
+@keyframes badge-shine {
+    0% { 
+        transform: translateX(-100%) translateY(-100%) rotate(45deg); 
+    }
+    20% { 
+        transform: translateX(-50%) translateY(-50%) rotate(45deg); 
+    }
+    50% { 
+        transform: translateX(100%) translateY(100%) rotate(45deg); 
+    }
+    100% { 
+        transform: translateX(100%) translateY(100%) rotate(45deg); 
+    }
+}
+
+/* Additional depth shadow */
+.redesign-badge__wrapper::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.08));
+    z-index: -1;
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.redesign-badge__wrapper:hover::after {
+    opacity: 1;
 }
 
 .redesign-badge__disclaimer {
@@ -560,6 +636,23 @@
 
     .redesign-testimonial__slide {
         padding: 0 20px;
+    }
+
+    /* Optimize badge logo for mobile performance */
+    .redesign-badge__logo {
+        width: 250px; /* Smaller on mobile */
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1)); /* Simplified shadow */
+    }
+    
+    .redesign-badge__logo:hover {
+        filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.12));
+        transform: none; /* Disable transform on mobile */
+    }
+    
+    /* Disable heavy animations on mobile */
+    .redesign-badge__wrapper::before,
+    .redesign-badge__wrapper::after {
+        display: none;
     }
 
     .redesign-recipes__title {
