@@ -21,7 +21,20 @@
 .redesign-header__left {
     display: flex;
     align-items: center;
+    flex: 0 0 auto;
+}
+
+.redesign-header__center {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.redesign-header__right {
+    display: flex;
+    align-items: center;
     gap: 20px;
+    flex: 0 0 auto;
 }
 
 .redesign-header__icon {
@@ -37,9 +50,10 @@
 }
 
 .redesign-header__logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* Contain animations within logo bounds */
 }
 
 .redesign-header__logo img {
@@ -53,8 +67,8 @@
 
 /* Logo hover effects removed per user request */
 
-/* Enhanced shine effect with dynamic shadow */
-.redesign-header__logo::after {
+/* Enhanced shine effect with dynamic shadow - only for desktop logo */
+.redesign-header__left .redesign-header__logo::after {
     content: '';
     position: absolute;
     top: 0;
@@ -71,9 +85,12 @@
     animation: logo-shine-3d 4s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
+    /* Clip animation to logo bounds only */
+    clip-path: inset(0);
+    overflow: hidden;
 }
 
-/* 3D shine animation with shadow enhancement */
+/* 3D shine animation with shadow enhancement - only for desktop logo */
 @keyframes logo-shine-3d {
     0% { 
         left: -100%; 
@@ -89,41 +106,8 @@
     }
 }
 
-/* 3D badge shine animation */
-@keyframes badge-shine {
-    0% { 
-        transform: translateX(-100%) translateY(-100%) rotate(45deg); 
-    }
-    20% { 
-        transform: translateX(-50%) translateY(-50%) rotate(45deg); 
-    }
-    50% { 
-        transform: translateX(100%) translateY(100%) rotate(45deg); 
-    }
-    100% { 
-        transform: translateX(100%) translateY(100%) rotate(45deg); 
-    }
-}
-
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-    .redesign-header__logo::after,
-    .redesign-badge__wrapper::before {
-        animation: none;
-    }
-    
-    .redesign-header__logo img,
-    .redesign-badge__logo {
-        transition: none;
-    }
-}
-
-/* Dynamic shadow during shine */
-.redesign-header__logo:hover::after {
-    animation-duration: 2s;
-}
-
-.redesign-header__logo::before {
+/* Additional 3D depth with pseudo-element - only for desktop logo */
+.redesign-header__left .redesign-header__logo::before {
     content: '';
     position: absolute;
     top: 2px;
@@ -137,64 +121,26 @@
     transition: opacity 0.3s ease;
 }
 
-.redesign-header__right {
-    display: flex;
-    align-items: center;
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .redesign-header__left .redesign-header__logo::after {
+        animation: none;
+    }
+    
+    .redesign-header__logo img {
+        transition: none;
+    }
 }
 
-.redesign-header__menu-icon {
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-}
-
-.redesign-header__menu-line {
-    width: 100%;
-    height: 2px;
-    background: #2c2c2c;
-    transition: all 0.3s ease;
-}
-
-.redesign-header__menu-icon:hover .redesign-header__menu-line {
-    background: #000;
-}
-
-/* Horizontal Navigation Dropdown */
-.redesign-header__nav-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #f0f0f0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 99;
-}
-
-.redesign-header:hover .redesign-header__nav-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.redesign-header__nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px 40px;
+/* Dynamic shadow during shine - only for desktop logo */
+.redesign-header__left .redesign-header__logo:hover::after {
+    animation-duration: 2s;
 }
 
 .redesign-header__nav {
     display: flex;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
 }
 
 .redesign-header__nav-link {
@@ -227,27 +173,83 @@
     width: 100%;
 }
 
+.redesign-header__menu-icon {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.redesign-header__menu-line {
+    width: 100%;
+    height: 2px;
+    background: #2c2c2c;
+    transition: all 0.3s ease;
+}
+
+.redesign-header__menu-icon:hover .redesign-header__menu-line {
+    background: #000;
+}
+
+.redesign-header__mobile-logo {
+    display: none;
+}
+
+.redesign-header__mobile-logo img {
+    height: 50px;
+    width: auto;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .redesign-header__container {
         padding: 15px 20px;
+        position: relative;
     }
 
-    .redesign-header__logo img {
-        height: 50px; /* Increased from 32px for better visibility */
-        /* Simplified effects for mobile performance */
-        filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.1));
+    /* Mobile: Left section with hamburger menu */
+    .redesign-header__left {
+        justify-content: flex-start;
+        flex: 0 0 auto;
     }
-    
-    /* Disable heavy animations on mobile for performance */
-    .redesign-header__logo::after,
-    .redesign-header__logo::before {
+
+    /* Mobile: Hide desktop logo, show hamburger */
+    .redesign-header__left .redesign-header__logo {
         display: none;
     }
-    
-    /* Simple hover effect for mobile */
-    .redesign-header__logo img:hover {
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+
+    .redesign-header__menu-icon {
+        display: flex;
+    }
+
+    /* Mobile: Center section shows logo instead of nav */
+    .redesign-header__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .redesign-header__nav {
+        display: none;
+    }
+
+    .redesign-header__mobile-logo {
+        display: block;
+    }
+
+    /* Disable heavy animations on mobile for performance */
+    .redesign-header__left .redesign-header__logo::after,
+    .redesign-header__left .redesign-header__logo::before,
+    .redesign-header__mobile-logo::after,
+    .redesign-header__mobile-logo::before {
+        display: none;
     }
 
     .redesign-header__icon {
@@ -255,9 +257,10 @@
         height: 20px;
     }
 
-    /* Hide horizontal nav on mobile, keep hamburger menu */
-    .redesign-header__nav-dropdown {
-        display: none;
+    /* Mobile: Right section with icons */
+    .redesign-header__right {
+        justify-content: flex-end;
+        flex: 0 0 auto;
     }
 }
 
@@ -415,14 +418,7 @@ body[class*="product"] .redesign-header__logo img {
     filter: brightness(0) invert(1) !important;
 }
 
-/* Product page navigation dropdown - fully transparent */
-body.template-product .redesign-header__nav-dropdown,
-body[class*="product"] .redesign-header__nav-dropdown {
-    background: transparent !important;
-    backdrop-filter: none;
-    border-bottom: none !important;
-}
-
+/* Product page navigation - white elements for contrast against blue gradient */
 body.template-product .redesign-header__nav-link,
 body[class*="product"] .redesign-header__nav-link {
     color: #fff !important;

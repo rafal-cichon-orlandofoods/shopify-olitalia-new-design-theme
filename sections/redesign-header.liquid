@@ -3,8 +3,51 @@
 <header class="redesign-header">
   <div class="redesign-header__container">
     
-    {% comment %} Left Side - Search & Cart {% endcomment %}
+    {% comment %} Left Side - Logo (Desktop) / Hamburger Menu (Mobile) {% endcomment %}
     <div class="redesign-header__left">
+      <div class="redesign-header__logo">
+        <a href="/">
+          {% if section.settings.logo %}
+            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+          {% else %}
+            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
+          {% endif %}
+        </a>
+      </div>
+      
+      {% comment %} Mobile Menu Icon - Only visible on mobile {% endcomment %}
+      <button class="redesign-header__menu-icon" aria-label="Menu" onclick="toggleMenu()">
+        <span class="redesign-header__menu-line"></span>
+        <span class="redesign-header__menu-line"></span>
+        <span class="redesign-header__menu-line"></span>
+      </button>
+    </div>
+    
+    {% comment %} Center - Navigation Menu (Desktop) / Logo (Mobile) {% endcomment %}
+    <div class="redesign-header__center">
+      <nav class="redesign-header__nav">
+        <a href="/" class="redesign-header__nav-link">Home</a>
+        <a href="/pages/about-us" class="redesign-header__nav-link">About Us</a>
+        <a href="/pages/production" class="redesign-header__nav-link">Production</a>
+        <a href="/pages/sustainability" class="redesign-header__nav-link">Sustainability</a>
+        <a href="/pages/recipes" class="redesign-header__nav-link">Recipes</a>
+        <a href="/products/extra-virgin-olive-oil-500ml" class="redesign-header__nav-link">Products</a>
+      </nav>
+      
+      {% comment %} Mobile Logo - Only visible on mobile {% endcomment %}
+      <div class="redesign-header__mobile-logo">
+        <a href="/">
+          {% if section.settings.logo %}
+            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+          {% else %}
+            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    
+    {% comment %} Right Side - Search & Cart {% endcomment %}
+    <div class="redesign-header__right">
       <a href="/search" class="redesign-header__icon" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
@@ -21,40 +64,6 @@
       </a>
     </div>
     
-    {% comment %} Center - Logo {% endcomment %}
-    <div class="redesign-header__logo">
-      <a href="/">
-        {% if section.settings.logo %}
-          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
-        {% else %}
-          <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
-        {% endif %}
-      </a>
-    </div>
-    
-    {% comment %} Right Side - Menu Icon {% endcomment %}
-    <div class="redesign-header__right">
-      <button class="redesign-header__menu-icon" aria-label="Menu" onclick="toggleMenu()">
-        <span class="redesign-header__menu-line"></span>
-        <span class="redesign-header__menu-line"></span>
-        <span class="redesign-header__menu-line"></span>
-      </button>
-    </div>
-    
-  </div>
-  
-  {% comment %} Horizontal Navigation Menu - Hidden by default, appears on hover {% endcomment %}
-  <div class="redesign-header__nav-dropdown">
-    <div class="redesign-header__nav-container">
-      <nav class="redesign-header__nav">
-        <a href="/" class="redesign-header__nav-link">Home</a>
-        <a href="/pages/about-us" class="redesign-header__nav-link">About Us</a>
-        <a href="/pages/production" class="redesign-header__nav-link">Production</a>
-        <a href="/pages/sustainability" class="redesign-header__nav-link">Sustainability</a>
-        <a href="/pages/recipes" class="redesign-header__nav-link">Recipes</a>
-        <a href="/products/extra-virgin-olive-oil-500ml" class="redesign-header__nav-link">Products</a>
-      </nav>
-    </div>
   </div>
 </header>
 
