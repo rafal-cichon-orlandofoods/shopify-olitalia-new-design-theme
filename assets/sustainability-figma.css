@@ -113,6 +113,12 @@
 .sustainability-figma__stat-number {
   font-size: 64px;
   margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Animacja dla liczb - smooth transition */
+.sustainability-figma__stat-number.counting {
+  opacity: 1;
 }
 
 .sustainability-figma__stat-label {
