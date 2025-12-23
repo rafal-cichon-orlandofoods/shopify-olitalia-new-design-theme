@@ -249,7 +249,7 @@
     background: #ffffff;
     color: #001a4d;
     border: none;
-    padding: 18px 40px;
+    padding: 0px 20px 0px 20px;   
     font-size: 18px;
     font-weight: 700;
     border-radius: 8px;
@@ -360,123 +360,119 @@
 }
 
 @media (max-width: 768px) {
-    .redesign-product {
-        padding: 20px 15px; /* Reduced padding for mobile */
-        min-height: auto; /* Remove min-height constraint */
-    }
-    
-    .redesign-product__container {
-        grid-template-columns: 1fr;
-        gap: 20px; /* Reduced gap for better spacing */
-        max-width: 100%; /* Ensure full width usage */
-        margin: 0;
-    }
+  .redesign-product {
+    padding: 20px 15px;
+    min-height: auto;
+  }
 
-    .redesign-product__media {
-        position: relative;
-        top: 0;
-        width: 100%;
-        overflow: hidden; /* Prevent overflow */
-    }
-    
-    .redesign-product__main-image {
-        max-width: 100%;
-        margin: 0 auto 15px;
-        /* Limit image height to 50% of viewport for better UX */
-        max-height: 50vh;
-    }
-    
-    .redesign-product__main-image img {
-        width: 100%;
-        height: auto; /* Keep auto height to maintain aspect ratio */
-        max-height: 50vh; /* Limit height but don't force it */
-        object-fit: contain; /* Show full image without cropping */
-        object-position: center;
-    }
+  .redesign-product__container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 100%;
+    margin: 0;
+  }
 
-    .redesign-product__title {
-        font-size: 28px; /* Smaller title for mobile */
-        line-height: 1.2;
-        margin-bottom: 10px;
-    }
+  .redesign-product__media {
+    position: relative;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+  }
 
-    .redesign-product__price {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
+  .redesign-product__main-image {
+    max-width: 100%;
+    margin: 0 auto 15px;
+    max-height: 50vh;
+  }
 
-    .redesign-product__thumbnails-wrapper {
-        gap: 8px;
-        margin: 0 -5px 20px; /* Add bottom margin and use full width */
-        /* Remove order: -1 to keep thumbnails in normal position */
-    }
+  .redesign-product__main-image img {
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    object-fit: contain;
+    object-position: center;
+  }
 
-    .redesign-product__thumbnail {
-        width: 60px; /* Smaller thumbnails for mobile */
-        padding: 3px;
-    }
+  .redesign-product__title {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
 
-    .redesign-product__thumbnails-arrow {
-        width: 32px;
-        height: 32px;
-    }
+  .redesign-product__price {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
 
-    .redesign-product__buttons-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
+  .redesign-product__thumbnails-wrapper {
+    gap: 8px;
+    margin: 0 -5px 20px;
+  }
 
-    .redesign-product__quantity-wrapper {
-        width: 100%;
-    }
+  .redesign-product__thumbnail {
+    width: 60px;
+    padding: 3px;
+  }
 
-    .redesign-product__quantity-selector {
-        width: 100%;
-    }
-    
-    /* Ensure no horizontal overflow */
-    .redesign-product__info {
-        width: 100%;
-        overflow-wrap: break-word;
-    }
-    
-    /* Fix any potential text overflow */
-    .redesign-product__description {
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-    
-    /* Make sure media section flows naturally */
-    .redesign-product__media {
-        display: block; /* Remove flex to maintain normal flow */
-    }
+  .redesign-product__thumbnails-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .redesign-product__buttons-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+
+  .redesign-product__quantity-wrapper {
+    flex: 0 0 auto;
+  }
+
+  .redesign-product__quantity-selector {
+    flex: 0 0 auto;
+  }
+
+  .redesign-product__quantity-input {
+    flex: 0 0 auto;
+  }
+
+  .redesign-product__add-to-cart {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .redesign-product__info {
+    width: 100%;
+    overflow-wrap: break-word;
+  }
+
+  .redesign-product__description {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+  }
 }
-        justify-content: space-between;
-    }
 
-    .redesign-product__quantity-input {
-        flex: 1;
-    }
-
-    .redesign-product__add-to-cart {
-        width: 100%;
-    }
-}
 
 @media (max-width: 1024px) {
     .redesign-product__add-to-cart {
         font-size: 16px;
-        padding: 18px 20px;
+        /* padding: 18px 20px; */
     }
 }
 
 @media (max-width: 900px) {
     .redesign-product__add-to-cart {
         font-size: 14px;
-        padding: 18px 15px;
+        /* padding: 18px 15px; */
         letter-spacing: 0.3px;
     }
 }
