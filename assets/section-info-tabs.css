@@ -367,3 +367,45 @@ ull width for Our Values section on About Us page */
     max-width: 1800px;
   }
 }
+/* Learn More Button */
+.info-tabs__learn-more {
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.info-tabs__learn-more-button {
+  display: inline-block;
+  background: #000000;
+  color: white;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.info-tabs__learn-more-button:hover {
+  background: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .info-tabs__learn-more {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .info-tabs__learn-more-button {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}

@@ -163,6 +163,20 @@
     </div>
   {%- endif -%}
 
+  {% comment %} Learn More Button {% endcomment %}
+  {% if section.settings.learn_more_url %}
+    <div class="info-tabs__learn-more">
+      <a 
+        href="{{ section.settings.learn_more_url }}" 
+        class="info-tabs__learn-more-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ section.settings.learn_more_text | default: 'Learn More' }}
+      </a>
+    </div>
+  {% endif %}
+
   {%- render 'section-footer',
     button: section.settings.cta_label,
     button_label: section.settings.cta_label,
@@ -260,6 +274,21 @@
       "type": "url",
       "id": "cta_url",
       "label": "t:sections.bundle-extra-words.settings_schema.labels.button_url"
+    },
+    {
+      "type": "header",
+      "content": "Learn More Button"
+    },
+    {
+      "type": "text",
+      "id": "learn_more_text",
+      "label": "Learn More Button Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "learn_more_url",
+      "label": "Learn More Button URL"
     },
     {
       "type": "header",

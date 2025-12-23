@@ -21,20 +21,6 @@
           {{ section.settings.intro_text }}
         </div>
       {% endif %}
-      
-      {% comment %} Learn More Button {% endcomment %}
-      {% if section.settings.learn_more_url %}
-        <div class="redesign-about__learn-more">
-          <a 
-            href="{{ section.settings.learn_more_url }}" 
-            class="redesign-about__learn-more-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {{ section.settings.learn_more_text | default: 'Learn More' }}
-          </a>
-        </div>
-      {% endif %}
     </div>
 
     {% comment %} Video with Custom Thumbnail {% endcomment %}
@@ -196,17 +182,6 @@
       "type": "richtext",
       "id": "intro_text",
       "label": "Introduction Text"
-    },
-    {
-      "type": "text",
-      "id": "learn_more_text",
-      "label": "Learn More Button Text",
-      "default": "Learn More"
-    },
-    {
-      "type": "url",
-      "id": "learn_more_url",
-      "label": "Learn More Button URL"
     },
     {
       "type": "text",

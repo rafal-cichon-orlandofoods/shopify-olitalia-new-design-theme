@@ -52,8 +52,6 @@
         "hero_image": "shopify://shop_images/image_7.png",
         "title": "About Us",
         "intro_text": "<p>Every great meal begins with a moment of care and choosing ingredients that tell a story. Ours begins in Italy, where food is an expression of love, family, and tradition. From the heart of Emilia-Romagna, our family has dedicated generations to crafting oils and vinegars that bring people together around the table. Led today by Angelo, Elisabetta, and Camillo Cremonini, we continue the vision of our founder, Giuseppe Cremonini, whose belief in authenticity, care, and quality has guided us for over fifty years. Our family has worked to share the taste of Italy with the world—blending tradition and innovation to create products that celebrate flavor, inspire creativity, and turn everyday meals into something extraordinary.</p>",
-        "learn_more_text": "Learn More",
-        "learn_more_url": "https://www.olitalia.com/ww-en/company/company",
         "intro_video_file": "https://cdn.shopify.com/videos/c/o/v/ee041fed29cd49a49f86ce605701a836.mp4",
         "intro_video_url": "",
         "intro_video_thumbnail": "shopify://shop_images/Group_31.png",
@@ -116,7 +114,9 @@
         "section_heading_color": "rgba(0,0,0,0)",
         "gutter_decrease": true,
         "remove_bottom_margin": false,
-        "seo_h_tag": "h2"
+        "seo_h_tag": "h2",
+        "learn_more_text": "Learn More",
+        "learn_more_url": "https://www.olitalia.com/ww-en/company/company"
       }
     },
     "redesign_recipes_showcase_y46DHV": {
