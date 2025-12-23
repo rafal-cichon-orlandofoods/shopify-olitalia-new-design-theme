@@ -1,0 +1,454 @@
+/* Sustainability Figma - Layout based on Figma design */
+
+.sustainability-figma {
+  position: relative;
+  width: 100%;
+  background: white;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #121212;
+}
+
+/* HERO BACKGROUND IMAGE - Full width, directly under header */
+.sustainability-figma__hero-bg {
+  position: relative;
+  width: 100vw;
+  height: 734px;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%); /* Center full-width element */
+}
+
+.sustainability-figma__hero-image {
+  position: absolute;
+  width: 170.17%;
+  height: 240.08%;
+  left: -58.47%;
+  top: -70.03%;
+  max-width: none;
+  object-fit: cover;
+}
+
+/* HERO TEXT - Left aligned, inside container */
+.sustainability-figma__hero-text {
+  max-width: 1400px;
+  margin: 60px auto 100px; /* Reduced top margin since hero is now in flow */
+  padding: 0 40px;
+  font-weight: 300;
+  line-height: 36px;
+  font-size: 24px;
+}
+
+.sustainability-figma__hero-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: normal;
+  margin: 0 0 24px 0;
+}
+
+.sustainability-figma__hero-subtitle {
+  font-size: 32px;
+  line-height: normal;
+  margin: 0 0 32px 0;
+}
+
+.sustainability-figma__hero-description {
+  font-size: 32px;
+  line-height: normal;
+}
+
+.sustainability-figma__hero-description p {
+  margin: 0;
+}
+
+/* PLASTIC NO MORE SECTION - Left aligned with icon on left */
+.sustainability-figma__plastic {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 379px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.sustainability-figma__plastic-icon {
+  width: 379px;
+  height: 379px;
+}
+
+.sustainability-figma__plastic-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sustainability-figma__plastic-content {
+  padding-top: 50px;
+}
+
+.sustainability-figma__plastic-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  margin: 0 0 30px 0;
+}
+
+.sustainability-figma__plastic-description {
+  max-width: 790px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 50px 0;
+}
+
+.sustainability-figma__plastic-stats {
+  display: flex;
+  gap: 100px;
+}
+
+.sustainability-figma__plastic-stat {
+  font-weight: 400;
+  line-height: 60px;
+}
+
+.sustainability-figma__stat-number {
+  font-size: 64px;
+  margin: 0;
+}
+
+.sustainability-figma__stat-label {
+  font-size: 48px;
+  margin: 0;
+}
+
+/* COLLABORATION SECTION - Left aligned with image */
+.sustainability-figma__collaboration {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.sustainability-figma__collaboration-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  margin: 0 0 40px 0;
+  max-width: 1175px;
+}
+
+.sustainability-figma__collaboration-image {
+  width: 100%;
+  max-width: 1207px;
+  height: 591px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.sustainability-figma__collaboration-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.sustainability-figma__collaboration-text {
+  max-width: 1175px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.sustainability-figma__collaboration-text p {
+  margin: 0 0 24px 0;
+}
+
+.sustainability-figma__collaboration-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* FULL CIRCLE THINKING SECTION - Left aligned */
+.sustainability-figma__circle {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.sustainability-figma__circle-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  margin: 0 0 30px 0;
+  max-width: 777px;
+}
+
+.sustainability-figma__circle-description {
+  max-width: 1175px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 50px 0;
+}
+
+.sustainability-figma__circle-stats {
+  display: flex;
+  gap: 100px;
+}
+
+.sustainability-figma__circle-stat {
+  font-weight: 400;
+  line-height: 60px;
+}
+
+/* USED BUT FULL OF LIFE PROJECT SECTION - Left aligned with image */
+.sustainability-figma__life {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.sustainability-figma__life-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  margin: 0 0 30px 0;
+  max-width: 777px;
+}
+
+.sustainability-figma__life-description {
+  max-width: 1175px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 40px 0;
+}
+
+.sustainability-figma__life-content {
+  display: grid;
+  grid-template-columns: 662px 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.sustainability-figma__life-image {
+  width: 662px;
+  height: 555px;
+  border-radius: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sustainability-figma__life-img {
+  position: absolute;
+  width: 125.69%;
+  height: 100%;
+  left: -18.92%;
+  top: 0;
+  max-width: none;
+  object-fit: cover;
+}
+
+.sustainability-figma__life-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding-top: 50px;
+}
+
+.sustainability-figma__life-stat {
+  font-weight: 400;
+  line-height: 60px;
+}
+
+/* PEOPLE AT HEART SECTION - Left aligned with image */
+.sustainability-figma__people {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.sustainability-figma__people-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 96px;
+  margin: 0 0 40px 0;
+  max-width: 1175px;
+}
+
+.sustainability-figma__people-image {
+  width: 100%;
+  max-width: 1207px;
+  height: 591px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.sustainability-figma__people-img {
+  position: absolute;
+  width: 106.96%;
+  height: 145.7%;
+  left: -1.91%;
+  top: -43.83%;
+  max-width: none;
+  object-fit: cover;
+}
+
+.sustainability-figma__people-text {
+  max-width: 1175px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.sustainability-figma__people-text p {
+  margin: 0 0 24px 0;
+}
+
+.sustainability-figma__people-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* EFFICIENT RESOURCE USE SECTION - Left aligned */
+.sustainability-figma__resource {
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 0 40px;
+}
+
+.sustainability-figma__resource-title {
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  margin: 0 0 30px 0;
+  max-width: 777px;
+}
+
+.sustainability-figma__resource-description {
+  max-width: 1175px;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  margin: 0 0 50px 0;
+}
+
+.sustainability-figma__resource-stats {
+  display: flex;
+  gap: 100px;
+}
+
+.sustainability-figma__resource-stat {
+  font-weight: 400;
+  line-height: 60px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1400px) {
+  .sustainability-figma__hero-text,
+  .sustainability-figma__plastic,
+  .sustainability-figma__collaboration,
+  .sustainability-figma__circle,
+  .sustainability-figma__life,
+  .sustainability-figma__people,
+  .sustainability-figma__resource {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sustainability-figma {
+    min-height: auto;
+  }
+  
+  /* Hero adjustments */
+  .sustainability-figma__hero-bg {
+    height: 400px;
+  }
+  
+  .sustainability-figma__hero-text {
+    margin-top: 30px; /* Reduced for mobile */
+  }
+  
+  .sustainability-figma__hero-title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+  
+  .sustainability-figma__hero-subtitle,
+  .sustainability-figma__hero-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+  /* Plastic section mobile */
+  .sustainability-figma__plastic {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .sustainability-figma__plastic-icon {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .sustainability-figma__plastic-content {
+    padding-top: 0;
+  }
+  
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__life-title,
+  .sustainability-figma__people-title,
+  .sustainability-figma__resource-title {
+    font-size: 36px;
+    line-height: 40px;
+  }
+  
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__life-description,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  
+  .sustainability-figma__plastic-stats,
+  .sustainability-figma__circle-stats,
+  .sustainability-figma__resource-stats {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .sustainability-figma__stat-number {
+    font-size: 32px;
+  }
+  
+  .sustainability-figma__stat-label {
+    font-size: 18px;
+  }
+  
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__people-image {
+    height: 250px;
+  }
+  
+  .sustainability-figma__life-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .sustainability-figma__life-image {
+    width: 100%;
+    height: 250px;
+  }
+  
+  .sustainability-figma__life-stats {
+    padding-top: 0;
+    gap: 20px;
+  }
+}
