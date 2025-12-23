@@ -59,6 +59,64 @@
         "video_url": ""
       }
     },
+    "info_tabs_values": {
+      "type": "info-tabs",
+      "blocks": {
+        "tab_tradition": {
+          "type": "tab",
+          "settings": {
+            "title": "Tradition",
+            "caption": "<p>We carry forward a family legacy built on five decades of Italian culinary excellence and authenticity.</p>",
+            "image": "shopify://shop_images/team.jpg",
+            "icon": "star"
+          }
+        },
+        "tab_knowhow": {
+          "type": "tab",
+          "settings": {
+            "title": "Know-how",
+            "caption": "<p>Our expertise comes from constant learning and care, combining craftsmanship with the highest standards of quality and safety.</p>",
+            "image": "shopify://shop_images/change.jpg",
+            "icon": "star"
+          }
+        },
+        "tab_innovation": {
+          "type": "tab",
+          "settings": {
+            "title": "Innovation",
+            "caption": "<p>We look to the future with creativity - developing new products, technologies, and sustainable practices that keep flavor and responsibility in perfect balance.</p>",
+            "image": "shopify://shop_images/courage.jpg",
+            "icon": "star"
+          }
+        }
+      },
+      "block_order": [
+        "tab_tradition",
+        "tab_knowhow",
+        "tab_innovation"
+      ],
+      "settings": {
+        "heading": "Our Values",
+        "subheading": "",
+        "section_heading_size": "text-size--xlarge",
+        "section_heading_layout": "section-heading--center section-heading--two-rows",
+        "cta_label": "",
+        "cta_url": "",
+        "desktop_layout": "third",
+        "image_position": "left",
+        "image_aspect_ratio": "0.666667",
+        "border_radius": 0,
+        "style": "blank",
+        "autoplay_active": true,
+        "autoplay": 5,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "gutter_decrease": true,
+        "remove_bottom_margin": false,
+        "seo_h_tag": "h2"
+      }
+    },
     "redesign_recipes_showcase_y46DHV": {
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
@@ -84,6 +142,7 @@
   "order": [
     "redesign-header",
     "redesign-about",
+    "info_tabs_values",
     "redesign_recipes_showcase_y46DHV",
     "redesign-newsletter",
     "redesign-footer"
