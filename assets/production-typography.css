@@ -1,0 +1,110 @@
+/* Production Typography Override - Match Sustainability font styles */
+
+/* Apply Inter font family to production page */
+body.template-page .ai-innovation-block-2fff632kqwkw8,
+body.template-page .ai-innovation-container-2fff632kqwkw8,
+body.template-page .ai-innovation-container-2fff632kqwkw8 * {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Main title - match sustainability hero title */
+body.template-page .ai-innovation-intro-title-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 96px !important;
+  font-weight: 600 !important;
+  line-height: normal !important;
+}
+
+/* Intro text - match sustainability hero description */
+body.template-page .ai-innovation-intro-text-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 300 !important;
+  line-height: normal !important;
+}
+
+/* Stats numbers - match sustainability stat numbers */
+body.template-page .ai-innovation-stat-number-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 64px !important;
+  font-weight: 400 !important;
+  line-height: 60px !important;
+}
+
+/* Stats labels - match sustainability stat labels */
+body.template-page .ai-innovation-stat-label-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 48px !important;
+  font-weight: 400 !important;
+  line-height: 60px !important;
+}
+
+/* Section titles - match sustainability section titles */
+body.template-page .ai-innovation-title-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 96px !important;
+  font-weight: 600 !important;
+  line-height: 90px !important;
+}
+
+/* Section text - match sustainability section descriptions */
+body.template-page .ai-innovation-text-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 300 !important;
+  line-height: 36px !important;
+}
+
+/* Closing title - match sustainability section titles */
+body.template-page .ai-innovation-closing-title-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 96px !important;
+  font-weight: 600 !important;
+  line-height: 90px !important;
+}
+
+/* Closing text - match sustainability descriptions */
+body.template-page .ai-innovation-closing-text-2fff632kqwkw8 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 300 !important;
+  line-height: 36px !important;
+}
+
+/* Mobile responsive - match sustainability mobile styles */
+@media (max-width: 768px) {
+  /* Main title mobile */
+  body.template-page .ai-innovation-intro-title-2fff632kqwkw8 {
+    font-size: 48px !important;
+    line-height: 52px !important;
+  }
+  
+  /* Intro text mobile */
+  body.template-page .ai-innovation-intro-text-2fff632kqwkw8 {
+    font-size: 18px !important;
+    line-height: 24px !important;
+  }
+  
+  /* Section titles mobile */
+  body.template-page .ai-innovation-title-2fff632kqwkw8,
+  body.template-page .ai-innovation-closing-title-2fff632kqwkw8 {
+    font-size: 36px !important;
+    line-height: 40px !important;
+  }
+  
+  /* Section text mobile */
+  body.template-page .ai-innovation-text-2fff632kqwkw8,
+  body.template-page .ai-innovation-closing-text-2fff632kqwkw8 {
+    font-size: 16px !important;
+    line-height: 24px !important;
+  }
+  
+  /* Stats mobile */
+  body.template-page .ai-innovation-stat-number-2fff632kqwkw8 {
+    font-size: 32px !important;
+  }
+  
+  body.template-page .ai-innovation-stat-label-2fff632kqwkw8 {
+    font-size: 18px !important;
+  }
+}

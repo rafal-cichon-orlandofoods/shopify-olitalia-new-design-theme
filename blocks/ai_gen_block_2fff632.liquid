@@ -30,6 +30,9 @@
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
+<!-- Load production typography override -->
+{{ 'production-typography.css' | asset_url | stylesheet_tag }}
+
 {% style %}
   .ai-innovation-block-{{ ai_gen_id }} {
     padding: {{ block.settings.section_padding }}px 0;
