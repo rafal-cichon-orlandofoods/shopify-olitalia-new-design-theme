@@ -271,6 +271,7 @@
 }
 
 .redesign-product__buy-now {
+    display: none;
     width: 100%;
     background: transparent;
     color: #ffffff;

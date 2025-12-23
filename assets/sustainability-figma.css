@@ -1,70 +1,88 @@
-/* Sustainability Figma - Exact Implementation */
+/* Sustainability Figma - Improved Implementation */
 .sustainability-figma {
   background: #ffffff;
   color: #121212;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   position: relative;
   width: 100%;
-  min-height: 8000px;
+  overflow-x: hidden;
 }
 
-/* Hero Background Image - Exact Figma positioning */
+/* Hero Section */
 .sustainability-figma__hero-bg {
   position: absolute;
   height: 734px;
   left: 0;
   top: 171px;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
+  z-index: 1;
 }
 
 .sustainability-figma__hero-image {
   position: absolute;
-  height: 240.08%;
-  left: -58.47%;
-  top: -70.03%;
-  width: 170.17%;
+  height: 240%;
+  left: -58%;
+  top: -70%;
+  width: 170%;
   object-fit: cover;
+  object-position: center;
 }
 
-/* Hero Text Content - Exact Figma positioning */
 .sustainability-figma__hero-text {
   position: absolute;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  line-height: 36px;
-  left: calc(50% - 587.5px);
+  left: 50%;
   top: 1065px;
-  width: 1175px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
   color: #121212;
+  z-index: 2;
+  text-align: left;
 }
 
+/* Hero Section - Fixed font sizes to match Figma exactly */
 .sustainability-figma__hero-title {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
+  line-height: 90px;
   margin: 0 0 24px 0;
-  line-height: 1;
+  color: #121212;
 }
 
 .sustainability-figma__hero-subtitle {
   font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
   margin: 0 0 32px 0;
-  line-height: 1.2;
+  color: #121212;
 }
 
 .sustainability-figma__hero-description {
-  font-size: 32px;
-  line-height: 1.4;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 36px;
+  color: #121212;
 }
 
 .sustainability-figma__hero-description p {
   margin: 0;
 }
 
-/* Plastic No More Section - Exact Figma positioning */
+/* Section Container */
+.sustainability-figma__section {
+  position: relative;
+  width: 100%;
+  max-width: 1512px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Plastic No More Section */
 .sustainability-figma__plastic {
   position: relative;
+  padding-top: 1628px;
+  min-height: 800px;
 }
 
 .sustainability-figma__plastic-icon {
@@ -83,19 +101,184 @@
 
 .sustainability-figma__plastic-title {
   position: absolute;
+  left: 50%;
+  top: 1678px;
+  transform: translateX(-50%);
+  width: min(838px, calc(100vw - 80px));
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 96px;
   line-height: 90px;
-  left: calc(50% - 419px);
-  top: 1678px;
-  width: 838px;
-  height: 116px;
   margin: 0;
   color: #121212;
-  white-space: nowrap;
+  text-align: center;
+}
+
+.sustainability-figma__plastic-description {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 36px;
+  left: calc(50% - 395px);
+  top: 1820px;
+  width: 790px;
+  margin: 0;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__plastic-stat {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__plastic-stat--left {
+  left: calc(50% - 300px);
+  top: 1996px;
+  width: 280px;
+}
+
+.sustainability-figma__plastic-stat--right {
+  left: calc(50% + 20px);
+  top: 1996px;
+  width: 280px;
+}
+
+/* Collaboration Section */
+.sustainability-figma__collaboration {
+  position: relative;
+  padding-top: 2558px;
+  min-height: 1200px;
+}
+
+.sustainability-figma__collaboration-title {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  left: calc(50% - 587.5px);
+  top: 2558px;
+  width: 1175px;
+  height: 201px;
+  margin: 0;
+  color: #121212;
+}
+
+.sustainability-figma__collaboration-image {
+  position: absolute;
+  left: 50%;
+  top: 2752px;
+  transform: translateX(-50%);
+  width: min(1207px, calc(100vw - 80px));
+  height: 591px;
+  border-radius: 50px;
   overflow: hidden;
-  text-overflow: ellipsis;
+}
+
+.sustainability-figma__collaboration-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.sustainability-figma__collaboration-text {
+  position: absolute;
+  left: 50%;
+  top: 3386px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  color: #121212;
+}
+
+.sustainability-figma__collaboration-text p {
+  margin: 0 0 24px 0;
+}
+
+.sustainability-figma__collaboration-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Shared Stat Styles */
+.sustainability-figma__stat-number {
+  display: block;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.sustainability-figma__stat-label {
+  display: block;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Full Circle Section */
+.sustainability-figma__circle {
+  position: relative;
+  padding-top: 3968px;
+  min-height: 800px;
+}
+
+.sustainability-figma__circle-title {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 90px;
+  left: calc(50% - 388.5px);
+  top: 3968px;
+  width: 777px;
+  height: 222px;
+  margin: 0;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__circle-description {
+  position: absolute;
+  left: 50%;
+  top: 4190px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  margin: 0;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__circle-stat {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__circle-stat--left {
+  left: calc(50% - 300px);
+  top: 4329px;
+  width: 280px;
+}
+
+.sustainability-figma__circle-stat--right {
+  left: calc(50% + 20px);
+  top: 4329px;
+  width: 280px;
 }
 
 .sustainability-figma__plastic-description {
@@ -626,6 +809,423 @@
   .sustainability-figma__people-text,
   .sustainability-figma__resource-description {
     font-size: 18px;
+    text-align: center;
+  }
+  
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__life-image,
+  .sustainability-figma__people-image {
+    width: 100%;
+    height: 300px;
+    margin: 30px 0;
+  }
+  
+  .sustainability-figma__plastic-stat,
+  .sustainability-figma__circle-stat,
+  .sustainability-figma__life-stat,
+  .sustainability-figma__resource-stat {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .sustainability-figma__stat-number {
+    font-size: 40px;
+  }
+  
+  .sustainability-figma__stat-label {
+    font-size: 24px;
+  }
+}
+/* Used but Full of Life Section */
+.sustainability-figma__life {
+  position: relative;
+  padding-top: 4839px;
+  min-height: 1200px;
+}
+
+.sustainability-figma__life-title {
+  position: absolute;
+  left: 50%;
+  top: 4839px;
+  transform: translateX(-50%);
+  width: min(777px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.9;
+  margin: 0;
+  color: #121212;
+  text-align: left;
+}
+
+.sustainability-figma__life-description {
+  position: absolute;
+  left: 50%;
+  top: 5044px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  margin: 0;
+  color: #121212;
+}
+
+.sustainability-figma__life-image {
+  position: absolute;
+  left: 142px;
+  top: 5147px;
+  width: min(662px, calc(50vw - 80px));
+  height: 555px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.sustainability-figma__life-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.sustainability-figma__life-stat {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #121212;
+  text-align: left;
+  width: 300px;
+}
+
+.sustainability-figma__life-stat--first {
+  left: calc(50% + 120px);
+  top: 5147px;
+}
+
+.sustainability-figma__life-stat--second {
+  left: calc(50% + 130px);
+  top: 5464px;
+}
+
+/* People at Heart Section */
+.sustainability-figma__people {
+  position: relative;
+  padding-top: 5974px;
+  min-height: 1200px;
+}
+
+.sustainability-figma__people-title {
+  position: absolute;
+  left: 50%;
+  top: 5974px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.9;
+  margin: 0;
+  color: #121212;
+  text-align: left;
+}
+
+.sustainability-figma__people-image {
+  position: absolute;
+  left: 50%;
+  top: 6073px;
+  transform: translateX(-50%);
+  width: min(1207px, calc(100vw - 80px));
+  height: 591px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.sustainability-figma__people-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.sustainability-figma__people-text {
+  position: absolute;
+  left: 50%;
+  top: 6707px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  color: #121212;
+}
+
+.sustainability-figma__people-text p {
+  margin: 0 0 24px 0;
+}
+
+.sustainability-figma__people-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Efficient Resource Use Section */
+.sustainability-figma__resource {
+  position: relative;
+  padding-top: 7217px;
+  min-height: 800px;
+  padding-bottom: 200px;
+}
+
+.sustainability-figma__resource-title {
+  position: absolute;
+  left: 50%;
+  top: 7217px;
+  transform: translateX(-50%);
+  width: min(777px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.9;
+  margin: 0;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__resource-description {
+  position: absolute;
+  left: 50%;
+  top: 7439px;
+  transform: translateX(-50%);
+  width: min(1175px, calc(100vw - 80px));
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+  margin: 0;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__resource-stat {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #121212;
+  text-align: center;
+}
+
+.sustainability-figma__resource-stat--left {
+  left: calc(50% - 300px);
+  top: 7578px;
+  width: 280px;
+}
+
+.sustainability-figma__resource-stat--right {
+  left: calc(50% + 20px);
+  top: 7578px;
+  width: 280px;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .sustainability-figma__plastic-icon {
+    left: 60px;
+    width: 300px;
+    height: 300px;
+  }
+  
+  .sustainability-figma__life-image {
+    left: 60px;
+    width: min(500px, calc(50vw - 40px));
+    height: 400px;
+  }
+  
+  .sustainability-figma__life-stat--first,
+  .sustainability-figma__life-stat--second {
+    left: calc(50% + 60px);
+  }
+}
+
+@media (max-width: 1024px) {
+  .sustainability-figma__plastic-stat--left,
+  .sustainability-figma__plastic-stat--right,
+  .sustainability-figma__circle-stat--left,
+  .sustainability-figma__circle-stat--right,
+  .sustainability-figma__resource-stat--left,
+  .sustainability-figma__resource-stat--right {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin: 20px 0;
+    display: block;
+  }
+  
+  .sustainability-figma__plastic,
+  .sustainability-figma__collaboration,
+  .sustainability-figma__circle,
+  .sustainability-figma__life,
+  .sustainability-figma__people,
+  .sustainability-figma__resource {
+    padding-top: 60px;
+    min-height: auto;
+  }
+  
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__life-title,
+  .sustainability-figma__life-description,
+  .sustainability-figma__life-image,
+  .sustainability-figma__people-title,
+  .sustainability-figma__people-image,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-title,
+  .sustainability-figma__resource-description {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .sustainability-figma__plastic-icon {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+    display: block;
+  }
+  
+  .sustainability-figma__life-stat--first,
+  .sustainability-figma__life-stat--second {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .sustainability-figma {
+    position: static;
+  }
+  
+  .sustainability-figma__hero-bg {
+    position: relative;
+    top: 0;
+    height: 400px;
+  }
+  
+  .sustainability-figma__hero-text {
+    position: relative;
+    top: 40px;
+    transform: none;
+    left: auto;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 60px;
+  }
+  
+  /* Mobile font sizes - smaller but still readable */
+  .sustainability-figma__hero-title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+  
+  .sustainability-figma__hero-subtitle {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  
+  .sustainability-figma__hero-description {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+  /* Reset all absolute positioning for mobile */
+  .sustainability-figma__plastic,
+  .sustainability-figma__collaboration,
+  .sustainability-figma__circle,
+  .sustainability-figma__life,
+  .sustainability-figma__people,
+  .sustainability-figma__resource {
+    position: relative;
+    padding: 60px 20px;
+  }
+  
+  .sustainability-figma__plastic-icon,
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__plastic-stat,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__collaboration-image,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__circle-stat,
+  .sustainability-figma__life-title,
+  .sustainability-figma__life-description,
+  .sustainability-figma__life-image,
+  .sustainability-figma__life-stat,
+  .sustainability-figma__people-title,
+  .sustainability-figma__people-image,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-title,
+  .sustainability-figma__resource-description,
+  .sustainability-figma__resource-stat {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    transform: none;
+  }
+  
+  .sustainability-figma__plastic-icon {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .sustainability-figma__plastic-icon-img {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .sustainability-figma__plastic-title,
+  .sustainability-figma__collaboration-title,
+  .sustainability-figma__circle-title,
+  .sustainability-figma__life-title,
+  .sustainability-figma__people-title,
+  .sustainability-figma__resource-title {
+    font-size: 48px;
+    line-height: 52px;
+    text-align: center;
+    white-space: normal;
+  }
+  
+  .sustainability-figma__plastic-description,
+  .sustainability-figma__collaboration-text,
+  .sustainability-figma__circle-description,
+  .sustainability-figma__life-description,
+  .sustainability-figma__people-text,
+  .sustainability-figma__resource-description {
+    font-size: 18px;
+    line-height: 24px;
     text-align: center;
   }
   
