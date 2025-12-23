@@ -6,30 +6,32 @@
     HERO SECTION
     Background image with overlay text content
   {%- endcomment -%}
-  <div class="sustainability-figma__hero-bg">
-    <img src="{{ section.settings.hero_image | default: 'https://www.figma.com/api/mcp/asset/080a1e11-bb6b-48d9-bd83-d35c11ffc719' | image_url: width: 1512 }}" 
-         alt="Sustainability Hero" 
-         class="sustainability-figma__hero-image"
-         width="1512" 
-         height="734"
-         loading="eager"
-         fetchpriority="high">
-  </div>
+  <div class="sustainability-figma__hero">
+    <div class="sustainability-figma__hero-bg">
+      <img src="{{ section.settings.hero_image | default: 'https://www.figma.com/api/mcp/asset/080a1e11-bb6b-48d9-bd83-d35c11ffc719' | image_url: width: 1512 }}" 
+           alt="Sustainability Hero" 
+           class="sustainability-figma__hero-image"
+           width="1512" 
+           height="734"
+           loading="eager"
+           fetchpriority="high">
+    </div>
 
-  <div class="sustainability-figma__hero-text">
-    {% if section.settings.hero_title != blank %}
-      <h1 class="sustainability-figma__hero-title">{{ section.settings.hero_title }}</h1>
-    {% endif %}
-    
-    {% if section.settings.hero_subtitle != blank %}
-      <p class="sustainability-figma__hero-subtitle">{{ section.settings.hero_subtitle }}</p>
-    {% endif %}
-    
-    {% if section.settings.hero_text != blank %}
-      <div class="sustainability-figma__hero-description">
-        {{ section.settings.hero_text }}
-      </div>
-    {% endif %}
+    <div class="sustainability-figma__hero-text">
+      {% if section.settings.hero_title != blank %}
+        <h1 class="sustainability-figma__hero-title">{{ section.settings.hero_title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.hero_subtitle != blank %}
+        <p class="sustainability-figma__hero-subtitle">{{ section.settings.hero_subtitle }}</p>
+      {% endif %}
+      
+      {% if section.settings.hero_text != blank %}
+        <div class="sustainability-figma__hero-description">
+          {{ section.settings.hero_text }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 
   {%- comment -%}
@@ -37,30 +39,34 @@
     Icon on left, title and stats centered
   {%- endcomment -%}
   <div class="sustainability-figma__plastic">
-    <div class="sustainability-figma__plastic-icon">
-      <img src="{{ section.settings.plastic_icon | default: 'https://www.figma.com/api/mcp/asset/310061d4-a2f7-4abe-9907-ccaa9668f192' | image_url: width: 379 }}" 
-           alt="Plastic No More Icon" 
-           class="sustainability-figma__plastic-icon-img"
-           width="379" 
-           height="379">
-    </div>
-    
-    {% if section.settings.plastic_title != blank %}
-      <h2 class="sustainability-figma__plastic-title">{{ section.settings.plastic_title }}</h2>
-    {% endif %}
-    
-    {% if section.settings.plastic_description != blank %}
-      <p class="sustainability-figma__plastic-description">{{ section.settings.plastic_description }}</p>
-    {% endif %}
-    
-    <div class="sustainability-figma__plastic-stat sustainability-figma__plastic-stat--left">
-      <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
-    </div>
-    
-    <div class="sustainability-figma__plastic-stat sustainability-figma__plastic-stat--right">
-      <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
+    <div class="sustainability-figma__container">
+      <div class="sustainability-figma__plastic-icon">
+        <img src="{{ section.settings.plastic_icon | default: 'https://www.figma.com/api/mcp/asset/310061d4-a2f7-4abe-9907-ccaa9668f192' | image_url: width: 379 }}" 
+             alt="Plastic No More Icon" 
+             class="sustainability-figma__plastic-icon-img"
+             width="379" 
+             height="379">
+      </div>
+      
+      {% if section.settings.plastic_title != blank %}
+        <h2 class="sustainability-figma__plastic-title">{{ section.settings.plastic_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.plastic_description != blank %}
+        <p class="sustainability-figma__plastic-description">{{ section.settings.plastic_description }}</p>
+      {% endif %}
+      
+      <div class="sustainability-figma__plastic-stats">
+        <div class="sustainability-figma__plastic-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
+        </div>
+        
+        <div class="sustainability-figma__plastic-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -69,23 +75,25 @@
     Title, large image, descriptive text
   {%- endcomment -%}
   <div class="sustainability-figma__collaboration">
-    {% if section.settings.collaboration_title != blank %}
-      <h2 class="sustainability-figma__collaboration-title">{{ section.settings.collaboration_title }}</h2>
-    {% endif %}
-    
-    <div class="sustainability-figma__collaboration-image">
-      <img src="{{ section.settings.collaboration_image | default: 'https://www.figma.com/api/mcp/asset/a49a3c31-8cbd-45ee-91fe-6751d120a134' | image_url: width: 1207 }}" 
-           alt="Collaboration" 
-           class="sustainability-figma__collaboration-img"
-           width="1207" 
-           height="591">
-    </div>
-    
-    {% if section.settings.collaboration_description != blank %}
-      <div class="sustainability-figma__collaboration-text">
-        {{ section.settings.collaboration_description }}
+    <div class="sustainability-figma__container">
+      {% if section.settings.collaboration_title != blank %}
+        <h2 class="sustainability-figma__collaboration-title">{{ section.settings.collaboration_title }}</h2>
+      {% endif %}
+      
+      <div class="sustainability-figma__collaboration-image">
+        <img src="{{ section.settings.collaboration_image | default: 'https://www.figma.com/api/mcp/asset/a49a3c31-8cbd-45ee-91fe-6751d120a134' | image_url: width: 1207 }}" 
+             alt="Collaboration" 
+             class="sustainability-figma__collaboration-img"
+             width="1207" 
+             height="591">
       </div>
-    {% endif %}
+      
+      {% if section.settings.collaboration_description != blank %}
+        <div class="sustainability-figma__collaboration-text">
+          {{ section.settings.collaboration_description }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 
   {%- comment -%}
@@ -93,22 +101,26 @@
     Centered title, description and stats
   {%- endcomment -%}
   <div class="sustainability-figma__circle">
-    {% if section.settings.circle_title != blank %}
-      <h2 class="sustainability-figma__circle-title">{{ section.settings.circle_title }}</h2>
-    {% endif %}
-    
-    {% if section.settings.circle_description != blank %}
-      <p class="sustainability-figma__circle-description">{{ section.settings.circle_description }}</p>
-    {% endif %}
-    
-    <div class="sustainability-figma__circle-stat sustainability-figma__circle-stat--left">
-      <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
-    </div>
-    
-    <div class="sustainability-figma__circle-stat sustainability-figma__circle-stat--right">
-      <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
+    <div class="sustainability-figma__container">
+      {% if section.settings.circle_title != blank %}
+        <h2 class="sustainability-figma__circle-title">{{ section.settings.circle_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.circle_description != blank %}
+        <p class="sustainability-figma__circle-description">{{ section.settings.circle_description }}</p>
+      {% endif %}
+      
+      <div class="sustainability-figma__circle-stats">
+        <div class="sustainability-figma__circle-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
+        </div>
+        
+        <div class="sustainability-figma__circle-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -117,38 +129,44 @@
     Title, description, image on left, stats on right
   {%- endcomment -%}
   <div class="sustainability-figma__life">
-    {% if section.settings.life_title != blank %}
-      <h2 class="sustainability-figma__life-title">{{ section.settings.life_title }}</h2>
-    {% endif %}
-    
-    {% if section.settings.life_description != blank %}
-      <p class="sustainability-figma__life-description">{{ section.settings.life_description }}</p>
-    {% endif %}
-    
-    {% if section.settings.life_image %}
-      <div class="sustainability-figma__life-image">
-        <img src="{{ section.settings.life_image | image_url: width: 662 }}" 
-             alt="Used but Full of Life Project" 
-             class="sustainability-figma__life-img"
-             width="662" 
-             height="555">
-      </div>
-    {% else %}
-      <div class="sustainability-figma__life-image sustainability-figma__life-image--placeholder">
-        <div class="sustainability-figma__placeholder-content">
-          <span>Used but Full of Life Project Image</span>
+    <div class="sustainability-figma__container">
+      {% if section.settings.life_title != blank %}
+        <h2 class="sustainability-figma__life-title">{{ section.settings.life_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.life_description != blank %}
+        <p class="sustainability-figma__life-description">{{ section.settings.life_description }}</p>
+      {% endif %}
+      
+      <div class="sustainability-figma__life-content">
+        {% if section.settings.life_image %}
+          <div class="sustainability-figma__life-image">
+            <img src="{{ section.settings.life_image | image_url: width: 662 }}" 
+                 alt="Used but Full of Life Project" 
+                 class="sustainability-figma__life-img"
+                 width="662" 
+                 height="555">
+          </div>
+        {% else %}
+          <div class="sustainability-figma__life-image sustainability-figma__life-image--placeholder">
+            <div class="sustainability-figma__placeholder-content">
+              <span>Used but Full of Life Project Image</span>
+            </div>
+          </div>
+        {% endif %}
+        
+        <div class="sustainability-figma__life-stats">
+          <div class="sustainability-figma__life-stat">
+            <span class="sustainability-figma__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
+            <span class="sustainability-figma__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
+          </div>
+          
+          <div class="sustainability-figma__life-stat">
+            <span class="sustainability-figma__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
+            <span class="sustainability-figma__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
+          </div>
         </div>
       </div>
-    {% endif %}
-    
-    <div class="sustainability-figma__life-stat sustainability-figma__life-stat--first">
-      <span class="sustainability-figma__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
-    </div>
-    
-    <div class="sustainability-figma__life-stat sustainability-figma__life-stat--second">
-      <span class="sustainability-figma__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
     </div>
   </div>
 
@@ -157,31 +175,33 @@
     Title, large image, descriptive text
   {%- endcomment -%}
   <div class="sustainability-figma__people">
-    {% if section.settings.people_title != blank %}
-      <h2 class="sustainability-figma__people-title">{{ section.settings.people_title }}</h2>
-    {% endif %}
-    
-    {% if section.settings.people_image %}
-      <div class="sustainability-figma__people-image">
-        <img src="{{ section.settings.people_image | image_url: width: 1207 }}" 
-             alt="People at Heart" 
-             class="sustainability-figma__people-img"
-             width="1207" 
-             height="591">
-      </div>
-    {% else %}
-      <div class="sustainability-figma__people-image sustainability-figma__people-image--placeholder">
-        <div class="sustainability-figma__placeholder-content">
-          <span>People at Heart Image</span>
+    <div class="sustainability-figma__container">
+      {% if section.settings.people_title != blank %}
+        <h2 class="sustainability-figma__people-title">{{ section.settings.people_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.people_image %}
+        <div class="sustainability-figma__people-image">
+          <img src="{{ section.settings.people_image | image_url: width: 1207 }}" 
+               alt="People at Heart" 
+               class="sustainability-figma__people-img"
+               width="1207" 
+               height="591">
         </div>
-      </div>
-    {% endif %}
-    
-    {% if section.settings.people_description != blank %}
-      <div class="sustainability-figma__people-text">
-        {{ section.settings.people_description }}
-      </div>
-    {% endif %}
+      {% else %}
+        <div class="sustainability-figma__people-image sustainability-figma__people-image--placeholder">
+          <div class="sustainability-figma__placeholder-content">
+            <span>People at Heart Image</span>
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if section.settings.people_description != blank %}
+        <div class="sustainability-figma__people-text">
+          {{ section.settings.people_description }}
+        </div>
+      {% endif %}
+    </div>
   </div>
 
   {%- comment -%}
@@ -189,22 +209,26 @@
     Centered title, description and stats
   {%- endcomment -%}
   <div class="sustainability-figma__resource">
-    {% if section.settings.resource_title != blank %}
-      <h2 class="sustainability-figma__resource-title">{{ section.settings.resource_title }}</h2>
-    {% endif %}
-    
-    {% if section.settings.resource_description != blank %}
-      <p class="sustainability-figma__resource-description">{{ section.settings.resource_description }}</p>
-    {% endif %}
-    
-    <div class="sustainability-figma__resource-stat sustainability-figma__resource-stat--left">
-      <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
-    </div>
-    
-    <div class="sustainability-figma__resource-stat sustainability-figma__resource-stat--right">
-      <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
-      <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
+    <div class="sustainability-figma__container">
+      {% if section.settings.resource_title != blank %}
+        <h2 class="sustainability-figma__resource-title">{{ section.settings.resource_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.resource_description != blank %}
+        <p class="sustainability-figma__resource-description">{{ section.settings.resource_description }}</p>
+      {% endif %}
+      
+      <div class="sustainability-figma__resource-stats">
+        <div class="sustainability-figma__resource-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
+        </div>
+        
+        <div class="sustainability-figma__resource-stat">
+          <span class="sustainability-figma__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
+          <span class="sustainability-figma__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
+        </div>
+      </div>
     </div>
   </div>
 
