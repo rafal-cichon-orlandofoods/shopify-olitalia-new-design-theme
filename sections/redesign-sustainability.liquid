@@ -1,0 +1,478 @@
+{{ 'redesign-sustainability.css' | asset_url | stylesheet_tag }}
+
+<div class="redesign-sustainability">
+  
+  {%- comment -%}
+    HERO SECTION
+    Full-width background image with overlay text
+  {%- endcomment -%}
+  <section class="redesign-sustainability__hero">
+    {% if section.settings.hero_image %}
+      <img 
+        src="{{ section.settings.hero_image | image_url: width: 2000 }}" 
+        alt="Sustainability Hero"
+        class="redesign-sustainability__hero-bg"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {% endif %}
+    
+    <div class="redesign-sustainability__hero-content">
+      <div class="redesign-sustainability__hero-text">
+        {% if section.settings.hero_title != blank %}
+          <h1 class="redesign-sustainability__hero-title">{{ section.settings.hero_title }}</h1>
+        {% endif %}
+        
+        {% if section.settings.hero_subtitle != blank %}
+          <p class="redesign-sustainability__hero-subtitle">{{ section.settings.hero_subtitle }}</p>
+        {% endif %}
+        
+        {% if section.settings.hero_description != blank %}
+          <div class="redesign-sustainability__hero-description">
+            {{ section.settings.hero_description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    PLASTIC NO MORE SECTION
+    Icon, title, description and stats
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__plastic">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.plastic_icon %}
+        <div class="redesign-sustainability__plastic-icon">
+          <img 
+            src="{{ section.settings.plastic_icon | image_url: width: 400 }}" 
+            alt="Plastic No More"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+      
+      {% if section.settings.plastic_title != blank %}
+        <h2 class="redesign-sustainability__section-title">{{ section.settings.plastic_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.plastic_description != blank %}
+        <p class="redesign-sustainability__section-description">{{ section.settings.plastic_description }}</p>
+      {% endif %}
+      
+      <div class="redesign-sustainability__stats">
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.plastic_stat1_number | default: "100%" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.plastic_stat1_label | default: "Plastic-free facilities" }}</span>
+        </div>
+        
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.plastic_stat2_number | default: "85%" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.plastic_stat2_label | default: "Recycled packaging" }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    COLLABORATION SECTION
+    Title, large image, descriptive text
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__collaboration">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.collaboration_title != blank %}
+        <h2 class="redesign-sustainability__section-title">{{ section.settings.collaboration_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.collaboration_image %}
+        <div class="redesign-sustainability__image-wrapper">
+          <img 
+            src="{{ section.settings.collaboration_image | image_url: width: 1400 }}" 
+            alt="Collaboration"
+            class="redesign-sustainability__section-image"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+      
+      {% if section.settings.collaboration_description != blank %}
+        <div class="redesign-sustainability__section-text">
+          {{ section.settings.collaboration_description }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {%- comment -%}
+    FULL CIRCLE THINKING SECTION
+    Centered title, description and stats
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__circle">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.circle_title != blank %}
+        <h2 class="redesign-sustainability__section-title redesign-sustainability__section-title--center">{{ section.settings.circle_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.circle_description != blank %}
+        <p class="redesign-sustainability__section-description redesign-sustainability__section-description--center">{{ section.settings.circle_description }}</p>
+      {% endif %}
+      
+      <div class="redesign-sustainability__stats">
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.circle_stat1_number | default: "95%" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.circle_stat1_label | default: "Byproduct recovery" }}</span>
+        </div>
+        
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.circle_stat2_number | default: "Zero" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.circle_stat2_label | default: "Waste to landfill" }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    USED BUT FULL OF LIFE PROJECT SECTION
+    Title, description, image and stats in grid layout
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__life">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.life_title != blank %}
+        <h2 class="redesign-sustainability__section-title redesign-sustainability__section-title--center">{{ section.settings.life_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.life_description != blank %}
+        <p class="redesign-sustainability__section-description redesign-sustainability__section-description--center">{{ section.settings.life_description }}</p>
+      {% endif %}
+      
+      <div class="redesign-sustainability__life-content">
+        {% if section.settings.life_image %}
+          <div class="redesign-sustainability__life-image">
+            <img 
+              src="{{ section.settings.life_image | image_url: width: 800 }}" 
+              alt="Used but Full of Life Project"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+        
+        <div class="redesign-sustainability__life-stats">
+          <div class="redesign-sustainability__stat">
+            <span class="redesign-sustainability__stat-number">{{ section.settings.life_stat1_number | default: "500+" }}</span>
+            <span class="redesign-sustainability__stat-label">{{ section.settings.life_stat1_label | default: "Partner restaurants" }}</span>
+          </div>
+          
+          <div class="redesign-sustainability__stat">
+            <span class="redesign-sustainability__stat-number">{{ section.settings.life_stat2_number | default: "10KL" }}</span>
+            <span class="redesign-sustainability__stat-label">{{ section.settings.life_stat2_label | default: "Oil recovered yearly" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}
+    PEOPLE AT HEART SECTION
+    Title, large image, descriptive text
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__people">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.people_title != blank %}
+        <h2 class="redesign-sustainability__section-title">{{ section.settings.people_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.people_image %}
+        <div class="redesign-sustainability__image-wrapper">
+          <img 
+            src="{{ section.settings.people_image | image_url: width: 1400 }}" 
+            alt="People at Heart"
+            class="redesign-sustainability__section-image"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+      
+      {% if section.settings.people_description != blank %}
+        <div class="redesign-sustainability__section-text">
+          {{ section.settings.people_description }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {%- comment -%}
+    EFFICIENT RESOURCE USE SECTION
+    Centered title, description and stats
+  {%- endcomment -%}
+  <section class="redesign-sustainability__section redesign-sustainability__resource">
+    <div class="redesign-sustainability__container">
+      {% if section.settings.resource_title != blank %}
+        <h2 class="redesign-sustainability__section-title redesign-sustainability__section-title--center">{{ section.settings.resource_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.resource_description != blank %}
+        <p class="redesign-sustainability__section-description redesign-sustainability__section-description--center">{{ section.settings.resource_description }}</p>
+      {% endif %}
+      
+      <div class="redesign-sustainability__stats">
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.resource_stat1_number | default: "40%" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.resource_stat1_label | default: "Water Reduction" }}</span>
+        </div>
+        
+        <div class="redesign-sustainability__stat">
+          <span class="redesign-sustainability__stat-number">{{ section.settings.resource_stat2_number | default: "30%" }}</span>
+          <span class="redesign-sustainability__stat-label">{{ section.settings.resource_stat2_label | default: "Energy Savings" }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Redesign Sustainability",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "Looking Forward"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Sustainability at Olitalia is not a destination — it's a direction."
+    },
+    {
+      "type": "richtext",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "<p>We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future. Because protecting what matters today is the best way to safeguard the future of flavor and ensuring that used oils are given a second life as renewable energy.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Plastic No More Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "plastic_icon",
+      "label": "Plastic Icon"
+    },
+    {
+      "type": "text",
+      "id": "plastic_title",
+      "label": "Plastic Title",
+      "default": "Plastic No More"
+    },
+    {
+      "type": "textarea",
+      "id": "plastic_description",
+      "label": "Plastic Description",
+      "default": "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials."
+    },
+    {
+      "type": "text",
+      "id": "plastic_stat1_number",
+      "label": "Plastic Stat 1 Number",
+      "default": "100%"
+    },
+    {
+      "type": "text",
+      "id": "plastic_stat1_label",
+      "label": "Plastic Stat 1 Label",
+      "default": "Plastic-free facilities"
+    },
+    {
+      "type": "text",
+      "id": "plastic_stat2_number",
+      "label": "Plastic Stat 2 Number",
+      "default": "85%"
+    },
+    {
+      "type": "text",
+      "id": "plastic_stat2_label",
+      "label": "Plastic Stat 2 Label",
+      "default": "Recycled packaging"
+    },
+    {
+      "type": "header",
+      "content": "Collaboration Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "collaboration_image",
+      "label": "Collaboration Image"
+    },
+    {
+      "type": "text",
+      "id": "collaboration_title",
+      "label": "Collaboration Title",
+      "default": "Collaboration That Creates Change"
+    },
+    {
+      "type": "richtext",
+      "id": "collaboration_description",
+      "label": "Collaboration Description",
+      "default": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.</p><p>Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Full Circle Section"
+    },
+    {
+      "type": "text",
+      "id": "circle_title",
+      "label": "Circle Title",
+      "default": "Full Circle Thinking"
+    },
+    {
+      "type": "textarea",
+      "id": "circle_description",
+      "label": "Circle Description",
+      "default": "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources."
+    },
+    {
+      "type": "text",
+      "id": "circle_stat1_number",
+      "label": "Circle Stat 1 Number",
+      "default": "95%"
+    },
+    {
+      "type": "text",
+      "id": "circle_stat1_label",
+      "label": "Circle Stat 1 Label",
+      "default": "Byproduct recovery"
+    },
+    {
+      "type": "text",
+      "id": "circle_stat2_number",
+      "label": "Circle Stat 2 Number",
+      "default": "Zero"
+    },
+    {
+      "type": "text",
+      "id": "circle_stat2_label",
+      "label": "Circle Stat 2 Label",
+      "default": "Waste to landfill"
+    },
+    {
+      "type": "header",
+      "content": "Used but Full of Life Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "life_image",
+      "label": "Life Project Image"
+    },
+    {
+      "type": "text",
+      "id": "life_title",
+      "label": "Life Title",
+      "default": "Used but Full of Life Project"
+    },
+    {
+      "type": "textarea",
+      "id": "life_description",
+      "label": "Life Description",
+      "default": "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination."
+    },
+    {
+      "type": "text",
+      "id": "life_stat1_number",
+      "label": "Life Stat 1 Number",
+      "default": "500+"
+    },
+    {
+      "type": "text",
+      "id": "life_stat1_label",
+      "label": "Life Stat 1 Label",
+      "default": "Partner restaurants"
+    },
+    {
+      "type": "text",
+      "id": "life_stat2_number",
+      "label": "Life Stat 2 Number",
+      "default": "10KL"
+    },
+    {
+      "type": "text",
+      "id": "life_stat2_label",
+      "label": "Life Stat 2 Label",
+      "default": "Oil recovered yearly"
+    },
+    {
+      "type": "header",
+      "content": "People at Heart Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "people_image",
+      "label": "People Image"
+    },
+    {
+      "type": "text",
+      "id": "people_title",
+      "label": "People Title",
+      "default": "People at Heart"
+    },
+    {
+      "type": "richtext",
+      "id": "people_description",
+      "label": "People Description",
+      "default": "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p><p>Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food system that benefits everyone.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Resource Use Section"
+    },
+    {
+      "type": "text",
+      "id": "resource_title",
+      "label": "Resource Title",
+      "default": "Efficient Resource Use"
+    },
+    {
+      "type": "textarea",
+      "id": "resource_description",
+      "label": "Resource Description",
+      "default": "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste."
+    },
+    {
+      "type": "text",
+      "id": "resource_stat1_number",
+      "label": "Resource Stat 1 Number",
+      "default": "40%"
+    },
+    {
+      "type": "text",
+      "id": "resource_stat1_label",
+      "label": "Resource Stat 1 Label",
+      "default": "Water Reduction"
+    },
+    {
+      "type": "text",
+      "id": "resource_stat2_number",
+      "label": "Resource Stat 2 Number",
+      "default": "30%"
+    },
+    {
+      "type": "text",
+      "id": "resource_stat2_label",
+      "label": "Resource Stat 2 Label",
+      "default": "Energy Savings"
+    }
+  ]
+}
+{% endschema %}
