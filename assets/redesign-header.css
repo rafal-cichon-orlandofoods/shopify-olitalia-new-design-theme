@@ -51,10 +51,7 @@
     position: relative;
 }
 
-.redesign-header__logo img:hover {
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08));
-    transform: translateY(-1px);
-}
+/* Logo hover effects removed per user request */
 
 /* Enhanced shine effect with dynamic shadow */
 .redesign-header__logo::after {
@@ -126,7 +123,6 @@
     animation-duration: 2s;
 }
 
-/* Additional 3D depth with pseudo-element */
 .redesign-header__logo::before {
     content: '';
     position: absolute;
@@ -139,10 +135,6 @@
     border-radius: 4px;
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.redesign-header__logo:hover::before {
-    opacity: 1;
 }
 
 .redesign-header__right {

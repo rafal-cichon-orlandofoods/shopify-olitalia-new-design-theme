@@ -31,11 +31,6 @@
     transition: all 0.3s ease;
 }
 
-.redesign-footer__logo img:hover {
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12));
-    transform: scale(1.02);
-}
-
 .redesign-footer__column {
     display: flex;
     flex-direction: column;
