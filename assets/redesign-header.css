@@ -418,6 +418,14 @@ body[class*="product"] .redesign-header__logo img {
     filter: brightness(0) invert(1) !important;
 }
 
+/* Disable logo animations on product page - conflicts with blue gradient */
+body.template-product .redesign-header__left .redesign-header__logo::after,
+body[class*="product"] .redesign-header__left .redesign-header__logo::after,
+body.template-product .redesign-header__left .redesign-header__logo::before,
+body[class*="product"] .redesign-header__left .redesign-header__logo::before {
+    display: none !important;
+}
+
 /* Product page navigation - white elements for contrast against blue gradient */
 body.template-product .redesign-header__nav-link,
 body[class*="product"] .redesign-header__nav-link {
