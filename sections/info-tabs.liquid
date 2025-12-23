@@ -117,7 +117,7 @@
                     {%- endcapture -%}
                   {%- endif -%}
                   {%- liquid
-                    if section.index == 1 and forloop.first
+                    if forloop.first
                       assign preload = true
                     else
                       assign preload = false
