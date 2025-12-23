@@ -518,9 +518,9 @@
     font-style: italic;
     margin: 0;
     padding: 15px 20px;
-    background: #f8f8f8;
+    /* background: #f8f8f8; */
     border-radius: 8px;
-    border-left: 3px solid #ddd;
+    /* border-left: 3px solid #ddd; */
 }
 
 /* Newsletter Section */
