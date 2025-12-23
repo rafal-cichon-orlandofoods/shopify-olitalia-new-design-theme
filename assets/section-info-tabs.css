@@ -338,6 +338,16 @@ html[dir=ltr] .info-tabs_togglers-style--icons .info-tabs__tab figure {
   }
 }
 
+@keyframes reveal-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* F
 ull width for Our Values section on About Us page */
 .info-tabs {
