@@ -106,7 +106,7 @@
 
 /* Footer on Product Page - White Text */
 .template-product .redesign-footer {
-    background: transparent;
+    /* background: transparent; */
     border-top: none;
     padding-top: 0;
 }

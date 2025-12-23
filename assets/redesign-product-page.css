@@ -502,9 +502,9 @@ body.template-product .shopify-section {
     background: transparent !important;
 }
 
-body.template-product #main {
+/* body.template-product #main {
     background: transparent !important;
-}
+} */
 
 /* Remove individual section backgrounds */
 .redesign-product {
@@ -706,5 +706,17 @@ body[class*="product"] .redesign-header__menu-line {
     
     .redesign-product__description {
         font-size: 13px;
+    }
+}
+
+#extra-virgin-olive-oil {
+    /* Mobile: gradient wskazuje na górę gdzie jest produkt */
+    background: radial-gradient(circle at 49% 10%, #385DFF 21vw, #2746C9 35vw, #00134F 66vw), #00134F;
+}
+
+/* Desktop: gradient wskazuje na lewą stronę gdzie jest produkt */
+@media (min-width: 769px) {
+    #extra-virgin-olive-oil {
+        background: radial-gradient(circle at 40% 23%, #385DFF 15vw, #2746C9 25vw, #00134F 45vw), #00134F;
     }
 }

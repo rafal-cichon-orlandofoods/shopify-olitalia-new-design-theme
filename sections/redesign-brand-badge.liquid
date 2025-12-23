@@ -7,7 +7,13 @@
         src="{{ section.settings.badge_image | image_url: width: 400 }}" 
         alt="{{ section.settings.badge_text }}"
         class="redesign-badge__logo"
+        width="400"
+        height="auto"
       >
+    {% endif %}
+    
+    {% if section.settings.disclaimer_text %}
+      <p class="redesign-badge__disclaimer">{{ section.settings.disclaimer_text }}</p>
     {% endif %}
   </div>
 </section>
@@ -26,6 +32,12 @@
       "id": "badge_text",
       "label": "Badge Alt Text",
       "default": "Extravergine Italiano Certificato"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer Text",
+      "default": "* Claim by Olitalia based on research conducted by NielsenIQ in June-July 2025. Total Olitalia's results calculated over a representative sample of 700 among Restaurants, Pizzerias and Hotels with Kitchen, +/- 4 percentage points with an estimate reliability of 95%."
     }
   ],
   "presets": [
