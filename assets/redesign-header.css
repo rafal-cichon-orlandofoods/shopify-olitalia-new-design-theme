@@ -1,3 +1,19 @@
+/* Import Inter font to ensure consistency across all pages */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* GLOBAL HEADER FONT RESET - Maximum specificity to override any conflicts */
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+    font-stretch: normal !important;
+    font-variant: normal !important;
+    line-height: normal !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
 /* Redesigned Header */
 
 .redesign-header {
@@ -143,34 +159,57 @@
     gap: 40px;
 }
 
-.redesign-header__nav-link {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 16px;
-    font-weight: 500;
-    color: #2c2c2c;
-    text-decoration: none;
-    padding: 10px 0;
-    position: relative;
-    transition: color 0.3s ease;
+/* HEADER FONT OVERRIDE - Highest specificity to prevent conflicts */
+html body .redesign-header .redesign-header__nav-link,
+html body .redesign-header .redesign-header__nav-link:visited,
+html body .redesign-header .redesign-header__nav-link:hover,
+html body .redesign-header .redesign-header__nav-link:active,
+html body .redesign-header .redesign-header__nav-link.active {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #2c2c2c !important;
+    text-decoration: none !important;
+    padding: 10px 0 !important;
+    position: relative !important;
+    transition: color 0.3s ease !important;
 }
 
-.redesign-header__nav-link:hover {
-    color: #000;
+/* Remove default browser styles for visited links */
+html body .redesign-header .redesign-header__nav-link:visited {
+    color: #2c2c2c !important;
 }
 
-.redesign-header__nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #2c2c2c;
-    transition: width 0.3s ease;
+html body .redesign-header .redesign-header__nav-link:hover {
+    color: #000 !important;
 }
 
-.redesign-header__nav-link:hover::after {
-    width: 100%;
+html body .redesign-header .redesign-header__nav-link:hover:visited {
+    color: #000 !important;
+}
+
+/* Active state for current page */
+html body .redesign-header .redesign-header__nav-link:active,
+html body .redesign-header .redesign-header__nav-link.active {
+    color: #000 !important;
+    font-weight: 600 !important;
+}
+
+html body .redesign-header .redesign-header__nav-link::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 2px !important;
+    background: #2c2c2c !important;
+    transition: width 0.3s ease !important;
+}
+
+html body .redesign-header .redesign-header__nav-link:hover::after,
+html body .redesign-header .redesign-header__nav-link:active::after,
+html body .redesign-header .redesign-header__nav-link.active::after {
+    width: 100% !important;
 }
 
 .redesign-header__menu-icon {
@@ -360,18 +399,39 @@
     padding: 60px 40px;
 }
 
-.redesign-mobile-menu__link {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 32px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    transition: color 0.3s ease;
-    letter-spacing: 0.5px;
+/* MOBILE MENU FONT OVERRIDE - Highest specificity to prevent conflicts */
+html body .redesign-mobile-menu .redesign-mobile-menu__link,
+html body .redesign-mobile-menu .redesign-mobile-menu__link:visited,
+html body .redesign-mobile-menu .redesign-mobile-menu__link:hover,
+html body .redesign-mobile-menu .redesign-mobile-menu__link:active,
+html body .redesign-mobile-menu .redesign-mobile-menu__link.active {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 32px !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+    letter-spacing: 0.5px !important;
 }
 
-.redesign-mobile-menu__link:hover {
-    color: #fff;
+/* Remove default browser styles for visited links in mobile menu */
+html body .redesign-mobile-menu .redesign-mobile-menu__link:visited {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html body .redesign-mobile-menu .redesign-mobile-menu__link:hover {
+    color: #fff !important;
+}
+
+html body .redesign-mobile-menu .redesign-mobile-menu__link:hover:visited {
+    color: #fff !important;
+}
+
+/* Active state for current page in mobile menu */
+html body .redesign-mobile-menu .redesign-mobile-menu__link:active,
+html body .redesign-mobile-menu .redesign-mobile-menu__link.active {
+    color: #fff !important;
+    font-weight: 500 !important;
 }
 
 @media (max-width: 768px) {
@@ -426,18 +486,45 @@ body[class*="product"] .redesign-header__left .redesign-header__logo::before {
     display: none !important;
 }
 
-/* Product page navigation - white elements for contrast against blue gradient */
-body.template-product .redesign-header__nav-link,
-body[class*="product"] .redesign-header__nav-link {
+/* Product page navigation - white elements for contrast against blue gradient - HIGHEST SPECIFICITY */
+html body.template-product .redesign-header .redesign-header__nav-link,
+html body[class*="product"] .redesign-header .redesign-header__nav-link,
+html body.template-product .redesign-header .redesign-header__nav-link:visited,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:visited,
+html body.template-product .redesign-header .redesign-header__nav-link:hover,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:hover,
+html body.template-product .redesign-header .redesign-header__nav-link:active,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:active,
+html body.template-product .redesign-header .redesign-header__nav-link.active,
+html body[class*="product"] .redesign-header .redesign-header__nav-link.active {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     color: #fff !important;
 }
 
-body.template-product .redesign-header__nav-link:hover,
-body[class*="product"] .redesign-header__nav-link:hover {
+html body.template-product .redesign-header .redesign-header__nav-link:visited,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:visited {
+    color: #fff !important;
+}
+
+html body.template-product .redesign-header .redesign-header__nav-link:hover,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:hover {
     color: #ccc !important;
 }
 
-body.template-product .redesign-header__nav-link::after,
-body[class*="product"] .redesign-header__nav-link::after {
+html body.template-product .redesign-header .redesign-header__nav-link:hover:visited,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:hover:visited {
+    color: #ccc !important;
+}
+
+html body.template-product .redesign-header .redesign-header__nav-link:active,
+html body.template-product .redesign-header .redesign-header__nav-link.active,
+html body[class*="product"] .redesign-header .redesign-header__nav-link:active,
+html body[class*="product"] .redesign-header .redesign-header__nav-link.active {
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+html body.template-product .redesign-header .redesign-header__nav-link::after,
+html body[class*="product"] .redesign-header .redesign-header__nav-link::after {
     background: #fff !important;
 }

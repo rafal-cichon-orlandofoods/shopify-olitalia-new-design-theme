@@ -10,10 +10,11 @@ body.template-page [class*="ai-innovation-container-"] * {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
-/* Override global H2 styles on Production page to match Sustainability */
-body.template-page h2 {
+/* Override H2 styles ONLY within AI innovation blocks - exclude newsletter */
+body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__title),
+body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title) {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-weight: 600 !important; /* Same as sustainability H2 titles */
+  font-weight: 600 !important; /* Same as sustainability section titles */
   font-size: 96px !important; /* Same as sustainability section titles */
   line-height: 90px !important; /* Same as sustainability */
   color: #121212 !important; /* Same as sustainability text color */
@@ -105,8 +106,9 @@ body.template-page [class*="ai-innovation-closing-text-"] {
 
 /* Mobile responsive - EXACT match to sustainability mobile styles */
 @media (max-width: 768px) {
-  /* Override global H2 styles on mobile */
-  body.template-page h2 {
+  /* Override H2 styles ONLY within AI innovation blocks on mobile - exclude newsletter */
+  body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__title),
+  body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title) {
     font-size: 36px !important; /* Same as sustainability mobile */
     line-height: 40px !important; /* Same as sustainability mobile */
   }

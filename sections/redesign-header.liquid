@@ -6,11 +6,11 @@
     {% comment %} Left Side - Logo (Desktop) / Hamburger Menu (Mobile) {% endcomment %}
     <div class="redesign-header__left">
       <div class="redesign-header__logo">
-        <a href="/">
+        <a href="{{ routes.root_url }}">
           {% if section.settings.logo %}
-            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="80">
           {% else %}
-            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
+            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia" width="200" height="80">
           {% endif %}
         </a>
       </div>
@@ -26,23 +26,21 @@
     {% comment %} Center - Navigation Menu (Desktop) / Logo (Mobile) {% endcomment %}
     <div class="redesign-header__center">
       <nav class="redesign-header__nav">
-        <a href="/" class="redesign-header__nav-link">Home</a>
+        <a href="{{ routes.root_url }}" class="redesign-header__nav-link">Home</a>
         <a href="/products/extra-virgin-olive-oil-500ml" class="redesign-header__nav-link">Products</a>
         <a href="/pages/recipes" class="redesign-header__nav-link">Recipes</a>
         <a href="/pages/about-us" class="redesign-header__nav-link">About Us</a>
         <a href="/pages/production" class="redesign-header__nav-link">Production</a>
         <a href="/pages/sustainability" class="redesign-header__nav-link">Sustainability</a>
-
-
       </nav>
       
       {% comment %} Mobile Logo - Only visible on mobile {% endcomment %}
       <div class="redesign-header__mobile-logo">
-        <a href="/">
+        <a href="{{ routes.root_url }}">
           {% if section.settings.logo %}
-            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="50">
           {% else %}
-            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
+            <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia" width="200" height="50">
           {% endif %}
         </a>
       </div>
@@ -50,14 +48,14 @@
     
     {% comment %} Right Side - Search & Cart {% endcomment %}
     <div class="redesign-header__right">
-      <a href="/search" class="redesign-header__icon" aria-label="Search">
+      <a href="{{ routes.search_url }}" class="redesign-header__icon" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
           <path d="m21 21-4.35-4.35"/>
         </svg>
       </a>
       
-      <a href="/cart" class="redesign-header__icon" aria-label="Cart">
+      <a href="{{ routes.cart_url }}" class="redesign-header__icon" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="21" r="1"/>
           <circle cx="20" cy="21" r="1"/>
@@ -73,14 +71,14 @@
 <div class="redesign-mobile-menu" id="mobileMenu">
   <div class="redesign-mobile-menu__header">
     <div class="redesign-mobile-menu__icons">
-      <a href="/search" class="redesign-mobile-menu__icon" aria-label="Search">
+      <a href="{{ routes.search_url }}" class="redesign-mobile-menu__icon" aria-label="Search">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/>
           <path d="m21 21-4.35-4.35"/>
         </svg>
       </a>
       
-      <a href="/cart" class="redesign-mobile-menu__icon" aria-label="Cart">
+      <a href="{{ routes.cart_url }}" class="redesign-mobile-menu__icon" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="21" r="1"/>
           <circle cx="20" cy="21" r="1"/>
@@ -90,11 +88,11 @@
     </div>
     
     <div class="redesign-mobile-menu__logo">
-      <a href="/">
+      <a href="{{ routes.root_url }}">
         {% if section.settings.logo %}
-          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}">
+          <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" width="200" height="80">
         {% else %}
-          <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia">
+          <img src="/cdn/shop/files/olitalia_logo_black.svg?v=1766151501&width=200" alt="Olitalia" width="200" height="80">
         {% endif %}
       </a>
     </div>
@@ -106,7 +104,7 @@
   </div>
   
   <nav class="redesign-mobile-menu__nav">
-    <a href="/" class="redesign-mobile-menu__link">Home</a>
+    <a href="{{ routes.root_url }}" class="redesign-mobile-menu__link">Home</a>
     <a href="/pages/about-us" class="redesign-mobile-menu__link">About Us</a>
     <a href="/pages/production" class="redesign-mobile-menu__link">Production</a>
     <a href="/pages/sustainability" class="redesign-mobile-menu__link">Sustainability</a>
@@ -128,6 +126,25 @@ function toggleMenu() {
     body.style.overflow = 'hidden';
   }
 }
+
+// Add active class to current page navigation link
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.redesign-header__nav-link, .redesign-mobile-menu__link');
+  
+  navLinks.forEach(link => {
+    const linkPath = new URL(link.href).pathname;
+    
+    // Check if current page matches the link
+    if (currentPath === linkPath || 
+        (currentPath === '/' && linkPath === '/') ||
+        (currentPath.startsWith('/pages/') && linkPath.includes(currentPath.split('/').pop())) ||
+        (currentPath.startsWith('/products/') && linkPath.includes('/products/')) ||
+        (currentPath.startsWith('/blogs/') && linkPath.includes('/pages/recipes'))) {
+      link.classList.add('active');
+    }
+  });
+});
 </script>
 
 {% schema %}
