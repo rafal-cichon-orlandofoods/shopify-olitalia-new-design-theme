@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "redesign_header": {
+      "type": "redesign-header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
     "main": {
       "type": "chefs-showcase",
       "settings": {
@@ -16,9 +22,26 @@
         "show_page_title": true,
         "show_chef_stats": true
       }
+    },
+    "redesign_newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
+    },
+    "redesign_footer": {
+      "type": "redesign-footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
     }
   },
   "order": [
-    "main"
+    "redesign_header",
+    "main",
+    "redesign_newsletter",
+    "redesign_footer"
   ]
 }
