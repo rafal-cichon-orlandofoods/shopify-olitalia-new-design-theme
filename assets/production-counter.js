@@ -1,7 +1,8 @@
-// Counter animation for production page - based on sustainability counter
+// Counter animation for production page - works with any AI block ID
 class ProductionCounter {
   constructor() {
-    this.counters = document.querySelectorAll('.ai-innovation-stat-number-2fff632kqwkw8');
+    // Find all stat number elements that match the AI innovation pattern
+    this.counters = document.querySelectorAll('[class*="ai-innovation-stat-number-"]');
     this.observer = null;
     this.init();
   }
