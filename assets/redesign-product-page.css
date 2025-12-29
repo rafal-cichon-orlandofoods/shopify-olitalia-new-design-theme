@@ -11,17 +11,21 @@
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1fr 1fr; /* Equal 50/50 split */
+    gap: 40px; /* Reduce gap from 60px to 40px */
     align-items: start;
     width: 100%;
     box-sizing: border-box;
 }
 
 .redesign-product__media {
-    position: sticky;
-    top: 100px;
+    /* Remove sticky positioning that might interfere with grid */
+    position: relative;
+    top: 0;
     align-self: start;
+    max-width: 100%; /* Ensure it doesn't exceed its grid column */
+    width: 100%;
+    overflow: hidden; /* Prevent content from overflowing */
 }
 
 .redesign-product__main-image {
@@ -29,14 +33,24 @@
     border-radius: 20px;
     padding: 0;
     margin: 0 auto 20px;
-    max-width: 400px;
+    width: 100%; /* Use full width of media container */
+    max-width: 100%; /* Ensure it stays within bounds */
     position: relative;
+    height: 90vh; /* Increase height for better product showcase */
+    min-height: 400px; /* Increase minimum height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
 .redesign-product__main-image img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
     height: auto;
     display: block;
+    object-fit: contain; /* Maintain aspect ratio within container */
 }
 
 .redesign-product__thumbnails-wrapper {
@@ -44,6 +58,7 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    overflow: visible; /* Ensure arrows are not clipped */
 }
 
 .redesign-product__thumbnails {
@@ -56,6 +71,8 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     flex: 1;
+    white-space: nowrap; /* Prevent wrapping to new line */
+    flex-wrap: nowrap; /* Ensure no wrapping */
 }
 
 .redesign-product__thumbnails::-webkit-scrollbar {
@@ -72,6 +89,7 @@
     transition: all 0.3s ease;
     flex-shrink: 0;
     width: 120px;
+    height: 120px; /* Add fixed height */
 }
 
 .redesign-product__thumbnail:hover,
@@ -98,11 +116,12 @@
     cursor: pointer;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    z-index: 10; /* Ensure arrows stay above other content */
 }
 
 .redesign-product__thumbnails-arrow:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.4); /* Stronger background instead of scale */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
 }
 
 .redesign-product__thumbnails-arrow svg {
@@ -360,6 +379,28 @@
     opacity: 0.7;
 }
 
+/* Desktop-specific styles to ensure proper 50/50 layout */
+@media (min-width: 769px) {
+    .redesign-product__container {
+        grid-template-columns: 48% 48%; /* Use percentages for exact control */
+        justify-content: space-between; /* Space between columns */
+        max-width: 1200px;
+        gap: 4%; /* 4% gap to make total 100% */
+    }
+    
+    .redesign-product__media {
+        max-width: 100%;
+        width: 100%;
+        justify-self: start; /* Align to start of grid cell */
+    }
+    
+    .redesign-product__info {
+        max-width: 100%;
+        width: 100%;
+        justify-self: start; /* Align to start of grid cell */
+    }
+}
+
 @media (max-width: 768px) {
   .redesign-product {
     padding: 20px 15px;
@@ -384,13 +425,13 @@
   .redesign-product__main-image {
     max-width: 100%;
     margin: 0 auto 15px;
-    max-height: 50vh;
+    max-height: 45vh; /* Reduce mobile height as well */
   }
 
   .redesign-product__main-image img {
     width: 100%;
     height: auto;
-    max-height: 50vh;
+    max-height: 45vh; /* Keep consistent with container */
     object-fit: contain;
     object-position: center;
   }
@@ -676,11 +717,11 @@ body[class*="product"] .redesign-header__menu-line {
     }
     
     .redesign-product__main-image {
-        max-height: 45vh; /* Even smaller on tiny screens */
+        max-height: 40vh; /* Reduce from 45vh for tiny screens */
     }
     
     .redesign-product__main-image img {
-        max-height: 45vh;
+        max-height: 40vh; /* Keep consistent */
         object-fit: contain; /* Keep full image visible */
     }
     
@@ -719,4 +760,112 @@ body[class*="product"] .redesign-header__menu-line {
     #extra-virgin-olive-oil {
         background: radial-gradient(circle at 40% 23%, #385DFF 15vw, #2746C9 25vw, #00134F 45vw), #00134F;
     }
+}
+/* Video Support */
+.redesign-product__main-video {
+    /* width: 100%; - removed to prevent margin issues */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    background: #000;
+    display: block;
+    object-fit: contain; /* Maintain aspect ratio within container */
+}
+
+.redesign-product__external-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.redesign-product__external-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Video Thumbnails */
+.redesign-product__thumbnail-video {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.redesign-product__play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.redesign-product__thumbnail:hover .redesign-product__play-icon {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.redesign-product__play-icon svg {
+    margin-left: 2px; /* Optical alignment for play button */
+}
+
+/* Mobile optimizations for video */
+@media (max-width: 768px) {
+    .redesign-product__main-video {
+        max-height: 45vh; /* Keep consistent with desktop */
+    }
+    
+    .redesign-product__play-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .redesign-product__play-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Disable autoplay on mobile for better UX */
+    .redesign-product__main-video {
+        preload: none;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .redesign-product__play-icon {
+        transition: none;
+    }
+}
+
+/* Loading state for videos */
+.redesign-product__main-video:not([data-loaded]) {
+    background: #f5f5f5 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>') center/48px no-repeat;
+    min-height: 200px;
+}
+/* Thumbnail images */
+.redesign-product__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Change from cover to contain to show full image */
+    border-radius: 8px;
+}
+
+.redesign-product__thumbnail-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Change from cover to contain to show full image */
+    border-radius: 8px;
 }

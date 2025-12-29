@@ -5,11 +5,28 @@
     <div class="redesign-product__media">
       <div class="redesign-product__main-image">
         {% if product.featured_media %}
-          <img 
-            src="{{ product.featured_media | image_url: width: 800 }}" 
-            alt="{{ product.featured_media.alt | escape }}"
-            id="main-product-image"
-          >
+          {% if product.featured_media.media_type == 'video' %}
+            <video 
+              id="main-product-video"
+              class="redesign-product__main-video"
+              controls
+              preload="metadata"
+              poster="{{ product.featured_media.preview_image | image_url: width: 800 }}"
+            >
+              <source src="{{ product.featured_media.sources[1].url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% elsif product.featured_media.media_type == 'external_video' %}
+            <div class="redesign-product__external-video">
+              {{ product.featured_media | external_video_tag }}
+            </div>
+          {% else %}
+            <img 
+              src="{{ product.featured_media | image_url: width: 800 }}" 
+              alt="{{ product.featured_media.alt | escape }}"
+              id="main-product-image"
+            >
+          {% endif %}
         {% endif %}
       </div>
       
@@ -25,9 +42,22 @@
             {% for media in product.media %}
               <button 
                 class="redesign-product__thumbnail {% if forloop.first %}active{% endif %}"
-                onclick="changeImage('{{ media | image_url: width: 800 }}', this)"
+                onclick="changeMedia({{ forloop.index0 }}, this)"
+                data-media-type="{{ media.media_type }}"
+                data-media-id="{{ media.id }}"
               >
-                <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | escape }}">
+                {% if media.media_type == 'video' or media.media_type == 'external_video' %}
+                  <div class="redesign-product__thumbnail-video">
+                    <img src="{{ media.preview_image | image_url: width: 150 }}" alt="{{ media.alt | escape }}">
+                    <div class="redesign-product__play-icon">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </div>
+                  </div>
+                {% else %}
+                  <img src="{{ media | image_url: width: 150 }}" alt="{{ media.alt | escape }}">
+                {% endif %}
               </button>
             {% endfor %}
           </div>
@@ -141,23 +171,84 @@
 </section>
 
 <script>
-function changeImage(src, button) {
-  document.getElementById('main-product-image').src = src;
+// Store media data for JavaScript access
+const productMedia = [
+  {% for media in product.media %}
+    {
+      id: {{ media.id }},
+      type: '{{ media.media_type }}',
+      {% if media.media_type == 'video' %}
+        url: '{{ media.sources[1].url }}',
+        poster: '{{ media.preview_image | image_url: width: 800 }}',
+      {% elsif media.media_type == 'external_video' %}
+        embedUrl: '{{ media | external_video_url }}',
+        poster: '{{ media.preview_image | image_url: width: 800 }}',
+      {% else %}
+        url: '{{ media | image_url: width: 800 }}',
+      {% endif %}
+      alt: '{{ media.alt | escape }}'
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+];
+
+function changeMedia(index, button) {
+  const media = productMedia[index];
+  const container = document.querySelector('.redesign-product__main-image');
+  
+  // Remove active class from all thumbnails
   document.querySelectorAll('.redesign-product__thumbnail').forEach(btn => btn.classList.remove('active'));
   button.classList.add('active');
+  
+  // Clear current content
+  container.innerHTML = '';
+  
+  if (media.type === 'video') {
+    // Create video element
+    const video = document.createElement('video');
+    video.id = 'main-product-video';
+    video.className = 'redesign-product__main-video';
+    video.controls = true;
+    video.preload = 'metadata';
+    video.poster = media.poster;
+    
+    const source = document.createElement('source');
+    source.src = media.url;
+    source.type = 'video/mp4';
+    
+    video.appendChild(source);
+    video.innerHTML += 'Your browser does not support the video tag.';
+    container.appendChild(video);
+    
+  } else if (media.type === 'external_video') {
+    // Create external video container
+    const videoDiv = document.createElement('div');
+    videoDiv.className = 'redesign-product__external-video';
+    
+    // For external videos, we'll create an iframe (simplified approach)
+    const iframe = document.createElement('iframe');
+    iframe.src = media.embedUrl;
+    iframe.width = '100%';
+    iframe.height = '400';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+    
+    videoDiv.appendChild(iframe);
+    container.appendChild(videoDiv);
+    
+  } else {
+    // Create image element
+    const img = document.createElement('img');
+    img.src = media.url;
+    img.alt = media.alt;
+    img.id = 'main-product-image';
+    container.appendChild(img);
+  }
 }
 
 function scrollThumbnails(direction) {
   const container = document.querySelector('.redesign-product__thumbnails');
   const thumbnails = container.querySelectorAll('.redesign-product__thumbnail');
   const activeThumbnail = container.querySelector('.redesign-product__thumbnail.active');
-  
-function updateQuantity(change) {
-  const input = document.getElementById('quantity');
-  const currentValue = parseInt(input.value) || 1;
-  const newValue = Math.max(1, currentValue + change);
-  input.value = newValue;
-}
   
   let currentIndex = Array.from(thumbnails).indexOf(activeThumbnail);
   let nextIndex = currentIndex + direction;
@@ -169,7 +260,7 @@ function updateQuantity(change) {
     nextIndex = 0;
   }
   
-  // Click the next thumbnail to change the image
+  // Click the next thumbnail to change the media
   thumbnails[nextIndex].click();
   
   // Scroll to show the thumbnail
@@ -178,6 +269,13 @@ function updateQuantity(change) {
     block: 'nearest',
     inline: 'center'
   });
+}
+
+function updateQuantity(change) {
+  const input = document.getElementById('quantity');
+  const currentValue = parseInt(input.value) || 1;
+  const newValue = Math.max(1, currentValue + change);
+  input.value = newValue;
 }
 </script>
 
