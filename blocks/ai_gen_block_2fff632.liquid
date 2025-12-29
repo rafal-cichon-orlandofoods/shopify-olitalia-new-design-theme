@@ -33,6 +33,9 @@
 <!-- Load production typography override -->
 {{ 'production-typography.css' | asset_url | stylesheet_tag }}
 
+<!-- Load production counter animation -->
+<script src="{{ 'production-counter.js' | asset_url }}" defer></script>
+
 {% style %}
   .ai-innovation-block-{{ ai_gen_id }} {
     padding: {{ block.settings.section_padding }}px 0;

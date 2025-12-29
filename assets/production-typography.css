@@ -23,20 +23,29 @@ body.template-page .ai-innovation-intro-text-2fff632kqwkw8 {
   line-height: normal !important;
 }
 
-/* Stats numbers - match sustainability stat numbers */
+/* Stats numbers - match sustainability stat numbers with animation styles */
 body.template-page .ai-innovation-stat-number-2fff632kqwkw8 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 64px !important;
   font-weight: 400 !important;
   line-height: 60px !important;
+  color: #004f2f !important; /* Olitalia green like sustainability page */
+  transition: all 0.3s ease !important;
+}
+
+/* Animation state for counting numbers */
+body.template-page .ai-innovation-stat-number-2fff632kqwkw8.counting {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(0, 79, 47, 0.3);
 }
 
 /* Stats labels - match sustainability stat labels */
 body.template-page .ai-innovation-stat-label-2fff632kqwkw8 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 48px !important;
+  font-size: 18px !important;
   font-weight: 400 !important;
-  line-height: 60px !important;
+  line-height: 24px !important;
+  color: #000000 !important;
 }
 
 /* Section titles - match sustainability section titles */
@@ -102,9 +111,17 @@ body.template-page .ai-innovation-closing-text-2fff632kqwkw8 {
   /* Stats mobile */
   body.template-page .ai-innovation-stat-number-2fff632kqwkw8 {
     font-size: 32px !important;
+    line-height: 36px !important;
   }
   
   body.template-page .ai-innovation-stat-label-2fff632kqwkw8 {
-    font-size: 18px !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+  }
+  
+  /* Disable animation effects on mobile for performance */
+  body.template-page .ai-innovation-stat-number-2fff632kqwkw8.counting {
+    transform: none;
+    text-shadow: none;
   }
 }
