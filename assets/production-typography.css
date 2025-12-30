@@ -3,26 +3,26 @@
 
 /* Production Typography Override - Match Sustainability font styles EXACTLY */
 
-/* Apply Inter font family to production page - works with any AI block ID */
-body.template-page [class*="ai-innovation-block-"],
-body.template-page [class*="ai-innovation-container-"],
-body.template-page [class*="ai-innovation-container-"] *,
-body.template-page [class*="ai-innovation-intro-"],
-body.template-page [class*="ai-innovation-stats-"],
-body.template-page [class*="ai-innovation-stat-"],
-body.template-page [class*="ai-innovation-item-"],
-body.template-page [class*="ai-innovation-content-"],
-body.template-page [class*="ai-innovation-title-"],
-body.template-page [class*="ai-innovation-text-"],
-body.template-page [class*="ai-innovation-closing-"] {
+/* Apply Inter font family to production page - specific to AI block ID 2fff632 */
+body.template-page .ai-innovation-block-2fff632,
+body.template-page .ai-innovation-container-2fff632,
+body.template-page .ai-innovation-container-2fff632 *,
+body.template-page .ai-innovation-intro-2fff632,
+body.template-page .ai-innovation-stats-2fff632,
+body.template-page .ai-innovation-stat-2fff632,
+body.template-page .ai-innovation-item-2fff632,
+body.template-page .ai-innovation-content-2fff632,
+body.template-page .ai-innovation-title-2fff632,
+body.template-page .ai-innovation-text-2fff632,
+body.template-page .ai-innovation-closing-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
 /* Override H2 styles ONLY within AI innovation blocks - exclude newsletter */
-body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__title),
-body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title),
-body.template-page [class*="ai-innovation-intro-title-"],
-body.template-page [class*="ai-innovation-closing-title-"] {
+body.template-page .ai-innovation-block-2fff632 h2:not(.redesign-newsletter__title),
+body.template-page .ai-innovation-container-2fff632 h2:not(.redesign-newsletter__title),
+body.template-page .ai-innovation-intro-title-2fff632,
+body.template-page .ai-innovation-closing-title-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-weight: 600 !important; /* Same as sustainability section titles */
   font-size: 96px !important; /* Same as sustainability section titles */
@@ -32,7 +32,7 @@ body.template-page [class*="ai-innovation-closing-title-"] {
 }
 
 /* Main title - EXACT match to sustainability hero title */
-body.template-page [class*="ai-innovation-intro-title-"] {
+body.template-page .ai-innovation-intro-title-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 96px !important; /* Same as sustainability-figma__hero-title */
   font-weight: 600 !important; /* Same as sustainability */
@@ -42,7 +42,7 @@ body.template-page [class*="ai-innovation-intro-title-"] {
 }
 
 /* Intro text - EXACT match to sustainability hero description */
-body.template-page [class*="ai-innovation-intro-text-"] {
+body.template-page .ai-innovation-intro-text-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 32px !important; /* Same as sustainability hero description */
   font-weight: 300 !important; /* Same as sustainability */
@@ -51,7 +51,7 @@ body.template-page [class*="ai-innovation-intro-text-"] {
 }
 
 /* Stats numbers - EXACT match to sustainability stat numbers */
-body.template-page [class*="ai-innovation-stat-number-"] {
+body.template-page .ai-innovation-stat-number-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 64px !important; /* Same as sustainability-figma__stat-number */
   font-weight: 400 !important; /* Same as sustainability */
@@ -62,12 +62,12 @@ body.template-page [class*="ai-innovation-stat-number-"] {
 }
 
 /* Animation state for counting numbers - same as sustainability */
-body.template-page [class*="ai-innovation-stat-number-"].counting {
+body.template-page .ai-innovation-stat-number-2fff632.counting {
   opacity: 1;
 }
 
 /* Stats labels - EXACT match to sustainability stat labels */
-body.template-page [class*="ai-innovation-stat-label-"] {
+body.template-page .ai-innovation-stat-label-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 48px !important; /* Same as sustainability-figma__stat-label */
   font-weight: 400 !important; /* Same as sustainability */
@@ -77,7 +77,7 @@ body.template-page [class*="ai-innovation-stat-label-"] {
 }
 
 /* Section titles (H3 in AI block) - EXACT match to sustainability section titles */
-body.template-page [class*="ai-innovation-title-"] {
+body.template-page .ai-innovation-title-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 96px !important; /* Same as sustainability section titles */
   font-weight: 600 !important; /* Same as sustainability */
@@ -87,7 +87,7 @@ body.template-page [class*="ai-innovation-title-"] {
 }
 
 /* Section text - EXACT match to sustainability section descriptions */
-body.template-page [class*="ai-innovation-text-"] {
+body.template-page .ai-innovation-text-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 24px !important; /* Same as sustainability descriptions */
   font-weight: 300 !important; /* Same as sustainability */
@@ -96,7 +96,7 @@ body.template-page [class*="ai-innovation-text-"] {
 }
 
 /* Closing title - EXACT match to sustainability section titles */
-body.template-page [class*="ai-innovation-closing-title-"] {
+body.template-page .ai-innovation-closing-title-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 96px !important; /* Same as sustainability section titles */
   font-weight: 600 !important; /* Same as sustainability */
@@ -106,7 +106,7 @@ body.template-page [class*="ai-innovation-closing-title-"] {
 }
 
 /* Closing text - EXACT match to sustainability descriptions */
-body.template-page [class*="ai-innovation-closing-text-"] {
+body.template-page .ai-innovation-closing-text-2fff632 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 24px !important; /* Same as sustainability descriptions */
   font-weight: 300 !important; /* Same as sustainability */
@@ -117,45 +117,45 @@ body.template-page [class*="ai-innovation-closing-text-"] {
 /* Mobile responsive - EXACT match to sustainability mobile styles */
 @media (max-width: 768px) {
   /* Override H2 styles ONLY within AI innovation blocks on mobile - exclude newsletter */
-  body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__title),
-  body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title) {
+  body.template-page .ai-innovation-block-2fff632 h2:not(.redesign-newsletter__title),
+  body.template-page .ai-innovation-container-2fff632 h2:not(.redesign-newsletter__title) {
     font-size: 36px !important; /* Same as sustainability mobile */
     line-height: 40px !important; /* Same as sustainability mobile */
   }
 
   /* Main title mobile - same as sustainability */
-  body.template-page [class*="ai-innovation-intro-title-"] {
+  body.template-page .ai-innovation-intro-title-2fff632 {
     font-size: 48px !important; /* Same as sustainability mobile */
     line-height: 52px !important; /* Same as sustainability mobile */
   }
   
   /* Intro text mobile - same as sustainability */
-  body.template-page [class*="ai-innovation-intro-text-"] {
+  body.template-page .ai-innovation-intro-text-2fff632 {
     font-size: 18px !important; /* Same as sustainability mobile */
     line-height: 24px !important; /* Same as sustainability mobile */
   }
   
   /* Section titles mobile - same as sustainability */
-  body.template-page [class*="ai-innovation-title-"],
-  body.template-page [class*="ai-innovation-closing-title-"] {
+  body.template-page .ai-innovation-title-2fff632,
+  body.template-page .ai-innovation-closing-title-2fff632 {
     font-size: 36px !important; /* Same as sustainability mobile */
     line-height: 40px !important; /* Same as sustainability mobile */
   }
   
   /* Section text mobile - same as sustainability */
-  body.template-page [class*="ai-innovation-text-"],
-  body.template-page [class*="ai-innovation-closing-text-"] {
+  body.template-page .ai-innovation-text-2fff632,
+  body.template-page .ai-innovation-closing-text-2fff632 {
     font-size: 16px !important; /* Same as sustainability mobile */
     line-height: 24px !important; /* Same as sustainability mobile */
   }
   
   /* Stats mobile - same as sustainability */
-  body.template-page [class*="ai-innovation-stat-number-"] {
+  body.template-page .ai-innovation-stat-number-2fff632 {
     font-size: 32px !important; /* Same as sustainability mobile */
     line-height: 36px !important; /* Adjusted for mobile */
   }
   
-  body.template-page [class*="ai-innovation-stat-label-"] {
+  body.template-page .ai-innovation-stat-label-2fff632 {
     font-size: 18px !important; /* Same as sustainability mobile */
     line-height: 20px !important; /* Adjusted for mobile */
   }
