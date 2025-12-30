@@ -146,22 +146,14 @@
     gap: 40px;
 }
 
-/* CONSOLIDATED HEADER NAVIGATION STYLES - Maximum specificity to prevent any conflicts */
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:link,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:visited,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active {
+/* CONSOLIDATED HEADER NAVIGATION STYLES - Simplified selectors that actually work */
+.redesign-header__nav-link,
+.redesign-header__nav-link:link,
+.redesign-header__nav-link:visited {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 16px !important;
     font-weight: 500 !important;
     font-style: normal !important;
-    font-stretch: normal !important;
-    font-variant: normal !important;
-    line-height: normal !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
     color: #2c2c2c !important;
     text-decoration: none !important;
     padding: 10px 0 !important;
@@ -170,20 +162,20 @@ html body div.redesign-header div.redesign-header__container div.redesign-header
 }
 
 /* Hover states */
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover:visited {
+.redesign-header__nav-link:hover,
+.redesign-header__nav-link:hover:visited {
     color: #000 !important;
 }
 
 /* Active states */
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active {
+.redesign-header__nav-link:active,
+.redesign-header__nav-link.active {
     color: #000 !important;
     font-weight: 600 !important;
 }
 
-/* Underline effect */
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link::after {
+/* Underline effect - SIMPLIFIED SELECTORS */
+.redesign-header__nav-link::after {
     content: '' !important;
     position: absolute !important;
     bottom: 0 !important;
@@ -194,9 +186,9 @@ html body div.redesign-header div.redesign-header__container div.redesign-header
     transition: width 0.3s ease !important;
 }
 
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover::after,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active::after,
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active::after {
+.redesign-header__nav-link:hover::after,
+.redesign-header__nav-link:active::after,
+.redesign-header__nav-link.active::after {
     width: 100% !important;
 }
 
@@ -387,12 +379,10 @@ html body div.redesign-header div.redesign-header__container div.redesign-header
     padding: 60px 40px;
 }
 
-/* MOBILE MENU FONT OVERRIDE - Highest specificity to prevent conflicts */
-html body .redesign-mobile-menu .redesign-mobile-menu__link,
-html body .redesign-mobile-menu .redesign-mobile-menu__link:visited,
-html body .redesign-mobile-menu .redesign-mobile-menu__link:hover,
-html body .redesign-mobile-menu .redesign-mobile-menu__link:active,
-html body .redesign-mobile-menu .redesign-mobile-menu__link.active {
+/* MOBILE MENU STYLES - Simplified selectors */
+.redesign-mobile-menu__link,
+.redesign-mobile-menu__link:link,
+.redesign-mobile-menu__link:visited {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 32px !important;
     font-weight: 400 !important;
@@ -402,22 +392,14 @@ html body .redesign-mobile-menu .redesign-mobile-menu__link.active {
     letter-spacing: 0.5px !important;
 }
 
-/* Remove default browser styles for visited links in mobile menu */
-html body .redesign-mobile-menu .redesign-mobile-menu__link:visited {
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-html body .redesign-mobile-menu .redesign-mobile-menu__link:hover {
-    color: #fff !important;
-}
-
-html body .redesign-mobile-menu .redesign-mobile-menu__link:hover:visited {
+.redesign-mobile-menu__link:hover,
+.redesign-mobile-menu__link:hover:visited {
     color: #fff !important;
 }
 
 /* Active state for current page in mobile menu */
-html body .redesign-mobile-menu .redesign-mobile-menu__link:active,
-html body .redesign-mobile-menu .redesign-mobile-menu__link.active {
+.redesign-mobile-menu__link:active,
+.redesign-mobile-menu__link.active {
     color: #fff !important;
     font-weight: 500 !important;
 }
@@ -474,45 +456,37 @@ body[class*="product"] .redesign-header__left .redesign-header__logo::before {
     display: none !important;
 }
 
-/* Product page navigation - white elements for contrast against blue gradient - HIGHEST SPECIFICITY */
-html body.template-product .redesign-header .redesign-header__nav-link,
-html body[class*="product"] .redesign-header .redesign-header__nav-link,
-html body.template-product .redesign-header .redesign-header__nav-link:visited,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:visited,
-html body.template-product .redesign-header .redesign-header__nav-link:hover,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:hover,
-html body.template-product .redesign-header .redesign-header__nav-link:active,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:active,
-html body.template-product .redesign-header .redesign-header__nav-link.active,
-html body[class*="product"] .redesign-header .redesign-header__nav-link.active {
+/* Product page navigation - white elements for contrast against blue gradient */
+body.template-product .redesign-header__nav-link,
+body[class*="product"] .redesign-header__nav-link {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     color: #fff !important;
 }
 
-html body.template-product .redesign-header .redesign-header__nav-link:visited,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:visited {
+body.template-product .redesign-header__nav-link:visited,
+body[class*="product"] .redesign-header__nav-link:visited {
     color: #fff !important;
 }
 
-html body.template-product .redesign-header .redesign-header__nav-link:hover,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:hover {
+body.template-product .redesign-header__nav-link:hover,
+body[class*="product"] .redesign-header__nav-link:hover {
     color: #ccc !important;
 }
 
-html body.template-product .redesign-header .redesign-header__nav-link:hover:visited,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:hover:visited {
+body.template-product .redesign-header__nav-link:hover:visited,
+body[class*="product"] .redesign-header__nav-link:hover:visited {
     color: #ccc !important;
 }
 
-html body.template-product .redesign-header .redesign-header__nav-link:active,
-html body.template-product .redesign-header .redesign-header__nav-link.active,
-html body[class*="product"] .redesign-header .redesign-header__nav-link:active,
-html body[class*="product"] .redesign-header .redesign-header__nav-link.active {
+body.template-product .redesign-header__nav-link:active,
+body.template-product .redesign-header__nav-link.active,
+body[class*="product"] .redesign-header__nav-link:active,
+body[class*="product"] .redesign-header__nav-link.active {
     color: #fff !important;
     font-weight: 600 !important;
 }
 
-html body.template-product .redesign-header .redesign-header__nav-link::after,
-html body[class*="product"] .redesign-header .redesign-header__nav-link::after {
+body.template-product .redesign-header__nav-link::after,
+body[class*="product"] .redesign-header__nav-link::after {
     background: #fff !important;
 }
