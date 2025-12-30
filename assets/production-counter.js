@@ -1,9 +1,10 @@
-// Counter animation for production page - specific to AI block ID 2fff632
+// Counter animation for production page - works with any AI block ID
 class ProductionCounter {
   constructor() {
-    // Find all stat number elements for the specific AI innovation block
-    this.counters = document.querySelectorAll('.ai-innovation-stat-number-2fff632');
+    // Find all stat number elements that match the AI innovation pattern - more specific search
+    this.counters = document.querySelectorAll('[class*="ai-innovation-stat-number-"], .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8');
     this.observer = null;
+    console.log('Found production counters:', this.counters.length); // Debug
     this.init();
   }
 

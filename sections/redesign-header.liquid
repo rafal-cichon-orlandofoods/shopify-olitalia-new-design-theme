@@ -141,16 +141,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remove any existing active class first
     link.classList.remove('active');
     
-    // Check if current page matches the link
-    if (currentPath === linkPath || 
-        (currentPath === '/' && linkPath === '/') ||
-        (currentPath.startsWith('/pages/') && linkPath.includes(currentPath.split('/').pop())) ||
-        (currentPath.startsWith('/products/') && linkPath.includes('/products/')) ||
-        (currentPath.startsWith('/blogs/') && linkPath.includes('/pages/recipes'))) {
+    // Check if current page matches the link - improved matching logic
+    let isActive = false;
+    
+    if (currentPath === linkPath) {
+      isActive = true;
+    } else if (currentPath === '/' && linkPath === '/') {
+      isActive = true;
+    } else if (currentPath.includes('/pages/about-us') && linkPath.includes('/pages/about-us')) {
+      isActive = true;
+    } else if (currentPath.includes('/pages/production') && linkPath.includes('/pages/production')) {
+      isActive = true;
+    } else if (currentPath.includes('/pages/sustainability') && linkPath.includes('/pages/sustainability')) {
+      isActive = true;
+    } else if (currentPath.includes('/pages/recipes') && linkPath.includes('/pages/recipes')) {
+      isActive = true;
+    } else if (currentPath.includes('/products/') && linkPath.includes('/products/')) {
+      isActive = true;
+    } else if (currentPath.includes('/blogs/') && linkPath.includes('/pages/recipes')) {
+      isActive = true;
+    }
+    
+    if (isActive) {
       link.classList.add('active');
-      console.log('Added active class to:', link.textContent); // Debug
+      console.log('Added active class to:', link.textContent, 'for path:', linkPath); // Debug
     }
   });
+  
+  // Force a repaint to ensure CSS transitions work
+  setTimeout(() => {
+    document.body.style.display = 'none';
+    document.body.offsetHeight; // Trigger reflow
+    document.body.style.display = '';
+  }, 10);
 });
 </script>
 
