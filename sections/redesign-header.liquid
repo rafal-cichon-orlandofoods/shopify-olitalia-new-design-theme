@@ -132,8 +132,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.redesign-header__nav-link, .redesign-mobile-menu__link');
   
+  console.log('Current path:', currentPath); // Debug
+  
   navLinks.forEach(link => {
     const linkPath = new URL(link.href).pathname;
+    console.log('Checking link:', linkPath, 'against current:', currentPath); // Debug
+    
+    // Remove any existing active class first
+    link.classList.remove('active');
     
     // Check if current page matches the link
     if (currentPath === linkPath || 
@@ -142,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function() {
         (currentPath.startsWith('/products/') && linkPath.includes('/products/')) ||
         (currentPath.startsWith('/blogs/') && linkPath.includes('/pages/recipes'))) {
       link.classList.add('active');
+      console.log('Added active class to:', link.textContent); // Debug
     }
   });
 });

@@ -1,19 +1,6 @@
 /* Import Inter font to ensure consistency across all pages */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* GLOBAL HEADER FONT RESET - Maximum specificity to override any conflicts */
-html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    font-style: normal !important;
-    font-stretch: normal !important;
-    font-variant: normal !important;
-    line-height: normal !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
-}
-
 /* Redesigned Header */
 
 .redesign-header {
@@ -159,15 +146,22 @@ html body div.redesign-header div.redesign-header__container div.redesign-header
     gap: 40px;
 }
 
-/* HEADER FONT OVERRIDE - Highest specificity to prevent conflicts */
-html body .redesign-header .redesign-header__nav-link,
-html body .redesign-header .redesign-header__nav-link:visited,
-html body .redesign-header .redesign-header__nav-link:hover,
-html body .redesign-header .redesign-header__nav-link:active,
-html body .redesign-header .redesign-header__nav-link.active {
+/* CONSOLIDATED HEADER NAVIGATION STYLES - Maximum specificity to prevent any conflicts */
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:link,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:visited,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 16px !important;
     font-weight: 500 !important;
+    font-style: normal !important;
+    font-stretch: normal !important;
+    font-variant: normal !important;
+    line-height: normal !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
     color: #2c2c2c !important;
     text-decoration: none !important;
     padding: 10px 0 !important;
@@ -175,27 +169,21 @@ html body .redesign-header .redesign-header__nav-link.active {
     transition: color 0.3s ease !important;
 }
 
-/* Remove default browser styles for visited links */
-html body .redesign-header .redesign-header__nav-link:visited {
-    color: #2c2c2c !important;
-}
-
-html body .redesign-header .redesign-header__nav-link:hover {
+/* Hover states */
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover:visited {
     color: #000 !important;
 }
 
-html body .redesign-header .redesign-header__nav-link:hover:visited {
-    color: #000 !important;
-}
-
-/* Active state for current page */
-html body .redesign-header .redesign-header__nav-link:active,
-html body .redesign-header .redesign-header__nav-link.active {
+/* Active states */
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active {
     color: #000 !important;
     font-weight: 600 !important;
 }
 
-html body .redesign-header .redesign-header__nav-link::after {
+/* Underline effect */
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link::after {
     content: '' !important;
     position: absolute !important;
     bottom: 0 !important;
@@ -206,9 +194,9 @@ html body .redesign-header .redesign-header__nav-link::after {
     transition: width 0.3s ease !important;
 }
 
-html body .redesign-header .redesign-header__nav-link:hover::after,
-html body .redesign-header .redesign-header__nav-link:active::after,
-html body .redesign-header .redesign-header__nav-link.active::after {
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:hover::after,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link:active::after,
+html body div.redesign-header div.redesign-header__container div.redesign-header__center nav.redesign-header__nav a.redesign-header__nav-link.active::after {
     width: 100% !important;
 }
 
