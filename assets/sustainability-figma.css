@@ -33,26 +33,26 @@
   margin: 60px auto 100px; /* Reduced top margin since hero is now in flow */
   padding: 0 40px;
   font-weight: 300;
-  line-height: 36px;
-  font-size: 24px;
+  line-height: 1.6;
+  font-size: 18px;
 }
 
 .sustainability-figma__hero-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: normal;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 24px 0;
 }
 
 .sustainability-figma__hero-subtitle {
-  font-size: 32px;
-  line-height: normal;
+  font-size: 18px;
+  line-height: 1.3;
   margin: 0 0 32px 0;
 }
 
 .sustainability-figma__hero-description {
-  font-size: 32px;
-  line-height: normal;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .sustainability-figma__hero-description p {
@@ -87,16 +87,16 @@
 
 .sustainability-figma__plastic-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: 90px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 30px 0;
 }
 
 .sustainability-figma__plastic-description {
   max-width: 790px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 50px 0;
 }
 
@@ -135,8 +135,8 @@
 
 .sustainability-figma__collaboration-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: 90px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 40px 0;
   max-width: 1175px;
 }
@@ -160,8 +160,8 @@
 .sustainability-figma__collaboration-text {
   max-width: 1175px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .sustainability-figma__collaboration-text p {
@@ -181,8 +181,8 @@
 
 .sustainability-figma__circle-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: 90px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 30px 0;
   max-width: 777px;
 }
@@ -190,8 +190,8 @@
 .sustainability-figma__circle-description {
   max-width: 1175px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 50px 0;
 }
 
@@ -214,8 +214,8 @@
 
 .sustainability-figma__life-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: 90px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 30px 0;
   max-width: 777px;
 }
@@ -223,8 +223,8 @@
 .sustainability-figma__life-description {
   max-width: 1175px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 40px 0;
 }
 
@@ -274,7 +274,7 @@
 
 .sustainability-figma__people-title {
   font-weight: 600;
-  font-size: 96px;
+  font-size: 48px;
   line-height: 96px;
   margin: 0 0 40px 0;
   max-width: 1175px;
@@ -303,8 +303,8 @@
 .sustainability-figma__people-text {
   max-width: 1175px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 .sustainability-figma__people-text p {
@@ -324,8 +324,8 @@
 
 .sustainability-figma__resource-title {
   font-weight: 600;
-  font-size: 96px;
-  line-height: 90px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 0 0 30px 0;
   max-width: 777px;
 }
@@ -333,8 +333,8 @@
 .sustainability-figma__resource-description {
   max-width: 1175px;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 1.6;
   margin: 0 0 50px 0;
 }
 

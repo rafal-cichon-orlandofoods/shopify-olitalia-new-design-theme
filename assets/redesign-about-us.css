@@ -36,7 +36,7 @@
 }
 
 .redesign-about__intro-text {
-    font-size: 24px;
+    font-size: 18px;
     /* line-height: 1.8; */
     color: #666;
     margin: 0;
@@ -197,7 +197,7 @@
 }
 
 .redesign-about__value-description {
-    font-size: 24px;
+    font-size: 18px;
     /* line-height: 1.6; */
     color: #666;
     margin: 0;
@@ -251,7 +251,7 @@
     }
 
     .redesign-about__value-title {
-        font-size: 24px;
+        font-size: 18px;
     }
 
     .redesign-about__video {
