@@ -436,6 +436,7 @@
 .redesign-badge__wrapper {
     max-width: 800px;
     margin: 0 auto;
+    animation: badge-float 3s ease-in-out infinite;
 }
 
 .redesign-badge__logo {
@@ -447,6 +448,35 @@
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08));
     transition: all 0.4s ease;
     position: relative;
+    animation: badge-pulse 2s ease-in-out infinite;
+}
+
+/* Floating animation for the wrapper */
+@keyframes badge-float {
+    0%, 100% { 
+        transform: translateY(0px);
+    }
+    50% { 
+        transform: translateY(-10px);
+    }
+}
+
+/* Pulse animation for the logo */
+@keyframes badge-pulse {
+    0%, 100% { 
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.05);
+    }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .redesign-badge__wrapper,
+    .redesign-badge__logo {
+        animation: none !important;
+    }
 }
 
 /* Premium 3D shine effect for badge logo */
@@ -632,6 +662,11 @@
     .redesign-badge__logo {
         width: 250px; /* Smaller on mobile */
         filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1)); /* Simplified shadow */
+        animation: none; /* Disable pulse animation on mobile */
+    }
+    
+    .redesign-badge__wrapper {
+        animation: none; /* Disable float animation on mobile */
     }
     
     /* Disable heavy animations on mobile */
@@ -714,30 +749,30 @@
 .redesign-hero__background--motion{
   --ms: var(--motion-strength, 6%);
   will-change: transform;
-  transform: scale(1.06) translate3d(0,0,0);
+  transform: scale(1.05) translate3d(0,0,0);
   animation: redesignKenBurnsVar 14s ease-in-out infinite alternate;
 }
 
 @keyframes redesignKenBurnsVar{
   from {
-    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+    transform: scale(1.05) translate3d(-1.5%, -0.75%, 0);
+    -webkit-transform: scale(1.05) translate3d(-1.5%, -0.75%, 0);
   }
   to {
-    transform: scale(1.15) translate3d(1%, 0.5%, 0);
-    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
+    transform: scale(1.20) translate3d(1.5%, 0.75%, 0);
+    -webkit-transform: scale(1.20) translate3d(1.5%, 0.75%, 0);
   }
 }
 
 /* Webkit keyframes for iOS Safari */
 @-webkit-keyframes redesignKenBurnsVar{
   from {
-    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+    -webkit-transform: scale(1.05) translate3d(-1.5%, -0.75%, 0);
+    transform: scale(1.05) translate3d(-1.5%, -0.75%, 0);
   }
   to {
-    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
-    transform: scale(1.15) translate3d(1%, 0.5%, 0);
+    -webkit-transform: scale(1.20) translate3d(1.5%, 0.75%, 0);
+    transform: scale(1.20) translate3d(1.5%, 0.75%, 0);
   }
 }
 
@@ -747,7 +782,7 @@
   .redesign-hero__background--motion {
     animation: none !important;
     -webkit-animation: none !important;
-    transform: scale(1.06) translate3d(0,0,0) !important;
+    transform: scale(1.05) translate3d(0,0,0) !important;
     -webkit-transform: scale(1.06) translate3d(0,0,0) !important;
     will-change: auto; /* Remove will-change to save resources */
   }
