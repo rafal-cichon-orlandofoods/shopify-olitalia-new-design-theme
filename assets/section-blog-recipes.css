@@ -1,6 +1,9 @@
 /* Import existing recipe filter styles */
 @import url('section-recipes-filters.css');
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .recipe-card {
   cursor: pointer;
   transition: all 0.3s ease;

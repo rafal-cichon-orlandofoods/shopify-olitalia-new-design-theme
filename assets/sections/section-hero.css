@@ -1,0 +1,148 @@
+/* Hero Section - Main hero/banner section */
+/* BEM Namespace: s- (section) */
+
+.s-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-gray-light);
+}
+
+.s-hero--full-height {
+  min-height: 100vh;
+}
+
+.s-hero--medium {
+  min-height: 40vh;
+}
+
+.s-hero--small {
+  min-height: 30vh;
+}
+
+/* Background */
+.s-hero__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.s-hero__background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.s-hero__background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.s-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.s-hero__overlay--light {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.s-hero__overlay--dark {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Content */
+.s-hero__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 800px;
+  padding: var(--spacing-xl) var(--container-padding);
+  color: var(--color-white);
+}
+
+.s-hero__content--dark {
+  color: var(--color-black);
+}
+
+.s-hero__title {
+  font-size: var(--font-size-hero);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: 1.1;
+}
+
+.s-hero__subtitle {
+  font-size: var(--font-size-large);
+  font-weight: 400;
+  margin: 0 0 var(--spacing-lg) 0;
+  opacity: 0.9;
+}
+
+.s-hero__description {
+  font-size: var(--font-size-medium);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-xl) 0;
+  opacity: 0.8;
+}
+
+.s-hero__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Ken Burns Animation */
+.s-hero--animated .s-hero__background-image {
+  animation: s-hero-ken-burns 20s ease-in-out infinite alternate;
+}
+
+@keyframes s-hero-ken-burns {
+  0% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+  100% {
+    transform: scale(1.1) translateX(-2%) translateY(-1%);
+  }
+}
+
+/* Disable animations on mobile and for users who prefer reduced motion */
+@media (max-width: 768px),
+       (prefers-reduced-motion: reduce) {
+  .s-hero--animated .s-hero__background-image {
+    animation: none;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .s-hero {
+    min-height: 50vh;
+  }
+  
+  .s-hero--full-height {
+    min-height: 80vh;
+  }
+  
+  .s-hero__content {
+    padding: var(--spacing-lg) var(--container-padding);
+  }
+  
+  .s-hero__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}

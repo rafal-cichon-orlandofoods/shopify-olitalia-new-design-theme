@@ -1,0 +1,83 @@
+/* Base Typography - Foundation typography styles */
+/* BEM Namespace: b- (base) */
+
+.b-typography {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  color: var(--color-black);
+}
+
+/* Headings */
+.b-heading {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.b-heading--hero {
+  font-size: var(--font-size-hero);
+  font-weight: 700;
+}
+
+.b-heading--large {
+  font-size: var(--font-size-large);
+}
+
+.b-heading--medium {
+  font-size: var(--font-size-medium);
+}
+
+/* Body Text */
+.b-text {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.b-text--large {
+  font-size: var(--font-size-medium);
+}
+
+.b-text--small {
+  font-size: var(--font-size-small);
+}
+
+.b-text--secondary {
+  color: var(--color-gray);
+}
+
+/* Links */
+.b-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.b-link:hover {
+  color: var(--color-black);
+  text-decoration: underline;
+}
+
+/* Font Families */
+.b-font--primary {
+  font-family: var(--font-primary);
+}
+
+.b-font--secondary {
+  font-family: var(--font-secondary);
+}
+
+/* Text Alignment */
+.b-text--center {
+  text-align: center;
+}
+
+.b-text--left {
+  text-align: left;
+}
+
+.b-text--right {
+  text-align: right;
+}

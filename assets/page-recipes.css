@@ -1,5 +1,8 @@
 /* Redesigned Recipes Page */
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .recipes-showcase {
     background: #ffffff;
     min-height: 100vh;

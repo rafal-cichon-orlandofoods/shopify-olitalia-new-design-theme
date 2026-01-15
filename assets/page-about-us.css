@@ -1,5 +1,8 @@
 /* Redesigned About Us Page */
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .redesign-about {
     background: #fff;
 }
@@ -28,7 +31,7 @@
 }
 
 .redesign-about__title {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif;
     font-size: 42px;
     font-weight: 600;
     color: #2c2c2c;
@@ -188,7 +191,7 @@
 }
 
 .redesign-about__value-title {
-    font-family: 'Inter', sans-serif !important;
+    font-family: 'Inter', sans-serif;
     font-size: 20px;
     font-weight: 700;
     color: #2c2c2c;

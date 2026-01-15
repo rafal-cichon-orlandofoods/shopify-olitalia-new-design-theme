@@ -1,0 +1,90 @@
+/* Base Layout - Foundation layout and grid styles */
+/* BEM Namespace: b- (base) */
+
+/* Container */
+.b-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.b-container--narrow {
+  max-width: 800px;
+}
+
+.b-container--wide {
+  max-width: 1600px;
+}
+
+/* Grid System */
+.b-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.b-grid--2-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.b-grid--3-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.b-grid--4-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+  .b-grid--2-col,
+  .b-grid--3-col,
+  .b-grid--4-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .b-grid--3-col,
+  .b-grid--4-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Flexbox Utilities */
+.b-flex {
+  display: flex;
+}
+
+.b-flex--column {
+  flex-direction: column;
+}
+
+.b-flex--center {
+  justify-content: center;
+  align-items: center;
+}
+
+.b-flex--between {
+  justify-content: space-between;
+}
+
+.b-flex--around {
+  justify-content: space-around;
+}
+
+.b-flex--wrap {
+  flex-wrap: wrap;
+}
+
+/* Spacing */
+.b-section {
+  padding: var(--spacing-xl) 0;
+}
+
+.b-section--large {
+  padding: var(--spacing-xxl) 0;
+}
+
+.b-section--small {
+  padding: var(--spacing-lg) 0;
+}

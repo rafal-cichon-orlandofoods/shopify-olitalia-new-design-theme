@@ -1,0 +1,107 @@
+/* Card Component - Reusable card container */
+/* BEM Namespace: c- (component) */
+
+.c-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+  transition: all var(--transition-medium);
+}
+
+.c-card:hover {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Card Elements */
+.c-card__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.c-card__content {
+  padding: var(--spacing-md);
+}
+
+.c-card__header {
+  margin-bottom: var(--spacing-sm);
+}
+
+.c-card__title {
+  font-size: var(--font-size-medium);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-black);
+}
+
+.c-card__subtitle {
+  font-size: var(--font-size-small);
+  color: var(--color-gray);
+  margin: 0;
+}
+
+.c-card__body {
+  margin-bottom: var(--spacing-md);
+}
+
+.c-card__text {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-black);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.c-card__footer {
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: var(--spacing-sm);
+}
+
+/* Card Variants */
+.c-card--featured {
+  border: 2px solid var(--color-primary);
+}
+
+.c-card--horizontal {
+  display: flex;
+  align-items: stretch;
+}
+
+.c-card--horizontal .c-card__image {
+  width: 40%;
+  object-fit: cover;
+}
+
+.c-card--horizontal .c-card__content {
+  flex: 1;
+}
+
+.c-card--compact .c-card__content {
+  padding: var(--spacing-sm);
+}
+
+.c-card--large .c-card__content {
+  padding: var(--spacing-lg);
+}
+
+/* Card with no shadow */
+.c-card--flat {
+  box-shadow: none;
+  border: 1px solid var(--color-gray-light);
+}
+
+.c-card--flat:hover {
+  box-shadow: var(--shadow-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .c-card--horizontal {
+    flex-direction: column;
+  }
+  
+  .c-card--horizontal .c-card__image {
+    width: 100%;
+  }
+}

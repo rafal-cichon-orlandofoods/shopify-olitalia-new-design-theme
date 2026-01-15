@@ -5,7 +5,7 @@
 {%- liquid
 
   echo 'theme.css' | asset_url | preload_tag: as: 'style'
-  echo 'section-header.css' | asset_url | preload_tag: as: 'style'
+  echo 'component-header.css' | asset_url | preload_tag: as: 'style'
 
 	echo 'component-product-item.css' | asset_url | preload_tag: as: 'style'
 	echo 'component-product-variants.css' | asset_url | preload_tag: as: 'style'
@@ -17,7 +17,7 @@
   elsif template contains 'blog'
     echo 'component-blog-item.css' | asset_url | preload_tag: as: 'style'
   elsif template contains 'product' 
-    echo 'section-main-product.css' | asset_url | preload_tag: as: 'style'
+    echo 'component-product-page.css' | asset_url | preload_tag: as: 'style'
   endif
     
 -%}

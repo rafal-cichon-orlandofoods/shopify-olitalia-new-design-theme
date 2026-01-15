@@ -1,6 +1,16 @@
-/* Olitalia Homepage Redesign */
+/* Consolidated Homepage Component - Based on redesign-homepage.css */
+/* This component provides modern homepage styling with backward compatibility */
+
+/* Import Inter font for consistency */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Import utilities */
+@import url('./base/utilities.css');
+
+/* ===== REDESIGN HOMEPAGE STYLES (PRIMARY) ===== */
 
 /* Hero Section */
+.c-hero,
 .redesign-hero {
     position: relative;
     height: 66.67vw;
@@ -10,6 +20,7 @@
     background: #fff;
 }
 
+.c-hero__background,
 .redesign-hero__background {
     position: absolute;
     top: 0;
@@ -20,33 +31,37 @@
     z-index: 1;
 }
 
+.c-hero__content,
 .redesign-hero__content {
     position: relative;
     z-index: 2;
-    max-width: 1400px;
+    max-width: var(--container-max-width);
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    padding: 40px;
+    padding: var(--spacing-lg);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: var(--spacing-xl);
     align-items: start;
 }
 
+.c-hero__text,
 .redesign-hero__text {
-    padding-top: 60px;
+    padding-top: var(--spacing-xl);
 }
 
+.c-hero__title,
 .redesign-hero__title {
-    font-family: 'Inter', Arial, sans-serif !important;
+    font-family: var(--font-family-secondary);
     font-size: 48px;
     font-weight: 300;
-    color: #2c2c2c;
-    margin: 0 0 20px;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--spacing-md);
     line-height: 1.2;
 }
 
+.c-hero__description,
 .redesign-hero__description {
     font-size: 16px;
     color: #121212;
@@ -55,22 +70,24 @@
     max-width: 400px;
 }
 
+.c-hero__button,
 .redesign-hero__button {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: #121212;
-    color: #ffffff;
+    color: var(--color-white);
     padding: 12px 28px;
     border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
-    transition: all 0.3s ease;
-    border: 2px solid #000;
-    margin-top: 20px;
+    transition: all var(--transition-medium);
+    border: 2px solid var(--color-black);
+    margin-top: var(--spacing-md);
 }
 
+.c-hero__button:hover,
 .redesign-hero__button:hover {
     background: transparent;
     color: black;
@@ -78,11 +95,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.c-hero__button svg,
 .redesign-hero__button svg {
     width: 16px;
     height: 16px;
 }
 
+.c-hero__product,
 .redesign-hero__product {
     position: relative;
     display: flex;
@@ -107,13 +126,10 @@
 }
 
 @keyframes shadowPulse {
-
-    0%,
-    100% {
+    0%, 100% {
         transform: translate(-50%, -50%) rotateX(90deg) translateZ(-100px) scale(1);
         opacity: 0.3;
     }
-
     50% {
         transform: translate(-50%, -50%) rotateX(90deg) translateZ(-100px) scale(1.2);
         opacity: 0.5;
@@ -137,31 +153,36 @@
 }
 
 @keyframes float3d {
-    0% {
-        transform: translateY(0px) rotateY(-20deg) rotateX(15deg) translateZ(0px);
-    }
+    0% { transform: translateY(0px) rotateY(-20deg) rotateX(15deg) translateZ(0px); }
+    25% { transform: translateY(-20px) rotateY(-10deg) rotateX(20deg) translateZ(30px); }
+    50% { transform: translateY(-35px) rotateY(0deg) rotateX(10deg) translateZ(50px); }
+    75% { transform: translateY(-20px) rotateY(10deg) rotateX(20deg) translateZ(30px); }
+    100% { transform: translateY(0px) rotateY(-20deg) rotateX(15deg) translateZ(0px); }
+}
 
-    25% {
-        transform: translateY(-20px) rotateY(-10deg) rotateX(20deg) translateZ(30px);
-    }
+/* Hero background motion */
+.redesign-hero__background--motion {
+    --ms: var(--motion-strength, 6%);
+    will-change: transform;
+    transform: scale(1.06) translate3d(0,0,0);
+    animation: redesignKenBurnsVar 14s ease-in-out infinite alternate;
+}
 
-    50% {
-        transform: translateY(-35px) rotateY(0deg) rotateX(10deg) translateZ(50px);
+@keyframes redesignKenBurnsVar {
+    from {
+        transform: scale(1.06) translate3d(-1%, -0.5%, 0);
+        -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
     }
-
-    75% {
-        transform: translateY(-20px) rotateY(10deg) rotateX(20deg) translateZ(30px);
-    }
-
-    100% {
-        transform: translateY(0px) rotateY(-20deg) rotateX(15deg) translateZ(0px);
+    to {
+        transform: scale(1.15) translate3d(1%, 0.5%, 0);
+        -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
     }
 }
 
-/* Testimonial Section - Slideshow */
+/* Testimonial Section */
 .redesign-testimonial {
-    padding: 80px 0;
-    background: #fff;
+    padding: var(--spacing-xxl) 0;
+    background: var(--color-white);
 }
 
 .redesign-testimonial__container {
@@ -170,21 +191,16 @@
     text-align: center;
 }
 
-/* Single testimonial (legacy format) */
-.redesign-testimonial__single {
-    padding: 0 40px;
-}
-
 .redesign-testimonial__grid {
     display: flex;
-    gap: 40px;
+    gap: var(--spacing-lg);
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 60px 30px 0;
+    padding: 10px var(--spacing-xl) var(--spacing-lg) 0;
     scroll-snap-type: x mandatory;
-    scroll-padding-right: 60px;
+    scroll-padding-right: var(--spacing-xl);
 }
 
 .redesign-testimonial__grid::-webkit-scrollbar {
@@ -204,60 +220,32 @@
     padding: 0 40px;
 }
 
-.redesign-testimonial__slide:last-child {
-    margin-right: 60px;
-    scroll-snap-align: end;
-}
-
 .redesign-testimonial__quote {
     font-family: Georgia, serif;
     font-size: 28px;
     font-style: italic;
-    color: #2c2c2c;
+    color: var(--color-text-primary);
     line-height: 1.6;
     max-width: 800px;
-    margin: 0 auto 20px;
+    margin: 0 auto var(--spacing-md);
 }
 
 .redesign-testimonial__author {
     font-size: 14px;
-    color: #666;
+    color: var(--color-text-secondary);
     font-weight: 500;
     margin-bottom: 5px;
 }
 
 .redesign-testimonial__role {
     font-size: 13px;
-    color: #999;
+    color: var(--color-text-muted);
     margin: 0;
 }
 
-/* Scroll Dots */
-.redesign-testimonial__dots {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
-}
-
-.redesign-testimonial__dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ccc;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.redesign-testimonial__dot.active {
-    background: #000;
-    width: 24px;
-    border-radius: 12px;
-}
-
-/* Recipe Cards Section - Large Card with Peek */
+/* Recipe Cards Section */
 .redesign-recipes {
-    padding: 60px 0;
+    padding: var(--spacing-xl) 0;
     background: transparent;
     overflow: hidden;
 }
@@ -265,29 +253,29 @@
 .redesign-recipes__container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--container-padding);
 }
 
 .redesign-recipes__title {
-    font-family: 'Inter', Arial, sans-serif !important;
+    font-family: var(--font-family-secondary);
     font-size: 24px;
     font-weight: 400;
-    color: #2c2c2c;
+    color: var(--color-text-primary);
     text-align: center;
-    margin: 0 0 40px;
+    margin: 0 0 var(--spacing-lg);
     opacity: 0.8;
 }
 
 .redesign-recipes__grid {
     display: flex;
-    gap: 40px;
+    gap: var(--spacing-lg);
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 60px 30px 0;
+    padding: 10px var(--spacing-xl) var(--spacing-lg) 0;
     scroll-snap-type: x mandatory;
-    scroll-padding-right: 60px;
+    scroll-padding-right: var(--spacing-xl);
 }
 
 .redesign-recipes__grid::-webkit-scrollbar {
@@ -299,17 +287,12 @@
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: var(--spacing-lg);
     align-items: center;
     scroll-snap-align: center;
     opacity: 0.3;
-    transition: opacity 0.4s ease;
-    margin-right: 40px;
-}
-
-.redesign-recipe-card:last-child {
-    margin-right: 60px;
-    scroll-snap-align: end;
+    transition: opacity var(--transition-slow);
+    margin-right: var(--spacing-lg);
 }
 
 .redesign-recipe-card__image-wrapper {
@@ -350,7 +333,7 @@
 }
 
 .redesign-recipe-card__title {
-    font-family: 'Inter', Arial, sans-serif !important;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 24px;
     font-weight: 600;
     color: #2c2c2c;
@@ -361,27 +344,12 @@
 .redesign-recipe-card__description {
     font-size: 24px;
     color: #666;
-    /* line-height: 1.6; */
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    line-clamp: 3;
     overflow: hidden;
-}
-
-.redesign-recipe-card__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    color: #000;
-    margin-top: 8px;
-}
-
-.redesign-recipe-card__link svg {
-    width: 16px;
-    height: 16px;
 }
 
 .redesign-recipe-card__button {
@@ -404,26 +372,29 @@
 }
 
 /* Scroll Dots */
+.redesign-testimonial__dots,
 .redesign-recipes__dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
+    gap: 12px;
+    margin-top: 30px;
 }
 
+.redesign-testimonial__dot,
 .redesign-recipes__dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ddd;
+    background: #ccc;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
+.redesign-testimonial__dot.active,
 .redesign-recipes__dot.active {
     background: #000;
     width: 24px;
-    border-radius: 4px;
+    border-radius: 12px;
 }
 
 /* Brand Badge Section */
@@ -436,6 +407,8 @@
 .redesign-badge__wrapper {
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 }
 
 .redesign-badge__logo {
@@ -443,18 +416,12 @@
     height: auto;
     margin: 0 auto 30px;
     display: block;
-    /* Enhanced 3D luxury effect */
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0 12px 32px rgba(0, 0, 0, 0.08));
     transition: all 0.4s ease;
     position: relative;
 }
 
 /* Premium 3D shine effect for badge logo */
-.redesign-badge__wrapper {
-    position: relative;
-    overflow: hidden;
-}
-
 .redesign-badge__wrapper::before {
     content: '';
     position: absolute;
@@ -476,39 +443,11 @@
     animation: badge-shine 6s ease-in-out infinite;
 }
 
-.redesign-badge__wrapper:hover::before {
-    opacity: 1;
-    animation-duration: 3s;
-}
-
-/* 3D badge shine animation */
 @keyframes badge-shine {
-    0% { 
-        transform: translateX(-100%) translateY(-100%) rotate(45deg); 
-    }
-    20% { 
-        transform: translateX(-50%) translateY(-50%) rotate(45deg); 
-    }
-    50% { 
-        transform: translateX(100%) translateY(100%) rotate(45deg); 
-    }
-    100% { 
-        transform: translateX(100%) translateY(100%) rotate(45deg); 
-    }
-}
-
-.redesign-badge__wrapper::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    right: -4px;
-    bottom: -4px;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.08));
-    z-index: -1;
-    border-radius: 12px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    20% { transform: translateX(-50%) translateY(-50%) rotate(45deg); }
+    50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
 .redesign-badge__disclaimer {
@@ -518,9 +457,7 @@
     font-style: italic;
     margin: 0;
     padding: 15px 20px;
-    /* background: #f8f8f8; */
     border-radius: 8px;
-    /* border-left: 3px solid #ddd; */
 }
 
 /* Newsletter Section */
@@ -536,7 +473,7 @@
 }
 
 .redesign-newsletter__title {
-    font-family: 'Inter', Arial, sans-serif !important;
+    font-family: 'Inter', Arial, sans-serif;
     font-size: 28px;
     font-weight: 600;
     color: #000;
@@ -582,7 +519,8 @@
     transform: translateY(-2px);
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
+
 @media (max-width: 1024px) {
     .redesign-hero__content {
         grid-template-columns: 1fr;
@@ -630,13 +568,18 @@
 
     /* Optimize badge logo for mobile performance */
     .redesign-badge__logo {
-        width: 250px; /* Smaller on mobile */
-        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1)); /* Simplified shadow */
+        width: 250px;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
     }
     
     /* Disable heavy animations on mobile */
     .redesign-badge__wrapper::before,
-    .redesign-badge__wrapper::after {
+    .redesign-hero__background--motion {
+        animation: none;
+        -webkit-animation: none;
+        transform: scale(1.06) translate3d(0,0,0);
+        -webkit-transform: scale(1.06) translate3d(0,0,0);
+        will-change: auto;
         display: none;
     }
 
@@ -646,19 +589,6 @@
 
     .redesign-recipe-card {
         flex: 0 0 320px;
-    }
-
-    .redesign-newsletter__form {
-        flex-direction: column;
-    }
-
-    .redesign-newsletter__button {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .redesign-recipe-card {
         flex-direction: column;
         gap: 20px;
     }
@@ -671,10 +601,17 @@
     .redesign-recipe-card__content {
         max-width: 300px;
     }
+
+    .redesign-newsletter__form {
+        flex-direction: column;
+    }
+
+    .redesign-newsletter__button {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
-
     .redesign-hero__content,
     .redesign-recipes__container,
     .redesign-testimonial,
@@ -698,67 +635,49 @@
     }
 }
 
-/* Hero background motion (lightweight) */
-.redesign-hero { position: relative; overflow: hidden; }
-
-.redesign-hero__background{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.redesign-hero__content{ position: relative; z-index: 2; }
-
-.redesign-hero__background--motion{
-  --ms: var(--motion-strength, 6%);
-  will-change: transform;
-  transform: scale(1.06) translate3d(0,0,0);
-  animation: redesignKenBurnsVar 14s ease-in-out infinite alternate;
-}
-
-@keyframes redesignKenBurnsVar{
-  from {
-    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-  }
-  to {
-    transform: scale(1.15) translate3d(1%, 0.5%, 0);
-    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
-  }
-}
-
-/* Webkit keyframes for iOS Safari */
-@-webkit-keyframes redesignKenBurnsVar{
-  from {
-    -webkit-transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-    transform: scale(1.06) translate3d(-1%, -0.5%, 0);
-  }
-  to {
-    -webkit-transform: scale(1.15) translate3d(1%, 0.5%, 0);
-    transform: scale(1.15) translate3d(1%, 0.5%, 0);
-  }
-}
-
-
-/* Disable motion on mobile for better performance and battery life */
-@media (max-width: 768px) {
-  .redesign-hero__background--motion {
-    animation: none !important;
-    -webkit-animation: none !important;
-    transform: scale(1.06) translate3d(0,0,0) !important;
-    -webkit-transform: scale(1.06) translate3d(0,0,0) !important;
-    will-change: auto; /* Remove will-change to save resources */
-  }
-}
-
 /* Disable motion for accessibility */
-@media (prefers-reduced-motion: reduce){
-  .redesign-hero__background--motion{
-    animation: none !important;
-    -webkit-animation: none !important;
-    transform: scale(1.06) translate3d(0,0,0) !important;
-    -webkit-transform: scale(1.06) translate3d(0,0,0) !important;
-  }
+@media (prefers-reduced-motion: reduce) {
+    .redesign-hero__background--motion,
+    .redesign-badge__wrapper::before,
+    .redesign-hero__product::before,
+    .redesign-hero__product-image {
+        animation: none;
+        -webkit-animation: none;
+        transform: scale(1.06) translate3d(0,0,0);
+        -webkit-transform: scale(1.06) translate3d(0,0,0);
+    }
+}
+
+/* ===== COMPONENT COMPATIBILITY SYSTEM ===== */
+
+/* When using redesign homepage, hide original homepage elements */
+.homepage--redesign .legacy-hero,
+.homepage--redesign .legacy-testimonial,
+.homepage--redesign .legacy-recipes {
+    display: none;
+}
+
+/* When using legacy homepage, hide redesign homepage elements */
+.homepage--legacy .redesign-hero,
+.homepage--legacy .redesign-testimonial,
+.homepage--legacy .redesign-recipes,
+.homepage--legacy .redesign-badge,
+.homepage--legacy .redesign-newsletter {
+    display: none;
+}
+
+/* Utility class to force redesign styling */
+.force-redesign .legacy-hero,
+.force-redesign .legacy-testimonial,
+.force-redesign .legacy-recipes {
+    display: none;
+}
+
+/* Utility class to force legacy styling */
+.force-legacy .redesign-hero,
+.force-legacy .redesign-testimonial,
+.force-legacy .redesign-recipes,
+.force-legacy .redesign-badge,
+.force-legacy .redesign-newsletter {
+    display: none;
 }

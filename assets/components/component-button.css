@@ -1,0 +1,110 @@
+/* Button Component - Reusable button styles */
+/* BEM Namespace: c- (component) */
+
+.c-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.c-button:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-medium);
+}
+
+.c-button:active {
+  transform: translateY(0);
+}
+
+/* Button Variants */
+.c-button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.c-button--primary:hover {
+  background-color: var(--color-black);
+}
+
+.c-button--secondary {
+  background-color: transparent;
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+}
+
+.c-button--secondary:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+
+.c-button--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.c-button--outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Button Sizes */
+.c-button--small {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-small);
+}
+
+.c-button--large {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-medium);
+}
+
+/* Button States */
+.c-button:disabled,
+.c-button--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.c-button--loading {
+  position: relative;
+  color: transparent;
+}
+
+.c-button--loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: c-button-spin 1s linear infinite;
+}
+
+@keyframes c-button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Full Width Button */
+.c-button--full-width {
+  width: 100%;
+}

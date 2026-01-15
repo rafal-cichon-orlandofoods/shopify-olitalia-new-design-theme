@@ -1,4 +1,4 @@
-{{ 'redesign-recipe-page.css' | asset_url | stylesheet_tag }}
+{{ 'page-recipe.css' | asset_url | stylesheet_tag }}
 
 {% comment %} Get recipe data from metafields {% endcomment %}
 {% assign recipe_title = page.metafields.recipe.title | default: page.title %}

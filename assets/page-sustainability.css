@@ -1,5 +1,8 @@
 /* Redesign Sustainability - Following project patterns */
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .redesign-sustainability {
     background: #ffffff;
     color: #121212;

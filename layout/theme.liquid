@@ -40,10 +40,20 @@
     {%- render 'head-variables' -%}
     {%- render 'head-preloader' -%}
   
+    {%- comment -%} Preload critical CSS for better performance {%- endcomment -%}
+    <link rel="preload" href="{{ 'theme.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'component-header.css' | asset_url }}" as="style">
+  
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     {{ 'soho-fonts.css' | asset_url | stylesheet_tag }}
     {{ 'raleway-fonts.css' | asset_url | stylesheet_tag }}
-    {{ 'redesign-header-footer-override.css' | asset_url | stylesheet_tag }}
+    {{ 'component-header.css' | asset_url | stylesheet_tag }}
+    {{ 'component-footer.css' | asset_url | stylesheet_tag }}
+    
+    {%- comment -%} Load homepage CSS only on homepage {%- endcomment -%}
+    {%- if template.name == 'index' -%}
+      {{ 'component-homepage.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
     <style>
       :root {
         /* Override font families with custom fonts */
@@ -515,7 +525,7 @@
   
     <div class="site-overlay" style="display:none"></div>
   
-    <link rel="stylesheet" href="{{ 'section-main-product.css' | asset_url }}" media="print" onload="this.media='all';">
+    <link rel="stylesheet" href="{{ 'component-product-page.css' | asset_url }}" media="print" onload="this.media='all';">>
 
     {%- if settings.show_gotop -%}
       <span id="go-top" class="main-go-top"

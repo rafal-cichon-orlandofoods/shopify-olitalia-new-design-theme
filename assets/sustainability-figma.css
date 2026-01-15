@@ -1,5 +1,8 @@
 /* Sustainability Figma - Layout based on Figma design */
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .sustainability-figma {
   position: relative;
   width: 100%;

@@ -1,5 +1,8 @@
 /* Redesigned Recipe Page */
 
+/* Import utilities */
+@import url('./base/utilities.css');
+
 .redesign-recipe {
     background: #ffffff;
     min-height: 100vh;
