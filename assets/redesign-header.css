@@ -448,6 +448,12 @@ body[class*="product"] .redesign-header__logo img {
     filter: brightness(0) invert(1) !important;
 }
 
+/* Product page mobile logo - white for contrast against blue gradient */
+body.template-product .redesign-header__mobile-logo img,
+body[class*="product"] .redesign-header__mobile-logo img {
+    filter: brightness(0) invert(1) !important;
+}
+
 /* Disable logo animations on product page - conflicts with blue gradient */
 body.template-product .redesign-header__left .redesign-header__logo::after,
 body[class*="product"] .redesign-header__left .redesign-header__logo::after,
