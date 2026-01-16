@@ -163,6 +163,32 @@
   {% endif %}
 </section>
 
+<script>
+// Fade-in animation for quote on scroll - triggers every time
+document.addEventListener('DOMContentLoaded', function() {
+  const quoteSection = document.querySelector('.redesign-about__quote');
+  
+  if (!quoteSection) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add visible class when scrolling into view
+        entry.target.classList.add('visible');
+      } else {
+        // Remove visible class when scrolling out of view
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.3, // Trigger when 30% visible
+    rootMargin: '0px' // No margin adjustment
+  });
+  
+  observer.observe(quoteSection);
+});
+</script>
+
 {% schema %}
 {
   "name": "Redesign About Us",
