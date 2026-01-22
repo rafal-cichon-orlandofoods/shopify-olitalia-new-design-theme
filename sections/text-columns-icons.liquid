@@ -1,3 +1,5 @@
+{{ 'redesign-text-columns-icons.css' | asset_url | stylesheet_tag }}
+
 <div class="container--large container--vertical-space{% if section.settings.gutter_decrease %}-small{% endif %} {% if section.settings.section_background_color != "rgba(0,0,0,0)" or section.settings.section_background_gradient != blank %} container--has-background {% endif %} {% if section.settings.remove_bottom_margin %} container--negative-margin {% endif %} remove-empty-space">
   {%- render 'section-heading',
     heading: section.settings.heading,
