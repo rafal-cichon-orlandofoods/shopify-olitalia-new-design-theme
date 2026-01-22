@@ -22,12 +22,12 @@ body.template-product [id*="text_columns_icons"] .card__icon svg * {
     color: #ffffff !important;
 }
 
-/* Icon images - no filter needed as icons are already white */
+/* Icon images - invert to make white icons visible and remove white background */
 body.template-product [id*="text_columns_icons"] .card__icon img {
-    /* Icons are already white, no filter needed */
-    filter: none !important;
-    mix-blend-mode: multiply !important;
-    /* Multiply blend mode removes white backgrounds */
+    /* Invert colors so white becomes black, then use screen to show only light parts */
+    filter: invert(1) !important;
+    mix-blend-mode: screen !important;
+    /* This makes white backgrounds transparent and keeps icons visible */
 }
 
 /* White text */
