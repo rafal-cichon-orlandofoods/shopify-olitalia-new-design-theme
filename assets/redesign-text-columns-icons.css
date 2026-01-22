@@ -22,11 +22,11 @@ body.template-product [id*="text_columns_icons"] .card__icon svg * {
     color: #ffffff !important;
 }
 
-/* Icon images - invert dark colors to light while preserving details */
+/* Icon images - no filter needed as icons are already white */
 body.template-product [id*="text_columns_icons"] .card__icon img {
-    filter: invert(1) hue-rotate(180deg) !important;
-    mix-blend-mode: screen !important;
-    /* Screen blend mode removes dark backgrounds and keeps light elements */
+    /* Icons are already white, no filter needed */
+    filter: none !important;
+    mix-blend-mode: normal !important;
 }
 
 /* White text */
