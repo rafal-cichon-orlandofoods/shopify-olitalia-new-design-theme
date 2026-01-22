@@ -1,7 +1,7 @@
 /* Text Columns Icons - Redesign Styling */
 
-/* Product page specific styling */
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card {
+/* Product page specific styling - works for all product templates */
+body.template-product [id*="text_columns_icons"] .card {
     background: transparent !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 8px !important;
@@ -9,39 +9,40 @@ body.template-product #shopify-section-template--19478829596762__text_columns_ic
     transition: all 0.3s ease;
 }
 
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card:hover {
+body.template-product [id*="text_columns_icons"] .card:hover {
     border-color: rgba(255, 255, 255, 0.5) !important;
     background: rgba(255, 255, 255, 0.05) !important;
 }
 
 /* White icons */
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon svg,
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon svg * {
+body.template-product [id*="text_columns_icons"] .card__icon svg,
+body.template-product [id*="text_columns_icons"] .card__icon svg * {
     fill: #ffffff !important;
     stroke: #ffffff !important;
     color: #ffffff !important;
 }
 
 /* Icon images - invert dark colors to light while preserving details */
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon img {
-    filter: brightness(0) invert(1) !important;
-    /* Simple invert for consistent white appearance */
+body.template-product [id*="text_columns_icons"] .card__icon img {
+    filter: invert(1) hue-rotate(180deg) !important;
+    mix-blend-mode: screen !important;
+    /* Screen blend mode removes dark backgrounds and keeps light elements */
 }
 
 /* White text */
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-font--primary,
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card h3,
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card h4,
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-size--large {
+body.template-product [id*="text_columns_icons"] .card .text-font--primary,
+body.template-product [id*="text_columns_icons"] .card h3,
+body.template-product [id*="text_columns_icons"] .card h4,
+body.template-product [id*="text_columns_icons"] .card .text-size--large {
     color: #ffffff !important;
 }
 
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-size--small,
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-color--opacity {
+body.template-product [id*="text_columns_icons"] .card .text-size--small,
+body.template-product [id*="text_columns_icons"] .card .text-color--opacity {
     color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Remove any background colors from custom colors */
-body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card[style*="background"] {
+body.template-product [id*="text_columns_icons"] .card[style*="background"] {
     background: transparent !important;
 }
