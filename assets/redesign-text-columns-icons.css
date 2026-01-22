@@ -22,10 +22,10 @@ body.template-product #shopify-section-template--19478829596762__text_columns_ic
     color: #ffffff !important;
 }
 
-/* Icon images - keep original colors, no filter */
+/* Icon images - invert dark colors to light while preserving details */
 body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon img {
-    /* Remove filter to keep original icon colors */
-    filter: none !important;
+    filter: invert(1) hue-rotate(180deg) !important;
+    /* This inverts colors and rotates hue back to preserve color relationships */
 }
 
 /* White text */
