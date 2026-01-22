@@ -1,0 +1,46 @@
+/* Text Columns Icons - Redesign Styling */
+
+/* Product page specific styling */
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card {
+    background: transparent !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    transition: all 0.3s ease;
+}
+
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card:hover {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* White icons */
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon svg,
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon svg * {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* White icon images */
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon img {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* White text */
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-font--primary,
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card h3,
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card h4,
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-size--large {
+    color: #ffffff !important;
+}
+
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-size--small,
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card .text-color--opacity {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Remove any background colors from custom colors */
+body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card[style*="background"] {
+    background: transparent !important;
+}
