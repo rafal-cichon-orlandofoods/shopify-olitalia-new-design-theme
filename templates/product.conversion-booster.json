@@ -81,7 +81,7 @@
       "name": "t:sections.refactor_words.settings.image_with_hotspots.label",
       "settings": {
         "heading": "Discover the Story in Every Detail",
-        "subheading": "Every curve, every color carries meaning - tap to unveil the secrets of our bottle. ",
+        "subheading": "Every curve, every color carries meaning - tap to unveil the secrets of our bottle.",
         "section_heading_size": "text-size--regular",
         "section_heading_layout": "section-heading--left section-heading--one-row",
         "cta_label": "",
@@ -102,7 +102,7 @@
           "name": "t:sections-categories.presets.logo",
           "settings": {
             "icon": "like-hand",
-            "image": "shopify://shop_images/drops_icon_94ffcf86-81d0-4483-9291-a3a1798f2be1.png",
+            "image": "shopify://shop_images/thumbs-up-icon.png",
             "crop": false,
             "title": "Perfect Finishing Touch",
             "caption": "",
@@ -120,7 +120,7 @@
           "name": "t:sections-categories.presets.logo",
           "settings": {
             "icon": "security-shield",
-            "image": "shopify://shop_images/pan-frying.jpg",
+            "image": "shopify://shop_images/pan-icon.png",
             "crop": false,
             "title": "For Every Degree of Flavor",
             "caption": "",
@@ -138,7 +138,7 @@
           "name": "t:sections-categories.presets.logo",
           "settings": {
             "icon": "time",
-            "image": "shopify://shop_images/chef_hat_icon_df62499a-882f-489d-aa1c-862dd7031794.png",
+            "image": "shopify://shop_images/chef-chat-icon.png",
             "crop": false,
             "title": "Trusted by Chefs Worldwide",
             "caption": "",
@@ -156,7 +156,7 @@
           "name": "t:sections-categories.presets.logo",
           "settings": {
             "icon": "earth-globe",
-            "image": "shopify://shop_images/image.jpg",
+            "image": "shopify://shop_images/italy-map-icon-white.png",
             "crop": false,
             "title": "Product of Italy",
             "caption": "",
@@ -200,6 +200,7 @@
     "redesign-recipes": {
       "type": "redesign-recipes-showcase",
       "settings": {
+        "title": "Featured Recipes",
         "recipe_limit": 6
       }
     },
