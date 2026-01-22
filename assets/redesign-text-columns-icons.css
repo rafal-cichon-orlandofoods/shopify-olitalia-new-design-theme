@@ -25,7 +25,8 @@ body.template-product #shopify-section-template--19478829596762__text_columns_ic
 /* Icon images - invert dark colors to light while preserving details */
 body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon img {
     filter: invert(1) hue-rotate(180deg) !important;
-    /* This inverts colors and rotates hue back to preserve color relationships */
+    mix-blend-mode: screen !important;
+    /* Screen blend mode removes dark backgrounds and keeps light elements */
 }
 
 /* White text */
