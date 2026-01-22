@@ -3,7 +3,7 @@
 /* Product page specific styling */
 body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card {
     background: transparent !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     border-radius: 8px !important;
     padding: 20px !important;
     transition: all 0.3s ease;
@@ -22,9 +22,10 @@ body.template-product #shopify-section-template--19478829596762__text_columns_ic
     color: #ffffff !important;
 }
 
-/* White icon images */
+/* Icon images - keep original colors, no filter */
 body.template-product #shopify-section-template--19478829596762__text_columns_icons_UVHchw .card__icon img {
-    filter: brightness(0) invert(1) !important;
+    /* Remove filter to keep original icon colors */
+    filter: none !important;
 }
 
 /* White text */
