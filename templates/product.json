@@ -18,23 +18,197 @@
       "settings": {
         "intro_text": "<p>As bold and timeless as the Mediterranean itself, our deep blue hue is rooted in the tradition of the official tasting glasses of olive oil experts to embody our family's passion for balance, tradition, and culinary excellence – a way of life worth bottling.</p>",
         "description_text": "<p>Combining the finest olive varietals to achieve harmony and balance, our Extra Virgin Olive Oil is crafted to be both versatile and distinctive. Its vibrant flavor enhances every ingredient it touches—bringing depth to simple salads, brightness to fresh pasta, and character to grilled vegetables, meat, and seafood.</p>",
-        "product_highlights": "<ul><li>Perfect Finishing Touch</li><li>For Every Degree of Flavor</li><li>Trusted by Chefs Worldwide</li><li>Product of Italy</li></ul>",
         "show_accordions": true,
         "care_title": "Care and Storage",
         "care_text": "<p>Store in a cool, dry place away from direct sunlight. Once opened, use within 3-6 months for optimal freshness.</p>",
         "ingredients_title": "Ingredients",
         "ingredients_text": "<p>100% Extra Virgin Olive Oil</p>",
         "certifications_title": "Certifications/Quality/Assurance",
-        "certifications_text": "<p>Certified Extra Virgin Olive Oil from Italy. Cold-pressed from the finest Mediterranean olives.</p>"
+        "certifications_text": "<p>Certified Extra Virgin Olive Oil from Italy. Cold-pressed from the finest Mediterranean olives.</p>",
+        "product_highlights": "<ul><li>Perfect Finishing Touch</li><li>For Every Degree of Flavor</li><li>Trusted by Chefs Worldwide</li><li>Product of Italy</li></ul>"
+      }
+    },
+    "image_with_hotspots_FyELFN": {
+      "type": "image-with-hotspots",
+      "blocks": {
+        "text_NMkNTP": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "description": "<p>Curved like olive groves and Mediterranean waves, the lines trace the journey from land to table - where heritage and flavor move in harmony, shaping the future of Italian excellence.</p>",
+            "vertical_offset_desktop": 68,
+            "horizontal_offset_desktop": 36,
+            "vertical_offset_mobile": 50,
+            "horizontal_offset_mobile": 50,
+            "tooltip_position_desktop": "top",
+            "tooltip_position_mobile": "top"
+          }
+        },
+        "text_6A7ABP": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "description": "<p>Our bottle’s deep blue recalls the cobalt tasting glasses used by olive oil experts, a color chosen to conceal the oil’s hue so only its true flavor shines. It also mirrors the vast Mediterranean - the sea that cradles our groves and inspires our craft. </p>",
+            "vertical_offset_desktop": 37,
+            "horizontal_offset_desktop": 37,
+            "vertical_offset_mobile": 50,
+            "horizontal_offset_mobile": 50,
+            "tooltip_position_desktop": "top",
+            "tooltip_position_mobile": "top"
+          }
+        },
+        "text_QcrG4C": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "description": "<p>The golden hue of the sun mirrors the warmth that nurtures our groves and the brilliance that shines in every drop of oil. A symbol of vitality and renewal, the sun reflects the tradition of tomorrow - illuminating the path from our heritage to the future of great cooking while reminding us that all great cooking revolves around great oil.</p>",
+            "vertical_offset_desktop": 58,
+            "horizontal_offset_desktop": 44,
+            "vertical_offset_mobile": 50,
+            "horizontal_offset_mobile": 55,
+            "tooltip_position_desktop": "top",
+            "tooltip_position_mobile": "top"
+          }
+        }
+      },
+      "block_order": [
+        "text_NMkNTP",
+        "text_6A7ABP",
+        "text_QcrG4C"
+      ],
+      "name": "t:sections.refactor_words.settings.image_with_hotspots.label",
+      "settings": {
+        "heading": "Discover the Story in Every Detail",
+        "subheading": "Every curve, every color carries meaning - tap to unveil the secrets of our bottle. ",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--left section-heading--one-row",
+        "cta_label": "",
+        "cta_url": "",
+        "image": "shopify://shop_images/evoo-featured-product.webp",
+        "border_radius": 0,
+        "color_text": "#000000",
+        "color_background": "#ffffff",
+        "gutter_decrease": false,
+        "seo_h_tag": "h3"
+      }
+    },
+    "text_columns_icons_UVHchw": {
+      "type": "text-columns-icons",
+      "blocks": {
+        "image_7igy8B": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "like-hand",
+            "image": "shopify://shop_images/drops_icon_94ffcf86-81d0-4483-9291-a3a1798f2be1.png",
+            "crop": false,
+            "title": "Perfect Finishing Touch",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_jk3aky": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "security-shield",
+            "image": "shopify://shop_images/pan-frying.jpg",
+            "crop": false,
+            "title": "For Every Degree of Flavor",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_bqABcC": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "time",
+            "image": "shopify://shop_images/chef_hat_icon_df62499a-882f-489d-aa1c-862dd7031794.png",
+            "crop": false,
+            "title": "Trusted by Chefs Worldwide",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        },
+        "image_tABY4N": {
+          "type": "image",
+          "name": "t:sections-categories.presets.logo",
+          "settings": {
+            "icon": "earth-globe",
+            "image": "shopify://shop_images/image.jpg",
+            "crop": false,
+            "title": "Product of Italy",
+            "caption": "",
+            "link": "",
+            "open_in_new_window": false,
+            "color_background_main": "rgba(0,0,0,0)",
+            "color_icons_main": "rgba(0,0,0,0)",
+            "color_text_main": "rgba(0,0,0,0)",
+            "color_borders_main": "rgba(0,0,0,0)",
+            "seo_h_tag": "h3"
+          }
+        }
+      },
+      "block_order": [
+        "image_7igy8B",
+        "image_jk3aky",
+        "image_bqABcC",
+        "image_tABY4N"
+      ],
+      "name": "t:sections-categories.presets.logo_list",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "section_heading_size": "text-size--regular",
+        "section_heading_layout": "section-heading--center section-heading--two-rows",
+        "cta_label": "",
+        "cta_url": "",
+        "style": "slider",
+        "layout": "grid-4 grid-portable-3 grid-lap-2 grid-palm-1",
+        "border_radius": 0,
+        "hide_borders": true,
+        "opacity_on_hover": false,
+        "section_background_color": "rgba(0,0,0,0)",
+        "section_background_gradient": "",
+        "section_heading_color": "rgba(0,0,0,0)",
+        "gutter_decrease": false,
+        "remove_bottom_margin": false,
+        "seo_h_tag": "h2"
       }
     },
     "redesign-recipes": {
       "type": "redesign-recipes-showcase",
-      "settings": {}
+      "settings": {
+        "title": "Featured Recipes",
+        "recipe_limit": 6
+      }
     },
     "redesign-newsletter": {
       "type": "redesign-newsletter-simple",
-      "settings": {}
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
     },
     "redesign-footer": {
       "type": "redesign-footer",
@@ -44,6 +218,8 @@
   "order": [
     "redesign-header",
     "redesign-product",
+    "image_with_hotspots_FyELFN",
+    "text_columns_icons_UVHchw",
     "redesign-recipes",
     "redesign-newsletter",
     "redesign-footer"
