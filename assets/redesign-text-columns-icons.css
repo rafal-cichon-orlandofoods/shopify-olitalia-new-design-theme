@@ -46,3 +46,10 @@ body.template-product [id*="text_columns_icons"] .card .text-color--opacity {
 body.template-product [id*="text_columns_icons"] .card[style*="background"] {
     background: transparent !important;
 }
+
+/* Image with hotspots section - white text on product page */
+body.template-product [id*="image_with_hotspots"] .section-heading,
+body.template-product [id*="image_with_hotspots"] .section-heading__heading,
+body.template-product [id*="image_with_hotspots"] .section-heading__subheading {
+    color: #ffffff !important;
+}
