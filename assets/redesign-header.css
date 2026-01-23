@@ -167,11 +167,11 @@
     color: #00134f !important;
 }
 
-/* Active states */
+/* Active states - use text-shadow instead of font-weight to prevent layout shift */
 .redesign-header__nav-link:active,
 .redesign-header__nav-link.active {
     color: #00134f !important;
-    font-weight: 700 !important;
+    text-shadow: 0 0 0.5px #00134f, 0 0 0.5px #00134f !important;
 }
 
 /* Underline effect - SIMPLIFIED SELECTORS */
@@ -489,7 +489,7 @@ body.template-product .redesign-header__nav-link.active,
 body[class*="product"] .redesign-header__nav-link:active,
 body[class*="product"] .redesign-header__nav-link.active {
     color: #f4cf73 !important;
-    font-weight: 600 !important;
+    text-shadow: 0 0 0.5px #f4cf73, 0 0 0.5px #f4cf73 !important;
 }
 
 body.template-product .redesign-header__nav-link::after,
