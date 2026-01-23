@@ -329,11 +329,11 @@ body.template-collection {
 .no-touchevents .template-collection .product-item button.button.add-to-cart:not(.disabled):hover,
 .no-touchevents .template-collection .product-item .button--solid.add-to-cart:not(.disabled):hover,
 .no-touchevents .template-collection .product-item .button--outline.add-to-cart:not(.disabled):hover {
-  background: #000000 !important;
+  background: rgba(0, 19, 79, 0.85) !important;
   color: #ffffff !important;
-  border-color: #000000 !important;
+  border-color: #00134f !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 4px 12px rgba(0, 19, 79, 0.3) !important;
 }
 
 .no-touchevents .template-collection .product-item .button.add-to-cart:not(.disabled):hover .button__text,
