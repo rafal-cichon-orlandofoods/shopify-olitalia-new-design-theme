@@ -85,6 +85,8 @@
       </div>
 
       {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        
         <div class="redesign-product__buttons-row">
           <div class="redesign-product__quantity-wrapper">
             <label for="quantity" class="redesign-product__quantity-label">Quantity</label>
