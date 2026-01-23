@@ -1,37 +1,55 @@
 /* Cart Popup Redesign Styles */
 
-/* Override cart popup button color to match product page blue */
-.popup--cart {
+/* Override cart popup background color to match product page blue */
+.popup--cart,
+#mini-cart-popup {
   background: #00134f !important;
   color: #ffffff !important;
 }
 
-.popup--cart .button {
+/* Button styling - white border and text on blue background */
+.popup--cart .button,
+#mini-cart-popup .button {
   border-color: #ffffff !important;
   color: #ffffff !important;
   background: transparent !important;
   transition: all 0.3s ease;
 }
 
-.popup--cart .button:hover {
+/* Button hover - white background with blue text */
+.popup--cart .button:hover,
+#mini-cart-popup .button:hover {
   background: #ffffff !important;
   color: #00134f !important;
 }
 
-.popup--cart .button path {
+/* Button icon color */
+.popup--cart .button path,
+#mini-cart-popup .button path {
   fill: #ffffff !important;
   transition: all 0.3s ease;
 }
 
-.popup--cart .button:hover path {
+/* Button icon hover color */
+.popup--cart .button:hover path,
+#mini-cart-popup .button:hover path {
   fill: #00134f !important;
 }
 
-.popup--cart .popup-close rect {
+/* Close button icon */
+.popup--cart .popup-close rect,
+#mini-cart-popup .popup-close rect {
   fill: #ffffff !important;
 }
 
-/* Ensure checkmark stays white */
-.popup--cart .mini-cart-popup__checkmark .path {
+/* Checkmark animation - keep white */
+.popup--cart .mini-cart-popup__checkmark .path,
+#mini-cart-popup .mini-cart-popup__checkmark .path {
   stroke: #ffffff !important;
+}
+
+/* Text color */
+.popup--cart .mini-cart-popup__text,
+#mini-cart-popup .mini-cart-popup__text {
+  color: #ffffff !important;
 }
