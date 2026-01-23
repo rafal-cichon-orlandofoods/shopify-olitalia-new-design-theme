@@ -4,8 +4,34 @@
   position: relative;
   width: 100%;
   background: white;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: #121212;
+}
+
+/* Force Inter font for headings only */
+.sustainability-figma h1,
+.sustainability-figma h2,
+.sustainability-figma h3,
+.sustainability-figma .sustainability-figma__hero-title,
+.sustainability-figma .sustainability-figma__plastic-title,
+.sustainability-figma .sustainability-figma__collaboration-title,
+.sustainability-figma .sustainability-figma__circle-title,
+.sustainability-figma .sustainability-figma__life-title,
+.sustainability-figma .sustainability-figma__people-title,
+.sustainability-figma .sustainability-figma__resource-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Force Raleway font for paragraphs and body text */
+.sustainability-figma p,
+.sustainability-figma .sustainability-figma__hero-subtitle,
+.sustainability-figma .sustainability-figma__hero-description,
+.sustainability-figma .sustainability-figma__plastic-description,
+.sustainability-figma .sustainability-figma__collaboration-text,
+.sustainability-figma .sustainability-figma__circle-description,
+.sustainability-figma .sustainability-figma__life-description,
+.sustainability-figma .sustainability-figma__people-text,
+.sustainability-figma .sustainability-figma__resource-description {
+  font-family: 'Raleway', Arial, sans-serif !important;
 }
 
 /* HERO BACKGROUND IMAGE - Full width, directly under header */
