@@ -270,11 +270,11 @@ body.template-collection {
 
 .product-item .product-item__actions button[type="submit"]:hover,
 .product-item .quick-add-to-cart button[type="submit"]:hover {
-  background: #ffffff;
-  color: #00134f;
-  border-color: #00134f;
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 19, 79, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .product-item .product-item__actions button[type="submit"]:active,
