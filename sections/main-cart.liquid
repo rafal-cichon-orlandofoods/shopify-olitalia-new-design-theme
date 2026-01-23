@@ -9,6 +9,14 @@
 -%}
 
 <div class="container container--large container--vertical-space-small">
+  {%- if cart.item_count > 0 -%}
+    <div class="cart__continue-link">
+      <a href="{{ routes.all_products_collection_url }}" class="text-animation--underline-thin">
+        ← {{ 'cart.continue_browsing' | t }}
+      </a>
+    </div>
+  {%- endif -%}
+  
   <h1 class="title heading-size--page-title">{{ 'cart.title' | t }}</h1>
 
   <div class="cart-section {% if cart.items.size == 0 %} cart-section--empty {% endif %}">

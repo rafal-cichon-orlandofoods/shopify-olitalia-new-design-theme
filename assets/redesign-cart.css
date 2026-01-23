@@ -1,5 +1,27 @@
 /* Minimal Cart Page Styling - Subtle enhancements only */
 
+/* Continue Shopping link - best practice at top */
+.cart__continue-link {
+    margin-bottom: 20px;
+}
+
+.cart__continue-link a {
+    font-family: 'Raleway', Arial, sans-serif;
+    font-size: 14px;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cart__continue-link a:hover {
+    color: #000000;
+}
+
+/* Add spacing before footer */
+.cart-section {
+    margin-bottom: 60px;
+}
+
 /* Typography improvements - Soho Pro for headings */
 .cart-section .title,
 .cart-section h1,
@@ -29,11 +51,6 @@
 .cart__checkout:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Continue Shopping button - best practice positioning */
-.cart__continue-shopping {
-    margin-bottom: 10px;
 }
 
 /* Improve link hover states */
@@ -66,5 +83,13 @@
     .cart-section .title,
     .cart-section h1 {
         font-size: 28px;
+    }
+    
+    .cart-section {
+        margin-bottom: 40px;
+    }
+    
+    .cart__continue-link {
+        margin-bottom: 15px;
     }
 }
