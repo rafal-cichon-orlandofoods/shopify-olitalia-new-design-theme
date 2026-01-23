@@ -164,13 +164,13 @@
 /* Hover states */
 .redesign-header__nav-link:hover,
 .redesign-header__nav-link:hover:visited {
-    color: #004f2f !important;
+    color: #00134f !important;
 }
 
 /* Active states */
 .redesign-header__nav-link:active,
 .redesign-header__nav-link.active {
-    color: #004f2f !important;
+    color: #00134f !important;
     font-weight: 700 !important;
 }
 
@@ -182,7 +182,7 @@
     left: 0 !important;
     width: 0 !important;
     height: 2px !important;
-    background: #004f2f !important;
+    background: #00134f !important;
     transition: width 0.3s ease !important;
 }
 
@@ -476,23 +476,23 @@ body[class*="product"] .redesign-header__nav-link:visited {
 
 body.template-product .redesign-header__nav-link:hover,
 body[class*="product"] .redesign-header__nav-link:hover {
-    color: #ccc !important;
+    color: #f4cf73 !important;
 }
 
 body.template-product .redesign-header__nav-link:hover:visited,
 body[class*="product"] .redesign-header__nav-link:hover:visited {
-    color: #ccc !important;
+    color: #f4cf73 !important;
 }
 
 body.template-product .redesign-header__nav-link:active,
 body.template-product .redesign-header__nav-link.active,
 body[class*="product"] .redesign-header__nav-link:active,
 body[class*="product"] .redesign-header__nav-link.active {
-    color: #fff !important;
+    color: #f4cf73 !important;
     font-weight: 600 !important;
 }
 
 body.template-product .redesign-header__nav-link::after,
 body[class*="product"] .redesign-header__nav-link::after {
-    background: #fff !important;
+    background: #f4cf73 !important;
 }
