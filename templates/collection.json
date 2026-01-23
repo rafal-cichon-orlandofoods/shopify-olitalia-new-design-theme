@@ -55,8 +55,8 @@
       ],
       "settings": {
         "products_number": 48,
-        "enable_filtering": false,
-        "enable_sorting": false,
+        "enable_filtering": true,
+        "enable_sorting": true,
         "image_filter_layout": "twocolumns",
         "filters_position": "top",
         "layout_desktop": "three-columns",
