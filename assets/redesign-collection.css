@@ -192,6 +192,35 @@ body.template-collection {
     margin-top: 40px;
     margin-bottom: 40px;
   }
+
+  /* Product item mobile adjustments */
+  .product-item {
+    padding: 8px;
+  }
+
+  .product-item__title {
+    font-size: 16px !important;
+  }
+
+  .product-item__price {
+    font-size: 14px !important;
+  }
+
+  /* Filter and sort mobile */
+  .facets__button,
+  .facets__summary {
+    font-size: 14px !important;
+  }
+
+  .facet-filters__sort select {
+    font-size: 14px !important;
+    padding: 8px 12px;
+  }
+
+  /* Mobile grid - 2 columns */
+  .collection-product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 /* Empty state styling */
