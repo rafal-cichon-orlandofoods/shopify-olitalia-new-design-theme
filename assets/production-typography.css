@@ -1,21 +1,24 @@
 /* Import Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* Production Typography Override - Match Sustainability font styles EXACTLY */
+/* Production Typography Override - Use Soho Pro for headings like Sustainability page */
 
-/* Apply Inter font family to production page - works with any AI block ID */
-body.template-page [class*="ai-innovation-block-"],
-body.template-page [class*="ai-innovation-container-"],
-body.template-page [class*="ai-innovation-container-"] *,
-body.template-page [class*="ai-innovation-intro-"],
-body.template-page [class*="ai-innovation-stats-"],
-body.template-page [class*="ai-innovation-stat-"],
-body.template-page [class*="ai-innovation-item-"],
-body.template-page [class*="ai-innovation-content-"],
-body.template-page [class*="ai-innovation-title-"],
+/* Apply Inter font family to production page body text - works with any AI block ID */
+body.template-page [class*="ai-innovation-intro-text-"],
 body.template-page [class*="ai-innovation-text-"],
-body.template-page [class*="ai-innovation-closing-"] {
+body.template-page [class*="ai-innovation-closing-text-"],
+body.template-page [class*="ai-innovation-stat-label-"] {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Apply Soho Pro to ALL HEADINGS on production page - matching Sustainability style */
+body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__title),
+body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title),
+body.template-page [class*="ai-innovation-intro-title-"],
+body.template-page [class*="ai-innovation-title-"],
+body.template-page [class*="ai-innovation-closing-title-"],
+body.template-page [class*="ai-innovation-stat-number-"] {
+  font-family: 'Soho Pro', Arial, sans-serif !important;
 }
 
 /* Override H2 styles ONLY within AI innovation blocks - exclude newsletter */
@@ -23,7 +26,7 @@ body.template-page [class*="ai-innovation-block-"] h2:not(.redesign-newsletter__
 body.template-page [class*="ai-innovation-container-"] h2:not(.redesign-newsletter__title),
 body.template-page [class*="ai-innovation-intro-title-"],
 body.template-page [class*="ai-innovation-closing-title-"] {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Soho Pro', Arial, sans-serif !important;
   font-weight: 600 !important;
   font-size: 48px !important; /* Match homepage */
   line-height: 1.2 !important;
@@ -31,9 +34,9 @@ body.template-page [class*="ai-innovation-closing-title-"] {
   margin: 0 0 30px 0 !important;
 }
 
-/* Main title - Match homepage */
+/* Main title - Match homepage with Soho Pro */
 body.template-page [class*="ai-innovation-intro-title-"] {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Soho Pro', Arial, sans-serif !important;
   font-size: 48px !important; /* Match homepage */
   font-weight: 600 !important;
   line-height: 1.2 !important;
@@ -50,10 +53,10 @@ body.template-page [class*="ai-innovation-intro-text-"] {
   color: #121212 !important;
 }
 
-/* Stats numbers - EXACT match to sustainability stat numbers - More specific selectors */
+/* Stats numbers - Use Soho Pro like other headings */
 body.template-page [class*="ai-innovation-stat-number-"],
 body.template-page .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Soho Pro', Arial, sans-serif !important;
   font-size: 64px !important; /* Same as sustainability-figma__stat-number */
   font-weight: 400 !important; /* Same as sustainability */
   line-height: 60px !important; /* Same as sustainability */
@@ -79,9 +82,9 @@ body.template-page .ai-innovation-stat-label-aagpvcmz0n25xaze3naigenblock2fff632
   margin: 0 !important; /* Same as sustainability */
 }
 
-/* Section titles (H3 in AI block) - Match homepage */
+/* Section titles (H3 in AI block) - Use Soho Pro */
 body.template-page [class*="ai-innovation-title-"] {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Soho Pro', Arial, sans-serif !important;
   font-size: 48px !important; /* Match homepage */
   font-weight: 600 !important;
   line-height: 1.2 !important;
@@ -98,9 +101,9 @@ body.template-page [class*="ai-innovation-text-"] {
   color: #121212 !important;
 }
 
-/* Closing title - Match homepage */
+/* Closing title - Use Soho Pro */
 body.template-page [class*="ai-innovation-closing-title-"] {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-family: 'Soho Pro', Arial, sans-serif !important;
   font-size: 48px !important; /* Match homepage */
   font-weight: 600 !important;
   line-height: 1.2 !important;
