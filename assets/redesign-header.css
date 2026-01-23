@@ -152,7 +152,7 @@
 .redesign-header__nav-link:visited {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
     font-size: 17px !important;
-    font-weight: 600 !important;
+    font-weight: 500 !important;
     font-style: normal !important;
     color: #000 !important;
     text-decoration: none !important;
@@ -167,11 +167,10 @@
     color: #00134f !important;
 }
 
-/* Active states - use text-shadow instead of font-weight to prevent layout shift */
+/* Active states - no bold effect, just color and underline */
 .redesign-header__nav-link:active,
 .redesign-header__nav-link.active {
     color: #00134f !important;
-    text-shadow: 0 0 0.5px #00134f, 0 0 0.5px #00134f !important;
 }
 
 /* Underline effect - SIMPLIFIED SELECTORS */
@@ -489,7 +488,6 @@ body.template-product .redesign-header__nav-link.active,
 body[class*="product"] .redesign-header__nav-link:active,
 body[class*="product"] .redesign-header__nav-link.active {
     color: #f4cf73 !important;
-    text-shadow: 0 0 0.5px #f4cf73, 0 0 0.5px #f4cf73 !important;
 }
 
 body.template-product .redesign-header__nav-link::after,
