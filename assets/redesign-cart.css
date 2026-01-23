@@ -1,0 +1,65 @@
+/* Minimal Cart Page Styling - Subtle enhancements only */
+
+/* Typography improvements - Soho Pro for headings */
+.cart-section .title,
+.cart-section h1,
+.cart-section h2,
+.cart-block__head {
+    font-family: 'Soho Pro', Arial, sans-serif;
+}
+
+/* Body text - Raleway */
+.cart-section p,
+.cart-section label,
+.cart-section input,
+.cart-section select,
+.cart-item__title {
+    font-family: 'Raleway', Arial, sans-serif;
+}
+
+/* Subtle button improvements */
+.cart-section button[type="submit"],
+.cart-section .button,
+.cart__checkout {
+    transition: all 0.3s ease;
+}
+
+.cart-section button[type="submit"]:hover,
+.cart-section .button:hover,
+.cart__checkout:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Improve link hover states */
+.cart-item__title a:hover {
+    color: #004f2f;
+    transition: color 0.2s ease;
+}
+
+/* Subtle focus states for accessibility */
+.cart-section input:focus,
+.cart-section select:focus,
+.cart-section textarea:focus {
+    outline: 2px solid #004f2f;
+    outline-offset: 2px;
+}
+
+/* Improve spacing for better readability */
+.cart-section {
+    line-height: 1.6;
+}
+
+/* Subtle hover on quantity buttons */
+.cart-item__quantity button:hover {
+    background: rgba(0, 79, 47, 0.1);
+    transition: background 0.2s ease;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .cart-section .title,
+    .cart-section h1 {
+        font-size: 28px;
+    }
+}
