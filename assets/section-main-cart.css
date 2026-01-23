@@ -133,7 +133,7 @@ html[dir=ltr] .cart__subtotal-widget {
   border-radius: var(--border-radius-widgets);
 }
 .cart-block__head {
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0.05); */
   border-bottom: solid var(--color-borders-main) 1px;
   border-radius: var(--border-radius-widgets) var(--border-radius-widgets) 0 0;
   height: 3.4375rem;
