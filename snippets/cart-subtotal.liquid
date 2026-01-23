@@ -177,6 +177,11 @@
 					</a>
 				{%- endif -%}
 			{%- endunless -%}
+			{%- if type == 'page' -%}
+				<a href="{{ routes.all_products_collection_url }}" class="button button--regular button--outline button--move cart__continue-shopping">
+					<span class="button__text">{{ 'cart.continue_browsing' | t }}</span>
+				</a>
+			{%- endif -%}
 			{%- if settings.cart_drawer_actions contains 'show-checkout' or type == 'page' -%}
 				<button id="CheckOut" class="button button--regular button--solid button--move" type="submit" name="checkout" form="cart" {%- if settings.cart_terms_checkbox -%} disabled {%- endif -%}>
 					<span class="button__text">{{ 'cart.checkout' | t }}</span>

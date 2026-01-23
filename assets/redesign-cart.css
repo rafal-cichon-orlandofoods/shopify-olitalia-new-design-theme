@@ -31,6 +31,11 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Continue Shopping button - best practice positioning */
+.cart__continue-shopping {
+    margin-bottom: 10px;
+}
+
 /* Improve link hover states */
 .cart-item__title a:hover {
     color: #004f2f;

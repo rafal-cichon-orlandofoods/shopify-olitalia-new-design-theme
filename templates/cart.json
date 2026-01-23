@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {}
+    },
     "main": {
       "type": "main-cart",
       "blocks": {
@@ -46,10 +50,16 @@
       "settings": {
         "heading": "Recommended"
       }
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {}
     }
   },
   "order": [
+    "redesign-header",
     "main",
-    "cart-recommendations"
+    "cart-recommendations",
+    "redesign-footer"
   ]
 }
