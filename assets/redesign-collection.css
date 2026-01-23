@@ -290,15 +290,30 @@ body.template-collection {
   pointer-events: none;
 }
 
-/* Disabled state */
+/* Disabled state - for unavailable/sold out products */
 .product-item .product-item__actions button[type="submit"]:disabled,
-.product-item .quick-add-to-cart button[type="submit"]:disabled {
-  background: #cccccc;
-  border-color: #cccccc;
-  color: #666666;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.product-item .quick-add-to-cart button[type="submit"]:disabled,
+body.template-collection .product-item .button.disabled,
+body.template-collection .product-item button.disabled,
+body.template-collection .card .button.disabled {
+  background: #cccccc !important;
+  border-color: #cccccc !important;
+  color: #666666 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.6 !important;
+}
+
+/* Prevent hover on disabled buttons */
+.no-touchevents body.template-collection .product-item .button.disabled:hover,
+.no-touchevents body.template-collection .product-item button.disabled:hover,
+.no-touchevents body.template-collection .card .button.disabled:hover {
+  background: #cccccc !important;
+  border-color: #cccccc !important;
+  color: #666666 !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 /* Mobile button adjustments */
