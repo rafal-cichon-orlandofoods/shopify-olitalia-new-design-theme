@@ -89,19 +89,27 @@
           <div class="redesign-product__quantity-wrapper">
             <label for="quantity" class="redesign-product__quantity-label">Quantity</label>
             <div class="redesign-product__quantity-selector">
-              <button type="button" class="redesign-product__quantity-btn" onclick="updateQuantity(-1)">−</button>
-              <input type="number" id="quantity" name="quantity" value="1" min="1" class="redesign-product__quantity-input">
-              <button type="button" class="redesign-product__quantity-btn" onclick="updateQuantity(1)">+</button>
+              <button type="button" class="redesign-product__quantity-btn" onclick="updateQuantity(-1)" {% unless product.available %}disabled{% endunless %}>−</button>
+              <input type="number" id="quantity" name="quantity" value="1" min="1" class="redesign-product__quantity-input" {% unless product.available %}disabled{% endunless %}>
+              <button type="button" class="redesign-product__quantity-btn" onclick="updateQuantity(1)" {% unless product.available %}disabled{% endunless %}>+</button>
             </div>
           </div>
           
-          <button type="submit" name="add" class="redesign-product__add-to-cart">
-            Add to Cart
+          <button type="submit" name="add" class="redesign-product__add-to-cart" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              Add to Cart
+            {% else %}
+              Out of Stock
+            {% endif %}
           </button>
         </div>
         
-        <button type="submit" name="checkout" class="redesign-product__buy-now">
-          Buy it Now
+        <button type="submit" name="checkout" class="redesign-product__buy-now" {% unless product.available %}disabled{% endunless %}>
+          {% if product.available %}
+            Buy it Now
+          {% else %}
+            Out of Stock
+          {% endif %}
         </button>
       {% endform %}
       

@@ -232,6 +232,16 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
+.redesign-product__quantity-btn:disabled {
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.redesign-product__quantity-btn:disabled:hover {
+    background: transparent;
+}
+
 .redesign-product__quantity-input {
     width: 60px;
     height: 52px;
@@ -250,6 +260,12 @@
     outline: none;
     border: none !important;
     box-shadow: none !important;
+}
+
+.redesign-product__quantity-input:disabled {
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 /* Remove number input arrows */
@@ -289,6 +305,19 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+.redesign-product__add-to-cart:disabled {
+    background: #666666;
+    color: #999999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.redesign-product__add-to-cart:disabled:hover {
+    background: #666666;
+    transform: none;
+    box-shadow: none;
+}
+
 .redesign-product__buy-now {
     display: none;
     width: 100%;
@@ -309,6 +338,19 @@
 .redesign-product__buy-now:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
+}
+
+.redesign-product__buy-now:disabled {
+    background: #666666;
+    color: #999999;
+    border-color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.redesign-product__buy-now:disabled:hover {
+    background: #666666;
+    transform: none;
 }
 
 .redesign-product__accordions {
