@@ -29,15 +29,16 @@
 
 .redesign-about__title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 42px;
+    font-size: 64px;
     font-weight: 600;
     color: #2c2c2c;
     margin: 0 0 30px;
+    line-height: 1.2;
 }
 
 .redesign-about__intro-text {
-    font-size: 18px;
-    /* line-height: 1.8; */
+    font-size: 20px;
+    line-height: 1.7;
     color: #666;
     margin: 0;
 }
@@ -258,7 +259,11 @@
     }
 
     .redesign-about__title {
-        font-size: 32px;
+        font-size: 42px;
+    }
+
+    .redesign-about__intro-text {
+        font-size: 18px;
     }
 
     .redesign-about__quote blockquote {
