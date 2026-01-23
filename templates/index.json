@@ -44,7 +44,7 @@
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
       "settings": {
-        "title": "Featured Recipes",
+        "title": "Recipes for Every Moment",
         "recipe_limit": 6
       }
     },
