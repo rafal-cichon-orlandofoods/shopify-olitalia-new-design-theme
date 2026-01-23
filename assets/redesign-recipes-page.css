@@ -228,7 +228,7 @@
 }
 
 .recipe-card:nth-child(1) .recipe-title {
-    font-size: 32px;
+    font-size: 38px; /* Increased from 32px */
     line-height: 1.2;
 }
 
@@ -248,7 +248,7 @@
 }
 
 .recipe-card:nth-child(2) .recipe-title {
-    font-size: 24px;
+    font-size: 28px; /* Increased from 24px */
 }
 
 .recipe-card:nth-child(2) .recipe-content {
@@ -262,7 +262,7 @@
 }
 
 .recipe-card:nth-child(3) .recipe-title {
-    font-size: 22px;
+    font-size: 26px; /* Increased from 22px */
 }
 
 /* Fourth Recipe (Square) */
@@ -284,7 +284,7 @@
 }
 
 .recipe-card:nth-child(6) .recipe-title {
-    font-size: 24px;
+    font-size: 28px; /* Increased from 24px */
 }
 
 .recipe-card:nth-child(6) .recipe-content {
@@ -298,7 +298,7 @@
 }
 
 .recipe-card:nth-child(7) .recipe-title {
-    font-size: 22px;
+    font-size: 26px; /* Increased from 22px */
 }
 
 .recipe-card:nth-child(7) .recipe-content {
@@ -431,7 +431,7 @@
     left: 0;
     right: 0;
     padding: 20px;
-    display: flex;
+    display: none !important; /* Hide category and difficulty badges */
     justify-content: space-between;
     align-items: flex-start;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
@@ -477,16 +477,16 @@
 
 .recipe-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 22px;
+    font-size: 26px; /* Increased from 22px for better visibility */
     font-weight: 700;
     color: #ffffff;
     margin: 0 0 12px;
     line-height: 1.2;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5); /* Stronger shadow for better readability */
 }
 
 .recipe-meta {
-    display: flex;
+    display: none !important; /* Hide metadata - let people eat with their eyes first */
     gap: 16px;
     margin-bottom: 8px;
     opacity: 0.9;
@@ -770,11 +770,11 @@
     }
 
     .recipe-title {
-        font-size: 18px !important;
+        font-size: 20px !important; /* Increased from 18px for mobile */
     }
 
     .recipe-card:nth-child(1) .recipe-title {
-        font-size: 24px !important;
+        font-size: 28px !important; /* Increased from 24px for featured card */
     }
 }
 
@@ -795,11 +795,11 @@
     }
 
     .recipe-title {
-        font-size: 16px !important;
+        font-size: 18px !important; /* Increased from 16px for smallest screens */
     }
 
     .recipe-card:nth-child(1) .recipe-title {
-        font-size: 20px !important;
+        font-size: 24px !important; /* Increased from 20px for featured card */
     }
 }
 
