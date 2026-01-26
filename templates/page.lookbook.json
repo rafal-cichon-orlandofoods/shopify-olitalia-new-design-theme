@@ -121,7 +121,6 @@
     },
     "redesign_values_cards": {
       "type": "redesign-values-cards",
-      "name": "Our Values Cards",
       "blocks": {
         "card_tradition": {
           "type": "value",
