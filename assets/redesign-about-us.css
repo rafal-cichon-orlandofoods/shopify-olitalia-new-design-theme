@@ -118,7 +118,7 @@
 /* Pouring oil special effects */
 .redesign-about__pouring-oil {
     position: relative;
-    max-width: 600px;
+    max-width: 450px;
     margin: 60px auto;
     opacity: 0;
     transform: translateY(50px);

@@ -67,7 +67,6 @@
           "settings": {
             "title": "Tradition",
             "caption": "<p>We carry forward a family legacy built on five decades of Italian culinary excellence and authenticity.</p>",
-            "image": "shopify://shop_images/team.jpg",
             "icon": "star"
           }
         },
@@ -102,6 +101,8 @@
         "section_heading_layout": "section-heading--center section-heading--two-rows",
         "cta_label": "",
         "cta_url": "",
+        "learn_more_text": "Learn More",
+        "learn_more_url": "https://www.olitalia.com/ww-en/company/company",
         "desktop_layout": "third",
         "image_position": "left",
         "image_aspect_ratio": "0.666667",
@@ -114,9 +115,7 @@
         "section_heading_color": "rgba(0,0,0,0)",
         "gutter_decrease": true,
         "remove_bottom_margin": false,
-        "seo_h_tag": "h2",
-        "learn_more_text": "Learn More",
-        "learn_more_url": "https://www.olitalia.com/ww-en/company/company"
+        "seo_h_tag": "h2"
       }
     },
     "redesign_values_cards": {
@@ -125,7 +124,7 @@
         "card_tradition": {
           "type": "value",
           "settings": {
-            "image": "shopify://shop_images/team.jpg",
+            "image": "shopify://shop_images/3112_n_chefincucinabollino_n.1_GB_600x375_138293fd-d6bb-42b6-b17d-ba1b61f4233d.jpg",
             "title": "Tradition",
             "description": "We carry forward a family legacy built on five decades of Italian culinary excellence and authenticity."
           }
@@ -161,6 +160,7 @@
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
       "settings": {
+        "title": "Featured Recipes",
         "recipe_limit": 6
       }
     },
