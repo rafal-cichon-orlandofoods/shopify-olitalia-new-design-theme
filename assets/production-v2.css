@@ -6,9 +6,14 @@ body.template-page {
   background: #fafaf8 !important; /* Very subtle warm off-white */
 }
 
-/* Gold accent for stat numbers - main warmth element */
+/* Alternating gold and blue accent for stat numbers */
 body.template-page [class*="ai-innovation-stat-number-"] {
   color: #f4cf73 !important; /* Gold from bottle symbol */
+}
+
+/* Every second stat number in blue */
+body.template-page [class*="ai-innovation-block-"] [class*="ai-innovation-stats-"] > div:nth-child(2) [class*="ai-innovation-stat-number-"] {
+  color: #00134f !important; /* Blue from product page */
 }
 
 /* Subtle visual break between sections - thin gold line */
@@ -23,9 +28,9 @@ body.template-page [class*="ai-innovation-block-"]::before {
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 120px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #f4cf73, transparent);
+  background: linear-gradient(90deg, transparent, #00134f 20%, #f4cf73 50%, #00134f 80%, transparent);
 }
 
 /* Remove separator from first section */
@@ -74,7 +79,7 @@ body.template-page [class*="ai-innovation-intro-title-"] {
 
   body.template-page [class*="ai-innovation-block-"]::before {
     top: 30px;
-    width: 60px;
+    width: 80px;
   }
 
   body.template-page [class*="ai-innovation-block-"] [class*="ai-innovation-item-"]:nth-child(even) {

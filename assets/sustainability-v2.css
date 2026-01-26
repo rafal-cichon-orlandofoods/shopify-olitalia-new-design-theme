@@ -6,9 +6,17 @@
   background: #fafaf8 !important; /* Very subtle warm off-white */
 }
 
-/* Gold accent for stat numbers - main warmth element */
+/* Alternating gold and blue accent for stat numbers */
 .sustainability-figma__stat-number {
   color: #f4cf73 !important; /* Gold from bottle symbol */
+}
+
+/* Every second stat number in blue */
+.sustainability-figma__plastic-stats .sustainability-figma__plastic-stat:nth-child(2) .sustainability-figma__stat-number,
+.sustainability-figma__circle-stats .sustainability-figma__circle-stat:nth-child(2) .sustainability-figma__stat-number,
+.sustainability-figma__life-stats .sustainability-figma__life-stat:nth-child(2) .sustainability-figma__stat-number,
+.sustainability-figma__resource-stats .sustainability-figma__resource-stat:nth-child(2) .sustainability-figma__stat-number {
+  color: #00134f !important; /* Blue from product page */
 }
 
 /* Subtle visual break between sections - thin gold line */
@@ -33,9 +41,9 @@
   top: 60px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
+  width: 120px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #f4cf73, transparent);
+  background: linear-gradient(90deg, transparent, #00134f 20%, #f4cf73 50%, #00134f 80%, transparent);
 }
 
 /* Subtle blue tint on alternating sections */
@@ -87,7 +95,7 @@
   .sustainability-figma__people::before,
   .sustainability-figma__resource::before {
     top: 40px;
-    width: 60px;
+    width: 80px;
   }
 
   .sustainability-figma__collaboration,
