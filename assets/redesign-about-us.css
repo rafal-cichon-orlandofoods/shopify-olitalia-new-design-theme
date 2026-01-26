@@ -115,6 +115,24 @@
     overflow: hidden;
 }
 
+/* Pouring oil special effects */
+.redesign-about__pouring-oil {
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+.redesign-about__pouring-oil.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.redesign-about__pouring-oil-image {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
 .redesign-about__image {
     width: 100%;
     height: auto;
@@ -160,6 +178,17 @@
     .redesign-about__value-item {
         opacity: 1 !important;
         transform: none !important;
+        transition: none !important;
+    }
+    
+    .redesign-about__pouring-oil {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .redesign-about__pouring-oil-image {
+        will-change: auto !important;
         transition: none !important;
     }
 }

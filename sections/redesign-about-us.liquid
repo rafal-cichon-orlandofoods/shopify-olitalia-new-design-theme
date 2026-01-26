@@ -95,11 +95,12 @@
 
     {% comment %} Pouring Oil Image {% endcomment %}
     {% if section.settings.pouring_image %}
-      <div class="redesign-about__image-section">
+      <div class="redesign-about__image-section redesign-about__pouring-oil" id="pouringOilSection">
         <img 
           src="{{ section.settings.pouring_image | image_url: width: 1200 }}" 
           alt="Pouring olive oil"
-          class="redesign-about__image"
+          class="redesign-about__image redesign-about__pouring-oil-image"
+          id="pouringOilImage"
         >
       </div>
     {% endif %}
@@ -207,6 +208,57 @@ document.addEventListener('DOMContentLoaded', function() {
     valueItems.forEach(item => {
       valueObserver.observe(item);
     });
+  }
+  
+  // Pouring oil parallax and reveal effect
+  const pouringOilSection = document.getElementById('pouringOilSection');
+  const pouringOilImage = document.getElementById('pouringOilImage');
+  
+  if (pouringOilSection && pouringOilImage) {
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion) {
+      // Intersection Observer for initial reveal
+      const pouringObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            pouringOilSection.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px'
+      });
+      
+      pouringObserver.observe(pouringOilSection);
+      
+      // Parallax effect on scroll
+      let ticking = false;
+      
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const rect = pouringOilSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when section is in viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+              // Calculate scroll progress (0 to 1)
+              const scrollProgress = 1 - (rect.top / windowHeight);
+              
+              // Apply subtle parallax transform (moves down slower than scroll)
+              const translateY = scrollProgress * 50; // Adjust multiplier for effect strength
+              pouringOilImage.style.transform = `translateY(${translateY}px)`;
+            }
+            
+            ticking = false;
+          });
+          
+          ticking = true;
+        }
+      });
+    }
   }
 });
 </script>
