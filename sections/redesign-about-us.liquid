@@ -164,28 +164,49 @@
 </section>
 
 <script>
-// Fade-in animation for quote on scroll - triggers every time
+// Fade-in animation for quote and value items on scroll
 document.addEventListener('DOMContentLoaded', function() {
+  // Quote animation
   const quoteSection = document.querySelector('.redesign-about__quote');
   
-  if (!quoteSection) return;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Add visible class when scrolling into view
-        entry.target.classList.add('visible');
-      } else {
-        // Remove visible class when scrolling out of view
-        entry.target.classList.remove('visible');
-      }
+  if (quoteSection) {
+    const quoteObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px'
     });
-  }, {
-    threshold: 0.3, // Trigger when 30% visible
-    rootMargin: '0px' // No margin adjustment
-  });
+    
+    quoteObserver.observe(quoteSection);
+  }
   
-  observer.observe(quoteSection);
+  // Value items animation
+  const valueItems = document.querySelectorAll('.redesign-about__value-item');
+  
+  if (valueItems.length > 0) {
+    const valueObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px'
+    });
+    
+    valueItems.forEach(item => {
+      valueObserver.observe(item);
+    });
+  }
 });
 </script>
 

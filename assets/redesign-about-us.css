@@ -151,8 +151,16 @@
 
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
-    .redesign-about__quote blockquote {
-        animation: none !important;
+    .redesign-about__quote {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .redesign-about__value-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
 
@@ -182,6 +190,25 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
+    /* Start invisible for slide-in effect */
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Odd items (1st, 3rd) slide from left */
+.redesign-about__value-item:nth-child(odd) {
+    transform: translateX(-50px);
+}
+
+/* Even items (2nd) slide from right */
+.redesign-about__value-item:nth-child(even) {
+    transform: translateX(50px);
+}
+
+/* Visible state when scrolled into view */
+.redesign-about__value-item.visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .redesign-about__value-item:nth-child(even) {
@@ -284,6 +311,16 @@
         grid-template-columns: 1fr;
         gap: 24px;
         text-align: center;
+    }
+
+    /* On mobile, all items slide from bottom instead of sides */
+    .redesign-about__value-item:nth-child(odd),
+    .redesign-about__value-item:nth-child(even) {
+        transform: translateY(30px);
+    }
+    
+    .redesign-about__value-item.visible {
+        transform: translateY(0);
     }
 
     .redesign-about__value-item:nth-child(even) {
