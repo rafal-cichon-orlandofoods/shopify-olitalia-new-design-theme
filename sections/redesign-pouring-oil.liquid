@@ -1,0 +1,94 @@
+{{ 'redesign-pouring-oil.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-pouring-oil-section">
+  <div class="redesign-pouring-oil-container">
+    {% if section.settings.pouring_image %}
+      <div class="redesign-pouring-oil" id="pouringOilSection">
+        <img 
+          src="{{ section.settings.pouring_image | image_url: width: 1200 }}" 
+          alt="{{ section.settings.alt_text | default: 'Pouring olive oil' }}"
+          class="redesign-pouring-oil-image"
+          id="pouringOilImage"
+        >
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const pouringOilSection = document.getElementById('pouringOilSection');
+  const pouringOilImage = document.getElementById('pouringOilImage');
+  
+  if (pouringOilSection && pouringOilImage) {
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (!prefersReducedMotion) {
+      // Intersection Observer for initial reveal
+      const pouringObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            pouringOilSection.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px'
+      });
+      
+      pouringObserver.observe(pouringOilSection);
+      
+      // Parallax effect on scroll
+      let ticking = false;
+      
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            const rect = pouringOilSection.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Only apply parallax when section is in viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+              // Calculate scroll progress (0 to 1)
+              const scrollProgress = 1 - (rect.top / windowHeight);
+              
+              // Apply parallax transform (moves down slower than scroll)
+              const translateY = scrollProgress * 150;
+              pouringOilImage.style.transform = `translateY(${translateY}px)`;
+            }
+            
+            ticking = false;
+          });
+          
+          ticking = true;
+        }
+      });
+    }
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Pouring Oil Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "pouring_image",
+      "label": "Pouring Oil Image"
+    },
+    {
+      "type": "text",
+      "id": "alt_text",
+      "label": "Image Alt Text",
+      "default": "Pouring olive oil"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pouring Oil Image"
+    }
+  ]
+}
+{% endschema %}

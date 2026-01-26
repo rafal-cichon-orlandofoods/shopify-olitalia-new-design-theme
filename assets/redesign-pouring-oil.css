@@ -1,0 +1,64 @@
+/* Pouring Oil Image Section */
+
+.redesign-pouring-oil-section {
+    background: #fff;
+    padding: 60px 0;
+}
+
+.redesign-pouring-oil-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.redesign-pouring-oil {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.redesign-pouring-oil.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.redesign-pouring-oil-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    will-change: transform;
+    transition: transform 0.05s linear;
+    transform-origin: center top;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .redesign-pouring-oil {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .redesign-pouring-oil-image {
+        will-change: auto !important;
+        transition: none !important;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .redesign-pouring-oil-section {
+        padding: 40px 0;
+    }
+    
+    .redesign-pouring-oil-container {
+        padding: 0 20px;
+    }
+    
+    .redesign-pouring-oil {
+        max-width: 100%;
+    }
+}

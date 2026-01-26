@@ -118,6 +118,13 @@
         "seo_h_tag": "h2"
       }
     },
+    "redesign_pouring_oil": {
+      "type": "redesign-pouring-oil",
+      "settings": {
+        "pouring_image": "shopify://shop_images/pouring-oil.jpg",
+        "alt_text": "Pouring olive oil"
+      }
+    },
     "redesign_values_cards": {
       "type": "redesign-values-cards",
       "blocks": {
@@ -183,6 +190,7 @@
     "redesign-header",
     "redesign-about",
     "info_tabs_values",
+    "redesign_pouring_oil",
     "redesign_values_cards",
     "redesign_recipes_showcase_y46DHV",
     "redesign-newsletter",
