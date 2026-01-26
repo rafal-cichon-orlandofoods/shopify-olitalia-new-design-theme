@@ -247,8 +247,9 @@ document.addEventListener('DOMContentLoaded', function() {
               // Calculate scroll progress (0 to 1)
               const scrollProgress = 1 - (rect.top / windowHeight);
               
-              // Apply subtle parallax transform (moves down slower than scroll)
-              const translateY = scrollProgress * 50; // Adjust multiplier for effect strength
+              // Apply stronger parallax transform (moves down slower than scroll)
+              // Increased from 50 to 150 for more dramatic effect
+              const translateY = scrollProgress * 150;
               pouringOilImage.style.transform = `translateY(${translateY}px)`;
             }
             

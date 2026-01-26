@@ -118,9 +118,11 @@
 /* Pouring oil special effects */
 .redesign-about__pouring-oil {
     position: relative;
+    max-width: 800px;
+    margin: 60px auto;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    transform: translateY(50px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
 .redesign-about__pouring-oil.visible {
@@ -130,13 +132,21 @@
 
 .redesign-about__pouring-oil-image {
     will-change: transform;
-    transition: transform 0.1s linear;
+    transition: transform 0.05s linear;
+    transform-origin: center top;
 }
 
 .redesign-about__image {
     width: 100%;
     height: auto;
     display: block;
+}
+
+@media (max-width: 768px) {
+    .redesign-about__pouring-oil {
+        max-width: 100%;
+        margin: 40px auto;
+    }
 }
 
 .redesign-about__quote {
