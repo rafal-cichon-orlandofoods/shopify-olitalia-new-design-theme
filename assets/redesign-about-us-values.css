@@ -1,0 +1,131 @@
+/* About Us Page - Our Values Section Override */
+
+/* Override container spacing for Our Values section */
+.template-page .shopify-section:has(.info-tabs) {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: #fafafa;
+}
+
+@media (max-width: 768px) {
+  .template-page .shopify-section:has(.info-tabs) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Better container for Our Values */
+.template-page .info-tabs {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .template-page .info-tabs {
+    padding: 0 20px;
+  }
+}
+
+/* Improve section heading spacing */
+.template-page .section-heading {
+  margin-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .template-page .section-heading {
+    margin-bottom: 40px;
+  }
+}
+
+/* Better tab styling */
+.template-page .info-tabs__tab {
+  padding: 24px 0;
+  transition: all 0.3s ease;
+}
+
+.template-page .info-tabs__tab:hover {
+  background: rgba(0, 79, 47, 0.02);
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-left: -12px;
+  margin-right: -12px;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .template-page .info-tabs__tab:hover {
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* Active tab with accent color */
+.template-page .info-tabs__tab.active::after {
+  background: linear-gradient(90deg, #004f2f 0%, #f4cf73 100%);
+  height: 2px;
+}
+
+/* Better image styling */
+.template-page .info-tabs__image {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.template-page .info-tabs__panel.active .info-tabs__image {
+  animation: reveal-opacity 500ms ease-out forwards, subtle-zoom 500ms ease-out forwards;
+}
+
+@keyframes subtle-zoom {
+  from {
+    transform: scale(0.98);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .template-page .info-tabs__image {
+    transition: none;
+  }
+  
+  .template-page .info-tabs__panel.active .info-tabs__image {
+    animation: none;
+  }
+  
+  .template-page .info-tabs__tab:hover {
+    transition: none;
+  }
+}
+
+/* Better typography for tab titles */
+.template-page .info-tabs__tab-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #2c2c2c;
+}
+
+/* Better caption styling */
+.template-page .info-tabs__tab-caption {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Learn More button spacing adjustment */
+.template-page .info-tabs__learn-more {
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .template-page .info-tabs__learn-more {
+    margin-top: 60px;
+  }
+}
