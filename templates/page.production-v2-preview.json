@@ -4,35 +4,52 @@
       "type": "redesign-header",
       "settings": {}
     },
-    "production_v2": {
-      "type": "production-v2",
+    "production_ai_block": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2fff632": {
+          "type": "ai_gen_block_2fff632",
+          "settings": {
+            "show_intro": true,
+            "intro_title": "Where Innovation Meets Integrity",
+            "intro_text": "The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them. Italian taste has deep historic and cultural roots, admired and celebrated around the world.",
+            "show_stats": true,
+            "stat_1_number": "1,600+",
+            "stat_1_label": "Olive Cultivars Worldwide",
+            "stat_2_number": "600+",
+            "stat_2_label": "Italian Olive Varieties",
+            "item_1_enabled": true,
+            "item_1_title": "Controlled Quality at Every Stage",
+            "item_1_text": "Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency.\nYou deserve to know that what's inside every bottle meets the highest standards.",
+            "item_1_image": "shopify://shop_images/Olitalia-115_1.jpg",
+            "item_1_layout": "image_right",
+            "item_2_enabled": true,
+            "item_2_title": "Innovation with Purpose",
+            "item_2_text": "We believe innovation should protect, not replace, tradition. That's why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars.",
+            "item_2_image": "shopify://shop_images/Olitalia-80_1.jpg",
+            "item_2_layout": "image_left",
+            "item_3_enabled": true,
+            "item_3_title": "Craftsmanship Meets Modern Efficiency",
+            "item_3_text": "Behind every bottle is the experience of our people, who evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific profiles. Supported by modern tools that ensure precision and consistency, it's this balance of craftsmanship and innovation that lets us deliver quality you can taste — time and time again.",
+            "item_3_image": "shopify://shop_images/Olitalia-84.jpg",
+            "item_3_layout": "image_right",
+            "item_4_enabled": true,
+            "item_4_title": "Sustainability Through Smart Production",
+            "item_4_text": "Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.",
+            "item_4_image": "shopify://shop_images/77DB91B4-007C-4513-92E9-AC3CD2B8EBAA.jpg",
+            "item_4_layout": "image_left",
+            "show_closing": true,
+            "closing_title": "From Our Facility to Your Table",
+            "closing_text": "Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table."
+          }
+        }
+      },
+      "block_order": ["ai_gen_block_2fff632"]
+    },
+    "production_v2_css": {
+      "type": "custom-liquid",
       "settings": {
-        "hero_image": "shopify://shop_images/Olitalia-115_1.jpg",
-        "hero_title": "Where Innovation Meets Integrity",
-        "hero_subtitle": "The world is home to more than 1,600 olive cultivars—and Italy alone nurtures over 600 of them. Italian taste has deep historic and cultural roots, admired and celebrated around the world.",
-        "show_stats": true,
-        "stat1_number": "1,600+",
-        "stat1_label": "Olive Cultivars Worldwide",
-        "stat2_number": "600+",
-        "stat2_label": "Italian Olive Varieties",
-        "section1_title": "Controlled Quality at Every Stage",
-        "section1_text": "Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency. You deserve to know that what's inside every bottle meets the highest standards.",
-        "section1_image": "shopify://shop_images/Olitalia-115_1.jpg",
-        "section2_title": "Innovation with Purpose",
-        "section2_text": "We believe innovation should protect, not replace, tradition. That's why our facilities feature state-of-the-art systems designed to maintain the integrity of our products. Temperature control, oxygen reduction, and closed-circuit filtration systems safeguard the organoleptic and nutritional integrity of our oils and vinegars.",
-        "section2_image": "shopify://shop_images/Olitalia-80_1.jpg",
-        "section3_title": "Craftsmanship Meets Modern Efficiency",
-        "section3_text": "Behind every bottle is the experience of our people, who evaluate individual lots for flavor, aroma, and chemical properties before creating balanced combinations that meet specific profiles. Supported by modern tools that ensure precision and consistency, it's this balance of craftsmanship and innovation that lets us deliver quality you can taste — time and time again.",
-        "section3_image": "shopify://shop_images/Olitalia-84.jpg",
-        "highlight_title": "Our Commitment to Excellence",
-        "highlight_text": "Every step in our production process reflects our dedication to quality, from selecting the finest raw materials to ensuring each bottle meets our exacting standards.",
-        "quote_text": "Innovation should protect, not replace, tradition. That's the foundation of everything we do.",
-        "quote_author": "— Olitalia Team",
-        "section4_title": "Sustainability Through Smart Production",
-        "section4_text": "Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.",
-        "section4_image": "shopify://shop_images/77DB91B4-007C-4513-92E9-AC3CD2B8EBAA.jpg",
-        "closing_title": "From Our Facility to Your Table",
-        "closing_text": "Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table."
+        "custom_liquid": "{{ 'production-v2.css' | asset_url | stylesheet_tag }}"
       }
     },
     "redesign_newsletter": {
@@ -50,7 +67,8 @@
   },
   "order": [
     "redesign_header",
-    "production_v2",
+    "production_ai_block",
+    "production_v2_css",
     "redesign_newsletter",
     "redesign_footer"
   ]

@@ -1,380 +1,97 @@
-/* Sustainability V2 - Warmer version with visual breaks and brand colors */
+/* Sustainability V2 - Subtle warmth overlay on existing design */
+/* This keeps the exact same layout as sustainability-figma.css but adds warmth */
 
-/* Import Raleway font */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+/* Subtle warmer background instead of pure white */
+.sustainability-figma {
+  background: #fafaf8 !important; /* Very subtle warm off-white */
+}
 
-.sustainability-v2 {
+/* Gold accent for stat numbers - main warmth element */
+.sustainability-figma__stat-number {
+  color: #f4cf73 !important; /* Gold from bottle symbol */
+}
+
+/* Subtle visual break between sections - thin gold line */
+.sustainability-figma__plastic,
+.sustainability-figma__collaboration,
+.sustainability-figma__circle,
+.sustainability-figma__life,
+.sustainability-figma__people,
+.sustainability-figma__resource {
   position: relative;
-  width: 100%;
-  background: #fafaf8; /* Warmer off-white background */
-  color: #121212;
+  padding-top: 120px !important; /* Add space for separator */
 }
 
-/* Force Inter font for headings */
-.sustainability-v2 h1,
-.sustainability-v2 h2,
-.sustainability-v2 h3 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-}
-
-/* Force Raleway font for paragraphs */
-.sustainability-v2 p {
-  font-family: 'Raleway', Arial, sans-serif !important;
-}
-
-/* HERO SECTION - With warm overlay */
-.sustainability-v2__hero {
-  position: relative;
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  min-height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(135deg, #004f2f 0%, #002818 100%);
-}
-
-.sustainability-v2__hero-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.3;
-}
-
-.sustainability-v2__hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.sustainability-v2__hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  padding: 80px 40px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.sustainability-v2__hero-title {
-  font-size: 64px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0 0 24px 0;
-  color: #f4cf73; /* Gold accent */
-}
-
-.sustainability-v2__hero-subtitle {
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0 0 32px 0;
-  color: #ffffff;
-}
-
-.sustainability-v2__hero-description {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
-  max-width: 800px;
-  margin: 0 auto;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* SECTION CONTAINER - Alternating backgrounds */
-.sustainability-v2__section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 100px 40px;
-}
-
-.sustainability-v2__section--white {
-  background: #ffffff;
-}
-
-.sustainability-v2__section--warm {
-  background: #fafaf8;
-}
-
-.sustainability-v2__section--accent {
-  background: linear-gradient(135deg, #f4cf73 0%, #e8c05f 100%);
-  color: #121212;
-}
-
-/* VISUAL BREAK - Decorative divider */
-.sustainability-v2__divider {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  height: 120px;
-  background: linear-gradient(90deg, #004f2f 0%, #f4cf73 50%, #004f2f 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.sustainability-v2__divider::before {
+.sustainability-figma__plastic::before,
+.sustainability-figma__collaboration::before,
+.sustainability-figma__circle::before,
+.sustainability-figma__life::before,
+.sustainability-figma__people::before,
+.sustainability-figma__resource::before {
   content: '';
   position: absolute;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.05) 10px,
-    rgba(255, 255, 255, 0.05) 20px
-  );
-  animation: slide 20s linear infinite;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f4cf73, transparent);
 }
 
-@keyframes slide {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50px, 50px); }
+/* Subtle blue tint on alternating sections */
+.sustainability-figma__collaboration,
+.sustainability-figma__people {
+  background: linear-gradient(180deg, rgba(0, 19, 79, 0.02) 0%, rgba(0, 19, 79, 0.01) 100%);
+  padding: 100px 0;
+  margin: 0 calc(-50vw + 50%);
+  width: 100vw;
 }
 
-.sustainability-v2__divider-icon {
-  position: relative;
-  z-index: 2;
-  width: 60px;
-  height: 60px;
-  opacity: 0.8;
+.sustainability-figma__collaboration > *,
+.sustainability-figma__people > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
-/* CONTENT LAYOUT - Two column with image */
-.sustainability-v2__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  margin-bottom: 60px;
+/* Subtle gold glow on images on hover */
+.sustainability-figma__collaboration-image,
+.sustainability-figma__life-image,
+.sustainability-figma__people-image {
+  transition: box-shadow 0.3s ease;
 }
 
-.sustainability-v2__content--reverse {
-  direction: rtl;
+.sustainability-figma__collaboration-image:hover,
+.sustainability-figma__life-image:hover,
+.sustainability-figma__people-image:hover {
+  box-shadow: 0 10px 40px rgba(244, 207, 115, 0.15);
 }
 
-.sustainability-v2__content--reverse > * {
-  direction: ltr;
-}
-
-.sustainability-v2__text h2 {
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0 0 24px 0;
-  color: #121212;
-}
-
-.sustainability-v2__section--accent .sustainability-v2__text h2 {
-  color: #004f2f;
-}
-
-.sustainability-v2__text p {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.6;
-  margin: 0 0 20px 0;
-  color: #333333;
-}
-
-.sustainability-v2__section--accent .sustainability-v2__text p {
-  color: #121212;
-}
-
-.sustainability-v2__image {
-  width: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-}
-
-.sustainability-v2__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* STATS SECTION - With gold accents */
-.sustainability-v2__stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-top: 60px;
-}
-
-.sustainability-v2__stat {
-  text-align: center;
-  padding: 40px 20px;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sustainability-v2__stat:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(244, 207, 115, 0.3);
-}
-
-.sustainability-v2__stat-number {
-  font-size: 64px;
-  font-weight: 400;
-  line-height: 1;
-  margin: 0 0 16px 0;
-  color: #f4cf73; /* Gold accent */
-  font-family: 'Inter', sans-serif !important;
-  transition: opacity 0.3s ease;
-}
-
-.sustainability-v2__stat-number.counting {
-  opacity: 1;
-}
-
-.sustainability-v2__stat-label {
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.4;
-  margin: 0;
-  color: #121212;
-  font-family: 'Raleway', sans-serif !important;
-}
-
-/* ICON SECTION - Centered with warm background */
-.sustainability-v2__icon-section {
-  text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(135deg, rgba(244, 207, 115, 0.1) 0%, rgba(244, 207, 115, 0.05) 100%);
-  border-radius: 30px;
-  margin: 60px 0;
-}
-
-.sustainability-v2__icon {
-  width: 200px;
-  height: 200px;
-  margin: 0 auto 40px;
-  filter: drop-shadow(0 10px 30px rgba(244, 207, 115, 0.3));
-}
-
-.sustainability-v2__icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* QUOTE SECTION - Warm accent */
-.sustainability-v2__quote {
-  text-align: center;
-  padding: 80px 40px;
-  background: linear-gradient(135deg, #004f2f 0%, #002818 100%);
-  color: #ffffff;
-  border-radius: 30px;
-  margin: 80px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.sustainability-v2__quote::before {
-  content: '"';
-  position: absolute;
-  top: -40px;
-  left: 40px;
-  font-size: 200px;
-  font-weight: 700;
-  color: rgba(244, 207, 115, 0.1);
-  font-family: Georgia, serif;
-}
-
-.sustainability-v2__quote-text {
-  font-size: 32px;
-  font-weight: 300;
-  line-height: 1.5;
-  max-width: 900px;
-  margin: 0 auto 24px;
-  position: relative;
-  z-index: 2;
-  color: #f4cf73;
-}
-
-.sustainability-v2__quote-author {
-  font-size: 18px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* MOBILE RESPONSIVE */
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .sustainability-v2__hero-title {
-    font-size: 40px;
+  .sustainability-figma__plastic,
+  .sustainability-figma__collaboration,
+  .sustainability-figma__circle,
+  .sustainability-figma__life,
+  .sustainability-figma__people,
+  .sustainability-figma__resource {
+    padding-top: 80px !important;
   }
 
-  .sustainability-v2__hero-subtitle {
-    font-size: 20px;
+  .sustainability-figma__plastic::before,
+  .sustainability-figma__collaboration::before,
+  .sustainability-figma__circle::before,
+  .sustainability-figma__life::before,
+  .sustainability-figma__people::before,
+  .sustainability-figma__resource::before {
+    top: 40px;
+    width: 60px;
   }
 
-  .sustainability-v2__hero-description {
-    font-size: 16px;
-  }
-
-  .sustainability-v2__section {
-    padding: 60px 20px;
-  }
-
-  .sustainability-v2__content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .sustainability-v2__content--reverse {
-    direction: ltr;
-  }
-
-  .sustainability-v2__text h2 {
-    font-size: 32px;
-  }
-
-  .sustainability-v2__text p {
-    font-size: 16px;
-  }
-
-  .sustainability-v2__stats {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .sustainability-v2__stat-number {
-    font-size: 48px;
-  }
-
-  .sustainability-v2__stat-label {
-    font-size: 18px;
-  }
-
-  .sustainability-v2__quote-text {
-    font-size: 24px;
-  }
-
-  .sustainability-v2__divider {
-    height: 80px;
-  }
-
-  .sustainability-v2__divider-icon {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .sustainability-v2__stat:hover {
-    transform: none;
-  }
-
-  .sustainability-v2__divider::before {
-    animation: none;
+  .sustainability-figma__collaboration,
+  .sustainability-figma__people {
+    padding: 60px 0;
   }
 }

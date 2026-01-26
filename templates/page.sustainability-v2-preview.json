@@ -4,13 +4,13 @@
       "type": "redesign-header",
       "settings": {}
     },
-    "sustainability_v2": {
-      "type": "sustainability-v2",
+    "sustainability_figma": {
+      "type": "sustainability-figma",
       "settings": {
         "hero_image": "shopify://shop_images/Hero_Background_Image.png",
         "hero_title": "Looking Forward",
         "hero_subtitle": "Sustainability at Olitalia is not a destination — it's a direction.",
-        "hero_description": "We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future.",
+        "hero_description": "<p>We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future. Because protecting what matters today is the best way to safeguard the future of flavor and ensuring that used oils are given a second life as renewable energy.</p>",
         "plastic_icon": "shopify://shop_images/plastic-icon_0834679c-253e-42cf-8fea-cf6c308399f0.png",
         "plastic_title": "Plastic No More",
         "plastic_description": "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.",
@@ -20,7 +20,7 @@
         "plastic_stat2_label": "Recycled packaging",
         "collaboration_image": "shopify://shop_images/collaboration-image.png",
         "collaboration_title": "Collaboration That Creates Change",
-        "collaboration_description": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna.</p>",
+        "collaboration_description": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna. The project brought together producers, distributors, and experts to design a regional model that promotes innovation, protects biodiversity, and supports native olive varieties.</p><p>Each collaboration — whether local or international — helps us grow responsibly while building a stronger connection between food, people, and the land.</p>",
         "circle_title": "Full Circle Thinking",
         "circle_description": "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources.",
         "circle_stat1_number": "95%",
@@ -34,17 +34,21 @@
         "life_stat1_label": "Partner restaurants",
         "life_stat2_number": "10KL",
         "life_stat2_label": "Oil recovered yearly",
-        "quote_text": "Sustainability is a shared journey. The best ideas emerge through collaboration, bringing together people who care about the future of food.",
-        "quote_author": "— Olitalia Team",
         "people_image": "shopify://shop_images/People_image.png",
         "people_title": "People at Heart",
-        "people_description": "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day.</p><p>We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p>",
+        "people_description": "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day. We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p><p>Sustainability also means fostering relationships built on trust. We value the growers, chefs, and partners who share our vision, and we believe that by working together, we can create a food system that benefits everyone.</p>",
         "resource_title": "Efficient Resource Use",
         "resource_description": "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.",
         "resource_stat1_number": "40%",
         "resource_stat1_label": "Water Reduction",
         "resource_stat2_number": "30%",
         "resource_stat2_label": "Energy Savings"
+      }
+    },
+    "sustainability_v2_css": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{{ 'sustainability-v2.css' | asset_url | stylesheet_tag }}"
       }
     },
     "redesign_newsletter": {
@@ -62,7 +66,8 @@
   },
   "order": [
     "redesign_header",
-    "sustainability_v2",
+    "sustainability_figma",
+    "sustainability_v2_css",
     "redesign_newsletter",
     "redesign_footer"
   ]
