@@ -119,6 +119,44 @@
         "learn_more_url": "https://www.olitalia.com/ww-en/company/company"
       }
     },
+    "redesign_values_cards": {
+      "type": "redesign-values-cards",
+      "blocks": {
+        "card_tradition": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/team.jpg",
+            "title": "Tradition",
+            "description": "We carry forward a family legacy built on five decades of Italian culinary excellence and authenticity."
+          }
+        },
+        "card_knowhow": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/change.jpg",
+            "title": "Know-how",
+            "description": "Our expertise comes from constant learning and care, combining craftsmanship with the highest standards of quality and safety."
+          }
+        },
+        "card_innovation": {
+          "type": "value",
+          "settings": {
+            "image": "shopify://shop_images/courage.jpg",
+            "title": "Innovation",
+            "description": "We look to the future with creativity - developing new products, technologies, and sustainable practices that keep flavor and responsibility in perfect balance."
+          }
+        }
+      },
+      "block_order": [
+        "card_tradition",
+        "card_knowhow",
+        "card_innovation"
+      ],
+      "settings": {
+        "heading": "Our Values - Alternative Design",
+        "subheading": "A simpler, card-based approach to showcase our core principles"
+      }
+    },
     "redesign_recipes_showcase_y46DHV": {
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
@@ -145,6 +183,7 @@
     "redesign-header",
     "redesign-about",
     "info_tabs_values",
+    "redesign_values_cards",
     "redesign_recipes_showcase_y46DHV",
     "redesign-newsletter",
     "redesign-footer"

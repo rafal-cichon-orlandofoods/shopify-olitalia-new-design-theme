@@ -1,0 +1,86 @@
+{{ 'redesign-values-cards.css' | asset_url | stylesheet_tag }}
+
+<section class="redesign-values-cards">
+  <div class="redesign-values-cards__container">
+    {% if section.settings.heading %}
+      <h2 class="redesign-values-cards__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
+    {% if section.settings.subheading %}
+      <p class="redesign-values-cards__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="redesign-values-cards__grid">
+        {% for block in section.blocks %}
+          <div class="redesign-values-cards__card" {{ block.shopify_attributes }}>
+            {% if block.settings.image %}
+              <div class="redesign-values-cards__image">
+                <img 
+                  src="{{ block.settings.image | image_url: width: 120 }}" 
+                  alt="{{ block.settings.title }}"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                >
+              </div>
+            {% endif %}
+            
+            <h3 class="redesign-values-cards__title">{{ block.settings.title }}</h3>
+            
+            {% if block.settings.description %}
+              <p class="redesign-values-cards__description">{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Redesign Values Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Values"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image/Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Redesign Values Cards"
+    }
+  ]
+}
+{% endschema %}
