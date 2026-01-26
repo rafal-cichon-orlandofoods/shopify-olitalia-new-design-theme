@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "redesign_header": {
+      "type": "redesign-header",
+      "settings": {}
+    },
+    "sustainability_v2": {
+      "type": "sustainability-v2",
+      "settings": {
+        "hero_image": "shopify://shop_images/Hero_Background_Image.png",
+        "hero_title": "Looking Forward",
+        "hero_subtitle": "Sustainability at Olitalia is not a destination — it's a direction.",
+        "hero_description": "We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future.",
+        "plastic_icon": "shopify://shop_images/plastic-icon_0834679c-253e-42cf-8fea-cf6c308399f0.png",
+        "plastic_title": "Plastic No More",
+        "plastic_description": "Our long-term project to reduce plastic waste across every stage of production. We've replaced all single-use plastics in our facilities and continue to develop new packaging solutions made from recyclable and renewable materials.",
+        "plastic_stat1_number": "100%",
+        "plastic_stat1_label": "Plastic-free facilities",
+        "plastic_stat2_number": "85%",
+        "plastic_stat2_label": "Recycled packaging",
+        "collaboration_image": "shopify://shop_images/collaboration-image.png",
+        "collaboration_title": "Collaboration That Creates Change",
+        "collaboration_description": "<p>Sustainability is a shared journey. We believe the best ideas emerge through collaboration, which is why we work closely with chefs, researchers, and organizations who share our values.</p><p>In Emilia-Romagna, we helped coordinate a focus group on the olive-growing and oil supply chain, in partnership with Clust-ER Agroalimentare and the University of Bologna.</p>",
+        "circle_title": "Full Circle Thinking",
+        "circle_description": "We apply full circle thinking to our entire production model. By finding new uses for byproducts and promoting recycling within our supply chain, we transform potential waste into valuable resources.",
+        "circle_stat1_number": "95%",
+        "circle_stat1_label": "Byproduct recovery",
+        "circle_stat2_number": "Zero",
+        "circle_stat2_label": "Waste to landfill",
+        "life_image": "shopify://shop_images/Life_project_image.png",
+        "life_title": "Used but Full of Life Project",
+        "life_description": "Co-created with APCI and Amicambiente, this initiative promotes the proper disposal and recovery of used vegetable oils in the foodservice sector, helping prevent environmental contamination.",
+        "life_stat1_number": "500+",
+        "life_stat1_label": "Partner restaurants",
+        "life_stat2_number": "10KL",
+        "life_stat2_label": "Oil recovered yearly",
+        "quote_text": "Sustainability is a shared journey. The best ideas emerge through collaboration, bringing together people who care about the future of food.",
+        "quote_author": "— Olitalia Team",
+        "people_image": "shopify://shop_images/People_image.png",
+        "people_title": "People at Heart",
+        "people_description": "<p>Behind every initiative are the people who make it possible. We're proud of our team — more than 130 individuals who bring passion, skill, and creativity to their work every day.</p><p>We invest in training, safety, and well-being to ensure that our workplace reflects the same values we bring to our products: care, quality, and respect.</p>",
+        "resource_title": "Efficient Resource Use",
+        "resource_description": "We optimize water and energy consumption throughout production and logistics, using data-driven systems to monitor performance and minimize waste.",
+        "resource_stat1_number": "40%",
+        "resource_stat1_label": "Water Reduction",
+        "resource_stat2_number": "30%",
+        "resource_stat2_label": "Energy Savings"
+      }
+    },
+    "redesign_newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
+    },
+    "redesign_footer": {
+      "type": "redesign-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "redesign_header",
+    "sustainability_v2",
+    "redesign_newsletter",
+    "redesign_footer"
+  ]
+}
