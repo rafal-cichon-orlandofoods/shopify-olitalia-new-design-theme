@@ -46,30 +46,36 @@
               <video 
                 controls 
                 autoplay 
+                muted
+                playsinline
+                preload="metadata"
                 class="redesign-about__intro-video-player"
-                id="videoPlayer">
+                id="videoPlayer"
+                aria-label="About us video">
                 <source src="{{ section.settings.intro_video_file }}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             {% elsif section.settings.intro_video_url contains 'youtube.com' or section.settings.intro_video_url contains 'youtu.be' %}
               {% assign video_id = section.settings.intro_video_url | split: 'v=' | last | split: '/' | last | split: '&' | first %}
               <iframe 
-                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1" 
+                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1" 
                 frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen
                 class="redesign-about__intro-video-iframe"
-                id="videoIframe">
+                id="videoIframe"
+                title="About us video">
               </iframe>
             {% elsif section.settings.intro_video_url contains 'vimeo.com' %}
               {% assign video_id = section.settings.intro_video_url | split: '/' | last %}
               <iframe 
-                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1" 
+                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1" 
                 frameborder="0" 
                 allow="autoplay; fullscreen; picture-in-picture" 
                 allowfullscreen
                 class="redesign-about__intro-video-iframe"
-                id="videoIframe">
+                id="videoIframe"
+                title="About us video">
               </iframe>
             {% endif %}
           </div>
@@ -136,7 +142,9 @@
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen
-            class="redesign-about__video-iframe">
+            class="redesign-about__video-iframe"
+            title="About us video"
+            loading="lazy">
           </iframe>
         {% elsif section.settings.video_url contains 'vimeo.com' %}
           {% assign video_id = section.settings.video_url | split: '/' | last %}
@@ -145,7 +153,9 @@
             frameborder="0" 
             allow="autoplay; fullscreen; picture-in-picture" 
             allowfullscreen
-            class="redesign-about__video-iframe">
+            class="redesign-about__video-iframe"
+            title="About us video"
+            loading="lazy">
           </iframe>
         {% endif %}
       </div>
