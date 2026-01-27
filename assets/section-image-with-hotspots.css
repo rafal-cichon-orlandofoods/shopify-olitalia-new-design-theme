@@ -1,11 +1,15 @@
 .image-with-hotspots {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Make bottle image smaller and centered on product page */
 .image-with-hotspots img {
   max-width: 50% !important;
   width: 50% !important;
+  height: auto !important;
   margin: 0 auto !important;
   display: block !important;
 }
@@ -15,6 +19,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 50%;
+  margin: 0 auto;
 }
 .image-with-hotspots .site-box-background {
   position: relative;
