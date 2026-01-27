@@ -13,7 +13,7 @@
 
 .redesign-recipe__header {
     display: grid;
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: start;
     margin-bottom: 60px;
