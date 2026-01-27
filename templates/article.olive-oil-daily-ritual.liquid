@@ -303,10 +303,10 @@
   .hero-section {
     {% if article.image %}
       background: 
-        linear-gradient(135deg, rgba(44, 85, 48, 0.8) 0%, rgba(74, 124, 89, 0.8) 100%),
+        linear-gradient(135deg, rgba(0, 19, 79, 0.8) 0%, rgba(0, 19, 79, 0.9) 100%),
         url('{{ article.image | img_url: '1920x1080' }}') center/cover no-repeat;
     {% else %}
-      background: linear-gradient(135deg, #000000 0%, #000000 100%);
+      background: linear-gradient(135deg, #000000 0%, #00134f 100%);
     {% endif %}
     color: white;
     padding: 6rem 3rem;
@@ -328,9 +328,9 @@
     right: 0;
     bottom: 0;
     {% if article.image %}
-      background: linear-gradient(135deg, rgba(44, 85, 48, 0.2) 0%, rgba(74, 124, 89, 0.2) 100%);
+      background: linear-gradient(135deg, rgba(0, 19, 79, 0.2) 0%, rgba(212, 165, 116, 0.2) 100%);
     {% else %}
-      background: linear-gradient(135deg, rgba(44, 85, 48, 0.1) 0%, rgba(74, 124, 89, 0.1) 100%);
+      background: linear-gradient(135deg, rgba(0, 19, 79, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
     {% endif %}
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -560,8 +560,8 @@
   }
   
   .beverage-card:hover {
-    border-color: #000000;
-    box-shadow: 0 5px 20px rgba(44,85,48,0.1);
+    border-color: #00134f;
+    box-shadow: 0 5px 20px rgba(0,19,79,0.1);
   }
   
   .beverage-time {
@@ -719,16 +719,16 @@
   }
   
   .highlight-box {
-    background: #e8f5e8;
-    border-left: 4px solid #000000;
+    background: #e8f5ff;
+    border-left: 4px solid #00134f;
     padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 8px;
   }
   
   .science-note {
-    background: #f0f8ff;
-    border-left: 4px solid #000000;
+    background: #fff8e8;
+    border-left: 4px solid #d4a574;
     padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 8px;
