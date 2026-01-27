@@ -675,6 +675,7 @@
 .sustainability-figma__life,
 .sustainability-figma__resource {
   position: relative;
+  padding-top: 40px; /* Space between white section and gray background */
 }
 
 /* Add padding-top to sections WITHOUT background for separation */
