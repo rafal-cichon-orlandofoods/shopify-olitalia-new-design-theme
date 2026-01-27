@@ -284,21 +284,28 @@ body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
   z-index: -1 !important;
 }
 
-/* Intro section with subtle background */
-body.template-page [class*="ai-innovation-intro-"] {
+/* Intro section with subtle background - apply to the BLOCK, not intro div */
+body.template-page [class*="ai-innovation-block-"] {
   position: relative !important;
 }
 
-body.template-page [class*="ai-innovation-intro-"]::before {
+body.template-page [class*="ai-innovation-block-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -40px !important; /* Less extension for intro as it's at the top */
+  top: 0 !important; /* Start from top of block (which has padding) */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 120px) !important; /* Cover intro and spacing below */
+  height: 100% !important; /* Cover entire block including padding */
   background: rgba(0, 19, 79, 0.02) !important;
-  z-index: -1 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure content is above background */
+body.template-page [class*="ai-innovation-container-"] {
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 /* Closing section with subtle background */
@@ -323,11 +330,6 @@ body.template-page [class*="ai-innovation-closing-"]::before {
   body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
     top: -60px !important;
     height: calc(100% + 120px) !important;
-  }
-  
-  body.template-page [class*="ai-innovation-intro-"]::before {
-    top: -30px !important;
-    height: calc(100% + 90px) !important;
   }
   
   body.template-page [class*="ai-innovation-closing-"]::before {
