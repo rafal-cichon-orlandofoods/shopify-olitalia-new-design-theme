@@ -677,6 +677,13 @@
   position: relative;
 }
 
+/* Add padding-top to sections WITHOUT background for separation */
+.sustainability-figma__collaboration,
+.sustainability-figma__people,
+.sustainability-figma__closing {
+  padding-top: 40px;
+}
+
 .sustainability-figma__plastic::before,
 .sustainability-figma__circle::before,
 .sustainability-figma__life::before,
