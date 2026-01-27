@@ -683,11 +683,11 @@
 .sustainability-figma__resource::before {
   content: '';
   position: absolute;
-  top: -50px; /* Extend background above section */
+  top: -100px; /* Extend background to cover full margin above */
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  height: calc(100% + 100px); /* Extend background above and below */
+  height: calc(100% + 200px); /* Extend background to cover margins above and below */
   background: rgba(0, 19, 79, 0.02);
   z-index: -1;
 }
@@ -705,7 +705,7 @@
   .sustainability-figma__circle::before,
   .sustainability-figma__life::before,
   .sustainability-figma__resource::before {
-    top: -30px;
-    height: calc(100% + 60px);
+    top: -60px;
+    height: calc(100% + 120px);
   }
 }

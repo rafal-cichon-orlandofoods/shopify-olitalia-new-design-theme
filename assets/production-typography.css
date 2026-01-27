@@ -275,11 +275,11 @@ body.template-page [class*="ai-innovation-item-"]:nth-child(odd) {
 body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
   content: '' !important;
   position: absolute !important;
-  top: -40px !important; /* Extend background above */
+  top: -80px !important; /* Extend background to cover spacing above */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 80px) !important; /* Extend background above and below */
+  height: calc(100% + 160px) !important; /* Extend background to cover spacing above and below */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
 }
@@ -292,11 +292,11 @@ body.template-page [class*="ai-innovation-intro-"] {
 body.template-page [class*="ai-innovation-intro-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -40px !important;
+  top: -40px !important; /* Less extension for intro as it's at the top */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 80px) !important;
+  height: calc(100% + 120px) !important; /* Cover intro and spacing below */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
 }
@@ -309,21 +309,29 @@ body.template-page [class*="ai-innovation-closing-"] {
 body.template-page [class*="ai-innovation-closing-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -40px !important;
+  top: -80px !important; /* Cover margin-top */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 80px) !important;
+  height: calc(100% + 80px) !important; /* Cover margin-top only, no margin-bottom */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before,
-  body.template-page [class*="ai-innovation-intro-"]::before,
-  body.template-page [class*="ai-innovation-closing-"]::before {
+  body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
+    top: -60px !important;
+    height: calc(100% + 120px) !important;
+  }
+  
+  body.template-page [class*="ai-innovation-intro-"]::before {
     top: -30px !important;
+    height: calc(100% + 90px) !important;
+  }
+  
+  body.template-page [class*="ai-innovation-closing-"]::before {
+    top: -60px !important;
     height: calc(100% + 60px) !important;
   }
 }
