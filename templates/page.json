@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "redesign-header": {
@@ -31,6 +40,7 @@
             "stat_1_label": "Olive Cultivars Wordwide",
             "stat_2_number": "600+",
             "stat_2_label": "Italian Olive Varieties",
+            "intro_text1": "At Olitalia, we give that heritage new meaning through our oils. For us, production is more than a process—it’s the belief that quality begins with attention to detail. From the moment ingredients enter our facilities to the moment a bottle reaches your kitchen, we work to preserve what makes our oils truly exceptional.",
             "item_1_enabled": true,
             "item_1_title": "Controlled Quality at Every Stage",
             "item_1_text": "Our production system is built around rigorous quality control. Each phase—from raw material selection to final packaging—is continuously monitored and tested to guarantee safety, purity, and consistency.\nYou deserve to know that what’s inside every bottle meets the highest standards.",
@@ -54,9 +64,9 @@
             "item_5_enabled": false,
             "item_5_title": "",
             "item_5_text": "",
-            "item_5_image": "shopify://shop_images/AA17D6E3-AA30-4B47-9E6B-08CFAFC2BE5E.jpg",
             "item_5_layout": "image_right",
             "show_closing": true,
+            "closing_image": "shopify://shop_images/2-3S7A3759_Large_d2e35769-faa9-4786-a1f1-52df37ccd952.jpg",
             "closing_title": "From Our Facility to Your Table",
             "closing_text": "Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.",
             "max_width": 1400,
@@ -115,7 +125,6 @@
             "section_3_image_alt": "Craftsmanship and modern efficiency",
             "section_4_title": "Sustainability Through Smart Production",
             "section_4_content": "<p>Innovation also means responsibility. Across our operations, we continually invest in sustainable technologies and processes that reduce waste, optimize energy use, and support our commitment to a cleaner, more balanced future.</p>",
-            "section_4_image": "shopify://shop_images/AA17D6E3-AA30-4B47-9E6B-08CFAFC2BE5E.jpg",
             "section_4_image_alt": "Sustainable production practices",
             "section_5_title": "From Our Facility to Your Table",
             "section_5_content": "<p>Every bottle we make carries our family's commitment to quality, transparency, and trust. Through innovation, integrity, and passion, we ensure that the excellence we achieve in production is the same excellence you taste at your table.</p>",

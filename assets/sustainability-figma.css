@@ -137,25 +137,51 @@
   gap: 100px;
 }
 
-.sustainability-figma__plastic-stat {
+/* Stats containers - subtle background and elegant accent */
+.sustainability-figma__plastic-stat,
+.sustainability-figma__circle-stat,
+.sustainability-figma__life-stat,
+.sustainability-figma__resource-stat {
+  flex: 1; /* Equal width for all stat boxes */
   font-weight: 400;
   line-height: 60px;
+  background: linear-gradient(to bottom, rgba(244, 207, 115, 0.08) 0%, #fafaf8 100%);
+  padding: 30px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(244, 207, 115, 0.2);
+  box-shadow: 0 2px 12px rgba(0, 19, 79, 0.06);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.sustainability-figma__plastic-stat:hover,
+.sustainability-figma__circle-stat:hover,
+.sustainability-figma__life-stat:hover,
+.sustainability-figma__resource-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 19, 79, 0.12);
+  border-color: rgba(244, 207, 115, 0.4);
 }
 
 .sustainability-figma__stat-number {
-  font-size: 64px;
+  font-size: 48px;
+  font-weight: 600;
   margin: 0;
   transition: opacity 0.3s ease;
+  line-height: 1.2;
 }
 
-/* Animacja dla liczb - smooth transition */
+/* Animation state for counting numbers - same as sustainability */
 .sustainability-figma__stat-number.counting {
   opacity: 1;
 }
 
 .sustainability-figma__stat-label {
-  font-size: 48px;
-  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #666;
+  margin: 8px 0 0 0;
 }
 
 /* COLLABORATION SECTION - Centered with image */
@@ -237,11 +263,6 @@
   justify-content: center; /* Centered */
 }
 
-.sustainability-figma__circle-stat {
-  font-weight: 400;
-  line-height: 60px;
-}
-
 /* USED BUT FULL OF LIFE PROJECT SECTION - Centered with image */
 .sustainability-figma__life {
   max-width: 1200px; /* Reduced from 1400px */
@@ -296,11 +317,6 @@
   flex-direction: column;
   gap: 50px;
   padding-top: 50px;
-}
-
-.sustainability-figma__life-stat {
-  font-weight: 400;
-  line-height: 60px;
 }
 
 /* PEOPLE AT HEART SECTION - Centered with image */
@@ -385,11 +401,6 @@
   justify-content: center; /* Centered */
 }
 
-.sustainability-figma__resource-stat {
-  font-weight: 400;
-  line-height: 60px;
-}
-
 /* CLOSING SECTION - Centered */
 .sustainability-figma__closing {
   max-width: 1200px;
@@ -458,6 +469,13 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+  
+  .sustainability-figma__plastic-stat:hover,
+  .sustainability-figma__circle-stat:hover,
+  .sustainability-figma__life-stat:hover,
+  .sustainability-figma__resource-stat:hover {
+    transform: none !important;
   }
 }
 
@@ -548,7 +566,14 @@
   }
   
   .sustainability-figma__stat-label {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  
+  .sustainability-figma__plastic-stat,
+  .sustainability-figma__circle-stat,
+  .sustainability-figma__life-stat,
+  .sustainability-figma__resource-stat {
+    padding: 20px 16px;
   }
   
   .sustainability-figma__collaboration-image,

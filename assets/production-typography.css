@@ -57,12 +57,31 @@ body.template-page [class*="ai-innovation-intro-text-"] {
 body.template-page [class*="ai-innovation-stat-number-"],
 body.template-page .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 64px !important; /* Same as sustainability-figma__stat-number */
-  font-weight: 400 !important; /* Same as sustainability */
-  line-height: 60px !important; /* Same as sustainability */
-  color: #121212 !important; /* Same as sustainability text color */
-  margin: 0 !important; /* Same as sustainability */
-  transition: opacity 0.3s ease !important; /* Same as sustainability */
+  font-size: 48px !important; /* Reduced from 64px */
+  font-weight: 600 !important; /* Increased weight for better visibility */
+  line-height: 1.2 !important;
+  color: #121212 !important;
+  margin: 0 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+/* Stats wrapper - add subtle background and elegant accent to parent container ONLY */
+/* Target only the direct stat containers, not their children (stat-number, stat-label) */
+body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]) {
+  flex: 1 !important; /* Equal width for all stat boxes */
+  background: linear-gradient(to bottom, rgba(244, 207, 115, 0.08) 0%, #fafaf8 100%) !important;
+  padding: 30px 24px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(244, 207, 115, 0.2) !important;
+  box-shadow: 0 2px 12px rgba(0, 19, 79, 0.06) !important;
+  transition: all 0.3s ease !important;
+  text-align: center !important;
+}
+
+body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]):hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 20px rgba(0, 19, 79, 0.12) !important;
+  border-color: rgba(244, 207, 115, 0.4) !important;
 }
 
 /* Animation state for counting numbers - same as sustainability */
@@ -75,11 +94,11 @@ body.template-page .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff63
 body.template-page [class*="ai-innovation-stat-label-"],
 body.template-page .ai-innovation-stat-label-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 {
   font-family: 'Raleway', Arial, sans-serif !important;
-  font-size: 48px !important; /* Same as sustainability-figma__stat-label */
-  font-weight: 400 !important; /* Same as sustainability */
-  line-height: 60px !important; /* Same as sustainability */
-  color: #121212 !important; /* Same as sustainability text color */
-  margin: 0 !important; /* Same as sustainability */
+  font-size: 18px !important; /* Slightly larger for better readability */
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  color: #666 !important;
+  margin: 8px 0 0 0 !important;
 }
 
 /* Section titles (H3 in AI block) - Use Inter */
@@ -166,5 +185,9 @@ body.template-page [class*="ai-innovation-closing-text-"] {
   body.template-page .ai-innovation-stat-label-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 {
     font-size: 16px !important;
     line-height: 1.4 !important;
+  }
+  
+  body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]) {
+    padding: 20px 16px !important;
   }
 }
