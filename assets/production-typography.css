@@ -129,7 +129,17 @@ body.template-page [class*="ai-innovation-closing-title-"] {
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 30px 0 !important;
+  margin: 0 0 30px 0 !important; /* Match other sections: 30px bottom */
+}
+
+/* Closing section - add top margin for separation */
+body.template-page [class*="ai-innovation-closing-"] {
+  margin-top: 120px !important; /* Extra spacing before closing section */
+}
+
+/* Closing image wrapper - match other sections spacing */
+body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
+  margin: 30px auto 30px !important; /* Reduced: 30px top, 30px bottom */
 }
 
 /* Closing text - Use Raleway for body text */
@@ -154,6 +164,23 @@ body.template-page [class*="ai-innovation-closing-text-"] {
   body.template-page [class*="ai-innovation-intro-title-"] {
     font-size: 28px !important; /* Match homepage mobile */
     line-height: 1.2 !important;
+  }
+  
+  /* Closing title mobile */
+  body.template-page [class*="ai-innovation-closing-title-"] {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 20px 0 !important; /* Reduced bottom margin on mobile */
+  }
+  
+  /* Closing section mobile - reduced top margin */
+  body.template-page [class*="ai-innovation-closing-"] {
+    margin-top: 80px !important;
+  }
+  
+  /* Closing image wrapper mobile */
+  body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
+    margin: 20px auto 20px !important; /* Reduced margins on mobile */
   }
   
   /* Intro text mobile - match homepage */
@@ -308,21 +335,9 @@ body.template-page [class*="ai-innovation-container-"] {
   z-index: 1 !important;
 }
 
-/* Closing section with subtle background */
+/* Closing section - NO background, keep it white */
 body.template-page [class*="ai-innovation-closing-"] {
   position: relative !important;
-}
-
-body.template-page [class*="ai-innovation-closing-"]::before {
-  content: '' !important;
-  position: absolute !important;
-  top: -80px !important; /* Cover margin-top */
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 100vw !important;
-  height: calc(100% + 80px) !important; /* Cover margin-top only, no margin-bottom */
-  background: rgba(0, 19, 79, 0.02) !important;
-  z-index: -1 !important;
 }
 
 /* Mobile adjustments */
@@ -330,10 +345,5 @@ body.template-page [class*="ai-innovation-closing-"]::before {
   body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
     top: -60px !important;
     height: calc(100% + 120px) !important;
-  }
-  
-  body.template-page [class*="ai-innovation-closing-"]::before {
-    top: -60px !important;
-    height: calc(100% + 60px) !important;
   }
 }
