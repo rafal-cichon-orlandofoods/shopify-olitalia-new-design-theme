@@ -74,7 +74,7 @@
     justify-content: center;
     gap: 60px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin: 60px 0; /* Added spacing above and below stats */
   }
 
   .ai-innovation-stat-{{ ai_gen_id }} {
@@ -182,6 +182,21 @@
   .ai-innovation-closing-{{ ai_gen_id }} {
     text-align: center;
     margin-top: {{ block.settings.spacing_between_items }}px;
+  }
+
+  .ai-innovation-closing-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-innovation-closing-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   .ai-innovation-closing-title-{{ ai_gen_id }} {
@@ -324,6 +339,19 @@
 
     {% if block.settings.show_closing %}
       <div class="ai-innovation-closing-{{ ai_gen_id }}">
+        {% if block.settings.closing_image %}
+          <div class="ai-innovation-closing-image-wrapper-{{ ai_gen_id }}">
+            <img
+              src="{{ block.settings.closing_image | image_url: width: 1200 }}"
+              alt="{{ block.settings.closing_image.alt | escape }}"
+              loading="lazy"
+              width="{{ block.settings.closing_image.width }}"
+              height="{{ block.settings.closing_image.height }}"
+              class="ai-innovation-closing-image-{{ ai_gen_id }}"
+            >
+          </div>
+        {% endif %}
+
         {% if block.settings.closing_title != blank %}
           <h2 class="ai-innovation-closing-title-{{ ai_gen_id }}">{{ block.settings.closing_title }}</h2>
         {% endif %}
@@ -397,7 +425,7 @@
       "type": "textarea",
       "id": "intro_text1",
       "label": "Text",
-      "default": " At Olitalia, we give that heritage new meaning through our oils. For us, production is more than a process—it’s the belief that quality begins with attention to detail. From the moment ingredients enter our facilities to the moment a bottle reaches your kitchen, we work to preserve what makes our oils and vinegars truly exceptional."
+      "default": " At Olitalia, we give that heritage new meaning through our oils. For us, production is more than a process—it’s the belief that quality begins with attention to detail. From the moment ingredients enter our facilities to the moment a bottle reaches your kitchen, we work to preserve what makes our oils truly exceptional."
     },
     {
       "type": "header",
@@ -621,6 +649,11 @@
       "id": "show_closing",
       "label": "Show closing section",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "closing_image",
+      "label": "Image (optional)"
     },
     {
       "type": "text",

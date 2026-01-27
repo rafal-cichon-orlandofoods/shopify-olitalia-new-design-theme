@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "redesign_header": {
@@ -44,7 +53,10 @@
           }
         }
       },
-      "block_order": ["ai_gen_block_2fff632"]
+      "block_order": [
+        "ai_gen_block_2fff632"
+      ],
+      "settings": {}
     },
     "production_v2_css": {
       "type": "custom-liquid",

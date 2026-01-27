@@ -67,6 +67,7 @@
           "settings": {
             "title": "Tradition",
             "caption": "<p>We carry forward a family legacy built on five decades of Italian culinary excellence and authenticity.</p>",
+            "image": "shopify://shop_images/3112_n_chefincucinabollino_n.1_GB_600x375_138293fd-d6bb-42b6-b17d-ba1b61f4233d.jpg",
             "icon": "star"
           }
         },
@@ -121,7 +122,7 @@
     "redesign_pouring_oil": {
       "type": "redesign-pouring-oil",
       "settings": {
-        "pouring_image": "shopify://shop_images/pouring-oil.jpg",
+        "pouring_image": "shopify://shop_images/pour.png",
         "alt_text": "Pouring olive oil"
       }
     },
