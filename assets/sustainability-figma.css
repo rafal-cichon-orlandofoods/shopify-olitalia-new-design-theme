@@ -93,8 +93,8 @@
 /* PLASTIC NO MORE SECTION - Centered with icon on left */
 .sustainability-figma__plastic {
   max-width: 1200px; /* Reduced from 1400px for better centering */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
   display: grid;
   grid-template-columns: 379px 1fr;
   gap: 60px;
@@ -189,8 +189,8 @@
 /* COLLABORATION SECTION - Centered with image */
 .sustainability-figma__collaboration {
   max-width: 1200px; /* Reduced from 1400px */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
 }
 
 .sustainability-figma__collaboration-title {
@@ -238,8 +238,8 @@
 /* FULL CIRCLE THINKING SECTION - Centered */
 .sustainability-figma__circle {
   max-width: 1200px; /* Reduced from 1400px */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
   text-align: center;
 }
 
@@ -268,8 +268,8 @@
 /* USED BUT FULL OF LIFE PROJECT SECTION - Centered with image */
 .sustainability-figma__life {
   max-width: 1200px; /* Reduced from 1400px */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
   text-align: center;
 }
 
@@ -324,8 +324,8 @@
 /* PEOPLE AT HEART SECTION - Centered with image */
 .sustainability-figma__people {
   max-width: 1200px; /* Reduced from 1400px */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
   text-align: center;
 }
 
@@ -376,8 +376,8 @@
 /* EFFICIENT RESOURCE USE SECTION - Centered */
 .sustainability-figma__resource {
   max-width: 1200px; /* Reduced from 1400px */
-  margin: 100px auto;
-  padding: 0 40px;
+  margin: 0 auto; /* Remove top/bottom margin */
+  padding: 100px 40px; /* Add padding instead of margin */
   text-align: center;
 }
 
@@ -675,14 +675,13 @@
 .sustainability-figma__life,
 .sustainability-figma__resource {
   position: relative;
-  padding-top: 40px; /* Space between white section and gray background */
 }
 
-/* Add padding-top to sections WITHOUT background for separation */
+/* White sections - no extra padding needed now */
 .sustainability-figma__collaboration,
 .sustainability-figma__people,
 .sustainability-figma__closing {
-  padding-top: 40px;
+  /* padding-top removed - using padding in main declaration */
 }
 
 .sustainability-figma__plastic::before,
@@ -691,11 +690,11 @@
 .sustainability-figma__resource::before {
   content: '';
   position: absolute;
-  top: -60px; /* Reduced from -100px for better spacing */
+  top: 0; /* Start from top of section */
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  height: calc(100% + 160px); /* Adjusted to match new top value */
+  height: 100%; /* Cover entire section */
   background: rgba(0, 19, 79, 0.02);
   z-index: -1;
 }
