@@ -142,16 +142,18 @@
 .sustainability-figma__circle-stat,
 .sustainability-figma__life-stat,
 .sustainability-figma__resource-stat {
-  flex: 1; /* Equal width for all stat boxes */
+  flex: 0 1 auto; /* Auto width based on content, not full width */
+  min-width: 200px; /* Minimum width for consistency */
+  max-width: 280px; /* Maximum width to prevent too wide boxes */
   font-weight: 400;
   line-height: 60px;
-  background: linear-gradient(to bottom, rgba(244, 207, 115, 0.08) 0%, #fafaf8 100%);
+  background: linear-gradient(to bottom, rgba(0, 19, 79, 0.02) 0%, #fafaf8 100%);
   padding: 30px 24px;
   border-radius: 12px;
-  border: 1px solid rgba(244, 207, 115, 0.2);
+  border: 1px solid rgba(0, 19, 79, 0.12); /* Blue border matching product page */
   box-shadow: 0 2px 12px rgba(0, 19, 79, 0.06);
   transition: all 0.3s ease;
-  text-align: center;
+  text-align: center; /* Centered text */
 }
 
 .sustainability-figma__plastic-stat:hover,
@@ -160,7 +162,7 @@
 .sustainability-figma__resource-stat:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 19, 79, 0.12);
-  border-color: rgba(244, 207, 115, 0.4);
+  border-color: rgba(0, 19, 79, 0.25); /* Stronger blue on hover */
 }
 
 .sustainability-figma__stat-number {

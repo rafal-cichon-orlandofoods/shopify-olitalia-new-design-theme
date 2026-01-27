@@ -68,20 +68,22 @@ body.template-page .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff63
 /* Stats wrapper - add subtle background and elegant accent to parent container ONLY */
 /* Target only the direct stat containers, not their children (stat-number, stat-label) */
 body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]) {
-  flex: 1 !important; /* Equal width for all stat boxes */
-  background: linear-gradient(to bottom, rgba(244, 207, 115, 0.08) 0%, #fafaf8 100%) !important;
+  flex: 0 1 auto !important; /* Auto width based on content, not full width */
+  min-width: 200px !important; /* Minimum width for consistency */
+  max-width: 280px !important; /* Maximum width to prevent too wide boxes */
+  background: linear-gradient(to bottom, rgba(0, 19, 79, 0.02) 0%, #fafaf8 100%) !important;
   padding: 30px 24px !important;
   border-radius: 12px !important;
-  border: 1px solid rgba(244, 207, 115, 0.2) !important;
+  border: 1px solid rgba(0, 19, 79, 0.12) !important; /* Blue border matching product page */
   box-shadow: 0 2px 12px rgba(0, 19, 79, 0.06) !important;
   transition: all 0.3s ease !important;
-  text-align: center !important;
+  text-align: center !important; /* Centered text */
 }
 
 body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]):hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 8px 20px rgba(0, 19, 79, 0.12) !important;
-  border-color: rgba(244, 207, 115, 0.4) !important;
+  border-color: rgba(0, 19, 79, 0.25) !important; /* Stronger blue on hover */
 }
 
 /* Animation state for counting numbers - same as sustainability */
