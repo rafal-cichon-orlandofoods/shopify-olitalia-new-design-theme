@@ -122,30 +122,45 @@ body.template-page [class*="ai-innovation-text-"] {
   color: #121212 !important;
 }
 
-/* Closing title - Use Inter */
-body.template-page [class*="ai-innovation-closing-title-"] {
+/* Closing title - Use Inter - VERY SPECIFIC SELECTOR to override inline styles */
+body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-title-"] {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 48px !important; /* Match homepage */
+  font-size: 48px !important;
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 30px 0 !important; /* Match other sections: 30px bottom */
+  margin: 0 0 30px 0 !important;
+}
+
+/* Fallback for any closing title */
+body.template-page [class*="ai-innovation-closing-title-"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 48px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: #121212 !important;
+  margin: 0 0 30px 0 !important;
 }
 
 /* Closing section - add top margin for separation */
 body.template-page [class*="ai-innovation-closing-"] {
-  margin-top: 120px !important; /* Extra spacing before closing section */
+  margin-top: 120px !important;
 }
 
-/* Closing image wrapper - match other sections spacing */
+/* Closing image wrapper - VERY SPECIFIC SELECTOR */
+body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
+  margin: 30px auto 30px !important;
+}
+
+/* Fallback for any closing image wrapper */
 body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
-  margin: 30px auto 30px !important; /* Reduced: 30px top, 30px bottom */
+  margin: 30px auto 30px !important;
 }
 
 /* Closing text - Use Raleway for body text */
 body.template-page [class*="ai-innovation-closing-text-"] {
   font-family: 'Raleway', Arial, sans-serif !important;
-  font-size: 18px !important; /* Match homepage */
+  font-size: 18px !important;
   font-weight: 300 !important;
   line-height: 1.6 !important;
   color: #121212 !important;
@@ -166,11 +181,18 @@ body.template-page [class*="ai-innovation-closing-text-"] {
     line-height: 1.2 !important;
   }
   
-  /* Closing title mobile */
+  /* Closing title mobile - VERY SPECIFIC */
+  body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-title-"] {
+    font-size: 28px !important;
+    line-height: 1.2 !important;
+    margin: 0 0 20px 0 !important;
+  }
+  
+  /* Fallback closing title mobile */
   body.template-page [class*="ai-innovation-closing-title-"] {
     font-size: 28px !important;
     line-height: 1.2 !important;
-    margin: 0 0 20px 0 !important; /* Reduced bottom margin on mobile */
+    margin: 0 0 20px 0 !important;
   }
   
   /* Closing section mobile - reduced top margin */
@@ -178,9 +200,14 @@ body.template-page [class*="ai-innovation-closing-text-"] {
     margin-top: 80px !important;
   }
   
-  /* Closing image wrapper mobile */
+  /* Closing image wrapper mobile - VERY SPECIFIC */
+  body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
+    margin: 20px auto 20px !important;
+  }
+  
+  /* Fallback closing image wrapper mobile */
   body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
-    margin: 20px auto 20px !important; /* Reduced margins on mobile */
+    margin: 20px auto 20px !important;
   }
   
   /* Intro text mobile - match homepage */
