@@ -95,6 +95,7 @@
         "tab_knowhow",
         "tab_innovation"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Our Values",
         "subheading": "",
@@ -121,6 +122,7 @@
     },
     "redesign_pouring_oil": {
       "type": "redesign-pouring-oil",
+      "disabled": true,
       "settings": {
         "pouring_image": "shopify://shop_images/pour.png",
         "alt_text": "Pouring olive oil"

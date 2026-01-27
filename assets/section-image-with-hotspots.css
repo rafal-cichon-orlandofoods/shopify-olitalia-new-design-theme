@@ -1,26 +1,43 @@
 .image-with-hotspots {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* Make bottle image smaller and centered on product page */
-.image-with-hotspots img {
-  max-width: 50% !important;
-  width: 50% !important;
-  height: auto !important;
-  margin: 0 auto !important;
-  display: block !important;
+/* Make bottle section more compact and elegant */
+.hot-spots .container--large {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hot-spots .section-heading {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.hot-spots .section-heading__title,
+.hot-spots .section-heading__subheading {
+  text-align: center;
 }
 
 .image-with-hotspots-wrapper {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 50%;
+  max-width: 500px;
   margin: 0 auto;
+}
+
+.image-with-hotspots img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .hot-spots .container--large {
+    max-width: 100%;
+  }
+  
+  .image-with-hotspots-wrapper {
+    max-width: 400px;
+  }
 }
 .image-with-hotspots .site-box-background {
   position: relative;
