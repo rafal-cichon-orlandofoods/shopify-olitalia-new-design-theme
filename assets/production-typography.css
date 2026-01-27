@@ -142,10 +142,8 @@ body.template-page [class*="ai-innovation-closing-title-"] {
   margin: 0 0 30px 0 !important;
 }
 
-/* Closing section - add top margin for separation */
-body.template-page [class*="ai-innovation-closing-"] {
-  margin-top: 120px !important;
-}
+/* Closing section - NO extra margin, liquid block already handles it */
+/* Removed margin-top to avoid doubling the spacing from liquid block */
 
 /* Closing image wrapper - VERY SPECIFIC SELECTOR */
 body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
