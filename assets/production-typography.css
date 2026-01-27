@@ -221,3 +221,46 @@ body.template-page [class*="ai-innovation-closing-text-"].reveal-text {
     transition: none !important;
   }
 }
+
+
+/* READ MORE BUTTON STYLING */
+body.template-page .read-more-btn {
+  display: inline-block !important;
+  margin-top: 20px !important;
+  padding: 12px 24px !important;
+  background: transparent !important;
+  border: 1px solid rgba(0, 19, 79, 0.2) !important;
+  border-radius: 6px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #00134f !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+body.template-page .read-more-btn:hover {
+  background: #00134f !important;
+  color: #ffffff !important;
+  border-color: #00134f !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 19, 79, 0.15) !important;
+}
+
+body.template-page .read-more-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* Text containers */
+body.template-page .text-preview,
+body.template-page .text-full {
+  transition: opacity 0.3s ease !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  body.template-page .read-more-btn {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+}

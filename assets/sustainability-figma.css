@@ -624,3 +624,46 @@
     gap: 20px;
   }
 }
+
+
+/* READ MORE BUTTON STYLING */
+.read-more-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid rgba(0, 19, 79, 0.2);
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #00134f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background: #00134f;
+  color: #ffffff;
+  border-color: #00134f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 19, 79, 0.15);
+}
+
+.read-more-btn:active {
+  transform: translateY(0);
+}
+
+/* Text containers */
+.text-preview,
+.text-full {
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .read-more-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
