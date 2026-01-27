@@ -675,8 +675,6 @@
 .sustainability-figma__life,
 .sustainability-figma__resource {
   position: relative;
-  padding-top: 100px;
-  padding-bottom: 100px;
 }
 
 .sustainability-figma__plastic::before,
@@ -685,11 +683,11 @@
 .sustainability-figma__resource::before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -50px; /* Extend background above section */
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  height: 100%;
+  height: calc(100% + 100px); /* Extend background above and below */
   background: rgba(0, 19, 79, 0.02);
   z-index: -1;
 }
@@ -698,20 +696,16 @@
 .sustainability-figma__collaboration,
 .sustainability-figma__people,
 .sustainability-figma__closing {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  position: relative;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .sustainability-figma__plastic,
-  .sustainability-figma__circle,
-  .sustainability-figma__life,
-  .sustainability-figma__resource,
-  .sustainability-figma__collaboration,
-  .sustainability-figma__people,
-  .sustainability-figma__closing {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  .sustainability-figma__plastic::before,
+  .sustainability-figma__circle::before,
+  .sustainability-figma__life::before,
+  .sustainability-figma__resource::before {
+    top: -30px;
+    height: calc(100% + 60px);
   }
 }

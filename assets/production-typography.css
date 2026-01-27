@@ -270,42 +270,33 @@ body.template-page .text-full {
 /* Apply alternating backgrounds to AI innovation items using pseudo-elements */
 body.template-page [class*="ai-innovation-item-"]:nth-child(odd) {
   position: relative !important;
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
 }
 
 body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
+  top: -40px !important; /* Extend background above */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: 100% !important;
+  height: calc(100% + 80px) !important; /* Extend background above and below */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
-}
-
-body.template-page [class*="ai-innovation-item-"]:nth-child(even) {
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
 }
 
 /* Intro section with subtle background */
 body.template-page [class*="ai-innovation-intro-"] {
   position: relative !important;
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
 }
 
 body.template-page [class*="ai-innovation-intro-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
+  top: -40px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: 100% !important;
+  height: calc(100% + 80px) !important;
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
 }
@@ -313,29 +304,26 @@ body.template-page [class*="ai-innovation-intro-"]::before {
 /* Closing section with subtle background */
 body.template-page [class*="ai-innovation-closing-"] {
   position: relative !important;
-  padding-top: 80px !important;
-  padding-bottom: 80px !important;
 }
 
 body.template-page [class*="ai-innovation-closing-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
+  top: -40px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: 100% !important;
+  height: calc(100% + 80px) !important;
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  body.template-page [class*="ai-innovation-item-"]:nth-child(odd),
-  body.template-page [class*="ai-innovation-item-"]:nth-child(even),
-  body.template-page [class*="ai-innovation-intro-"],
-  body.template-page [class*="ai-innovation-closing-"] {
-    padding-top: 60px !important;
-    padding-bottom: 60px !important;
+  body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before,
+  body.template-page [class*="ai-innovation-intro-"]::before,
+  body.template-page [class*="ai-innovation-closing-"]::before {
+    top: -30px !important;
+    height: calc(100% + 60px) !important;
   }
 }
