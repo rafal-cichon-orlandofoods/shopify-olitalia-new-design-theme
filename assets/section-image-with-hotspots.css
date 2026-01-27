@@ -3,14 +3,18 @@
 }
 
 /* Make bottle image smaller and centered on product page */
-.image-with-hotspots .site-box-background img {
-  max-width: 50%;
-  margin: 0 auto;
-  display: block;
+.image-with-hotspots img {
+  max-width: 50% !important;
+  width: 50% !important;
+  margin: 0 auto !important;
+  display: block !important;
 }
 
 .image-with-hotspots-wrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .image-with-hotspots .site-box-background {
   position: relative;
