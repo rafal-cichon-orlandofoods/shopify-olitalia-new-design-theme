@@ -323,57 +323,85 @@ body.template-page .text-full {
 }
 
 
-/* SUBTLE SECTION BACKGROUNDS - matching V2 style */
-/* Apply alternating backgrounds to AI innovation items using pseudo-elements */
-body.template-page [class*="ai-innovation-item-"]:nth-child(odd) {
+/* SUBTLE SECTION BACKGROUNDS - Work WITH liquid structure, not against it */
+
+/* Strategy: Add backgrounds using wrapper divs' pseudo-elements */
+/* Liquid structure:
+   .ai-innovation-block (padding: 80px 0)
+     └── .ai-innovation-container
+         ├── .ai-innovation-intro (margin-bottom: 80px)
+         ├── .ai-innovation-item (margin-bottom: 80px) x4
+         └── .ai-innovation-closing (margin-top: 80px)
+*/
+
+/* INTRO SECTION - Gray background covering intro + its margin */
+body.template-page [class*="ai-innovation-intro-"] {
   position: relative !important;
 }
 
-body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
+body.template-page [class*="ai-innovation-intro-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: -80px !important; /* Extend background to cover spacing above */
+  top: -80px !important; /* Cover section_padding above */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 160px) !important; /* Extend background to cover spacing above and below */
+  height: calc(100% + 160px) !important; /* Cover padding above (80px) + margin below (80px) */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
-}
-
-/* Intro section with subtle background - apply to the BLOCK, not intro div */
-body.template-page [class*="ai-innovation-block-"] {
-  position: relative !important;
-}
-
-body.template-page [class*="ai-innovation-block-"]::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important; /* Start from top of block (which has padding) */
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 100vw !important;
-  height: 100% !important; /* Cover entire block including padding */
-  background: rgba(0, 19, 79, 0.02) !important;
-  z-index: 0 !important;
   pointer-events: none !important;
 }
 
-/* Ensure content is above background */
+/* ITEMS - Alternating backgrounds */
+/* Item 1 (first child after intro) - White (no background) */
+/* Item 2 (second) - Gray background */
+/* Item 3 (third) - White (no background) */
+/* Item 4 (fourth) - Gray background */
+
+body.template-page [class*="ai-innovation-item-"] {
+  position: relative !important;
+}
+
+/* Even items (2nd, 4th) get gray background */
+body.template-page [class*="ai-innovation-item-"]:nth-of-type(2)::before,
+body.template-page [class*="ai-innovation-item-"]:nth-of-type(4)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  height: calc(100% + 80px) !important; /* Cover item height + margin-bottom */
+  background: rgba(0, 19, 79, 0.02) !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* CLOSING SECTION - White background (no pseudo-element needed) */
+body.template-page [class*="ai-innovation-closing-"] {
+  position: relative !important;
+}
+
+/* Ensure content is above backgrounds */
 body.template-page [class*="ai-innovation-container-"] {
   position: relative !important;
   z-index: 1 !important;
 }
 
-/* Closing section - NO background, keep it white */
-body.template-page [class*="ai-innovation-closing-"] {
+/* Keep block positioning but don't override its padding */
+body.template-page [class*="ai-innovation-block-"] {
   position: relative !important;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
-    top: -60px !important;
-    height: calc(100% + 120px) !important;
+  body.template-page [class*="ai-innovation-intro-"]::before {
+    top: -60px !important; /* Smaller section padding on mobile */
+    height: calc(100% + 140px) !important; /* 60px top + 80px bottom */
+  }
+  
+  body.template-page [class*="ai-innovation-item-"]:nth-of-type(2)::before,
+  body.template-page [class*="ai-innovation-item-"]:nth-of-type(4)::before {
+    height: calc(100% + 80px) !important;
   }
 }
