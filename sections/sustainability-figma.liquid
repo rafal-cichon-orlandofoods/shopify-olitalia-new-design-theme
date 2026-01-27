@@ -158,7 +158,7 @@
   </div>
 
   {%- comment -%}
-    EFFICIENT RESOURCE USE SECTION - Left aligned
+    EFFICIENT RESOURCE USE SECTION - Centered
   {%- endcomment -%}
   <div class="sustainability-figma__resource">
     <h2 class="sustainability-figma__resource-title">{{ section.settings.resource_title | default: "Efficient Resource Use" }}</h2>
@@ -178,7 +178,48 @@
     </div>
   </div>
 
+  {%- comment -%}
+    CLOSING SECTION - Centered
+  {%- endcomment -%}
+  {% if section.settings.show_closing %}
+    <div class="sustainability-figma__closing">
+      {% if section.settings.closing_title != blank %}
+        <h2 class="sustainability-figma__closing-title">{{ section.settings.closing_title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.closing_text != blank %}
+        <div class="sustainability-figma__closing-text">
+          {{ section.settings.closing_text }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
 </div>
+
+<script>
+// Scroll animations for sections
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('.sustainability-figma__plastic, .sustainability-figma__collaboration, .sustainability-figma__circle, .sustainability-figma__life, .sustainability-figma__people, .sustainability-figma__resource, .sustainability-figma__closing');
+  
+  if (sections.length > 0) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px'
+    });
+    
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+  }
+});
+</script>
 
 {% schema %}
 {
@@ -415,6 +456,28 @@
       "id": "resource_stat2_label",
       "label": "Resource Stat 2 Label",
       "default": "Energy Savings"
+    },
+    {
+      "type": "header",
+      "content": "Closing Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_closing",
+      "label": "Show closing section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "closing_title",
+      "label": "Closing Title",
+      "default": "A Commitment That Continues"
+    },
+    {
+      "type": "richtext",
+      "id": "closing_text",
+      "label": "Closing Text",
+      "default": "<p>Sustainability is not a final goal — it's a continuous journey. Every step we take, from reducing waste to supporting our people, reflects our belief that the choices we make today shape the world we share tomorrow. We're committed to doing better, learning more, and building a future where quality and responsibility go hand in hand.</p>"
     }
   ]
 }
