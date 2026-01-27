@@ -459,6 +459,32 @@
   transform: translateY(0);
 }
 
+/* PROGRESSIVE REVEAL - Text appears line by line */
+.sustainability-figma__hero-description p,
+.sustainability-figma__plastic-description,
+.sustainability-figma__collaboration-text p,
+.sustainability-figma__circle-description,
+.sustainability-figma__life-description,
+.sustainability-figma__people-text p,
+.sustainability-figma__resource-description,
+.sustainability-figma__closing-text p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.sustainability-figma__hero-description p.reveal-text,
+.sustainability-figma__plastic-description.reveal-text,
+.sustainability-figma__collaboration-text p.reveal-text,
+.sustainability-figma__circle-description.reveal-text,
+.sustainability-figma__life-description.reveal-text,
+.sustainability-figma__people-text p.reveal-text,
+.sustainability-figma__resource-description.reveal-text,
+.sustainability-figma__closing-text p.reveal-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .sustainability-figma__plastic,

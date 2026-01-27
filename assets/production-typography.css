@@ -193,3 +193,31 @@ body.template-page [class*="ai-innovation-closing-text-"] {
     padding: 20px 16px !important;
   }
 }
+
+
+/* PROGRESSIVE REVEAL - Text appears gradually on scroll */
+body.template-page [class*="ai-innovation-intro-text-"],
+body.template-page [class*="ai-innovation-text-"],
+body.template-page [class*="ai-innovation-closing-text-"] {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out !important;
+}
+
+body.template-page [class*="ai-innovation-intro-text-"].reveal-text,
+body.template-page [class*="ai-innovation-text-"].reveal-text,
+body.template-page [class*="ai-innovation-closing-text-"].reveal-text {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  body.template-page [class*="ai-innovation-intro-text-"],
+  body.template-page [class*="ai-innovation-text-"],
+  body.template-page [class*="ai-innovation-closing-text-"] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -6,6 +6,7 @@ class ProductionCounter {
     this.observer = null;
     console.log('Found production counters:', this.counters.length); // Debug
     this.init();
+    this.initProgressiveReveal();
   }
 
   init() {
@@ -27,6 +28,38 @@ class ProductionCounter {
     // Observe all counters
     this.counters.forEach(counter => {
       this.observer.observe(counter);
+    });
+  }
+
+  initProgressiveReveal() {
+    // Find all text elements for progressive reveal
+    const textElements = document.querySelectorAll(
+      'body.template-page [class*="ai-innovation-intro-text-"], ' +
+      'body.template-page [class*="ai-innovation-text-"], ' +
+      'body.template-page [class*="ai-innovation-closing-text-"]'
+    );
+    
+    if (textElements.length === 0) return;
+    
+    const textObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger the animation - each element appears with a slight delay
+          setTimeout(() => {
+            entry.target.classList.add('reveal-text');
+          }, index * 100); // 100ms delay between each element
+          
+          // Stop observing once revealed
+          textObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    textElements.forEach(element => {
+      textObserver.observe(element);
     });
   }
 

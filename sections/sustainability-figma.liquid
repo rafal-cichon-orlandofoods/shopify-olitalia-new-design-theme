@@ -218,6 +218,41 @@ document.addEventListener('DOMContentLoaded', function() {
       sectionObserver.observe(section);
     });
   }
+  
+  // Progressive reveal for text elements
+  const textElements = document.querySelectorAll(
+    '.sustainability-figma__hero-description p, ' +
+    '.sustainability-figma__plastic-description, ' +
+    '.sustainability-figma__collaboration-text p, ' +
+    '.sustainability-figma__circle-description, ' +
+    '.sustainability-figma__life-description, ' +
+    '.sustainability-figma__people-text p, ' +
+    '.sustainability-figma__resource-description, ' +
+    '.sustainability-figma__closing-text p'
+  );
+  
+  if (textElements.length > 0) {
+    const textObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger the animation - each element appears with a slight delay
+          setTimeout(() => {
+            entry.target.classList.add('reveal-text');
+          }, index * 100); // 100ms delay between each element
+          
+          // Stop observing once revealed
+          textObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    textElements.forEach(element => {
+      textObserver.observe(element);
+    });
+  }
 });
 </script>
 
