@@ -31,7 +31,7 @@ body.template-page [class*="ai-innovation-closing-title-"] {
   font-size: 48px !important; /* Match homepage */
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 24px 0 !important; /* Consistent 24px bottom margin for all titles */
+  margin: 0 0 30px 0 !important;
 }
 
 /* Main title - Match homepage with Inter */
@@ -41,7 +41,7 @@ body.template-page [class*="ai-innovation-intro-title-"] {
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 24px 0 !important; /* Consistent with other titles */
+  margin: 0 0 24px 0 !important;
 }
 
 /* Intro text - Use Raleway for body text */
@@ -51,7 +51,6 @@ body.template-page [class*="ai-innovation-intro-text-"] {
   font-weight: 300 !important;
   line-height: 1.6 !important;
   color: #121212 !important;
-  margin: 0 auto 24px !important; /* Consistent spacing, liquid block handles section margin */
 }
 
 /* Stats numbers - Use Inter like other headings */
@@ -68,10 +67,6 @@ body.template-page .ai-innovation-stat-number-aagpvcmz0n25xaze3naigenblock2fff63
 
 /* Stats wrapper - add subtle background and elegant accent to parent container ONLY */
 /* Target only the direct stat containers, not their children (stat-number, stat-label) */
-body.template-page [class*="ai-innovation-stats-"] {
-  margin: 40px 0 !important; /* Override liquid block - consistent spacing */
-}
-
 body.template-page [class*="ai-innovation-stats-"] > [class*="ai-innovation-stat-"]:not([class*="-number-"]):not([class*="-label-"]) {
   flex: 0 1 auto !important; /* Auto width based on content, not full width */
   min-width: 200px !important; /* Minimum width for consistency */
@@ -115,7 +110,7 @@ body.template-page [class*="ai-innovation-title-"] {
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 16px 0 !important; /* Match liquid block default */
+  margin: 0 0 30px 0 !important;
 }
 
 /* Section text - Use Raleway for body text */
@@ -134,7 +129,7 @@ body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632k
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 24px 0 !important; /* Consistent with other titles */
+  margin: 0 0 30px 0 !important;
 }
 
 /* Fallback for any closing title */
@@ -144,20 +139,22 @@ body.template-page [class*="ai-innovation-closing-title-"] {
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: #121212 !important;
-  margin: 0 0 24px 0 !important; /* Consistent with other titles */
+  margin: 0 0 30px 0 !important;
 }
 
-/* Closing section - NO extra margin, liquid block already handles it */
-/* Removed margin-top to avoid doubling the spacing from liquid block */
+/* Closing section - Add padding-top for separation from previous background */
+body.template-page [class*="ai-innovation-closing-"] {
+  padding-top: 40px !important; /* Space between background and H2 */
+}
 
-/* Closing image wrapper - VERY SPECIFIC SELECTOR - match liquid block spacing */
+/* Closing image wrapper - VERY SPECIFIC SELECTOR */
 body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
-  margin: 24px auto 24px !important; /* Consistent spacing above and below image */
+  margin: 30px auto 30px !important;
 }
 
 /* Fallback for any closing image wrapper */
 body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
-  margin: 24px auto 24px !important; /* Consistent spacing above and below image */
+  margin: 30px auto 30px !important;
 }
 
 /* Closing text - Use Raleway for body text */
@@ -323,85 +320,57 @@ body.template-page .text-full {
 }
 
 
-/* SUBTLE SECTION BACKGROUNDS - Work WITH liquid structure, not against it */
-
-/* Strategy: Add backgrounds using wrapper divs' pseudo-elements */
-/* Liquid structure:
-   .ai-innovation-block (padding: 80px 0)
-     └── .ai-innovation-container
-         ├── .ai-innovation-intro (margin-bottom: 80px)
-         ├── .ai-innovation-item (margin-bottom: 80px) x4
-         └── .ai-innovation-closing (margin-top: 80px)
-*/
-
-/* INTRO SECTION - Gray background covering intro + its margin */
-body.template-page [class*="ai-innovation-intro-"] {
+/* SUBTLE SECTION BACKGROUNDS - matching V2 style */
+/* Apply alternating backgrounds to AI innovation items using pseudo-elements */
+body.template-page [class*="ai-innovation-item-"]:nth-child(odd) {
   position: relative !important;
 }
 
-body.template-page [class*="ai-innovation-intro-"]::before {
+body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
   content: '' !important;
   position: absolute !important;
-  top: -80px !important; /* Cover section_padding above */
+  top: -80px !important; /* Extend background to cover spacing above */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 160px) !important; /* Cover padding above (80px) + margin below (80px) */
+  height: calc(100% + 160px) !important; /* Extend background to cover spacing above and below */
   background: rgba(0, 19, 79, 0.02) !important;
   z-index: -1 !important;
-  pointer-events: none !important;
 }
 
-/* ITEMS - Alternating backgrounds */
-/* Item 1 (first child after intro) - White (no background) */
-/* Item 2 (second) - Gray background */
-/* Item 3 (third) - White (no background) */
-/* Item 4 (fourth) - Gray background */
-
-body.template-page [class*="ai-innovation-item-"] {
+/* Intro section with subtle background - apply to the BLOCK, not intro div */
+body.template-page [class*="ai-innovation-block-"] {
   position: relative !important;
 }
 
-/* Even items (2nd, 4th) get gray background */
-body.template-page [class*="ai-innovation-item-"]:nth-of-type(2)::before,
-body.template-page [class*="ai-innovation-item-"]:nth-of-type(4)::before {
+body.template-page [class*="ai-innovation-block-"]::before {
   content: '' !important;
   position: absolute !important;
-  top: 0 !important;
+  top: 0 !important; /* Start from top of block (which has padding) */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100vw !important;
-  height: calc(100% + 80px) !important; /* Cover item height + margin-bottom */
+  height: 100% !important; /* Cover entire block including padding */
   background: rgba(0, 19, 79, 0.02) !important;
-  z-index: -1 !important;
+  z-index: 0 !important;
   pointer-events: none !important;
 }
 
-/* CLOSING SECTION - White background (no pseudo-element needed) */
-body.template-page [class*="ai-innovation-closing-"] {
-  position: relative !important;
-}
-
-/* Ensure content is above backgrounds */
+/* Ensure content is above background */
 body.template-page [class*="ai-innovation-container-"] {
   position: relative !important;
   z-index: 1 !important;
 }
 
-/* Keep block positioning but don't override its padding */
-body.template-page [class*="ai-innovation-block-"] {
+/* Closing section - NO background, keep it white */
+body.template-page [class*="ai-innovation-closing-"] {
   position: relative !important;
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  body.template-page [class*="ai-innovation-intro-"]::before {
-    top: -60px !important; /* Smaller section padding on mobile */
-    height: calc(100% + 140px) !important; /* 60px top + 80px bottom */
-  }
-  
-  body.template-page [class*="ai-innovation-item-"]:nth-of-type(2)::before,
-  body.template-page [class*="ai-innovation-item-"]:nth-of-type(4)::before {
-    height: calc(100% + 80px) !important;
+  body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
+    top: -60px !important;
+    height: calc(100% + 120px) !important;
   }
 }
