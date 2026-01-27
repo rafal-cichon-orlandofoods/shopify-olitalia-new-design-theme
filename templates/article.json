@@ -9,6 +9,12 @@
  */
 {
   "sections": {
+    "redesign-header": {
+      "type": "redesign-header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
     "main-article": {
       "type": "main-article",
       "blocks": {
@@ -53,11 +59,28 @@
     "main-article-comments": {
       "type": "main-article-comments",
       "settings": {}
+    },
+    "redesign-newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {
+        "title": "Read Our Newsletter",
+        "placeholder": "Enter your email",
+        "button_text": "Sign Up"
+      }
+    },
+    "redesign-footer": {
+      "type": "redesign-footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
     }
   },
   "order": [
+    "redesign-header",
     "main-article",
     "main-article-navigation",
-    "main-article-comments"
+    "main-article-comments",
+    "redesign-newsletter",
+    "redesign-footer"
   ]
 }
