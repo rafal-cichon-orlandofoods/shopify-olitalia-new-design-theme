@@ -167,14 +167,14 @@
 .redesign-about__quote blockquote:before {
     content: open-quote;
     font-size: 1.5em;
-    color: #004f2f;
+    color: #000000;
     opacity: 0.6;
 }
 
 .redesign-about__quote blockquote:after {
     content: close-quote;
     font-size: 1.5em;
-    color: #004f2f;
+    color: #000000;
     opacity: 0.6;
 }
 

@@ -55,7 +55,7 @@
 
 /* Improve link hover states */
 .cart-item__title a:hover {
-    color: #004f2f;
+    color: #00134f;
     transition: color 0.2s ease;
 }
 
@@ -63,7 +63,7 @@
 .cart-section input:focus,
 .cart-section select:focus,
 .cart-section textarea:focus {
-    outline: 2px solid #004f2f;
+    outline: 2px solid #00134f;
     outline-offset: 2px;
 }
 
