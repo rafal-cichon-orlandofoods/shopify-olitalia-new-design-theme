@@ -45,8 +45,6 @@
             {% if section.settings.intro_video_file %}
               <video 
                 controls 
-                autoplay 
-                muted
                 playsinline
                 preload="metadata"
                 class="redesign-about__intro-video-player"
@@ -58,9 +56,9 @@
             {% elsif section.settings.intro_video_url contains 'youtube.com' or section.settings.intro_video_url contains 'youtu.be' %}
               {% assign video_id = section.settings.intro_video_url | split: 'v=' | last | split: '/' | last | split: '&' | first %}
               <iframe 
-                src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1" 
+                src="https://www.youtube.com/embed/{{ video_id }}" 
                 frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen
                 class="redesign-about__intro-video-iframe"
                 id="videoIframe"
@@ -69,9 +67,9 @@
             {% elsif section.settings.intro_video_url contains 'vimeo.com' %}
               {% assign video_id = section.settings.intro_video_url | split: '/' | last %}
               <iframe 
-                src="https://player.vimeo.com/video/{{ video_id }}?autoplay=1&muted=1" 
+                src="https://player.vimeo.com/video/{{ video_id }}" 
                 frameborder="0" 
-                allow="autoplay; fullscreen; picture-in-picture" 
+                allow="fullscreen; picture-in-picture" 
                 allowfullscreen
                 class="redesign-about__intro-video-iframe"
                 id="videoIframe"
