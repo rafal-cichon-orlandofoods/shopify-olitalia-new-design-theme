@@ -264,3 +264,78 @@ body.template-page .text-full {
     font-size: 15px !important;
   }
 }
+
+
+/* SUBTLE SECTION BACKGROUNDS - matching V2 style */
+/* Apply alternating backgrounds to AI innovation items using pseudo-elements */
+body.template-page [class*="ai-innovation-item-"]:nth-child(odd) {
+  position: relative !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+body.template-page [class*="ai-innovation-item-"]:nth-child(odd)::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  height: 100% !important;
+  background: rgba(0, 19, 79, 0.02) !important;
+  z-index: -1 !important;
+}
+
+body.template-page [class*="ai-innovation-item-"]:nth-child(even) {
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+/* Intro section with subtle background */
+body.template-page [class*="ai-innovation-intro-"] {
+  position: relative !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+body.template-page [class*="ai-innovation-intro-"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  height: 100% !important;
+  background: rgba(0, 19, 79, 0.02) !important;
+  z-index: -1 !important;
+}
+
+/* Closing section with subtle background */
+body.template-page [class*="ai-innovation-closing-"] {
+  position: relative !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+body.template-page [class*="ai-innovation-closing-"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  height: 100% !important;
+  background: rgba(0, 19, 79, 0.02) !important;
+  z-index: -1 !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  body.template-page [class*="ai-innovation-item-"]:nth-child(odd),
+  body.template-page [class*="ai-innovation-item-"]:nth-child(even),
+  body.template-page [class*="ai-innovation-intro-"],
+  body.template-page [class*="ai-innovation-closing-"] {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}

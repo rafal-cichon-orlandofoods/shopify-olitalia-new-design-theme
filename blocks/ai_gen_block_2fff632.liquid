@@ -346,10 +346,6 @@
           <h2 class="ai-innovation-closing-title-{{ ai_gen_id }}">{{ block.settings.closing_title }}</h2>
         {% endif %}
 
-        {% if block.settings.closing_text != blank %}
-          <div class="ai-innovation-closing-text-{{ ai_gen_id }}">{{ block.settings.closing_text }}</div>
-        {% endif %}
-
         {% if block.settings.closing_image %}
           <div class="ai-innovation-closing-image-wrapper-{{ ai_gen_id }}">
             <img
@@ -361,6 +357,10 @@
               class="ai-innovation-closing-image-{{ ai_gen_id }}"
             >
           </div>
+        {% endif %}
+
+        {% if block.settings.closing_text != blank %}
+          <div class="ai-innovation-closing-text-{{ ai_gen_id }}">{{ block.settings.closing_text }}</div>
         {% endif %}
       </div>
     {% endif %}
