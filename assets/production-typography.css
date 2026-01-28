@@ -164,6 +164,7 @@ body.template-page [class*="ai-innovation-closing-text-"] {
   font-weight: 300 !important;
   line-height: 1.6 !important;
   color: #121212 !important;
+  margin-top: 0 !important; /* No extra margin, h2 already has bottom margin */
 }
 
 /* Mobile responsive - Match homepage mobile styles */
