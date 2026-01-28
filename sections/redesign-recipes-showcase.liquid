@@ -1,6 +1,7 @@
 {{ 'redesign-homepage.css' | asset_url | stylesheet_tag }}
+{{ 'redesign-recipes-showcase.css' | asset_url | stylesheet_tag }}
 
-<section class="redesign-recipes">
+<section class="redesign-recipes redesign-recipes-showcase">
   <div class="redesign-recipes__container">
     {% if section.settings.title != blank %}
       <h2 class="redesign-recipes__title">{{ section.settings.title }}</h2>
