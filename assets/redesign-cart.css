@@ -1,95 +1,22 @@
-/* Minimal Cart Page Styling - Subtle enhancements only */
+/* Cart Page Typography - Match redesign system with Inter font */
 
-/* Continue Shopping link - best practice at top */
-.cart__continue-link {
-    margin-bottom: 20px;
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Cart page title - Use Inter font like other redesign pages */
+.template-cart .title.heading-size--page-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-size: 48px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  color: #121212 !important;
+  margin-bottom: 40px !important;
 }
 
-.cart__continue-link a {
-    font-family: 'Raleway', Arial, sans-serif;
-    font-size: 14px;
-    color: #666666;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.cart__continue-link a:hover {
-    color: #000000;
-}
-
-/* Add spacing before footer */
-.cart-section {
-    margin-bottom: 60px;
-}
-
-/* Typography improvements - Soho Pro for headings */
-.cart-section .title,
-.cart-section h1,
-.cart-section h2,
-.cart-block__head {
-    font-family: 'Soho Pro', Arial, sans-serif;
-}
-
-/* Body text - Raleway */
-.cart-section p,
-.cart-section label,
-.cart-section input,
-.cart-section select,
-.cart-item__title {
-    font-family: 'Raleway', Arial, sans-serif;
-}
-
-/* Subtle button improvements */
-.cart-section button[type="submit"],
-.cart-section .button,
-.cart__checkout {
-    transition: all 0.3s ease;
-}
-
-.cart-section button[type="submit"]:hover,
-.cart-section .button:hover,
-.cart__checkout:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Improve link hover states */
-.cart-item__title a:hover {
-    color: #00134f;
-    transition: color 0.2s ease;
-}
-
-/* Subtle focus states for accessibility */
-.cart-section input:focus,
-.cart-section select:focus,
-.cart-section textarea:focus {
-    outline: 2px solid #00134f;
-    outline-offset: 2px;
-}
-
-/* Improve spacing for better readability */
-.cart-section {
-    line-height: 1.6;
-}
-
-/* Subtle hover on quantity buttons */
-.cart-item__quantity button:hover {
-    background: rgba(0, 79, 47, 0.1);
-    transition: background 0.2s ease;
-}
-
-/* Mobile optimizations */
+/* Mobile responsive */
 @media (max-width: 768px) {
-    .cart-section .title,
-    .cart-section h1 {
-        font-size: 28px;
-    }
-    
-    .cart-section {
-        margin-bottom: 40px;
-    }
-    
-    .cart__continue-link {
-        margin-bottom: 15px;
-    }
+  .template-cart .title.heading-size--page-title {
+    font-size: 32px !important;
+    margin-bottom: 30px !important;
+  }
 }
