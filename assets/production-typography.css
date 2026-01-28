@@ -149,12 +149,14 @@ body.template-page [class*="ai-innovation-closing-"] {
 
 /* Closing image wrapper - VERY SPECIFIC SELECTOR */
 body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
-  margin: 30px auto 30px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
 }
 
 /* Fallback for any closing image wrapper */
 body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
-  margin: 30px auto 30px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
 }
 
 /* Closing text - Use Raleway for body text */
@@ -164,7 +166,8 @@ body.template-page [class*="ai-innovation-closing-text-"] {
   font-weight: 300 !important;
   line-height: 1.6 !important;
   color: #121212 !important;
-  margin-top: 0 !important; /* No extra margin, h2 already has bottom margin */
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 /* Mobile responsive - Match homepage mobile styles */
@@ -203,12 +206,14 @@ body.template-page [class*="ai-innovation-closing-text-"] {
   
   /* Closing image wrapper mobile - VERY SPECIFIC */
   body.template-page .ai-innovation-container-aagpvcmz0n25xaze3naigenblock2fff632kqwkw8 [class*="ai-innovation-closing-image-wrapper-"] {
-    margin: 20px auto 20px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
   
   /* Fallback closing image wrapper mobile */
   body.template-page [class*="ai-innovation-closing-image-wrapper-"] {
-    margin: 20px auto 20px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
   }
   
   /* Intro text mobile - match homepage */
