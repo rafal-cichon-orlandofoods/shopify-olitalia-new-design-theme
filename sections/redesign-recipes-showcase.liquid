@@ -6,6 +6,19 @@
     {% if section.settings.title != blank %}
       <h2 class="redesign-recipes__title">{{ section.settings.title }}</h2>
     {% endif %}
+    
+    {%- comment -%} Navigation Arrows - Desktop only {%- endcomment -%}
+    <button class="redesign-recipes__nav-arrow redesign-recipes__nav-arrow--prev" aria-label="Previous recipe">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+      </svg>
+    </button>
+    <button class="redesign-recipes__nav-arrow redesign-recipes__nav-arrow--next" aria-label="Next recipe">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+      </svg>
+    </button>
+    
     <div class="redesign-recipes__grid">
       {% comment %} Auto-fetch recipe pages {% endcomment %}
       {% assign all_recipe_pages = pages | where: 'template_suffix', 'recipe' %}
@@ -69,10 +82,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const grid = document.querySelector('.redesign-recipes__grid');
   const cards = document.querySelectorAll('.redesign-recipe-card');
   const dots = document.querySelectorAll('.redesign-recipes__dot');
+  const prevArrow = document.querySelector('.redesign-recipes__nav-arrow--prev');
+  const nextArrow = document.querySelector('.redesign-recipes__nav-arrow--next');
   
   if (!grid || cards.length === 0 || dots.length === 0) return;
   
   let isScrolling = false;
+  let currentIndex = 0;
   
   function updateActiveCard() {
     if (isScrolling) return;
@@ -103,6 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
+    currentIndex = activeIndex;
+    
     // Update card opacity
     cards.forEach((card, index) => {
       card.style.opacity = index === activeIndex ? '1' : '0.3';
@@ -116,42 +134,93 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.classList.remove('active');
       }
     });
+    
+    // Update arrow states
+    updateArrowStates();
   }
   
+  function updateArrowStates() {
+    if (!prevArrow || !nextArrow) return;
+    
+    // Disable prev arrow at start
+    if (currentIndex === 0) {
+      prevArrow.classList.add('redesign-recipes__nav-arrow--disabled');
+    } else {
+      prevArrow.classList.remove('redesign-recipes__nav-arrow--disabled');
+    }
+    
+    // Disable next arrow at end
+    if (currentIndex === cards.length - 1) {
+      nextArrow.classList.add('redesign-recipes__nav-arrow--disabled');
+    } else {
+      nextArrow.classList.remove('redesign-recipes__nav-arrow--disabled');
+    }
+  }
+  
+  function scrollToCard(index) {
+    if (index < 0 || index >= cards.length) return;
+    
+    isScrolling = true;
+    const targetCard = cards[index];
+    const isLastCard = index === cards.length - 1;
+    
+    let scrollPosition;
+    if (isLastCard) {
+      // For the last card, scroll to the very end
+      scrollPosition = grid.scrollWidth - grid.offsetWidth;
+    } else {
+      // For other cards, center them
+      scrollPosition = targetCard.offsetLeft - (grid.offsetWidth - targetCard.offsetWidth) / 2;
+    }
+    
+    grid.scrollTo({
+      left: Math.max(0, scrollPosition),
+      behavior: 'smooth'
+    });
+    
+    // Reset scrolling flag after animation
+    setTimeout(() => {
+      isScrolling = false;
+      updateActiveCard();
+    }, 500);
+  }
+  
+  // Arrow click handlers
+  if (prevArrow) {
+    prevArrow.addEventListener('click', () => {
+      scrollToCard(currentIndex - 1);
+    });
+  }
+  
+  if (nextArrow) {
+    nextArrow.addEventListener('click', () => {
+      scrollToCard(currentIndex + 1);
+    });
+  }
+  
+  // Scroll event
   grid.addEventListener('scroll', updateActiveCard);
   
+  // Dot click handlers
   dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
-      if (index >= cards.length) return;
-      
-      isScrolling = true;
-      const targetCard = cards[index];
-      const isLastCard = index === cards.length - 1;
-      
-      let scrollPosition;
-      if (isLastCard) {
-        // For the last card, scroll to the very end
-        scrollPosition = grid.scrollWidth - grid.offsetWidth;
-      } else {
-        // For other cards, center them
-        scrollPosition = targetCard.offsetLeft - (grid.offsetWidth - targetCard.offsetWidth) / 2;
-      }
-      
-      grid.scrollTo({
-        left: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
-      
-      // Reset scrolling flag after animation
-      setTimeout(() => {
-        isScrolling = false;
-        updateActiveCard();
-      }, 500);
+      scrollToCard(index);
     });
   });
   
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      scrollToCard(currentIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      scrollToCard(currentIndex + 1);
+    }
+  });
+  
   // Initial update
-  setTimeout(updateActiveCard, 100);
+  setTimeout(() => {
+    updateActiveCard();
+  }, 100);
 });
 </script>
 

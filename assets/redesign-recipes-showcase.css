@@ -1,38 +1,57 @@
-/* Recipes Showcase Slider - Improved dot navigation for desktop */
+/* Recipes Showcase Slider - Improved navigation for desktop */
 
-/* Make dots larger and easier to click on desktop */
-@media (min-width: 1024px) {
-  .redesign-recipes-showcase .css-slider-dot-navigation .css-slider-dot {
-    width: 12px !important;
-    height: 12px !important;
-    margin: 0 6px !important;
-    border-radius: 12px !important;
-    transition: all 0.3s ease !important;
-  }
-  
-  /* Add hover effect for better UX */
-  .no-touchevents .redesign-recipes-showcase .css-slider-dot-navigation .css-slider-dot:not(.active):hover {
-    opacity: 0.6 !important;
-    transform: scale(1.2) !important;
-  }
-  
-  /* Active dot slightly larger */
-  .redesign-recipes-showcase .css-slider-dot-navigation .css-slider-dot.active {
-    opacity: 1 !important;
-    transform: scale(1.3) !important;
-  }
+/* Navigation Arrows - Desktop only */
+.redesign-recipes-showcase {
+  position: relative;
 }
 
-/* Tablet - slightly larger than mobile */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .redesign-recipes-showcase .css-slider-dot-navigation .css-slider-dot {
-    width: 10px !important;
-    height: 10px !important;
-    margin: 0 5px !important;
-    border-radius: 10px !important;
+.redesign-recipes__nav-arrow {
+  display: none; /* Hidden on mobile */
+}
+
+@media (min-width: 1024px) {
+  .redesign-recipes__nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   }
   
-  .redesign-recipes-showcase .css-slider-dot-navigation .css-slider-dot.active {
-    transform: scale(1.2) !important;
+  .redesign-recipes__nav-arrow:hover {
+    background: #fff;
+    border-color: #000;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .redesign-recipes__nav-arrow--prev {
+    left: 20px;
+  }
+  
+  .redesign-recipes__nav-arrow--next {
+    right: 20px;
+  }
+  
+  .redesign-recipes__nav-arrow svg {
+    width: 24px;
+    height: 24px;
+    fill: #000;
+  }
+  
+  /* Hide arrows when at start/end */
+  .redesign-recipes__nav-arrow--disabled {
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
