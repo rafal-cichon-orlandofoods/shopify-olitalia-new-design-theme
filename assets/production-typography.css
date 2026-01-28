@@ -283,48 +283,19 @@ body.template-page [class*="ai-innovation-closing-text-"].reveal-text {
 }
 
 
-/* READ MORE BUTTON STYLING - Social media style */
-body.template-page .read-more-btn {
-  display: inline-block !important;
-  margin-top: 8px !important;
-  padding: 0 !important;
-  background: transparent !important;
-  border: none !important;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  color: #666 !important;
-  cursor: pointer !important;
-  transition: color 0.2s ease !important;
+/* Hide read-more buttons - functionality disabled */
+.read-more-btn {
+  display: none !important;
 }
 
-body.template-page .read-more-btn:hover {
-  color: #00134f !important;
+/* Show all text content - no truncation */
+.text-preview {
+  display: none !important;
 }
 
-body.template-page .read-more-btn:active {
-  color: #000 !important;
+.text-full {
+  display: block !important;
 }
-
-/* Ellipsis before Read More */
-body.template-page .text-preview::after {
-  content: '...' !important;
-  color: #666 !important;
-}
-
-/* Text containers */
-body.template-page .text-preview,
-body.template-page .text-full {
-  transition: opacity 0.3s ease !important;
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  body.template-page .read-more-btn {
-    font-size: 15px !important;
-  }
-}
-
 
 /* SUBTLE SECTION BACKGROUNDS - matching V2 style */
 /* Apply alternating backgrounds to AI innovation items using pseudo-elements */

@@ -626,46 +626,8 @@
 }
 
 
-/* READ MORE BUTTON STYLING - Social media style */
-.read-more-btn {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 0;
-  background: transparent;
-  border: none;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #666;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.read-more-btn:hover {
-  color: #00134f;
-}
-
-.read-more-btn:active {
-  color: #000;
-}
-
-/* Ellipsis before Read More */
-.text-preview::after {
-  content: '...';
-  color: #666;
-}
-
-/* Text containers */
-.text-preview,
-.text-full {
-  transition: opacity 0.3s ease;
-}
-
 /* Mobile adjustments */
 @media (max-width: 768px) {
-  .read-more-btn {
-    font-size: 15px;
-  }
 }
 
 
@@ -704,6 +666,20 @@
 .sustainability-figma__people,
 .sustainability-figma__closing {
   position: relative;
+}
+
+/* Hide read-more buttons - functionality disabled */
+.read-more-btn {
+  display: none !important;
+}
+
+/* Show all text content - no truncation */
+.text-preview {
+  display: none !important;
+}
+
+.text-full {
+  display: block !important;
 }
 
 /* Mobile adjustments */
