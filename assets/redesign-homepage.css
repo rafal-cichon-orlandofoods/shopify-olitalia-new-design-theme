@@ -651,11 +651,18 @@
     }
 
     .redesign-testimonial__quote {
-        font-size: 22px;
+        font-size: 18px;
+        line-height: 1.5;
+        padding: 0 10px;
     }
 
     .redesign-testimonial__slide {
         padding: 0 20px;
+        min-width: 100%;
+    }
+    
+    .redesign-testimonial {
+        padding: 60px 0;
     }
 
     /* Optimize badge logo for mobile performance */
@@ -721,6 +728,15 @@
 
     .redesign-hero__title {
         font-size: 28px;
+    }
+    
+    .redesign-testimonial__quote {
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    
+    .redesign-testimonial__slide {
+        padding: 0 15px;
     }
 
     .redesign-recipe-card__image-wrapper {
