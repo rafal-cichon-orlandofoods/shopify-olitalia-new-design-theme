@@ -56,6 +56,12 @@
         "badge_text": "Extravergine Italiano Certificato"
       }
     },
+    "sun_animation_badge_A3xK9p": {
+      "type": "sun-animation-badge",
+      "name": "Sun Animation Badge",
+      "settings": {
+      }
+    },
     "redesign_newsletter_simple_xkJBAf": {
       "type": "redesign-newsletter-simple",
       "name": "Redesign Newsletter",
@@ -78,6 +84,7 @@
     "redesign_homepage_hero_nt3CBz",
     "redesign_testimonial_simple_YUfKBx",
     "redesign_brand_badge_RBGDHC",
+    "sun_animation_badge_A3xK9p",
     "redesign_recipes_showcase_hjzBjp",
     "redesign_newsletter_simple_xkJBAf",
     "redesign_footer_h9EXLr"
