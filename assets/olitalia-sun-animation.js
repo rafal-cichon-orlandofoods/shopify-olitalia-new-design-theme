@@ -303,10 +303,7 @@ height: 150,
 fps: 30,
 color: "#FFFFFF",
 opacity: 1.00,
-manifest: [
-{src:"{{ 'Layer1GradientMap1.png' | asset_url }}", id:"Layer1GradientMap1"},
-{src:"{{ 'olitalia sun animation_atlas_1.png' | asset_url }}", id:"olitalia_sun_animation_atlas_1"}
-],
+manifest: [],
 preloads: []
 };
 

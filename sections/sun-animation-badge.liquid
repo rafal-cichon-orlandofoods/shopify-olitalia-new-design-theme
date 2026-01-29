@@ -73,6 +73,12 @@
 <script>
 var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
 
+// Override manifest with proper Shopify asset URLs
+window.sunAnimationManifest = [
+  {src: "{{ 'Layer1GradientMap1.png' | asset_url }}", id: "Layer1GradientMap1"},
+  {src: "{{ 'olitalia sun animation_atlas_1.png' | asset_url }}", id: "olitalia_sun_animation_atlas_1"}
+];
+
 function initSunAnimation() {
   canvas = document.getElementById("sun_canvas");
   anim_container = document.getElementById("sun_animation_container");
@@ -80,6 +86,10 @@ function initSunAnimation() {
   
   var comp = AdobeAn.getComposition("117E02CA86B748899282774A40150680");
   var lib = comp.getLibrary();
+  
+  // Override the manifest with Shopify URLs
+  lib.properties.manifest = window.sunAnimationManifest;
+  
   var loader = new createjs.LoadQueue(false);
   
   loader.addEventListener("fileload", function(evt){
@@ -90,7 +100,6 @@ function initSunAnimation() {
     handleComplete(evt,comp);
   });
   
-  var lib = comp.getLibrary();
   loader.loadManifest(lib.properties.manifest);
 }
 
