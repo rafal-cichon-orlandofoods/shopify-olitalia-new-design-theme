@@ -393,7 +393,7 @@
 }
 
 
-/* Interactive Checkboxes */
+/* Interactive Checkboxes - Hidden by default, shown in Cooking Mode */
 .redesign-recipe__checkbox-label {
     display: flex;
     align-items: flex-start;
@@ -401,6 +401,26 @@
     cursor: pointer;
     position: relative;
     width: 100%;
+}
+
+/* Hide checkboxes by default for SEO */
+.redesign-recipe__checkbox,
+.redesign-recipe__checkbox-custom {
+    display: none;
+}
+
+/* Show checkboxes in Cooking Mode */
+.cooking-mode-active .redesign-recipe__checkbox-custom {
+    display: block;
+}
+
+/* Hide Reset buttons by default */
+.recipe-reset-btn {
+    display: none;
+}
+
+.cooking-mode-active .recipe-reset-btn {
+    display: inline-flex;
 }
 
 .redesign-recipe__checkbox {
@@ -509,18 +529,20 @@
 /* Print Recipe Button */
 .redesign-recipe-actions {
     margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
-.redesign-recipe-print-btn {
-    width: 100%;
+.redesign-recipe-print-btn,
+.redesign-recipe-cooking-btn {
+    flex: 1;
+    min-width: 200px;
     max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: #ffffff;
-    color: #2c2c2c;
-    border: 1px solid #e0e0e0;
     padding: 14px 24px;
     border-radius: 8px;
     font-size: 15px;
@@ -529,11 +551,34 @@
     transition: all 0.3s ease;
 }
 
+.redesign-recipe-print-btn {
+    background: #ffffff;
+    color: #2c2c2c;
+    border: 1px solid #e0e0e0;
+}
+
 .redesign-recipe-print-btn:hover {
     border-color: #2c2c2c;
     background: #f8f8f8;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.redesign-recipe-cooking-btn {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+}
+
+.redesign-recipe-cooking-btn:hover {
+    background: #2c2c2c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.redesign-recipe-cooking-btn.active {
+    background: #385DFF;
+    border-color: #385DFF;
 }
 
 .redesign-recipe-print-btn:active {
@@ -647,9 +692,8 @@
     opacity: 0.7;
 }
 
-/* Recipe Reset Button */
+/* Recipe Reset Button - Styles only, visibility controlled above */
 .recipe-reset-btn {
-    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     background: transparent;
