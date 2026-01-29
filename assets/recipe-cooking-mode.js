@@ -96,19 +96,25 @@ class RecipeCookingMode {
     const notification = document.createElement('div');
     notification.className = 'cooking-mode-notification';
     notification.textContent = message;
+    
+    // Check if mobile
+    const isMobile = window.innerWidth <= 768;
+    
     notification.style.cssText = `
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: ${isMobile ? '20px' : '30px'};
+      right: ${isMobile ? '16px' : '30px'};
+      left: ${isMobile ? '16px' : 'auto'};
       background: #000;
       color: #fff;
-      padding: 16px 24px;
+      padding: ${isMobile ? '14px 18px' : '16px 24px'};
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
       z-index: 9999;
       animation: slideInUp 0.3s ease;
-      font-size: 14px;
+      font-size: ${isMobile ? '13px' : '14px'};
       font-weight: 500;
+      text-align: center;
     `;
 
     document.body.appendChild(notification);

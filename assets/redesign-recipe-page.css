@@ -609,9 +609,162 @@
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .redesign-recipe-print-btn {
-        padding: 12px 20px;
+    /* Action buttons - stack vertically on mobile */
+    .redesign-recipe-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .redesign-recipe-print-btn,
+    .redesign-recipe-cooking-btn {
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        padding: 14px 20px;
         font-size: 14px;
+    }
+    
+    /* Sidebar sections - better spacing */
+    .redesign-recipe__sidebar-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .redesign-recipe__sidebar-section h3 {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    /* Ingredients and instructions - better readability */
+    .redesign-recipe__sidebar-list li {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    
+    .redesign-recipe__instruction-item {
+        margin-bottom: 16px;
+        gap: 10px;
+    }
+    
+    .redesign-recipe__instruction-item::before {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
+    
+    .redesign-recipe__instruction-text {
+        font-size: 15px;
+    }
+    
+    /* Checkboxes - slightly smaller on mobile */
+    .redesign-recipe__checkbox-custom {
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Reset buttons - better mobile styling */
+    .recipe-reset-btn {
+        font-size: 11px;
+        padding: 0.35rem 0.65rem;
+    }
+    
+    .recipe-reset-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* Section titles */
+    .redesign-recipe__section-title {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    
+    /* Body grid - single column */
+    .redesign-recipe__body {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens - even more compact */
+    .redesign-recipe__container {
+        padding: 30px 16px;
+    }
+    
+    .redesign-recipe-actions {
+        gap: 8px;
+        margin-top: 16px;
+    }
+    
+    .redesign-recipe-print-btn,
+    .redesign-recipe-cooking-btn {
+        padding: 12px 16px;
+        font-size: 13px;
+        gap: 8px;
+    }
+    
+    .redesign-recipe-print-btn svg,
+    .redesign-recipe-cooking-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .redesign-recipe__sidebar-section {
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 8px;
+    }
+    
+    .redesign-recipe__sidebar-section h3 {
+        font-size: 12px;
+    }
+    
+    .redesign-recipe__sidebar-list li {
+        padding: 8px 0;
+        font-size: 13px;
+    }
+    
+    .redesign-recipe__instruction-item {
+        margin-bottom: 14px;
+        gap: 8px;
+    }
+    
+    .redesign-recipe__instruction-item::before {
+        width: 24px;
+        height: 24px;
+        font-size: 11px;
+    }
+    
+    .redesign-recipe__instruction-text {
+        font-size: 14px;
+    }
+    
+    .redesign-recipe__section-title {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .redesign-recipe__title {
+        font-size: 28px;
+    }
+    
+    /* Checkboxes */
+    .redesign-recipe__checkbox-custom {
+        width: 16px;
+        height: 16px;
+    }
+    
+    /* Reset buttons */
+    .recipe-reset-btn {
+        font-size: 10px;
+        padding: 0.3rem 0.55rem;
+    }
+    
+    .recipe-reset-btn svg {
+        width: 11px;
+        height: 11px;
     }
 }
 
