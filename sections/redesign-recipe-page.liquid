@@ -165,8 +165,17 @@
                 {% endif %}
               </ul>
             </div>
+            
+            <button class="redesign-recipe-shop-btn" id="shopRecipeBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 2L7.17 4H4C2.9 4 2 4.9 2 6V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V6C22 4.9 21.1 4 20 4H16.83L15 2H9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Shop This Recipe
+            </button>
           </div>
         {% endif %}
+      </div>
       </aside>
 
       <div class="redesign-recipe__content">
@@ -205,6 +214,40 @@
     </div>
   </div>
 </section>
+
+<!-- Shop Recipe Modal -->
+<div class="recipe-shop-modal" id="recipeShopModal">
+  <div class="recipe-shop-modal__overlay"></div>
+  <div class="recipe-shop-modal__content">
+    <button class="recipe-shop-modal__close" id="closeShopModal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    
+    <h2 class="recipe-shop-modal__title">Shop This Recipe</h2>
+    <p class="recipe-shop-modal__subtitle">Get the ingredients you need</p>
+    
+    <div class="recipe-shop-modal__products">
+      {% if featured_product %}
+        <div class="recipe-shop-modal__product">
+          <div class="recipe-shop-modal__product-image">
+            {% if featured_product.featured_image %}
+              <img src="{{ featured_product.featured_image | image_url: width: 200 }}" alt="{{ featured_product.title }}">
+            {% endif %}
+          </div>
+          <div class="recipe-shop-modal__product-info">
+            <h3>{{ featured_product.title }}</h3>
+            <p class="recipe-shop-modal__product-price">{{ featured_product.price | money }}</p>
+            <a href="{{ featured_product.url }}" class="recipe-shop-modal__product-btn">View Product</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'recipe-shop-modal.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
