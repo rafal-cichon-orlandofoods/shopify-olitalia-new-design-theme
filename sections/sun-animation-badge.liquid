@@ -126,13 +126,15 @@ function handleComplete(evt,comp) {
   exportRoot = new lib.olitaliasunanimation();
   stage = new lib.Stage(canvas);
   
-  // Scale the animation 2x
-  exportRoot.scaleX = exportRoot.scaleY = 2;
+  // Original animation bounds: 135.6 x 142.5px
+  // Scale to fit 400px canvas: 400 / 136 = ~2.94x
+  var scale = 2.94;
+  exportRoot.scaleX = exportRoot.scaleY = scale;
   
-  // Center the scaled animation (150px * 2 = 300px, canvas is 400px)
-  // Offset by (400 - 300) / 2 = 50px
-  exportRoot.x = 50;
-  exportRoot.y = 50;
+  // Center the scaled animation
+  // Scaled size: 136 * 2.94 = ~400px
+  exportRoot.x = 0;
+  exportRoot.y = 0;
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
