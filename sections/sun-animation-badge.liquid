@@ -1,6 +1,6 @@
 <style>
 .sun-animation-section {
-  padding: 80px 20px;
+  padding: 40px 20px;
   background: #fff;
   text-align: center;
 }
@@ -17,15 +17,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -34,8 +34,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -45,7 +45,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .sun-animation-section {
-    padding: 60px 20px;
+    padding: 30px 20px;
   }
   
   #sun_animation_container,
@@ -61,7 +61,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="350" height="350"></canvas>
+        <canvas id="sun_canvas" width="400" height="400"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -129,10 +129,10 @@ function handleComplete(evt,comp) {
   // Scale the animation 2x
   exportRoot.scaleX = exportRoot.scaleY = 2;
   
-  // Center the scaled animation (150px * 2 = 300px, canvas is 350px)
-  // Offset by (350 - 300) / 2 = 25px
-  exportRoot.x = 25;
-  exportRoot.y = 25;
+  // Center the scaled animation (150px * 2 = 300px, canvas is 400px)
+  // Offset by (400 - 300) / 2 = 50px
+  exportRoot.x = 50;
+  exportRoot.y = 50;
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
