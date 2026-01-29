@@ -17,15 +17,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -34,8 +34,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 400px;
-  height: 400px;
+  width: 450px;
+  height: 450px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -51,8 +51,8 @@
   #sun_animation_container,
   #sun_canvas,
   #sun_dom_overlay_container {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
   }
 }
 </style>
@@ -61,7 +61,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="400" height="400"></canvas>
+        <canvas id="sun_canvas" width="450" height="450"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -127,16 +127,14 @@ function handleComplete(evt,comp) {
   stage = new lib.Stage(canvas);
   
   // Original animation bounds: 135.6 x 142.5px
-  // Scale to fit nicely in 400px canvas with some margin
-  // Target size: ~350px, so 350 / 136 = 2.57x
-  var scale = 2.57;
+  // Scale 3x: 135.6 * 3 = 406.8px, 142.5 * 3 = 427.5px
+  // Canvas: 450px
+  // Offset X: (450 - 406.8) / 2 = 21.6px ≈ 22px
+  // Offset Y: (450 - 427.5) / 2 = 11.25px ≈ 11px
+  var scale = 3;
   exportRoot.scaleX = exportRoot.scaleY = scale;
-  
-  // Center the scaled animation
-  // Scaled size: 136 * 2.57 = ~350px, canvas is 400px
-  // Offset: (400 - 350) / 2 = 25px
-  exportRoot.x = 25;
-  exportRoot.y = 25;
+  exportRoot.x = 22;
+  exportRoot.y = 11;
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
