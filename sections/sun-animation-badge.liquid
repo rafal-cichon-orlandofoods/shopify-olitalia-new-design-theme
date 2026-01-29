@@ -1,6 +1,6 @@
 <style>
 .sun-animation-section {
-  padding: 40px 20px;
+  padding: 80px 20px;
   background: #fff;
   text-align: center;
 }
@@ -17,15 +17,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 450px;
-  height: 450px;
+  width: 350px;
+  height: 350px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 450px;
-  height: 450px;
+  width: 350px;
+  height: 350px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -34,8 +34,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 450px;
-  height: 450px;
+  width: 350px;
+  height: 350px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -45,14 +45,14 @@
 /* Responsive */
 @media (max-width: 768px) {
   .sun-animation-section {
-    padding: 30px 20px;
+    padding: 60px 20px;
   }
   
   #sun_animation_container,
   #sun_canvas,
   #sun_dom_overlay_container {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
   }
 }
 </style>
@@ -61,7 +61,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="450" height="450"></canvas>
+        <canvas id="sun_canvas" width="350" height="350"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -75,8 +75,8 @@ var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAni
 
 // Override manifest with proper Shopify asset URLs
 window.sunAnimationManifest = [
-  {src: "{{ 'Layer1GradientMap1.png' | asset_url }}", id: "Layer1GradientMap1"},
-  {src: "{{ 'olitalia sun animation_atlas_1.png' | asset_url }}", id: "olitalia_sun_animation_atlas_1"}
+  {src: "{{ 'Layer1GradientMap1.webp' | asset_url }}", id: "Layer1GradientMap1"},
+  {src: "{{ 'olitalia sun animation_atlas_1.webp' | asset_url }}", id: "olitalia_sun_animation_atlas_1"}
 ];
 
 function initSunAnimation() {
@@ -126,15 +126,13 @@ function handleComplete(evt,comp) {
   exportRoot = new lib.olitaliasunanimation();
   stage = new lib.Stage(canvas);
   
-  // Original animation bounds: 135.6 x 142.5px
-  // Scale 3x: 135.6 * 3 = 406.8px, 142.5 * 3 = 427.5px
-  // Canvas: 450px
-  // Offset X: (450 - 406.8) / 2 = 21.6px ≈ 22px
-  // Offset Y: (450 - 427.5) / 2 = 11.25px ≈ 11px
-  var scale = 3;
-  exportRoot.scaleX = exportRoot.scaleY = scale;
-  exportRoot.x = 22;
-  exportRoot.y = 11;
+  // Scale the animation 2x
+  exportRoot.scaleX = exportRoot.scaleY = 2;
+  
+  // Center the scaled animation (150px * 2 = 300px, canvas is 350px)
+  // Offset by (350 - 300) / 2 = 25px
+  exportRoot.x = 25;
+  exportRoot.y = 25;
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
