@@ -127,14 +127,16 @@ function handleComplete(evt,comp) {
   stage = new lib.Stage(canvas);
   
   // Original animation bounds: 135.6 x 142.5px
-  // Scale to fit 400px canvas: 400 / 136 = ~2.94x
-  var scale = 2.94;
+  // Scale to fit nicely in 400px canvas with some margin
+  // Target size: ~350px, so 350 / 136 = 2.57x
+  var scale = 2.57;
   exportRoot.scaleX = exportRoot.scaleY = scale;
   
   // Center the scaled animation
-  // Scaled size: 136 * 2.94 = ~400px
-  exportRoot.x = 0;
-  exportRoot.y = 0;
+  // Scaled size: 136 * 2.57 = ~350px, canvas is 400px
+  // Offset: (400 - 350) / 2 = 25px
+  exportRoot.x = 25;
+  exportRoot.y = 25;
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
