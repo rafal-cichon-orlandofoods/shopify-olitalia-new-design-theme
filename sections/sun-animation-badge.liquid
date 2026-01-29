@@ -150,16 +150,39 @@ function handleComplete(evt,comp) {
         isPlaying = true;
         exportRoot.gotoAndPlay(0);
         
-        // Stop animation after one complete cycle
+        // Apply easing to slow down animation towards the end
         var totalFrames = exportRoot.totalFrames;
-        var checkFrame = function() {
-          if (exportRoot.currentFrame >= totalFrames - 1) {
+        var startTime = Date.now();
+        var duration = (totalFrames / lib.properties.fps) * 1000; // Duration in ms
+        
+        var easeOutQuad = function(t) {
+          return t * (2 - t); // Ease out quadratic
+        };
+        
+        var animateWithEasing = function() {
+          var elapsed = Date.now() - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          var easedProgress = easeOutQuad(progress);
+          var targetFrame = Math.floor(easedProgress * (totalFrames - 1));
+          
+          exportRoot.gotoAndStop(targetFrame);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateWithEasing);
+          } else {
             exportRoot.gotoAndStop(totalFrames - 1);
-            createjs.Ticker.removeEventListener("tick", checkFrame);
             isPlaying = false; // Allow animation to play again
           }
         };
-        createjs.Ticker.addEventListener("tick", checkFrame);
+        
+        // Stop the default ticker and use our custom animation
+        createjs.Ticker.removeEventListener("tick", stage);
+        animateWithEasing();
+        
+        // Restart ticker after animation completes
+        setTimeout(function() {
+          createjs.Ticker.addEventListener("tick", stage);
+        }, duration);
       }
     });
   }, {
