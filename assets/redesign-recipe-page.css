@@ -41,12 +41,22 @@
 
 .redesign-recipe__body {
     display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 80px;
+    grid-template-columns: 320px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.redesign-recipe__sidebar {
+    position: relative;
+}
+
+.redesign-recipe__sidebar-sticky {
+    position: relative;
+    top: 0;
 }
 
 .redesign-recipe__content {
-    max-width: 800px;
+    width: 100%;
 }
 
 .redesign-recipe__title {
@@ -111,15 +121,16 @@
 }
 
 .redesign-recipe__section {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    padding-top: 24px;
 }
 
 .redesign-recipe__section-title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: #2c2c2c;
-    margin: 0 0 20px;
+    margin: 0 0 15px !important;
 }
 
 .redesign-recipe__ingredients ul {
@@ -135,10 +146,10 @@
 
 .redesign-recipe__ingredients li,
 .redesign-recipe__instructions li {
-    font-size: 15px;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.6;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .redesign-recipe__instructions li {
@@ -238,22 +249,22 @@
 }
 
 .redesign-recipe__sidebar-sticky {
-    position: sticky;
-    top: 100px;
+    position: relative;
+    top: 0;
 }
 
 .redesign-recipe__sidebar-section {
     background: #f8f8f8;
-    padding: 30px;
+    padding: 24px;
     border-radius: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
 }
 
 .redesign-recipe__sidebar-section h3 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: #2c2c2c;
-    margin: 0 0 20px;
+    margin: 0 !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -273,10 +284,14 @@
 .redesign-recipe__sidebar-list li {
     padding: 12px 0;
     border-bottom: 1px solid #e5e5e5;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
     color: #666;
     position: relative;
+}
+
+.redesign-recipe__sidebar-section .redesign-recipe__sidebar-list ul li:first-child {
+    padding-top: 4px !important;
 }
 
 .redesign-recipe__sidebar-list li:last-child {
@@ -447,21 +462,30 @@
 }
 
 .redesign-recipe__instruction-item {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     counter-increment: step-counter;
     display: flex;
     align-items: flex-start;
     gap: 12px;
 }
 
+.redesign-recipe__instruction-item:first-child {
+    margin-top: 0;
+}
+
+.redesign-recipe__instructions-list li:first-child {
+    padding-top: 0 !important;
+}
+
 .redesign-recipe__instruction-item::before {
     content: counter(step-counter);
     font-weight: 600;
     color: #2c2c2c;
-    font-size: 14px;
-    width: 24px;
-    height: 24px;
-    background: #f5f5f5;
+    font-size: 13px;
+    width: 28px;
+    height: 28px;
+    background: transparent;
+    border: 1px solid #2c2c2c;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -480,4 +504,190 @@
 .redesign-recipe__instruction-item .redesign-recipe__checkbox-custom {
     position: static;
     margin-top: 2px;
+}
+
+/* Print Recipe Button */
+.redesign-recipe-actions {
+    margin-top: 24px;
+}
+
+.redesign-recipe-print-btn {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #ffffff;
+    color: #2c2c2c;
+    border: 1px solid #e0e0e0;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.redesign-recipe-print-btn:hover {
+    border-color: #2c2c2c;
+    background: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.redesign-recipe-print-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.redesign-recipe-print-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+/* Loading state for print button */
+.redesign-recipe-print-btn .print-loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .redesign-recipe-print-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* Ingredient amount formatting */
+.redesign-recipe__ingredient-text strong {
+    font-weight: 600;
+    color: #2c2c2c;
+}
+
+.redesign-recipe__ingredient-text {
+    color: #666;
+}
+
+/* Product links in ingredients */
+.ingredient-product-link {
+    color: #385DFF;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.ingredient-product-link:hover {
+    border-bottom-color: #385DFF;
+    color: #2746C9;
+}
+
+.ingredient-product-link:active {
+    color: #00134F;
+}
+
+/* Ensure link is clickable even when checkbox label is present */
+.redesign-recipe__checkbox-label .ingredient-product-link {
+    pointer-events: all;
+    z-index: 1;
+}
+
+/* Prevent text decoration when ingredient is checked */
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__ingredient-text .ingredient-product-link {
+    text-decoration: line-through;
+    opacity: 0.5;
+    border-bottom-color: transparent;
+}
+
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__ingredient-text .ingredient-product-link:hover {
+    opacity: 0.7;
+}
+
+/* Product links in instructions - same styles */
+.redesign-recipe__instruction-text .ingredient-product-link {
+    color: #385DFF;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 1;
+}
+
+.redesign-recipe__instruction-text .ingredient-product-link:hover {
+    border-bottom-color: #385DFF;
+    color: #2746C9;
+}
+
+.redesign-recipe__instruction-text .ingredient-product-link:active {
+    color: #00134F;
+}
+
+/* Prevent text decoration when instruction is checked */
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__instruction-text .ingredient-product-link {
+    text-decoration: line-through;
+    opacity: 0.5;
+    border-bottom-color: transparent;
+}
+
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__instruction-text .ingredient-product-link:hover {
+    opacity: 0.7;
+}
+
+/* Recipe Reset Button */
+.recipe-reset-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.recipe-reset-btn:hover {
+    background: #f5f5f5;
+    color: #2c2c2c;
+    border-color: #ccc;
+    transform: translateY(-1px);
+}
+
+.recipe-reset-btn:active {
+    transform: translateY(0);
+}
+
+.recipe-reset-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+/* Smooth checkbox transitions */
+.redesign-recipe__checkbox-label {
+    transition: opacity 0.3s ease;
+}
+
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__ingredient-text,
+.redesign-recipe__checkbox:checked ~ .redesign-recipe__instruction-text {
+    transition: all 0.3s ease;
 }
