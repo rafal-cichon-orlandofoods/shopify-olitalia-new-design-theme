@@ -129,6 +129,11 @@ function handleComplete(evt,comp) {
   // Scale the animation 2x
   exportRoot.scaleX = exportRoot.scaleY = 2;
   
+  // Center the scaled animation (150px * 2 = 300px, canvas is 350px)
+  // Offset by (350 - 300) / 2 = 25px
+  exportRoot.x = 25;
+  exportRoot.y = 25;
+  
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
     createjs.Ticker.framerate = lib.properties.fps;
