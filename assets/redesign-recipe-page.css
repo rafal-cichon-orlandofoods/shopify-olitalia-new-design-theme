@@ -541,10 +541,21 @@
     line-height: 1.5;
     display: flex;
     align-items: center;
+    transition: color 0.3s ease;
 }
 
 .redesign-recipe-wakelock-info svg {
     flex-shrink: 0;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+/* When cooking mode is active */
+.cooking-mode-active .redesign-recipe-wakelock-info {
+    color: #385DFF;
+}
+
+.cooking-mode-active .redesign-recipe-wakelock-info svg {
     color: #385DFF;
 }
 
@@ -593,6 +604,14 @@
 .redesign-recipe-cooking-btn.active {
     background: #385DFF;
     border-color: #385DFF;
+}
+
+.redesign-recipe-cooking-btn.active svg {
+    color: #ffffff;
+}
+
+.redesign-recipe-cooking-btn svg {
+    transition: color 0.3s ease;
 }
 
 .redesign-recipe-print-btn:active {
