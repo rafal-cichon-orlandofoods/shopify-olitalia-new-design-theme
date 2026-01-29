@@ -8,6 +8,7 @@ class RecipeCookingMode {
   constructor() {
     this.isActive = false;
     this.storageKey = 'recipe-cooking-mode-active';
+    this.wakeLock = null;
     this.init();
   }
 
@@ -64,6 +65,9 @@ class RecipeCookingMode {
     // Save state
     localStorage.setItem(this.storageKey, 'true');
 
+    // Request WakeLock to keep screen on
+    this.requestWakeLock();
+
     // Show visual feedback
     this.showNotification('Baking / Cooking Mode activated! Track your progress with checkboxes.');
   }
@@ -87,8 +91,44 @@ class RecipeCookingMode {
     // Save state
     localStorage.setItem(this.storageKey, 'false');
 
+    // Release WakeLock
+    this.releaseWakeLock();
+
     // Show visual feedback
     this.showNotification('Baking / Cooking Mode deactivated');
+  }
+
+  async requestWakeLock() {
+    // Check if WakeLock API is supported
+    if (!('wakeLock' in navigator)) {
+      console.log('WakeLock API not supported');
+      return;
+    }
+
+    try {
+      this.wakeLock = await navigator.wakeLock.request('screen');
+      console.log('WakeLock activated - screen will stay on');
+
+      // Listen for release
+      this.wakeLock.addEventListener('release', () => {
+        console.log('WakeLock released');
+      });
+    } catch (err) {
+      console.error('WakeLock request failed:', err);
+    }
+  }
+
+  releaseWakeLock() {
+    if (this.wakeLock) {
+      this.wakeLock.release()
+        .then(() => {
+          this.wakeLock = null;
+          console.log('WakeLock released manually');
+        })
+        .catch(err => {
+          console.error('WakeLock release failed:', err);
+        });
+    }
   }
 
   showNotification(message) {

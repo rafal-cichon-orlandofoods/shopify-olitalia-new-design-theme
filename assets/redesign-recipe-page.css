@@ -534,6 +534,20 @@
     flex-wrap: wrap;
 }
 
+.redesign-recipe-wakelock-info {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+}
+
+.redesign-recipe-wakelock-info svg {
+    flex-shrink: 0;
+    color: #385DFF;
+}
+
 .redesign-recipe-print-btn,
 .redesign-recipe-cooking-btn {
     flex: 1;
