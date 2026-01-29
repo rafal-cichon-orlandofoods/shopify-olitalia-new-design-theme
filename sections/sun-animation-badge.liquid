@@ -142,12 +142,12 @@ function handleComplete(evt,comp) {
   AdobeAn.compositionLoaded(lib.properties.id);
   fnStartAnimation();
   
-  // Setup Intersection Observer to play animation once when scrolled into view
-  var hasPlayed = false;
+  // Setup Intersection Observer to play animation when scrolled into view
+  var isPlaying = false;
   var observer = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (entry.isIntersecting && !hasPlayed) {
-        hasPlayed = true;
+      if (entry.isIntersecting && !isPlaying) {
+        isPlaying = true;
         exportRoot.gotoAndPlay(0);
         
         // Stop animation after one complete cycle
@@ -156,11 +156,10 @@ function handleComplete(evt,comp) {
           if (exportRoot.currentFrame >= totalFrames - 1) {
             exportRoot.gotoAndStop(totalFrames - 1);
             createjs.Ticker.removeEventListener("tick", checkFrame);
+            isPlaying = false; // Allow animation to play again
           }
         };
         createjs.Ticker.addEventListener("tick", checkFrame);
-        
-        observer.disconnect(); // Stop observing after first play
       }
     });
   }, {
