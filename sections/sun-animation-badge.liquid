@@ -17,15 +17,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -34,8 +34,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -51,8 +51,8 @@
   #sun_animation_container,
   #sun_canvas,
   #sun_dom_overlay_container {
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
   }
 }
 </style>
@@ -61,7 +61,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="300" height="300"></canvas>
+        <canvas id="sun_canvas" width="350" height="350"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -133,11 +133,30 @@ function handleComplete(evt,comp) {
     stage.addChild(exportRoot);
     createjs.Ticker.framerate = lib.properties.fps;
     createjs.Ticker.addEventListener("tick", stage);
+    
+    // Stop animation immediately and go to first frame
+    exportRoot.gotoAndStop(0);
   }
   
   AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);
   AdobeAn.compositionLoaded(lib.properties.id);
   fnStartAnimation();
+  
+  // Setup Intersection Observer to play animation once when scrolled into view
+  var hasPlayed = false;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !hasPlayed) {
+        hasPlayed = true;
+        exportRoot.gotoAndPlay(0);
+        observer.disconnect(); // Stop observing after first play
+      }
+    });
+  }, {
+    threshold: 0.5 // Trigger when 50% of element is visible
+  });
+  
+  observer.observe(anim_container);
 }
 
 // Initialize when DOM is ready
