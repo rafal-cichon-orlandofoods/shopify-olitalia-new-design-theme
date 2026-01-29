@@ -149,6 +149,17 @@ function handleComplete(evt,comp) {
       if (entry.isIntersecting && !hasPlayed) {
         hasPlayed = true;
         exportRoot.gotoAndPlay(0);
+        
+        // Stop animation after one complete cycle
+        var totalFrames = exportRoot.totalFrames;
+        var checkFrame = function() {
+          if (exportRoot.currentFrame >= totalFrames - 1) {
+            exportRoot.gotoAndStop(totalFrames - 1);
+            createjs.Ticker.removeEventListener("tick", checkFrame);
+          }
+        };
+        createjs.Ticker.addEventListener("tick", checkFrame);
+        
         observer.disconnect(); // Stop observing after first play
       }
     });
