@@ -126,6 +126,9 @@ function handleComplete(evt,comp) {
   exportRoot = new lib.olitaliasunanimation();
   stage = new lib.Stage(canvas);
   
+  // Scale the animation 2x
+  exportRoot.scaleX = exportRoot.scaleY = 2;
+  
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
     createjs.Ticker.framerate = lib.properties.fps;
