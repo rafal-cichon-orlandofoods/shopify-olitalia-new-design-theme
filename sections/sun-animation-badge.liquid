@@ -146,6 +146,18 @@ function handleComplete(evt,comp) {
   exportRoot = new lib.olitaliasunanimation();
   stage = new lib.Stage(canvas);
   
+  // Scale animation to fit canvas
+  // Original animation is 600x600, canvas is 450x450 (desktop) or 300x300 (mobile)
+  var canvasWidth = canvas.width;
+  var originalWidth = 600;
+  var scale = canvasWidth / originalWidth;
+  
+  exportRoot.scaleX = exportRoot.scaleY = scale;
+  
+  // Center the animation
+  exportRoot.x = (canvasWidth - (originalWidth * scale)) / 2;
+  exportRoot.y = (canvasWidth - (originalWidth * scale)) / 2;
+  
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
     createjs.Ticker.framerate = lib.properties.fps;
