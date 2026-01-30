@@ -182,9 +182,8 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding: 10px 60px 30px 0;
+    padding: 10px 60px 30px 60px;
     scroll-snap-type: x mandatory;
-    scroll-padding-right: 60px;
 }
 
 .redesign-testimonial__grid::-webkit-scrollbar {
@@ -206,7 +205,6 @@
 }
 
 .redesign-testimonial__slide:last-child {
-    margin-right: 60px;
     scroll-snap-align: end;
 }
 
