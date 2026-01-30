@@ -27,15 +27,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -44,8 +44,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -77,7 +77,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="500" height="500"></canvas>
+        <canvas id="sun_canvas" width="400" height="400"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -147,7 +147,7 @@ function handleComplete(evt,comp) {
   stage = new lib.Stage(canvas);
   
   // Scale animation to fit canvas
-  // Original animation is 600x600, canvas is 450x450 (desktop) or 300x300 (mobile)
+  // Original animation is 600x600, canvas is 400x400 (desktop) or 300x300 (mobile)
   var canvasWidth = canvas.width;
   var originalWidth = 600;
   var scale = canvasWidth / originalWidth;
@@ -167,7 +167,8 @@ function handleComplete(evt,comp) {
     exportRoot.gotoAndStop(0);
   }
   
-  AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);
+  // Don't use makeResponsive - it overrides our canvas size
+  // AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);
   AdobeAn.compositionLoaded(lib.properties.id);
   fnStartAnimation();
   
