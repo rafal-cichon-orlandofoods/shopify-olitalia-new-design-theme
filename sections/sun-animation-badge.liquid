@@ -27,15 +27,15 @@
 
 #sun_animation_container {
   background-color: rgba(255, 255, 255, 1.00);
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   margin: 0 auto;
   position: relative;
 }
 
 #sun_canvas {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   position: absolute;
   display: block;
   background-color: rgba(255, 255, 255, 1.00);
@@ -44,8 +44,8 @@
 #sun_dom_overlay_container {
   pointer-events: none;
   overflow: hidden;
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  height: 600px;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -61,8 +61,8 @@
   #sun_animation_container,
   #sun_canvas,
   #sun_dom_overlay_container {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
   }
   
   .sun-animation-disclaimer {
@@ -77,7 +77,7 @@
   <div class="sun-animation-container">
     <div class="sun-animation-wrapper">
       <div id="sun_animation_container">
-        <canvas id="sun_canvas" width="400" height="400"></canvas>
+        <canvas id="sun_canvas" width="600" height="600"></canvas>
         <div id="sun_dom_overlay_container"></div>
       </div>
     </div>
@@ -145,18 +145,6 @@ function handleComplete(evt,comp) {
   
   exportRoot = new lib.olitaliasunanimation();
   stage = new lib.Stage(canvas);
-  
-  // Scale animation to fit 400px canvas (original is 150px)
-  // 400 / 150 = 2.67x scale
-  var scale = 2.67;
-  exportRoot.scaleX = exportRoot.scaleY = scale;
-  
-  // Center the animation in canvas
-  // Original animation center is at 75, 75 (half of 150)
-  // New center should be at 200, 200 (half of 400)
-  // Offset = 200 - (75 * scale)
-  exportRoot.x = 200 - (75 * scale);
-  exportRoot.y = 200 - (75 * scale);
   
   fnStartAnimation = function() {
     stage.addChild(exportRoot);
