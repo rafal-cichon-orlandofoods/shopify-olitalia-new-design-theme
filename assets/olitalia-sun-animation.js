@@ -1,7 +1,7 @@
 (function (cjs, an) {
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
-lib.ssMetadata = [{name:"olitalia_sun_animation_atlas_1", frames: [[0,0,141,219],[143,83,205,64],[143,0,227,81]]}];
+lib.ssMetadata = [{name:"olitalia_sun_animation_atlas_1", frames: [[0,0,564,876],[572,332,820,256],[572,0,908,324]]}];
 
 (lib.AnMovieClip = function(){
 this.actionFrames = [];
