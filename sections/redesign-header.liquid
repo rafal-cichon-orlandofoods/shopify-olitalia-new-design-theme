@@ -32,6 +32,33 @@
         <a href="/pages/about-us" class="redesign-header__nav-link">About Us</a>
         <a href="/pages/production" class="redesign-header__nav-link">Production</a>
         <a href="/pages/sustainability" class="redesign-header__nav-link">Sustainability</a>
+        
+        {% comment %} External Links from blocks {% endcomment %}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'external-link' -%}
+            {%- if block.settings.url != blank and block.settings.label != blank -%}
+              <a 
+                href="{{ block.settings.url }}" 
+                class="redesign-header__nav-link"
+                {{ block.shopify_attributes }}
+                {% if block.settings.open_in_new_window %}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="{{ block.settings.label }} (opens in new window)"
+                {% endif %}
+              >
+                {{ block.settings.label }}
+                {% if block.settings.open_in_new_window %}
+                  <span class="external-link-icon" aria-hidden="true" style="margin-left: 0.25em; display: inline-flex; align-items: center;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                  </span>
+                {% endif %}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
       </nav>
       
       {% comment %} Mobile Logo - Only visible on mobile {% endcomment %}
@@ -116,6 +143,33 @@
     <a href="/pages/sustainability" class="redesign-mobile-menu__link">Sustainability</a>
     <a href="/pages/recipes" class="redesign-mobile-menu__link">Recipes</a>
     <a href="/products/extra-virgin-olive-oil" class="redesign-mobile-menu__link">Products</a>
+    
+    {% comment %} External Links from blocks {% endcomment %}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'external-link' -%}
+        {%- if block.settings.url != blank and block.settings.label != blank -%}
+          <a 
+            href="{{ block.settings.url }}" 
+            class="redesign-mobile-menu__link"
+            {{ block.shopify_attributes }}
+            {% if block.settings.open_in_new_window %}
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="{{ block.settings.label }} (opens in new window)"
+            {% endif %}
+          >
+            {{ block.settings.label }}
+            {% if block.settings.open_in_new_window %}
+              <span class="external-link-icon" aria-hidden="true" style="margin-left: 0.5em; display: inline-flex; align-items: center;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                </svg>
+              </span>
+            {% endif %}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
   </nav>
 </div>
 
@@ -191,6 +245,32 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "external-link",
+      "name": "External Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Label",
+          "default": "External Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "External URL",
+          "info": "Enter the full URL including https://"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_window",
+          "label": "Open in new window",
+          "default": true
+        }
+      ]
     }
   ],
   "presets": [

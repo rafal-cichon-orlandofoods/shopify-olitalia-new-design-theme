@@ -40,26 +40,27 @@
         "author_role": "Customer"
       }
     },
+    "redesign_brand_badge_RBGDHC": {
+      "type": "redesign-brand-badge",
+      "disabled": true,
+      "name": "Redesign Brand Badge",
+      "settings": {
+        "badge_image": "shopify://shop_images/Layer_1.png",
+        "badge_text": "Extravergine Italiano Certificato",
+        "disclaimer_text": "* Claim by Olitalia based on research conducted by NielsenIQ in June-July 2025. Total Olitalia's results calculated over a representative sample of 700 among Restaurants, Pizzerias and Hotels with Kitchen, +/- 4 percentage points with an estimate reliability of 95%."
+      }
+    },
+    "sun_animation_badge_A3xK9p": {
+      "type": "sun-animation-badge",
+      "name": "Sun Animation Badge",
+      "settings": {}
+    },
     "redesign_recipes_showcase_hjzBjp": {
       "type": "redesign-recipes-showcase",
       "name": "Redesign Recipes Showcase",
       "settings": {
         "title": "Recipes for Every Moment",
         "recipe_limit": 6
-      }
-    },
-    "redesign_brand_badge_RBGDHC": {
-      "type": "redesign-brand-badge",
-      "name": "Redesign Brand Badge",
-      "settings": {
-        "badge_image": "shopify://shop_images/Layer_1.png",
-        "badge_text": "Extravergine Italiano Certificato"
-      }
-    },
-    "sun_animation_badge_A3xK9p": {
-      "type": "sun-animation-badge",
-      "name": "Sun Animation Badge",
-      "settings": {
       }
     },
     "redesign_newsletter_simple_xkJBAf": {

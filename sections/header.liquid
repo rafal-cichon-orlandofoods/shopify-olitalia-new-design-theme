@@ -164,6 +164,26 @@
               {%- render 'site-nav-mega', linklist: block.settings.linklist, menu_name: block.settings.title, show_promotion_1: block.settings.show_promotion_block_1, promotion_image_1: block.settings.promotion_image_1, promotion_image_link_1: block.settings.promotion_image_link_1, promotion_content_1: block.settings.promotion_content_1, show_promotion_2: block.settings.show_promotion_block_2, promotion_image_2: block.settings.promotion_image_2, promotion_image_link_2: block.settings.promotion_image_link_2, promotion_content_2: block.settings.promotion_content_2, promotion_width: block.settings.promotion_width, type: 'classic', shopify_attributes: block.shopify_attributes, image_border_radius: block.settings.image_border_radius -%}
               {%- assign any_mega_menu_nav = true -%}
 
+            {%- when 'external-link' -%}
+              {%- if block.settings.url != blank and block.settings.label != blank -%}
+                <li {{ block.shopify_attributes }}>
+                  <a 
+                    href="{{ block.settings.url }}" 
+                    class="menu-link"
+                    {% if block.settings.open_in_new_window %}
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      aria-label="{{ block.settings.label }} (opens in new window)"
+                    {% endif %}
+                  >
+                    <span>{{ block.settings.label }}</span>
+                    <span class="external-link-icon" aria-hidden="true">
+                      {%- render 'theme-symbols', icon: 'arrow-right' -%}
+                    </span>
+                  </a>
+                </li>
+              {%- endif -%}
+
             {%- endcase -%}
         {%- endfor -%}
 
@@ -554,6 +574,28 @@
                       shopify_attributes: block.shopify_attributes
                     -%}
                     {%- assign any_mega_menu_nav = true -%}
+
+                  {%- when 'external-link' -%}
+                    {%- if block.settings.url != blank and block.settings.label != blank -%}
+                      <li {{ block.shopify_attributes }}>
+                        <a 
+                          href="{{ block.settings.url }}" 
+                          class="menu-link"
+                          {% if block.settings.open_in_new_window %}
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            aria-label="{{ block.settings.label }} (opens in new window)"
+                          {% endif %}
+                        >
+                          <span style="display: inline-flex; align-items: center;">
+                            {{ block.settings.label }}
+                            <span class="external-link-icon" aria-hidden="true" style="margin-left: 0.5em;">
+                              {%- render 'theme-symbols', icon: 'arrow-right' -%}
+                            </span>
+                          </span>
+                        </a>
+                      </li>
+                    {%- endif -%}
                 {%- endcase -%}
               {%- endfor -%}
 
@@ -1195,6 +1237,30 @@
       "type": "home",
       "limit": 1,
       "name": "t:sections.bundle-extra-words-v110.settings_schema.labels.home_button"
+    },
+    {
+      "type": "external-link",
+      "name": "External Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link Label",
+          "default": "External Link"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "External URL",
+          "info": "Enter the full URL including https://"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_window",
+          "label": "Open in new window",
+          "default": true
+        }
+      ]
     }
   ],
   "enabled_on": {

@@ -16,7 +16,7 @@
     "sustainability_figma": {
       "type": "sustainability-figma",
       "settings": {
-        "hero_image": "shopify://shop_images/Hero_Background_Image.png",
+        "hero_image": "shopify://shop_images/sustainability-large-opt.webp",
         "hero_title": "Looking Forward",
         "hero_subtitle": "Sustainability at Olitalia is not a destination — it's a direction.",
         "hero_description": "<p>We act every day to reduce our footprint, preserve nature's balance, and build a more responsible future. Because protecting what matters today is the best way to safeguard the future of flavor and ensuring that used oils are given a second life as renewable energy.</p>",
@@ -51,7 +51,10 @@
         "resource_stat1_number": "40%",
         "resource_stat1_label": "Water Reduction",
         "resource_stat2_number": "30%",
-        "resource_stat2_label": "Energy Savings"
+        "resource_stat2_label": "Energy Savings",
+        "show_closing": true,
+        "closing_title": "A Commitment That Continues",
+        "closing_text": "<p>Sustainability is not a final goal — it's a continuous journey. Every step we take, from reducing waste to supporting our people, reflects our belief that the choices we make today shape the world we share tomorrow. We're committed to doing better, learning more, and building a future where quality and responsibility go hand in hand.</p>"
       }
     },
     "redesign_newsletter": {
