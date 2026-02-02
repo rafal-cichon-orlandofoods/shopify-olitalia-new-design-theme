@@ -1,4 +1,7 @@
 {{ 'component-blog-item.css' | asset_url | stylesheet_tag }}
+{% if blog.handle == 'learn' %}
+  {{ 'blog-learn.css' | asset_url | stylesheet_tag }}
+{% endif %}
 
 {%- render 'breadcrumb',
   container: 'compact',

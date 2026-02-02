@@ -1,0 +1,81 @@
+{
+  "sections": {
+    "redesign_header": {
+      "type": "redesign-header",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "info": {
+          "type": "info",
+          "settings": {
+            "show_date": true,
+            "show_author": false,
+            "show_comments_number": false
+          }
+        },
+        "summary": {
+          "type": "summary",
+          "settings": {
+            "excerpt_limit": 30
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "info",
+        "summary"
+      ],
+      "settings": {
+        "enable_tags": true,
+        "layout": "grid-3 grid-lap-2 grid-portable-1",
+        "post_limit": 9,
+        "blog_show_image": true,
+        "image_aspect_ratio": "1.5",
+        "image_border_radius": 12
+      }
+    },
+    "learn_intro": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "grid",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_scheme": "white",
+        "title": "Learn with Olitalia",
+        "text": "<p>Discover the art of Mediterranean cooking, health benefits of olive oil, and expert tips from our culinary team. From daily rituals to cooking techniques, explore everything you need to elevate your kitchen.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "outline"
+      }
+    },
+    "redesign_newsletter": {
+      "type": "redesign-newsletter-simple",
+      "settings": {
+        "title": "Stay Informed",
+        "placeholder": "Enter your email",
+        "button_text": "Subscribe"
+      }
+    },
+    "redesign_footer": {
+      "type": "redesign-footer",
+      "settings": {
+        "logo": "shopify://shop_images/olitalia_logo_black.svg"
+      }
+    }
+  },
+  "order": [
+    "redesign_header",
+    "learn_intro",
+    "main",
+    "redesign_newsletter",
+    "redesign_footer"
+  ]
+}
