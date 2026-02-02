@@ -11,6 +11,19 @@
   "sections": {
     "redesign_header_q6fMM4": {
       "type": "redesign-header",
+      "blocks": {
+        "external_link_njQbEb": {
+          "type": "external-link",
+          "settings": {
+            "label": "Wholesale",
+            "url": "https://orlandofoods.com/",
+            "open_in_new_window": true
+          }
+        }
+      },
+      "block_order": [
+        "external_link_njQbEb"
+      ],
       "name": "Redesign Header",
       "settings": {
         "logo": "shopify://shop_images/olitalia_logo_black.svg"

@@ -30,6 +30,24 @@
     justify-content: center;
 }
 
+/* Video background styling */
+.redesign-sustainability__hero video-component {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.redesign-sustainability__hero video-component video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Fallback image styling */
 .redesign-sustainability__hero-bg {
     position: absolute;
     top: 0;
@@ -39,6 +57,19 @@
     object-fit: cover;
     object-position: center;
     z-index: 1;
+}
+
+/* Dark overlay for better text readability on video */
+.redesign-sustainability__hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .redesign-sustainability__hero-content {

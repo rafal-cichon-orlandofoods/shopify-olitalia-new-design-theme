@@ -216,6 +216,45 @@
     width: 100% !important;
 }
 
+/* External Link Styling - No underline, only arrow indicator */
+.redesign-header__nav-link .external-link-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.25em;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.redesign-header__nav-link:hover .external-link-icon {
+    opacity: 1;
+    transform: translateX(2px) translateY(-2px);
+}
+
+/* Remove underline for external links */
+.redesign-header__nav-link:has(.external-link-icon)::after {
+    display: none !important;
+}
+
+/* Mobile menu external link styling */
+.redesign-mobile-menu__link .external-link-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5em;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.redesign-mobile-menu__link:hover .external-link-icon {
+    opacity: 0.8;
+    transform: translateX(3px) translateY(-3px);
+}
+
+/* Ensure external links in mobile menu have same color as other links */
+.redesign-mobile-menu__link .external-link-icon svg {
+    color: inherit;
+    stroke: currentColor;
+}
+
 .redesign-header__menu-icon {
     width: 28px;
     height: 28px;
@@ -441,6 +480,14 @@
     letter-spacing: 0.5px !important;
 }
 
+/* Force external links to have same color as other inactive links */
+.redesign-mobile-menu__link[target="_blank"],
+.redesign-mobile-menu__link[target="_blank"]:link,
+.redesign-mobile-menu__link[target="_blank"]:visited {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 400 !important;
+}
+
 .redesign-mobile-menu__link:hover,
 .redesign-mobile-menu__link:hover:visited {
     color: #fff !important;
@@ -451,6 +498,12 @@
 .redesign-mobile-menu__link.active {
     color: #fff !important;
     font-weight: 500 !important;
+}
+
+/* Ensure external links never get active styling */
+.redesign-mobile-menu__link[target="_blank"].active {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 400 !important;
 }
 
 @media (max-width: 768px) {

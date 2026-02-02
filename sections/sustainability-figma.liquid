@@ -1,21 +1,43 @@
 {{ 'sustainability-figma.css' | asset_url | stylesheet_tag }}
+{{ 'component-video.css' | asset_url | stylesheet_tag }}
 {{ 'sustainability-counter.js' | asset_url | script_tag }}
 
 <div class="sustainability-figma">
   
   {%- comment -%}
-    HERO BACKGROUND IMAGE - Exact Figma positioning: top: 171px, height: 734px
+    HERO BACKGROUND - Video or Image
+    Video: autoplay, muted, loop for best practices
+    Fallback: Image if no video uploaded
   {%- endcomment -%}
   <div class="sustainability-figma__hero-bg">
-    <img 
-      src="{% if section.settings.hero_image %}{{ section.settings.hero_image | image_url: width: 1512 }}{% else %}https://www.figma.com/api/mcp/asset/cbcdfc89-922e-46a0-b56b-b7b486d69827{% endif %}" 
-      alt="Sustainability Hero"
-      class="sustainability-figma__hero-image"
-      loading="eager"
-      fetchpriority="high"
-      width="1512"
-      height="734"
-    >
+    {%- if section.settings.hero_video != blank -%}
+      {%- comment -%} Video background {%- endcomment -%}
+      {%- render 'video-component',
+        video_file: section.settings.hero_video,
+        image: section.settings.hero_image,
+        autoplay_video: true,
+        loop_video: true,
+        is_background: true,
+        crop_video: true,
+        id: section.id,
+        class: 'sustainability-figma__hero-video'
+      -%}
+      
+      <script>
+        window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+      </script>
+    {%- else -%}
+      {%- comment -%} Fallback to image {%- endcomment -%}
+      <img 
+        src="{% if section.settings.hero_image %}{{ section.settings.hero_image | image_url: width: 1512 }}{% else %}https://www.figma.com/api/mcp/asset/cbcdfc89-922e-46a0-b56b-b7b486d69827{% endif %}" 
+        alt="Sustainability Hero"
+        class="sustainability-figma__hero-image"
+        loading="eager"
+        fetchpriority="high"
+        width="1512"
+        height="734"
+      >
+    {%- endif -%}
   </div>
 
   {%- comment -%}
@@ -285,9 +307,16 @@ document.addEventListener('DOMContentLoaded', function() {
       "content": "Hero Section"
     },
     {
+      "type": "video",
+      "id": "hero_video",
+      "label": "Hero Background Video",
+      "info": "Upload video showing fields and raw materials. Video will autoplay, loop, and be muted. Recommended: MP4 format, max 10MB."
+    },
+    {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero Background Image"
+      "label": "Hero Background Image (Fallback)",
+      "info": "Used as poster for video or fallback if no video uploaded"
     },
     {
       "type": "text",

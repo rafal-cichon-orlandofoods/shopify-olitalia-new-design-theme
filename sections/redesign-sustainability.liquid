@@ -1,13 +1,32 @@
 {{ 'redesign-sustainability.css' | asset_url | stylesheet_tag }}
+{{ 'component-video.css' | asset_url | stylesheet_tag }}
 
 <div class="redesign-sustainability">
   
   {%- comment -%}
     HERO SECTION
-    Full-width background image with overlay text
+    Full-width background video with overlay text
+    Best practices: autoplay, muted, loop, with fallback poster image
   {%- endcomment -%}
   <section class="redesign-sustainability__hero">
-    {% if section.settings.hero_image %}
+    {%- if section.settings.hero_video != blank -%}
+      {%- comment -%} Video background {%- endcomment -%}
+      {%- render 'video-component',
+        video_file: section.settings.hero_video,
+        image: section.settings.hero_image,
+        autoplay_video: true,
+        loop_video: true,
+        is_background: true,
+        crop_video: true,
+        id: section.id,
+        class: 'redesign-sustainability__hero-video'
+      -%}
+      
+      <script>
+        window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+      </script>
+    {%- elsif section.settings.hero_image -%}
+      {%- comment -%} Fallback to image if no video {%- endcomment -%}
       <img 
         src="{{ section.settings.hero_image | image_url: width: 2000 }}" 
         alt="Sustainability Hero"
@@ -15,7 +34,7 @@
         loading="eager"
         fetchpriority="high"
       >
-    {% endif %}
+    {%- endif -%}
     
     <div class="redesign-sustainability__hero-content">
       <div class="redesign-sustainability__hero-text">
@@ -239,9 +258,16 @@
       "content": "Hero Section"
     },
     {
+      "type": "video",
+      "id": "hero_video",
+      "label": "Hero Background Video",
+      "info": "Upload a video showing fields and raw materials. Video will autoplay, loop, and be muted. Recommended: MP4 format, max 10MB for best performance."
+    },
+    {
       "type": "image_picker",
       "id": "hero_image",
-      "label": "Hero Background Image"
+      "label": "Hero Background Image (Fallback)",
+      "info": "Used as poster image for video or fallback if no video is uploaded"
     },
     {
       "type": "text",
